@@ -14,9 +14,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
+import com.example.myapplication.LoginManager;
+import com.example.myapplication.MyInfoAndFamHis;
 import com.example.myapplication.R;
-
-import java.util.HashMap;
+import com.example.myapplication.SQLConnection;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -83,19 +84,25 @@ public class Fragment_AllAboutMe extends Fragment {
                 RadioButton sexM = (RadioButton)layout.findViewById(R.id.input_child_M);
                 RadioButton sexF = (RadioButton)layout.findViewById(R.id.input_child_F);
 
+                if(dobD.getText().length() == 0 || dobM.getText().length() == 0 || dobY.getText().length() == 0)
+                {
+                    Log.e("query syntax error", "integers need to be set");
+                    return;
+                }
+
                 SQLConnection c = new SQLConnection("user1", "");
                 char sex = (sexM.isChecked()) ? 'M':(sexF.isChecked()) ? 'F' : ' ';
-                String query = "INSERT INTO Child VALUES (4, 0, '" + fname.getText() + "','"
-                                                                   + lname.getText() + "','"
-                                                                   + dobY.getText() + "-" + dobM.getText()+"-"+dobD.getText() + "','"
-                                                                   + sex +"');";
+                LoginManager manager = ((MyInfoAndFamHis)getActivity()).manager;
+                String query = "INSERT INTO Child VALUES (" + manager.childID + ", "
+                                                            + manager.guardianID + ", '"
+                                                            + fname.getText() + "','"
+                                                            + lname.getText() + "','"
+                                                            + dobY.getText() + "-" + dobM.getText()+"-"+dobD.getText() + "','"
+                                                            + sex +"');";
                 c.update(query);
                 c.disconnect();
             }
         });
-
-        SQLConnection c = new SQLConnection("user1", "");
-        c.disconnect();
         return layout;
     }
 }

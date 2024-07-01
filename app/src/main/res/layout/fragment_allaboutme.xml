@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
-                android:text="You childs first name: "
+                android:text="Your childs first name: "
                 android:textSize="16sp" />
 
             <EditText
@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
-                android:text="You childs last name: "
+                android:text="Your childs last name: "
                 android:textSize="16sp" />
 
             <EditText
@@ -93,7 +93,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="2"
-                android:inputType="number" />
+                android:inputType="number"
+                android:maxLength="2" />
 
             <EditText
                 android:id="@+id/input_child_dob_m"
@@ -101,7 +102,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="2"
-                android:inputType="number" />
+                android:inputType="number"
+                android:maxLength="2" />
 
             <EditText
                 android:id="@+id/input_child_dob_y"
@@ -109,7 +111,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="3"
-                android:inputType="number" />
+                android:inputType="number"
+                android:maxLength="4" />
 
         </LinearLayout>
 
@@ -154,6 +157,7 @@
             android:id="@+id/button_AllAboutMe"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
             android:text="submit" />
 
     </LinearLayout>

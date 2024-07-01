@@ -1,13 +1,19 @@
 package com.example.myapplication.Fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.myapplication.LoginManager;
+import com.example.myapplication.MyInfoAndFamHis;
 import com.example.myapplication.R;
+import com.example.myapplication.SQLConnection;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +65,40 @@ public class Fragment_MyAddress extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_myaddress, container, false);
+        View layout = inflater.inflate(R.layout.fragment_myaddress, container, false);
+        Button submit = (Button)layout.findViewById(R.id.button_myAddress);
+        if(submit == null) throw new NullPointerException("could not find button: " + R.id.button_myAddress);
+        else submit.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Button button = (Button)getActivity().findViewById(R.id.button_MIAFH_3);
+                button.performClick();
+                EditText country = (EditText)layout.findViewById(R.id.input_address_country);
+                EditText city = (EditText)layout.findViewById(R.id.input_address_city);
+                EditText street = (EditText)layout.findViewById(R.id.input_address_street);
+                EditText streetNumber = (EditText)layout.findViewById(R.id.input_address_streetNumber);
+                EditText rawUnit = (EditText)layout.findViewById(R.id.input_address_unit);
+                EditText postcode = (EditText)layout.findViewById(R.id.input_address_postcode);
+
+                if(streetNumber.getText().length() == 0 || postcode.getText().length() == 0)
+                {
+                    Log.e("query syntax error", "integers need to be set");
+                    return;
+                }
+
+                String unit = (rawUnit.getText().length() == 0) ? "null" : "'"+rawUnit.getText()+"'";
+                SQLConnection c = new SQLConnection("user1", "");
+                LoginManager manager = ((MyInfoAndFamHis)getActivity()).manager;
+                String query = "INSERT INTO Address VALUES (" + manager.guardianID + ", '"
+                                                              + country.getText() + "', '"
+                                                              + city.getText() + "', '"
+                                                              + street.getText() + "', "
+                                                              + streetNumber.getText() + ", "
+                                                              + unit + ", "
+                                                              + postcode.getText() + ");";
+                c.update(query);
+                c.disconnect();
+            }
+        });
+        return layout;
     }
 }

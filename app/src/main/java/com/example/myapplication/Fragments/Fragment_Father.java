@@ -1,13 +1,20 @@
 package com.example.myapplication.Fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.myapplication.LoginManager;
+import com.example.myapplication.MyInfoAndFamHis;
 import com.example.myapplication.R;
+import com.example.myapplication.SQLConnection;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +66,46 @@ public class Fragment_Father extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_father, container, false);
+        View layout = inflater.inflate(R.layout.fragment_father, container, false);
+        Button submit = (Button)layout.findViewById(R.id.button_father);
+        if(submit == null) throw new NullPointerException("could not find button: " + R.id.button_father);
+        else submit.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Button button = (Button)getActivity().findViewById(R.id.button_MIAFH_6);
+                button.performClick();
+                EditText fname = (EditText)layout.findViewById(R.id.input_father_fname);
+                EditText lname = (EditText)layout.findViewById(R.id.input_father_lname);
+                EditText dobD = (EditText)layout.findViewById(R.id.input_father_dob_d);
+                EditText dobM = (EditText)layout.findViewById(R.id.input_father_dob_m);
+                EditText dobY = (EditText)layout.findViewById(R.id.input_father_dob_y);
+                EditText mrn = (EditText)layout.findViewById(R.id.input_father_MRN);
+                CheckBox isAboRaw = (CheckBox)layout.findViewById(R.id.input_father_isAboriginal);
+                CheckBox isTSIRaw = (CheckBox)layout.findViewById(R.id.input_father_isTorresStrait);
+                EditText career = (EditText)layout.findViewById(R.id.input_father_career);
+
+                if(dobD.getText().length() == 0 || dobM.getText().length() == 0 || dobY.getText().length() == 0 || mrn.getText().length() == 0)
+                {
+                    Log.e("query syntax error", "integers need to be set.");
+                    return;
+                }
+
+                int isAbo = (isAboRaw.isChecked()) ? 1 : 0;
+                int isTSI = (isTSIRaw.isChecked()) ? 1 : 0;
+
+                SQLConnection c = new SQLConnection("user1", "");
+                LoginManager manager = ((MyInfoAndFamHis)getActivity()).manager;
+                String query = "INSERT INTO Parent VALUES (" + manager.guardianID + ", 'Father', '"
+                                                             + fname.getText() + "', '"
+                                                             + lname.getText() + "', '"
+                                                             + dobY.getText() + "-" + dobM.getText()+"-"+dobD.getText() + "', "
+                                                             + mrn.getText() + ", "
+                                                             + isAbo + ", "
+                                                             + isTSI + ", '"
+                                                             + career.getText() + "');";
+                c.update(query);
+                c.disconnect();
+            }
+        });
+        return layout;
     }
 }

@@ -4,10 +4,18 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.myapplication.LoginManager;
+import com.example.myapplication.MyInfoAndFamHis;
 import com.example.myapplication.R;
+import com.example.myapplication.SQLConnection;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +67,47 @@ public class Fragment_DentalHstory extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dentalhistory, container, false);
+        View layout = inflater.inflate(R.layout.fragment_dentalhistory, container, false);
+        Button submit = (Button)layout.findViewById(R.id.button_dentlHealth);
+        if(submit == null) throw new NullPointerException("could not find button: " + R.id.button_dentlHealth);
+        else submit.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //Button button = (Button)getActivity().findViewById(R.id.button_MIAFH_7);
+                //button.performClick();
+
+                String [][] info = new String[3][10];
+                LinearLayout container = (LinearLayout)layout.findViewById(R.id.dentalHealthHis_container);
+                int index = -1;
+                for(int i = 0; i < container.getChildCount(); i++, index++) {
+                    if( container.getChildAt(i) instanceof LinearLayout ) {
+                        LinearLayout middleContainer = (LinearLayout)container.getChildAt(i);
+                        for(int j = 0; j < middleContainer.getChildCount(); j++) {
+                            if(middleContainer.getChildAt(j) instanceof EditText)
+                                info[0][index] = ""+((EditText)middleContainer.getChildAt(j)).getText();
+                            else if(middleContainer.getChildAt(j) instanceof LinearLayout) {
+                                LinearLayout lowerContainer = (LinearLayout)middleContainer.getChildAt(j);
+                                for(int k = 0; k < lowerContainer.getChildCount(); k++) {
+                                    if((lowerContainer.getChildAt(k)) instanceof CheckBox)
+                                        info[2][index] = (((CheckBox)lowerContainer.getChildAt(k)).isChecked()) ? "1": "0";
+                                    else if((lowerContainer.getChildAt(k)) instanceof TextView)
+                                        info[1][index] = ""+((TextView)lowerContainer.getChildAt(k)).getText();
+                                } } } } }
+
+                SQLConnection c = new SQLConnection("user1", "");
+                int ID = c.getMaxID("FamilyDentalHistory");
+                LoginManager manager = ((MyInfoAndFamHis)getActivity()).manager;
+                for(int i = 0; i < index-1; i++, ID++)
+                {
+                    String query = "INSERT INTO FamilyDentalHistory VALUES (" + ID + ", "
+                                                                              + manager.childID + ", '"
+                                                                              + info[1][i] + "', "
+                                                                              + info[2][i]+", '"
+                                                                              + info[0][i]+"');";
+                    c.update(query);
+                }
+                c.disconnect();
+            }
+        });
+        return layout;
     }
 }

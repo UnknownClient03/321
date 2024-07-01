@@ -4,10 +4,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.myapplication.LoginManager;
+import com.example.myapplication.MyInfoAndFamHis;
 import com.example.myapplication.R;
+import com.example.myapplication.SQLConnection;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,7 +63,22 @@ public class Fragment_Language extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_language, container, false);
+        View layout = inflater.inflate(R.layout.fragment_language, container, false);
+        Button submit = (Button)layout.findViewById(R.id.button_Language);
+        if(submit == null) throw new NullPointerException("could not find button: " + R.id.button_Language);
+        else submit.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Button button = (Button)getActivity().findViewById(R.id.button_MIAFH_4);
+                button.performClick();
+                EditText language = (EditText)layout.findViewById(R.id.input_language);
+
+                SQLConnection c = new SQLConnection("user1", "");
+                LoginManager manager = ((MyInfoAndFamHis)getActivity()).manager;
+                String query = "INSERT INTO GuardianLanguage VALUES (" + manager.guardianID + ", 0, '" + language.getText() + "');";
+                c.update(query);
+                c.disconnect();
+            }
+        });
+        return layout;
     }
 }

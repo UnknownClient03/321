@@ -16,6 +16,7 @@ import java.util.HashMap;
 
 public class Homepage extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +34,11 @@ public class Homepage extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("BUTTON", "changing to hompage");
                 Intent intent=new Intent(Homepage.this, MyInfoAndFamHis.class);
+                Bundle extras = getIntent().getExtras();
+                if (extras != null) {
+                    intent.putExtra("guardianID", extras.getInt("guardianID"));
+                    intent.putExtra("childID", extras.getInt("childID"));
+                }
                 startActivity(intent);
             }
         });

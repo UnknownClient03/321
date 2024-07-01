@@ -23,6 +23,9 @@ import com.example.myapplication.Fragments.Fragment_MyAddress;
 
 public class MyInfoAndFamHis extends AppCompatActivity {
     Fragment currentFrag;
+    public LoginManager manager;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +36,9 @@ public class MyInfoAndFamHis extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) manager = new LoginManager(extras.getInt("guardianID"), extras.getInt("childID"));
 
         Fragment[] Fragments = { new Fragment_AllAboutMe(),
                 new Fragment_MyAddress(),
@@ -46,7 +52,6 @@ public class MyInfoAndFamHis extends AppCompatActivity {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.FRAG_MIAFH, currentFrag)
-                //.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .addToBackStack(null)
                 .commit();
 
@@ -58,10 +63,6 @@ public class MyInfoAndFamHis extends AppCompatActivity {
         setButtons((Button)findViewById(R.id.button_MIAFH_5), Fragments[4]);
         setButtons((Button)findViewById(R.id.button_MIAFH_6), Fragments[5]);
         setButtons((Button)findViewById(R.id.button_MIAFH_7), Fragments[6]);
-
-        //SQLConnection c = new SQLConnection("user1", "");
-        //HashMap <String, String[]> results = c.select("SELECT * FROM Guardian;");
-        //c.disconnect();
     }
     private void setButtons(Button button, Fragment newFragment) {
         button.setOnClickListener(new View.OnClickListener() {

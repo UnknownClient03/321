@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,8 +29,10 @@ public class MainActivity extends AppCompatActivity {
         Button button = findViewById(R.id.login_button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Log.d("BUTTON", "changing to hompage");
+                Log.d("BUTTON", "Changing to homepage");
                 Intent intent=new Intent(MainActivity.this,Homepage.class);
+                intent.putExtra("guardianID", 0);
+                intent.putExtra("childID", 0);
                 startActivity(intent);
             }
         });
