@@ -1,6 +1,7 @@
 package com.example.myapplication.Fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +11,15 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.LoginManager;
 import com.example.myapplication.MyInfoAndFamHis;
 import com.example.myapplication.R;
 import com.example.myapplication.SQLConnection;
+
+import java.util.HashMap;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -67,47 +71,96 @@ public class Fragment_HealthHistory extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        SQLConnection c = new SQLConnection("user1", "");
+        LoginManager manager = ((MyInfoAndFamHis)getActivity()).manager;
         View layout = inflater.inflate(R.layout.fragment_healthhistory, container, false);
         Button submit = (Button)layout.findViewById(R.id.button_healthHistory);
-        if(submit == null) throw new NullPointerException("could not find button: " + R.id.button_healthHistory);
-        else submit.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Button button = (Button)getActivity().findViewById(R.id.button_MIAFH_7);
-                button.performClick();
 
-                String [][] info = new String[3][10];
-                LinearLayout container = (LinearLayout)layout.findViewById(R.id.famHealthHis_container);
-                int index = -1;
-                for(int i = 0; i < container.getChildCount(); i++, index++) {
-                    if( container.getChildAt(i) instanceof LinearLayout ) {
-                        LinearLayout middleContainer = (LinearLayout)container.getChildAt(i);
-                        for(int j = 0; j < middleContainer.getChildCount(); j++) {
-                            if(middleContainer.getChildAt(j) instanceof EditText)
-                                info[0][index] = ""+((EditText)middleContainer.getChildAt(j)).getText();
-                            else if(middleContainer.getChildAt(j) instanceof LinearLayout) {
-                                LinearLayout lowerContainer = (LinearLayout)middleContainer.getChildAt(j);
-                                for(int k = 0; k < lowerContainer.getChildCount(); k++) {
-                                    if((lowerContainer.getChildAt(k)) instanceof CheckBox)
-                                        info[2][index] = (((CheckBox)lowerContainer.getChildAt(k)).isChecked()) ? "1": "0";
-                                    else if((lowerContainer.getChildAt(k)) instanceof TextView)
-                                        info[1][index] = ""+((TextView)lowerContainer.getChildAt(k)).getText();
-                } } } } }
+        HashMap<String, String[]> result = c.select("SELECT childID, riskFactor, condition, note FROM familyHealthHistory WHERE childID = "+manager.childID+";");
+        HashMap<String, String[]> resultB = c.select("SELECT ID FROM Child WHERE ID = "+manager.childID+" AND guardianID = "+manager.guardianID+";");
+        if(resultB.get("ID").length == 0)
+        {
+            submit.setText("Complete 'All About Me' section first.");
+            submit.setTextSize(10f);
+            submit.setWidth(200);
+            submit.setMinWidth(0);
+            submit.setEnabled(false);
+        }
+        else if(result.get("childID").length == 0)
+        {
+            if(submit == null) throw new NullPointerException("could not find button: " + R.id.button_healthHistory);
+            else submit.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Button button = (Button)getActivity().findViewById(R.id.button_MIAFH_7);
+                    button.performClick();
 
-                SQLConnection c = new SQLConnection("user1", "");
-                int ID = c.getMaxID("familyHealthHistory")-1;
-                LoginManager manager = ((MyInfoAndFamHis)getActivity()).manager;
-                for(int i = 0; i < index-1; i++, ID++)
-                {
-                    String query = "INSERT INTO familyHealthHistory VALUES (" + ID + ", "
-                                                                              + manager.childID + ", '"
-                                                                              + info[1][i] + "', "
-                                                                              + info[2][i]+", '"
-                                                                              + info[0][i]+"');";
-                    c.update(query);
+                    LinearLayout topContainer = (LinearLayout)layout.findViewById(R.id.famHealthHis_container);
+                    String [][] info = new String[3][8];
+                    int index = -1;
+                    for(int i = 0; i < topContainer.getChildCount(); i++, index++) {
+                        if( topContainer.getChildAt(i) instanceof LinearLayout ) {
+                            LinearLayout middleContainer = (LinearLayout)topContainer.getChildAt(i);
+                            for(int j = 0; j < middleContainer.getChildCount(); j++) {
+                                if(middleContainer.getChildAt(j) instanceof EditText)
+                                    info[0][index] = ""+((EditText)middleContainer.getChildAt(j)).getText();
+                                else if(middleContainer.getChildAt(j) instanceof LinearLayout) {
+                                    LinearLayout lowerContainer = (LinearLayout)middleContainer.getChildAt(j);
+                                    for(int k = 0; k < lowerContainer.getChildCount(); k++) {
+                                        if((lowerContainer.getChildAt(k)) instanceof CheckBox)
+                                            info[2][index] = (((CheckBox)lowerContainer.getChildAt(k)).isChecked()) ? "1": "0";
+                                        else if((lowerContainer.getChildAt(k)) instanceof TextView)
+                                            info[1][index] = ""+((TextView)lowerContainer.getChildAt(k)).getText();
+                                    } } } } }
+
+                    SQLConnection c = new SQLConnection("user1", "");
+                    int ID = c.getMaxID("familyHealthHistory");
+                    LoginManager manager = ((MyInfoAndFamHis)getActivity()).manager;
+                    for(int i = 0; i < 8; i++, ID++)
+                    {
+                        String note = (info[0][i].length() == 0) ? "null" : "'"+info[0][i]+"'";
+                        String query = "INSERT INTO familyHealthHistory VALUES (" + ID + ", "
+                                + manager.childID + ", '"
+                                + info[1][i] + "', "
+                                + info[2][i]+", "
+                                + note+");";
+                        c.update(query);
+                    }
+                    c.disconnect();
                 }
-                c.disconnect();
+            });
+        }
+        else {
+            LinearLayout topContainer = (LinearLayout)layout.findViewById(R.id.famHealthHis_container);
+            int length = 8;
+            EditText[] txts = new EditText[length];
+            CheckBox[] checks = new CheckBox[length];
+
+            int index = -1;
+            for(int i = 0; i < topContainer.getChildCount(); i++, index++) {
+                if( topContainer.getChildAt(i) instanceof LinearLayout ) {
+                    LinearLayout middleContainer = (LinearLayout)topContainer.getChildAt(i);
+                    for(int j = 0; j < middleContainer.getChildCount(); j++) {
+                        if(middleContainer.getChildAt(j) instanceof EditText)
+                            txts[index] = (EditText)middleContainer.getChildAt(j);
+                        else if(middleContainer.getChildAt(j) instanceof LinearLayout) {
+                            LinearLayout lowerContainer = (LinearLayout)middleContainer.getChildAt(j);
+                            for(int k = 0; k < lowerContainer.getChildCount(); k++) {
+                                if((lowerContainer.getChildAt(k)) instanceof CheckBox)
+                                    checks[index] = (CheckBox)lowerContainer.getChildAt(k);
+                            } } } } }
+
+            for(int i = 0; i < length; i++)
+            {
+                txts[i].setText(result.get("note")[i]);
+                if(result.get("condition")[i].charAt(0) == '1') checks[i].setChecked(true);
+
+                txts[i].setEnabled(false);
+                checks[i].setEnabled(false);
             }
-        });
+            submit.setVisibility(View.INVISIBLE);
+        }
+
+        c.disconnect();
         return layout;
     }
 }

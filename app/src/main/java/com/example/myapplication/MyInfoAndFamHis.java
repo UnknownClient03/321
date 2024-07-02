@@ -37,6 +37,8 @@ public class MyInfoAndFamHis extends AppCompatActivity {
             return insets;
         });
 
+        navBarManager.setNavBarButtons(MyInfoAndFamHis.this);
+
         Bundle extras = getIntent().getExtras();
         if (extras != null) manager = new LoginManager(extras.getInt("guardianID"), extras.getInt("childID"));
 

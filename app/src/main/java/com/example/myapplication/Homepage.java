@@ -28,6 +28,7 @@ public class Homepage extends AppCompatActivity {
             return insets;
         });
 
+        navBarManager.setNavBarButtons(Homepage.this);
 
         Button button = findViewById(R.id.button_8);
         button.setOnClickListener(new View.OnClickListener() {
@@ -42,5 +43,8 @@ public class Homepage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
     }
+
 }
