@@ -119,7 +119,6 @@ public class Fragment_Language extends Fragment {
                         EditText x = addlanguageInput(lanContainer, new EditText(layout.getContext()));
                         x.setText(result.get("language")[i]);
                         x.setEnabled(false);
-                        x.setBackgroundColor(R.color.black);
                     }
                 }
             });
