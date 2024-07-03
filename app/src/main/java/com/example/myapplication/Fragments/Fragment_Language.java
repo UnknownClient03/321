@@ -120,6 +120,8 @@ public class Fragment_Language extends Fragment {
                         x.setText(result.get("language")[i]);
                         x.setEnabled(false);
                     }
+                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(lanContainer.getWidth(), (int)(lanContainer.getHeight()*num));
+                    lanContainer.setLayoutParams(params);
                 }
             });
             submit.setVisibility(View.INVISIBLE);
