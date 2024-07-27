@@ -1,8 +1,8 @@
-#Mon Jul 01 00:46:09 AEST 2024
-base.0=C\:\\Users\\unkno\\Desktop\\2024\\321\\project\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
-base.1=C\:\\Users\\unkno\\Desktop\\2024\\321\\project\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.2=C\:\\Users\\unkno\\Desktop\\2024\\321\\project\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\4\\classes.dex
-base.3=C\:\\Users\\unkno\\Desktop\\2024\\321\\project\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\5\\classes.dex
+#Sat Jul 27 15:02:51 AEST 2024
+base.0=/Users/thomas/StudioProjects/321/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
+base.1=/Users/thomas/StudioProjects/321/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
+base.2=/Users/thomas/StudioProjects/321/app/build/intermediates/dex/debug/mergeProjectDexDebug/4/classes.dex
+base.3=/Users/thomas/StudioProjects/321/app/build/intermediates/dex/debug/mergeProjectDexDebug/5/classes.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=4/classes.dex
