@@ -24,8 +24,11 @@
         android:text="4 months"
         android:textAlignment="center"
         android:textSize="12dp"
-        tools:layout_editor_absoluteX="165dp"
-        tools:layout_editor_absoluteY="455dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.629" />
 
     <TextView
         android:id="@+id/textView6"
@@ -34,8 +37,12 @@
         android:text="4 years"
         android:textAlignment="center"
         android:textSize="12dp"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="457dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.629" />
 
     <TextView
         android:id="@+id/textView6"
@@ -44,8 +51,11 @@
         android:text="Child 2"
         android:textAlignment="center"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="165dp"
-        tools:layout_editor_absoluteY="435dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6" />
 
     <TextView
         android:id="@+id/textView6"
@@ -54,8 +64,12 @@
         android:text="Add Child"
         android:textAlignment="center"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="292dp"
-        tools:layout_editor_absoluteY="434dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.903"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6" />
 
     <TextView
         android:id="@+id/textView6"
@@ -64,8 +78,12 @@
         android:text="Child 1"
         android:textAlignment="center"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="436dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6" />
 
     <TextView
         android:id="@+id/textView3"
@@ -75,8 +93,11 @@
         android:textColor="#000000"
         android:textSize="30sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="109dp"
-        tools:layout_editor_absoluteY="175dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.339" />
 
     <ImageButton
         android:id="@+id/imageButton1"
@@ -85,8 +106,11 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:background="@drawable/round_button"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="305dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.054"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/imageButton2"
@@ -95,8 +119,10 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:background="@drawable/round_button"
-        tools:layout_editor_absoluteX="145dp"
-        tools:layout_editor_absoluteY="305dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <ImageButton
@@ -113,17 +139,22 @@
 
         android:textColor="#000000"
         android:textSize="15sp"
-        tools:layout_editor_absoluteX="275dp"
-        tools:layout_editor_absoluteY="305dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.945"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Manage Children"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="521dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.73" />
 
     <include
         layout="@layout/footer"
@@ -137,7 +168,10 @@
         android:id="@+id/imageView"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        app:srcCompat="@drawable/add_person"
-        tools:layout_editor_absoluteX="298dp"
-        tools:layout_editor_absoluteY="328dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.886"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/add_person" />
 </androidx.constraintlayout.widget.ConstraintLayout>
