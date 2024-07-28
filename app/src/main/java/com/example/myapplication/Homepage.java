@@ -33,7 +33,7 @@ public class Homepage extends AppCompatActivity {
         Button button = findViewById(R.id.button_8);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Log.d("BUTTON", "changing to hompage");
+                Log.d("BUTTON", "changing to homepage");
                 Intent intent=new Intent(Homepage.this, MyInfoAndFamHis.class);
                 Bundle extras = getIntent().getExtras();
                 if (extras != null) {
@@ -44,6 +44,20 @@ public class Homepage extends AppCompatActivity {
             }
         });
 
+        // Setting up the Immunisation button
+        Button buttonImmunisation = findViewById(R.id.button_3);
+        buttonImmunisation.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Log.d("BUTTON", "changing to Immunisation Schedule page");
+                Intent intent = new Intent(Homepage.this, ImmunisationSchedule.class);
+                Bundle extras = getIntent().getExtras();
+                if (extras != null) {
+                    intent.putExtra("guardianID", extras.getInt("guardianID"));
+                    intent.putExtra("childID", extras.getInt("childID"));
+                }
+                startActivity(intent);
+            }
+        });
 
     }
 
