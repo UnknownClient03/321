@@ -49,6 +49,8 @@ public class AccountSettings extends AppCompatActivity {
                 Toast.makeText(AccountSettings.this, "Please fill all fields correctly", Toast.LENGTH_LONG).show();
             }
         });
+
+        NavBarManager.setNavBarButtons(AccountSettings.this);
     }
 
     private void saveSettings() {
