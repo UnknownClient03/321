@@ -2949,6 +2949,7 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable cpr_chart
 drawable curved_rectangle
 drawable design_fab_background
 drawable design_ic_visibility
@@ -3332,6 +3333,7 @@ id imageView3
 id imageView4
 id imageView4_rec2
 id imageView4_rec3
+id imageViewCPRChart
 id immediateStop
 id included
 id indeterminate
@@ -3825,6 +3827,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout account_settings
 layout activity_add_child
+layout activity_cpr_chart
 layout activity_homepage
 layout activity_immunisation_schedule
 layout activity_main

@@ -48,6 +48,7 @@
         <activity
             android:name="com.example.myapplication.ImmunisationSchedule"
             android:exported="false" />
+        <activity android:name="com.example.myapplication.CPRChart" />
         <activity android:name="com.example.myapplication.ChildSelectActivity" />
         <activity android:name="com.example.myapplication.ManageChildrenActivity" />
         <activity android:name="com.example.myapplication.AddChildActivity" />

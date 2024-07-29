@@ -2948,6 +2948,7 @@ int drawable btn_radio_off_mtrl 0x7f07007f
 int drawable btn_radio_off_to_on_mtrl_animation 0x7f070080
 int drawable btn_radio_on_mtrl 0x7f070081
 int drawable btn_radio_on_to_off_mtrl_animation 0x7f070082
+int drawable cpr_chart 0x7f0700e7
 int drawable curved_rectangle 0x7f070083
 int drawable design_fab_background 0x7f070084
 int drawable design_ic_visibility 0x7f070085
@@ -3331,6 +3332,7 @@ int id imageView3 0x7f080117
 int id imageView4 0x7f080118
 int id imageView4_rec2 0x7f080119
 int id imageView4_rec3 0x7f08011a
+int id imageViewCPRChart 0x7f080294
 int id immediateStop 0x7f08011b
 int id included 0x7f08011c
 int id indeterminate 0x7f08011d
@@ -3824,6 +3826,7 @@ int layout abc_select_dialog_material 0x7f0b001a
 int layout abc_tooltip 0x7f0b001b
 int layout account_settings 0x7f0b001c
 int layout activity_add_child 0x7f0b001d
+int layout activity_cpr_chart 0x7f0b007c
 int layout activity_homepage 0x7f0b001e
 int layout activity_immunisation_schedule 0x7f0b001f
 int layout activity_main 0x7f0b0020
