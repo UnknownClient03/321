@@ -49,8 +49,6 @@ public class AccountSettings extends AppCompatActivity {
                 Toast.makeText(AccountSettings.this, "Please fill all fields correctly", Toast.LENGTH_LONG).show();
             }
         });
-
-        NavBarManager.setNavBarButtons(AccountSettings.this);
     }
 
     private void saveSettings() {
@@ -63,7 +61,7 @@ public class AccountSettings extends AppCompatActivity {
 
         Toast.makeText(this, "Settings Saved", Toast.LENGTH_LONG).show();
 
-        // Add logic to save these settings
+        // Add logic to save these settings in database
     }
 
     private void setEditable(boolean isEditable) {
@@ -80,5 +78,4 @@ public class AccountSettings extends AppCompatActivity {
 
         return !username.isEmpty() && !email.isEmpty() && !password.isEmpty();
     }
-
 }
