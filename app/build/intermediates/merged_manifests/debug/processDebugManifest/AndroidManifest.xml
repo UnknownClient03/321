@@ -54,6 +54,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.example.myapplication.ChildSelectActivity" />
+        <activity android:name="com.example.myapplication.ManageChildrenActivity" />
+        <activity android:name="com.example.myapplication.AddChildActivity" />
+        <activity android:name="com.example.myapplication.AccountSettings" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"

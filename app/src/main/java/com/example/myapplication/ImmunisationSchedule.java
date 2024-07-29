@@ -36,6 +36,8 @@ public class ImmunisationSchedule extends AppCompatActivity {
 
         ImmunisationAdapter immunisationAdapter = new ImmunisationAdapter(this, immunisations);
         listViewImmunisations.setAdapter(immunisationAdapter);
+
+        navBarManager.setNavBarButtons(ImmunisationSchedule.this);
     }
 
 }

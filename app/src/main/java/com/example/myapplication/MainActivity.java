@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Log.d("BUTTON", "Changing to homepage");
-                Intent intent=new Intent(MainActivity.this,Homepage.class);
+                Intent intent=new Intent(MainActivity.this, ChildSelectActivity.class);
                 intent.putExtra("guardianID", 0);
                 intent.putExtra("childID", 0);
                 startActivity(intent);
