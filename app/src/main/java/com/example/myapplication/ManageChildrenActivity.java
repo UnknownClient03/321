@@ -3,9 +3,12 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ManageChildrenActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,13 +17,16 @@ public class ManageChildrenActivity extends AppCompatActivity {
 
         // Initialize UI components
         Button addChildButton = findViewById(R.id.add_child_button);
-
+        ImageView backArrow = findViewById(R.id.back_arrow);
         // Set up onClick listeners
         addChildButton.setOnClickListener(v -> {
             Intent intent = new Intent(ManageChildrenActivity.this, AddChildActivity.class);
             startActivity(intent);
         });
 
-        // Initialize other UI components and set up listeners as needed
+        backArrow.setOnClickListener(v -> {
+            finish(); // This will close the current activity and return to the previous one
+        });
+
     }
 }
