@@ -13,7 +13,7 @@ public class ChildSelectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.child_select);
 
-        Button manageChildrenButton = findViewById(R.id.button3);
+        Button manageChildrenButton = findViewById(R.id.buttonManageChildren);
         ImageButton imageButton1 = findViewById(R.id.imageButton1);
         ImageButton imageButton2 = findViewById(R.id.imageButton2);
         ImageButton addButton = findViewById(R.id.add_btn);
