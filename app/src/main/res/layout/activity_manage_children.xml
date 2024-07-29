@@ -1,34 +1,192 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ManageChildrenActivity">
+    tools:context=".ManageChildrenActivity"
+    android:background="#90EBF7">
 
-    <!-- Example UI components -->
+    <include
+        layout="@layout/header"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <TextView
         android:id="@+id/manage_children_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Manage Children"
-        android:textSize="24sp"
+        android:textSize="36sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/header"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="20dp" />
+
+    <ImageView
+        android:id="@+id/back_arrow"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:src="@drawable/back_arrow"
+        android:contentDescription="Back"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/child_container1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:padding="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/manage_children_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/profile_picture1"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="24dp"
+            android:scaleType="center"
+            android:background="@drawable/grey_circle"
+            android:src="@drawable/profile_picture"/>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/child_name1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Child Name"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/child_age1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Age: 0"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/line1"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="12dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintTop_toBottomOf="@id/child_container1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/child_container2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:padding="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/line1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/profile_picture2"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="24dp"
+            android:scaleType="center"
+            android:background="@drawable/grey_circle"
+            android:src="@drawable/profile_picture"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/child_name2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Child Name"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/child_age2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Age: 0"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/line2"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="12dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintTop_toBottomOf="@id/child_container2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/add_child_button"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="#6482AD"
         android:text="Add Child"
-        app:layout_constraintTop_toBottomOf="@id/manage_children_title"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line2" />
 
-    <!-- Add more UI components as needed -->
+    <Button
+        android:id="@+id/remove_child_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="Remove Child"
+        android:textSize="20sp"
+        android:backgroundTint="#2F3645"
+        android:textColor="#FFFFFF"
+        app:layout_constraintTop_toBottomOf="@id/add_child_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <include
+        layout="@layout/footer"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:id="@+id/footer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
