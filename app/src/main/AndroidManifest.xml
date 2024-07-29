@@ -37,6 +37,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ChildSelectActivity" />
+        <activity android:name=".ManageChildrenActivity" />
+        <activity android:name=".AddChildActivity" />
+        <activity android:name=".AccountSettings" />
+        
     </application>
 
 </manifest>
