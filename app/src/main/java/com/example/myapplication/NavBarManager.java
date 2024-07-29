@@ -4,10 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class navBarManager {
+public class NavBarManager {
     public static void setNavBarButtons(AppCompatActivity x)
     {
         if(x.findViewById(R.id.header) != null)
@@ -16,6 +17,18 @@ public class navBarManager {
             button.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     Intent intent=new Intent(x, Homepage.class);
+                    Bundle extras = x.getIntent().getExtras();
+                    if (extras != null) {
+                        intent.putExtra("guardianID", extras.getInt("guardianID"));
+                        intent.putExtra("childID", extras.getInt("childID"));
+                    }
+                    x.startActivity(intent);
+                }
+            });
+            ImageButton buttonSettings = x.findViewById(R.id.settings_button);
+            buttonSettings.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent intent=new Intent(x, AccountSettings.class);
                     Bundle extras = x.getIntent().getExtras();
                     if (extras != null) {
                         intent.putExtra("guardianID", extras.getInt("guardianID"));

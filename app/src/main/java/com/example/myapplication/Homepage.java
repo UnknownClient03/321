@@ -12,8 +12,6 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import java.util.HashMap;
-
 public class Homepage extends AppCompatActivity {
 
 
@@ -28,12 +26,12 @@ public class Homepage extends AppCompatActivity {
             return insets;
         });
 
-        navBarManager.setNavBarButtons(Homepage.this);
+        NavBarManager.setNavBarButtons(Homepage.this);
 
-        Button button = findViewById(R.id.button_8);
-        button.setOnClickListener(new View.OnClickListener() {
+        Button buttonMyInfoAndFamHis = findViewById(R.id.button_8);
+        buttonMyInfoAndFamHis.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Log.d("BUTTON", "changing to homepage");
+                Log.d("BUTTON", "changing to My Information and Family History");
                 Intent intent=new Intent(Homepage.this, MyInfoAndFamHis.class);
                 Bundle extras = getIntent().getExtras();
                 if (extras != null) {

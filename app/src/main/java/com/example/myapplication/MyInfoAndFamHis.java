@@ -1,8 +1,6 @@
 package com.example.myapplication;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -14,7 +12,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.Fragments.Fragment_AllAboutMe;
-import com.example.myapplication.Fragments.Fragment_DentalHstory;
+import com.example.myapplication.Fragments.Fragment_DentalHistory;
 import com.example.myapplication.Fragments.Fragment_Father;
 import com.example.myapplication.Fragments.Fragment_HealthHistory;
 import com.example.myapplication.Fragments.Fragment_Language;
@@ -37,7 +35,7 @@ public class MyInfoAndFamHis extends AppCompatActivity {
             return insets;
         });
 
-        navBarManager.setNavBarButtons(MyInfoAndFamHis.this);
+        NavBarManager.setNavBarButtons(MyInfoAndFamHis.this);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) manager = new LoginManager(extras.getInt("guardianID"), extras.getInt("childID"));
@@ -48,7 +46,7 @@ public class MyInfoAndFamHis extends AppCompatActivity {
                 new Fragment_Mother(),
                 new Fragment_Father(),
                 new Fragment_HealthHistory(),
-                new Fragment_DentalHstory() };
+                new Fragment_DentalHistory() };
         currentFrag = Fragments[0];
 
         getSupportFragmentManager()

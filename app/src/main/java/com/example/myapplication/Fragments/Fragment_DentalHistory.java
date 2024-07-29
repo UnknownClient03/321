@@ -2,7 +2,6 @@ package com.example.myapplication.Fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,12 +11,10 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.Homepage;
 import com.example.myapplication.LoginManager;
-import com.example.myapplication.MainActivity;
 import com.example.myapplication.MyInfoAndFamHis;
 import com.example.myapplication.R;
 import com.example.myapplication.SQLConnection;
@@ -26,10 +23,10 @@ import java.util.HashMap;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Fragment_DentalHstory#newInstance} factory method to
+ * Use the {@link Fragment_DentalHistory#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fragment_DentalHstory extends Fragment {
+public class Fragment_DentalHistory extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -40,7 +37,7 @@ public class Fragment_DentalHstory extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Fragment_DentalHstory() {
+    public Fragment_DentalHistory() {
         // Required empty public constructor
     }
 
@@ -53,8 +50,8 @@ public class Fragment_DentalHstory extends Fragment {
      * @return A new instance of fragment Fragment_AllAboutMe.
      */
     // TODO: Rename and change types and number of parameters
-    public static Fragment_DentalHstory newInstance(String param1, String param2) {
-        Fragment_DentalHstory fragment = new Fragment_DentalHstory();
+    public static Fragment_DentalHistory newInstance(String param1, String param2) {
+        Fragment_DentalHistory fragment = new Fragment_DentalHistory();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

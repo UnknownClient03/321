@@ -47,13 +47,7 @@
         </activity>
         <activity
             android:name="com.example.myapplication.ImmunisationSchedule"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" />
         <activity android:name="com.example.myapplication.ChildSelectActivity" />
         <activity android:name="com.example.myapplication.ManageChildrenActivity" />
         <activity android:name="com.example.myapplication.AddChildActivity" />
