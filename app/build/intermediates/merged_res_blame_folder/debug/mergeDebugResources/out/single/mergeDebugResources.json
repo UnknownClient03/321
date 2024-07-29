@@ -28,12 +28,12 @@
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-33:/drawable/roundstyle.xml"
     },
     {
-        "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-31:/layout_fragment_language.xml.flat",
-        "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-33:/layout/fragment_language.xml"
-    },
-    {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-31:/layout_footer.xml.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-33:/layout/footer.xml"
+    },
+    {
+        "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-31:/layout_fragment_language.xml.flat",
+        "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-33:/layout/fragment_language.xml"
     },
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-31:/mipmap-anydpi-v26_ic_launcher.xml.flat",
@@ -74,10 +74,6 @@
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-31:/drawable_round_button.xml.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-33:/drawable/round_button.xml"
-    },
-    {
-        "merged": "com.example.myapplication.app-debug-31:/layout_activity_my_info_and_fam_his.xml.flat",
-        "source": "com.example.myapplication.app-main-33:/layout/activity_my_info_and_fam_his.xml"
     },
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-31:/mipmap-xxxhdpi_ozbluelogo.webp.flat",
@@ -122,6 +118,10 @@
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-31:/mipmap-hdpi_ozbluelogo.webp.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-33:/mipmap-hdpi/ozbluelogo.webp"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-31:/layout_account_settings.xml.flat",
+        "source": "com.example.myapplication.app-main-33:/layout/account_settings.xml"
     },
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-31:/layout_header.xml.flat",
