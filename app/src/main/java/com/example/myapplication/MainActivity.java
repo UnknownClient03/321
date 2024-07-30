@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText editTextPassword;
     private Button loginButton;
+    private Button signupButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +48,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        button = findViewById(R.id.signup_button);
-        button.setOnClickListener(new View.OnClickListener() {
+        signupButton = findViewById(R.id.signup_button);
+        signupButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Log.d("BUTTON", "Changing to sign up");
                 Intent intent=new Intent(MainActivity.this, SignUpActivity.class);

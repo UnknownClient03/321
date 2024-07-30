@@ -50,11 +50,10 @@ public class SignUpActivity extends AppCompatActivity {
                 if (validateInputs()) {
                     // Register the user
                     Toast.makeText(SignUpActivity.this, "Sign Up Successful", Toast.LENGTH_SHORT).show();
-                    // You can then direct the user to another activity or perform other actions
+                    Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
-                Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
             }
         });
 
