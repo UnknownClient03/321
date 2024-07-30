@@ -1,6 +1,5 @@
 package com.example.myapplication;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,17 +14,18 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
+public class PractitionerLoginActivity extends AppCompatActivity {
 
     private EditText editTextPassword;
     private Button loginButton;
     private Button signupButton;
+    private Button userLoginButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.practitioner_login);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -37,13 +37,13 @@ public class MainActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (validatePassword()) {
-                    Log.d("BUTTON", "Changing to homepage");
-                    Intent intent = new Intent(MainActivity.this, ChildSelectActivity.class);
+                    Log.d("BUTTON", "Changing to select child page");
+                    Intent intent = new Intent(PractitionerLoginActivity.this, ChildSelectActivity.class);
                     intent.putExtra("guardianID", 0);
                     intent.putExtra("childID", 0);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(MainActivity.this, "Please enter a valid password", Toast.LENGTH_LONG).show();
+                    Toast.makeText(PractitionerLoginActivity.this, "Please enter a valid password", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -52,7 +52,18 @@ public class MainActivity extends AppCompatActivity {
         signupButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Log.d("BUTTON", "Changing to sign up");
-                Intent intent=new Intent(MainActivity.this, SignUpActivity.class);
+                Intent intent=new Intent(PractitionerLoginActivity.this, SignUpActivity.class);
+                intent.putExtra("guardianID", 0);
+                intent.putExtra("childID", 0);
+                startActivity(intent);
+            }
+        });
+
+        userLoginButton = findViewById(R.id.user_login_button);
+        userLoginButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Log.d("BUTTON", "Changing to user login");
+                Intent intent = new Intent(PractitionerLoginActivity.this, UserLoginActivity.class);
                 intent.putExtra("guardianID", 0);
                 intent.putExtra("childID", 0);
                 startActivity(intent);

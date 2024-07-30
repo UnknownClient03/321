@@ -238,16 +238,17 @@ id textView_change_profilePicture
 id textView_name
 id title_text
 id upload_button
+id user_login_button
 id view3
 layout account_settings
 layout activity_add_child
 layout activity_cpr_chart
 layout activity_homepage
 layout activity_immunisation_schedule
-layout activity_main
 layout activity_manage_children
 layout activity_my_info_and_fam_his
 layout activity_signup
+layout activity_user_login
 layout appointment_item
 layout child_select
 layout footer
@@ -262,6 +263,7 @@ layout fragment_myaddress
 layout fragment_newborn_examination
 layout header
 layout immunisation_item
+layout practitioner_login
 mipmap ic_launcher
 mipmap ic_launcher_foreground
 mipmap ic_launcher_round

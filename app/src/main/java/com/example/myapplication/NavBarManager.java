@@ -49,7 +49,7 @@ public class NavBarManager {
             button = x.findViewById(R.id.logout_button);
             button.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    Intent intent=new Intent(x, MainActivity.class);
+                    Intent intent=new Intent(x, UserLoginActivity.class);
                     x.startActivity(intent);
                 }
             });

@@ -39,7 +39,7 @@
             android:exported="false"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.example.myapplication.MainActivity"
+            android:name="com.example.myapplication.UserLoginActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan" >
             <intent-filter>
@@ -72,6 +72,9 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name="com.example.myapplication.NavBarManager"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.example.myapplication.PractitionerLoginActivity"
             android:windowSoftInputMode="adjustPan" />
 
         <provider

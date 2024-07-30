@@ -3749,6 +3749,7 @@ id unlabeled
 id up
 id upload_button
 id useLogo
+id user_login_button
 id vertical_only
 id view3
 id view_offset_helper
@@ -3887,10 +3888,10 @@ layout activity_add_child
 layout activity_cpr_chart
 layout activity_homepage
 layout activity_immunisation_schedule
-layout activity_main
 layout activity_manage_children
 layout activity_my_info_and_fam_his
 layout activity_signup
+layout activity_user_login
 layout appointment_item
 layout child_select
 layout custom_dialog
@@ -3978,6 +3979,7 @@ layout notification_template_custom_big
 layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout practitioner_login
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
