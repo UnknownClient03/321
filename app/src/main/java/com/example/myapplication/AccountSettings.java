@@ -77,7 +77,18 @@ public class AccountSettings extends AppCompatActivity {
         String username = editTextUsername.getText().toString().trim();
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
+        if (username.isEmpty() || email.isEmpty() || password.isEmpty()) {
+            return false;
+        } //password validation, special characters, at least 5 letters and one uppercase
 
-        return !username.isEmpty() && !email.isEmpty() && !password.isEmpty();
+        if (password.length() <= 5) {
+            return false;
+        }
+
+        boolean hasUppercase = !password.equals(password.toLowerCase());
+        boolean hasSpecial = password.matches(".*[!@#$%^&*()_+=<>?{}\\[\\]~-].*");
+
+        return hasUppercase && hasSpecial;
     }
+
 }

@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +16,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
+
+    private EditText editTextPassword;
+    private Button loginButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,14 +31,19 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        Button button = findViewById(R.id.login_button);
-        button.setOnClickListener(new View.OnClickListener() {
+        editTextPassword = findViewById(R.id.editTextTextPassword2);
+        loginButton = findViewById(R.id.login_button);
+        loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Log.d("BUTTON", "Changing to homepage");
-                Intent intent=new Intent(MainActivity.this, ChildSelectActivity.class);
-                intent.putExtra("guardianID", 0);
-                intent.putExtra("childID", 0);
-                startActivity(intent);
+                if (validatePassword()) {
+                    Log.d("BUTTON", "Changing to homepage");
+                    Intent intent = new Intent(MainActivity.this, ChildSelectActivity.class);
+                    intent.putExtra("guardianID", 0);
+                    intent.putExtra("childID", 0);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(MainActivity.this, "Please enter a valid password", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -47,5 +57,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private boolean validatePassword() {
+        String password = editTextPassword.getText().toString().trim();
+
+        if (password.isEmpty() || password.length() <= 5) {
+            return false;
+        }
+
+        boolean hasUppercase = !password.equals(password.toLowerCase());
+        boolean hasSpecial = password.matches(".*[!@#$%^&*()_+=<>?{}\\[\\]~-].*");
+
+        return hasUppercase && hasSpecial;
     }
 }
