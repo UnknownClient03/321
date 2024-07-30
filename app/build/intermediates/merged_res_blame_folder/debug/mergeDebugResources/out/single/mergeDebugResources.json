@@ -100,6 +100,10 @@
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-33:/mipmap-mdpi/ozbluelogo_round.webp"
     },
     {
+        "merged": "com.example.myapplication.app-debug-31:/layout_activity_manage_children.xml.flat",
+        "source": "com.example.myapplication.app-main-33:/layout/activity_manage_children.xml"
+    },
+    {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-31:/mipmap-xxxhdpi_ic_launcher.webp.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-33:/mipmap-xxxhdpi/ic_launcher.webp"
     },
@@ -142,10 +146,6 @@
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-31:/layout_header.xml.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-33:/layout/header.xml"
-    },
-    {
-        "merged": "com.example.myapplication.app-debug-31:/layout_activity_signup.xml.flat",
-        "source": "com.example.myapplication.app-main-33:/layout/activity_signup.xml"
     },
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-31:/drawable_ic_launcher_foreground.xml.flat",

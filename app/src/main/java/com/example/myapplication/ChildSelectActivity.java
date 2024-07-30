@@ -43,5 +43,7 @@ public class ChildSelectActivity extends AppCompatActivity {
             Intent intent = new Intent(ChildSelectActivity.this, AddChildActivity.class);
             startActivity(intent);
         });
+
+        NavBarManager.setNavBarButtons(ChildSelectActivity.this);
     }
 }

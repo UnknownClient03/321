@@ -50,6 +50,8 @@
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".SignUpActivity"
             android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".NavBarManager"
+            android:windowSoftInputMode="adjustPan" />
         
     </application>
 

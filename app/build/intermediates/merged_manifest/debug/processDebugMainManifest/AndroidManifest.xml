@@ -70,6 +70,9 @@
         <activity
             android:name="com.example.myapplication.SignUpActivity"
             android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.example.myapplication.NavBarManager"
+            android:windowSoftInputMode="adjustPan" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"
