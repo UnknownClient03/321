@@ -36,5 +36,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        button = findViewById(R.id.signup_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Log.d("BUTTON", "Changing to sign up");
+                Intent intent=new Intent(MainActivity.this, SignUpActivity.class);
+                intent.putExtra("guardianID", 0);
+                intent.putExtra("childID", 0);
+                startActivity(intent);
+            }
+        });
     }
 }

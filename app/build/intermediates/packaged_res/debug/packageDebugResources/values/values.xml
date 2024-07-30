@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="sex_input_options">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
     <color name="black">#FF000000</color>
     <color name="clear">#00000000</color>
     <color name="white">#FFFFFFFF</color>

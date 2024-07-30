@@ -32,13 +32,16 @@
         android:theme="@style/Theme.MyApplication" >
         <activity
             android:name="com.example.myapplication.MyInfoAndFamHis"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name="com.example.myapplication.Homepage"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name="com.example.myapplication.MainActivity"
-            android:exported="true" >
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -47,12 +50,26 @@
         </activity>
         <activity
             android:name="com.example.myapplication.ImmunisationSchedule"
-            android:exported="false" />
-        <activity android:name="com.example.myapplication.CPRChart" />
-        <activity android:name="com.example.myapplication.ChildSelectActivity" />
-        <activity android:name="com.example.myapplication.ManageChildrenActivity" />
-        <activity android:name="com.example.myapplication.AddChildActivity" />
-        <activity android:name="com.example.myapplication.AccountSettings" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.example.myapplication.CPRChart"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.example.myapplication.ChildSelectActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.example.myapplication.ManageChildrenActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.example.myapplication.AddChildActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.example.myapplication.AccountSettings"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.example.myapplication.SignUpActivity"
+            android:windowSoftInputMode="adjustPan" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"

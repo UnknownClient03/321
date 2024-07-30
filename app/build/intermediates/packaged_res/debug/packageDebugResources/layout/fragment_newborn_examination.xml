@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Newborn Examination"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Check" />
+
+        <CheckBox
+            android:id="@+id/checkBox_headFontanelles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Head and Fontanelles" />
+
+        <CheckBox
+            android:id="@+id/checkBox_eyes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Eyes" />
+
+        <CheckBox
+            android:id="@+id/checkBox_ears"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ears" />
+
+        <CheckBox
+            android:id="@+id/checkBox_mouthPalate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mouth and Palate" />
+
+        <CheckBox
+            android:id="@+id/checkBox_cardiovascular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cardiovascular" />
+
+        <CheckBox
+            android:id="@+id/checkBox_femoralPulses"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Femoral Pulses" />
+
+        <CheckBox
+            android:id="@+id/checkBox_respiratoryRate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Respiratory Rate" />
+
+        <CheckBox
+            android:id="@+id/checkBox_abdomenUmbilicus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Abdomen and Umbilicus" />
+
+        <CheckBox
+            android:id="@+id/checkBox_anus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Anus" />
+
+        <CheckBox
+            android:id="@+id/checkBox_genitalia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Genitalia" />
+
+        <CheckBox
+            android:id="@+id/checkBox_testes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Testes fully descended R/L" />
+
+        <CheckBox
+            android:id="@+id/checkBox_musculoskeletal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Musculo-skeletal" />
+
+        <CheckBox
+            android:id="@+id/checkBox_hips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hips" />
+
+        <CheckBox
+            android:id="@+id/checkBox_skin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Skin" />
+
+        <CheckBox
+            android:id="@+id/checkBox_reflexes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reflexes" />
+
+        <Button
+            android:id="@+id/button_saveNewbornExamination"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save" />
+    </LinearLayout>
+</ScrollView>

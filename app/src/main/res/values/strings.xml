@@ -8,4 +8,9 @@
     <string name="txt_Home">Practitioner\nLogin</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="sex_input_options">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
 </resources>

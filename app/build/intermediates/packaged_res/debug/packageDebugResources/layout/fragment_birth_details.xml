@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Birth Details"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:paddingBottom="8dp" />
+
+        <EditText
+            android:id="@+id/editText_birthDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Birth Date"
+            android:inputType="date" />
+
+        <EditText
+            android:id="@+id/editText_birthTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Birth Time"
+            android:inputType="time" />
+
+        <EditText
+            android:id="@+id/editText_birthPlace"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Birth Place"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/editText_birthWeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Birth Weight"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/editText_birthLength"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Birth Length"
+            android:inputType="numberDecimal" />
+
+        <Button
+            android:id="@+id/button_saveBirthDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save" />
+    </LinearLayout>
+</ScrollView>

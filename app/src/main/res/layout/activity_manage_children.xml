@@ -57,7 +57,6 @@
             android:layout_marginStart="12dp"
             android:layout_marginEnd="24dp"
             android:scaleType="center"
-            android:background="@drawable/grey_circle"
             android:src="@drawable/profile_picture"/>
 
 
@@ -113,7 +112,6 @@
             android:layout_marginStart="12dp"
             android:layout_marginEnd="24dp"
             android:scaleType="center"
-            android:background="@drawable/grey_circle"
             android:src="@drawable/profile_picture"/>
 
         <LinearLayout
