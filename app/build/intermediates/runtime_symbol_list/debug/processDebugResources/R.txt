@@ -3583,6 +3583,7 @@ int id pressed 0x7f08020a
 int id profile_picture 0x7f08020b
 int id profile_picture1 0x7f08020c
 int id profile_picture2 0x7f08020d
+int id profile_picture_background 0x7f0802cc
 int id progress_button 0x7f08020e
 int id progress_circular 0x7f08020f
 int id progress_horizontal 0x7f080210

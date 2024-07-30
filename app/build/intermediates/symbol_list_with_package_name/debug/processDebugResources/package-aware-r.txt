@@ -3584,6 +3584,7 @@ id pressed
 id profile_picture
 id profile_picture1
 id profile_picture2
+id profile_picture_background
 id progress_button
 id progress_circular
 id progress_horizontal

@@ -72,6 +72,10 @@
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-33:/drawable/profile_picture.xml"
     },
     {
+        "merged": "com.example.myapplication.app-debug-31:/layout_activity_homepage.xml.flat",
+        "source": "com.example.myapplication.app-main-33:/layout/activity_homepage.xml"
+    },
+    {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-31:/layout_immunisation_item.xml.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-33:/layout/immunisation_item.xml"
     },
@@ -100,20 +104,16 @@
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-33:/mipmap-mdpi/ozbluelogo_round.webp"
     },
     {
-        "merged": "com.example.myapplication.app-debug-31:/layout_activity_manage_children.xml.flat",
-        "source": "com.example.myapplication.app-main-33:/layout/activity_manage_children.xml"
-    },
-    {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-31:/mipmap-xxxhdpi_ic_launcher.webp.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-33:/mipmap-xxxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-31:/layout_fragment_dentalhistory.xml.flat",
-        "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-33:/layout/fragment_dentalhistory.xml"
-    },
-    {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-31:/layout_activity_homepage.xml.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-33:/layout/activity_homepage.xml"
+    },
+    {
+        "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-31:/layout_fragment_dentalhistory.xml.flat",
+        "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-33:/layout/fragment_dentalhistory.xml"
     },
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-31:/mipmap-mdpi_ozbluelogo_foreground.webp.flat",
