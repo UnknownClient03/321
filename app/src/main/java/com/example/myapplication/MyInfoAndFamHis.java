@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -35,8 +37,6 @@ public class MyInfoAndFamHis extends AppCompatActivity {
             return insets;
         });
 
-        NavBarManager.setNavBarButtons(MyInfoAndFamHis.this);
-
         Bundle extras = getIntent().getExtras();
         if (extras != null) manager = new LoginManager(extras.getInt("guardianID"), extras.getInt("childID"));
 
@@ -67,11 +67,11 @@ public class MyInfoAndFamHis extends AppCompatActivity {
     private void setButtons(Button button, Fragment newFragment) {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                    getSupportFragmentManager()
-                            .beginTransaction()
-                            .replace(currentFrag.getId(), newFragment)
-                            .addToBackStack(null)
-                            .commit();
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(currentFrag.getId(), newFragment)
+                        .addToBackStack(null)
+                        .commit();
                 currentFrag = newFragment;
             }
         });

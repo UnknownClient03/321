@@ -57,7 +57,6 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
-        NavBarManager.setNavBarButtons(SignUpActivity.this);
     }
 
     private boolean validateInputs() {

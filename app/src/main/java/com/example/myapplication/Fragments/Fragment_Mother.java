@@ -16,8 +16,6 @@ import com.example.myapplication.MyInfoAndFamHis;
 import com.example.myapplication.R;
 import com.example.myapplication.SQLConnection;
 
-import java.util.HashMap;
-
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link Fragment_Mother#newInstance} factory method to
@@ -68,85 +66,46 @@ public class Fragment_Mother extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        SQLConnection c = new SQLConnection("user1", "");
-        LoginManager manager = ((MyInfoAndFamHis)getActivity()).manager;
         View layout = inflater.inflate(R.layout.fragment_mother, container, false);
         Button submit = (Button)layout.findViewById(R.id.button_mother);
-        HashMap<String, String[]> result = c.select("SELECT guardianID, fname, lname, DOB, MRN, isAboriginal, isTorresStraitIslander, career FROM Parent WHERE guardianID = "+manager.guardianID+" AND parent = 'Mother';");
-        if(result.get("guardianID").length == 0)
-        {
-            if(submit == null) throw new NullPointerException("could not find button: " + R.id.button_mother);
-            else submit.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    Button button = (Button)getActivity().findViewById(R.id.button_MIAFH_5);
-                    button.performClick();
-                    EditText fname = (EditText)layout.findViewById(R.id.input_mother_fname);
-                    EditText lname = (EditText)layout.findViewById(R.id.input_mother_lname);
-                    EditText dobD = (EditText)layout.findViewById(R.id.input_mother_dob_d);
-                    EditText dobM = (EditText)layout.findViewById(R.id.input_mother_dob_m);
-                    EditText dobY = (EditText)layout.findViewById(R.id.input_mother_dob_y);
-                    EditText mrn = (EditText)layout.findViewById(R.id.input_mother_MRN);
-                    CheckBox isAboRaw = (CheckBox)layout.findViewById(R.id.input_mother_isAboriginal);
-                    CheckBox isTSIRaw = (CheckBox)layout.findViewById(R.id.input_mother_isTorresStrait);
-                    EditText career = (EditText)layout.findViewById(R.id.input_mother_career);
+        if(submit == null) throw new NullPointerException("could not find button: " + R.id.button_mother);
+        else submit.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Button button = (Button)getActivity().findViewById(R.id.button_MIAFH_5);
+                button.performClick();
+                EditText fname = (EditText)layout.findViewById(R.id.input_mother_fname);
+                EditText lname = (EditText)layout.findViewById(R.id.input_mother_lname);
+                EditText dobD = (EditText)layout.findViewById(R.id.input_mother_dob_d);
+                EditText dobM = (EditText)layout.findViewById(R.id.input_mother_dob_m);
+                EditText dobY = (EditText)layout.findViewById(R.id.input_mother_dob_y);
+                EditText mrn = (EditText)layout.findViewById(R.id.input_mother_MRN);
+                CheckBox isAboRaw = (CheckBox)layout.findViewById(R.id.input_mother_isAboriginal);
+                CheckBox isTSIRaw = (CheckBox)layout.findViewById(R.id.input_mother_isTorresStrait);
+                EditText career = (EditText)layout.findViewById(R.id.input_mother_career);
 
-                    if(dobD.getText().length() == 0 || dobM.getText().length() == 0 || dobY.getText().length() == 0 || mrn.getText().length() == 0)
-                    {
-                        Log.e("query syntax error", "integers need to be set.");
-                        return;
-                    }
-
-                    int isAbo = (isAboRaw.isChecked()) ? 1 : 0;
-                    int isTSI = (isTSIRaw.isChecked()) ? 1 : 0;
-
-                    SQLConnection c = new SQLConnection("user1", "");
-                    LoginManager manager = ((MyInfoAndFamHis)getActivity()).manager;
-                    String query = "INSERT INTO Parent VALUES (" + manager.guardianID + ", 'Mother', '"
-                            + fname.getText() + "', '"
-                            + lname.getText() + "', '"
-                            + dobY.getText() + "-" + dobM.getText()+"-"+dobD.getText() + "', "
-                            + mrn.getText() + ", "
-                            + isAbo + ", "
-                            + isTSI + ", '"
-                            + career.getText() + "');";
-                    c.update(query);
-                    c.disconnect();
+                if(dobD.getText().length() == 0 || dobM.getText().length() == 0 || dobY.getText().length() == 0 || mrn.getText().length() == 0)
+                {
+                    Log.e("query syntax error", "integers need to be set.");
+                    return;
                 }
-            });
-        }
-        else {
-            EditText fname = (EditText)layout.findViewById(R.id.input_mother_fname);
-            EditText lname = (EditText)layout.findViewById(R.id.input_mother_lname);
-            EditText dobD = (EditText)layout.findViewById(R.id.input_mother_dob_d);
-            EditText dobM = (EditText)layout.findViewById(R.id.input_mother_dob_m);
-            EditText dobY = (EditText)layout.findViewById(R.id.input_mother_dob_y);
-            EditText mrn = (EditText)layout.findViewById(R.id.input_mother_MRN);
-            CheckBox isAboRaw = (CheckBox)layout.findViewById(R.id.input_mother_isAboriginal);
-            CheckBox isTSIRaw = (CheckBox)layout.findViewById(R.id.input_mother_isTorresStrait);
-            EditText career = (EditText)layout.findViewById(R.id.input_mother_career);
 
-            fname.setText(result.get("fname")[0]);
-            lname.setText(result.get("lname")[0]);
-            dobD.setText(result.get("DOB")[0].substring(8, 10));
-            dobM.setText(result.get("DOB")[0].substring(5, 7));
-            dobY.setText(result.get("DOB")[0].substring(0, 4));
-            mrn.setText(result.get("MRN")[0]);
-            if(result.get("isAboriginal")[0].charAt(0) == '1') isAboRaw.setChecked(true);
-            if(result.get("isTorresStraitIslander")[0].charAt(0) == '1') isTSIRaw.setChecked(true);
-            career.setText("career");
+                int isAbo = (isAboRaw.isChecked()) ? 1 : 0;
+                int isTSI = (isTSIRaw.isChecked()) ? 1 : 0;
 
-            fname.setEnabled(false);
-            lname.setEnabled(false);
-            dobD.setEnabled(false);
-            dobM.setEnabled(false);
-            dobY.setEnabled(false);
-            mrn.setEnabled(false);
-            isAboRaw.setEnabled(false);
-            isTSIRaw.setEnabled(false);
-            career.setEnabled(false);
-
-            submit.setVisibility(View.INVISIBLE);
-        }
+                SQLConnection c = new SQLConnection("user1", "");
+                LoginManager manager = ((MyInfoAndFamHis)getActivity()).manager;
+                String query = "INSERT INTO Parent VALUES (" + manager.guardianID + ", 'Mother', '"
+                        + fname.getText() + "', '"
+                        + lname.getText() + "', '"
+                        + dobY.getText() + "-" + dobM.getText()+"-"+dobD.getText() + "', "
+                        + mrn.getText() + ", "
+                        + isAbo + ", "
+                        + isTSI + ", '"
+                        + career.getText() + "');";
+                c.update(query);
+                c.disconnect();
+            }
+        });
         return layout;
     }
 }

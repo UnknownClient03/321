@@ -19,10 +19,10 @@ public class SQLConnection {
 
     private Connection conn;
     private final String ip =       "192.168.0.249"
-                       , port =     "1066"
-                       , db =       "BlueBookDB"
-                       , username = "user1"
-                       , password = "";
+            , port =     "1066"
+            , db =       "BlueBookDB"
+            , username = "user1"
+            , password = "";
 
     @SuppressLint("NewApi")
     public SQLConnection() {
