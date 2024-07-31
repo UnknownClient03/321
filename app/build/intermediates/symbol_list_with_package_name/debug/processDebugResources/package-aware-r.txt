@@ -3171,7 +3171,6 @@ id button_MIAFH_4
 id button_MIAFH_5
 id button_MIAFH_6
 id button_MIAFH_7
-id button_add_langauge
 id button_birth_details
 id button_birth_details_and_newborn_examination
 id button_checks
@@ -3450,7 +3449,6 @@ id item_touch_helper_previous_elevation
 id jumpToEnd
 id jumpToStart
 id labeled
-id languageContainer
 id last_name_input
 id layout
 id left

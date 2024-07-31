@@ -35,7 +35,6 @@ id button_MIAFH_4
 id button_MIAFH_5
 id button_MIAFH_6
 id button_MIAFH_7
-id button_add_langauge
 id button_birth_details
 id button_birth_details_and_newborn_examination
 id button_checks
@@ -184,7 +183,6 @@ id input_mother_fname
 id input_mother_isAboriginal
 id input_mother_isTorresStrait
 id input_mother_lname
-id languageContainer
 id last_name_input
 id line1
 id line2
@@ -206,7 +204,6 @@ id progress_button
 id records_button
 id remove_child_button
 id save_child_button
-id scrollView
 id scrollView2
 id settings_button
 id sex_input
