@@ -20,6 +20,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
     private Button getConfirmationEmailButton;
     private Button signUpButton;
     private Button practitionerLoginButton;
+    private ImageView backArrow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
         getConfirmationEmailButton = findViewById(R.id.login_button);
         signUpButton = findViewById(R.id.signup_button);
         practitionerLoginButton = findViewById(R.id.practitioner_login_button);
+        backArrow = findViewById(R.id.back_arrow);
 
         // Set click listener for Get Confirmation Email button
         getConfirmationEmailButton.setOnClickListener(new View.OnClickListener() {
@@ -74,5 +76,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        backArrow.setOnClickListener(v -> finish());
     }
 }
