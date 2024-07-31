@@ -46,15 +46,22 @@
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".AddChildActivity"
             android:windowSoftInputMode="adjustPan" />
+
         <activity android:name=".AccountSettings"
             android:windowSoftInputMode="adjustPan" />
+
         <activity android:name=".SignUpActivity"
             android:windowSoftInputMode="adjustPan" />
+
         <activity android:name=".NavBarManager"
             android:windowSoftInputMode="adjustPan" />
+
         <activity android:name=".PractitionerLoginActivity"
             android:windowSoftInputMode="adjustPan" />
-        
+
+        <activity android:name=".BirthDetailsAndNewbornExamination"
+            android:windowSoftInputMode="adjustPan" />
+
     </application>
 
 </manifest>

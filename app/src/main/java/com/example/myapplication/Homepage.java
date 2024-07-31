@@ -29,7 +29,7 @@ public class Homepage extends AppCompatActivity {
         NavBarManager.setNavBarButtons(Homepage.this);
 
         // Setting up the Immunisation button
-        Button buttonImmunisation = findViewById(R.id.button_3);
+        Button buttonImmunisation = findViewById(R.id.button_immunisation);
         buttonImmunisation.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Log.d("BUTTON", "changing to Immunisation Schedule page");
@@ -44,7 +44,7 @@ public class Homepage extends AppCompatActivity {
         });
 
         // Setting up the CPR Chart button
-        Button buttonCPRChart = findViewById(R.id.button_6);
+        Button buttonCPRChart = findViewById(R.id.button_cpr_chart);
         buttonCPRChart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,7 +55,7 @@ public class Homepage extends AppCompatActivity {
         });
 
         // Setting up the My Information and Family History button
-        Button buttonMyInfoAndFamHis = findViewById(R.id.button_8);
+        Button buttonMyInfoAndFamHis = findViewById(R.id.button_my_information_and_family_history);
         buttonMyInfoAndFamHis.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Log.d("BUTTON", "changing to My Information and Family History");
@@ -69,7 +69,20 @@ public class Homepage extends AppCompatActivity {
             }
         });
 
-
+        // Setting up the Birth Details and Newborn Examination button
+        Button buttonBirthDetailsAndNewbornExamination = findViewById(R.id.button_birth_details_and_newborn_examination);
+        buttonBirthDetailsAndNewbornExamination.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Log.d("BUTTON", "changing to Birth Details and Newborn Examination");
+                Intent intent=new Intent(Homepage.this, BirthDetailsAndNewbornExamination.class);
+                Bundle extras = getIntent().getExtras();
+                if (extras != null) {
+                    intent.putExtra("guardianID", extras.getInt("guardianID"));
+                    intent.putExtra("childID", extras.getInt("childID"));
+                }
+                startActivity(intent);
+            }
+        });
 
     }
 

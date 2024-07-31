@@ -19,8 +19,8 @@
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="0dp"
-        android:layout_height="400dp"
-        android:layout_marginTop="230dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="170dp"
         app:layout_constraintBottom_toTopOf="@+id/footer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -33,61 +33,61 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button_1"
+                android:id="@+id/button_growth_charts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Growth Charts" />
 
             <Button
-                android:id="@+id/button_2"
+                android:id="@+id/button_info_for_parents"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Info For parents" />
 
             <Button
-                android:id="@+id/button_3"
+                android:id="@+id/button_immunisation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Immunisation" />
 
             <Button
-                android:id="@+id/button_4"
+                android:id="@+id/button_checks"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Checks" />
 
             <Button
-                android:id="@+id/button_5"
+                android:id="@+id/button_my_records"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="My records" />
+                android:text="My Records" />
 
             <Button
-                android:id="@+id/button_6"
+                android:id="@+id/button_cpr_chart"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="CPR Chart" />
 
             <Button
-                android:id="@+id/button_7"
+                android:id="@+id/button_primary_and_secondary_education"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Primary &amp; Secondary Education" />
 
             <Button
-                android:id="@+id/button_8"
+                android:id="@+id/button_my_information_and_family_history"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="My Infomation And Family History" />
 
             <Button
-                android:id="@+id/button_9"
+                android:id="@+id/button_useful_contacts_and_websites"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Useful Contacts &amp; Websites" />
 
             <Button
-                android:id="@+id/button_10"
+                android:id="@+id/button_birth_details_and_newborn_examination"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Birth Details &amp; Newborn Examination" />
@@ -95,7 +95,7 @@
             <View
                 android:id="@+id/view3"
                 android:layout_width="wrap_content"
-                android:layout_height="100dp" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </ScrollView>
 
@@ -145,16 +145,14 @@
         android:id="@+id/textView9"
         android:layout_width="127dp"
         android:layout_height="26dp"
-        android:layout_marginTop="73dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginTop="8dp"
         android:text="Notifications"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.077"
+        app:layout_constraintHorizontal_bias="0.056"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/profile_picture_background" />
 
     <TextView
         android:id="@+id/textView8"
@@ -163,10 +161,10 @@
         android:layout_marginBottom="15dp"
         android:text="• Notification 1\n• Notification 2\n• Notification 3"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

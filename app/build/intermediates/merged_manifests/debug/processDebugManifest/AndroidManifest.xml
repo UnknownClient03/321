@@ -76,6 +76,9 @@
         <activity
             android:name="com.example.myapplication.PractitionerLoginActivity"
             android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.example.myapplication.BirthDetailsAndNewbornExamination"
+            android:windowSoftInputMode="adjustPan" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"
