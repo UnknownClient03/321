@@ -3044,6 +3044,7 @@ int drawable notification_template_icon_low_bg 0x7f0700de
 int drawable notification_tile_bg 0x7f0700df
 int drawable notify_panel_notification_icon_bg 0x7f0700e0
 int drawable ozbluelogo_background 0x7f0700e1
+int drawable ozbluelogo_foreground 0x7f0700ea
 int drawable profile_picture 0x7f0700e2
 int drawable round_button 0x7f0700e3
 int drawable roundstyle 0x7f0700e4

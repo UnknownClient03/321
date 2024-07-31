@@ -156,6 +156,10 @@
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-33:/mipmap-anydpi-v26/ozbluelogo.xml"
     },
     {
+        "merged": "com.example.myapplication.app-debug-31:/layout_header.xml.flat",
+        "source": "com.example.myapplication.app-main-33:/layout/header.xml"
+    },
+    {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-31:/drawable_add_person.xml.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-33:/drawable/add_person.xml"
     },
@@ -276,6 +280,10 @@
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-33:/layout/birth_details_and_newborn_examination.xml"
     },
     {
+        "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-31:/drawable_ozbluelogo_foreground.webp.flat",
+        "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-33:/drawable/ozbluelogo_foreground.webp"
+    },
+    {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-31:/mipmap-xhdpi_ozbluelogo_round.webp.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-33:/mipmap-xhdpi/ozbluelogo_round.webp"
     },
@@ -290,9 +298,5 @@
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-31:/xml_backup_rules.xml.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-33:/xml/backup_rules.xml"
-    },
-    {
-        "merged": "com.example.myapplication.app-debug-31:/layout_birth_details_and_newborn_examination.xml.flat",
-        "source": "com.example.myapplication.app-main-33:/layout/birth_details_and_newborn_examination.xml"
     }
 ]

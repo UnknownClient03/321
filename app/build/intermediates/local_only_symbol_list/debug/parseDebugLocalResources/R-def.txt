@@ -11,6 +11,7 @@ drawable curved_rectangle
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ozbluelogo_background
+drawable ozbluelogo_foreground
 drawable profile_picture
 drawable round_button
 drawable roundstyle
