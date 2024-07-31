@@ -15,6 +15,7 @@ public class SignUpActivity extends AppCompatActivity {
     private ImageView profilePicture;
     private EditText firstNameInput, lastNameInput, emailInput, phoneNumberInput, passwordInput, confirmPasswordInput;
     private Button uploadButton, signUpButton;
+    private ImageView backArrow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,7 @@ public class SignUpActivity extends AppCompatActivity {
         confirmPasswordInput = findViewById(R.id.confirm_password_input);
         uploadButton = findViewById(R.id.upload_button);
         signUpButton = findViewById(R.id.signup_button);
+        backArrow = findViewById(R.id.back_arrow);
 
         // Handle upload button click
         uploadButton.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +58,8 @@ public class SignUpActivity extends AppCompatActivity {
                 }
             }
         });
+
+        backArrow.setOnClickListener(v -> finish());
 
     }
 

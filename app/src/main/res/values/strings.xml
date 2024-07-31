@@ -8,6 +8,10 @@
     <string name="txt_Home">Practitioner\nLogin</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="user_login">User Login</string>
+    <string name="practitioner_login">Practitioner Login</string>
+    <string name="login">Login</string>
+    <string name="reset_password">Reset Password</string>
 
     <string-array name="sex_input_options">
         <item>Male</item>

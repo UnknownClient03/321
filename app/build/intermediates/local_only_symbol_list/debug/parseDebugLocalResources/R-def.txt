@@ -43,6 +43,7 @@ id button_cpr_chart
 id button_dentlHealth
 id button_edit_info
 id button_father
+id button_forgot_password
 id button_growth_charts
 id button_healthHistory
 id button_immunisation
@@ -248,6 +249,7 @@ layout activity_homepage
 layout activity_immunisation_schedule
 layout activity_manage_children
 layout activity_my_info_and_fam_his
+layout activity_reset_password
 layout activity_signup
 layout activity_user_login
 layout appointment_item
@@ -274,12 +276,16 @@ mipmap ozbluelogo_foreground
 mipmap ozbluelogo_round
 string app_name
 string hello_blank_fragment
+string login
+string practitioner_login
+string reset_password
 string txt_Home
 string txt_LOGIN
 string txt_Practitioner_login
 string txt_email
 string txt_password
 string txt_signUp
+string user_login
 style Base.Theme.MyApplication
 style Theme.MyApplication
 xml backup_rules

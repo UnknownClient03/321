@@ -62,6 +62,8 @@
         <activity android:name=".BirthDetailsAndNewbornExamination"
             android:windowSoftInputMode="adjustPan" />
 
+        <activity android:name=".ResetPasswordActivity" />
+
     </application>
 
 </manifest>

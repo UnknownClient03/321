@@ -20,6 +20,7 @@ public class PractitionerLoginActivity extends AppCompatActivity {
     private Button loginButton;
     private Button signupButton;
     private Button userLoginButton;
+    private Button forgotPasswordButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +65,17 @@ public class PractitionerLoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("BUTTON", "Changing to user login");
                 Intent intent = new Intent(PractitionerLoginActivity.this, UserLoginActivity.class);
+                intent.putExtra("guardianID", 0);
+                intent.putExtra("childID", 0);
+                startActivity(intent);
+            }
+        });
+
+        forgotPasswordButton = findViewById(R.id.button_forgot_password);
+        forgotPasswordButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Log.d("BUTTON", "Changing to Reset Password page");
+                Intent intent = new Intent(PractitionerLoginActivity.this, ResetPasswordActivity.class);
                 intent.putExtra("guardianID", 0);
                 intent.putExtra("childID", 0);
                 startActivity(intent);
