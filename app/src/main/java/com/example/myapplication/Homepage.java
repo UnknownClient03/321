@@ -14,7 +14,6 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class Homepage extends AppCompatActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +58,7 @@ public class Homepage extends AppCompatActivity {
         buttonMyInfoAndFamHis.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Log.d("BUTTON", "changing to My Information and Family History");
-                Intent intent=new Intent(Homepage.this, MyInfoAndFamHis.class);
+                Intent intent = new Intent(Homepage.this, MyInfoAndFamHis.class);
                 Bundle extras = getIntent().getExtras();
                 if (extras != null) {
                     intent.putExtra("guardianID", extras.getInt("guardianID"));
@@ -74,7 +73,7 @@ public class Homepage extends AppCompatActivity {
         buttonBirthDetailsAndNewbornExamination.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Log.d("BUTTON", "changing to Birth Details and Newborn Examination");
-                Intent intent=new Intent(Homepage.this, BirthDetailsAndNewbornExamination.class);
+                Intent intent = new Intent(Homepage.this, BirthDetailsAndNewbornExamination.class);
                 Bundle extras = getIntent().getExtras();
                 if (extras != null) {
                     intent.putExtra("guardianID", extras.getInt("guardianID"));
@@ -84,6 +83,24 @@ public class Homepage extends AppCompatActivity {
             }
         });
 
-    }
+        // Setting up the Info for Parents button
+        Button buttonInfoForParents = findViewById(R.id.button_info_for_parents);
+        buttonInfoForParents.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Log.d("BUTTON", "changing to Parent Info");
+                Intent intent = new Intent(Homepage.this, ParentInfo.class);
+                startActivity(intent);
+            }
+        });
 
+        // Setting up the Useful Contacts button
+        Button buttonUsefulContacts = findViewById(R.id.button_useful_contacts_and_websites);
+        buttonUsefulContacts.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Log.d("BUTTON", "changing to Useful Contacts");
+                Intent intent = new Intent(Homepage.this, UsefulContacts.class);
+                startActivity(intent);
+            }
+        });
+    }
 }
