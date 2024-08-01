@@ -16,6 +16,7 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText firstNameInput, lastNameInput, emailInput, phoneNumberInput, passwordInput, confirmPasswordInput;
     private Button uploadButton, signUpButton;
     private ImageView backArrow;
+    private EditText editTextPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +82,19 @@ public class SignUpActivity extends AppCompatActivity {
         }
 
         // Add more validation as needed (e.g., email format, phone format, password strength)
-        return true;
+        editTextPassword = findViewById(R.id.password_input);
+        String password = editTextPassword.getText().toString().trim();
+
+        if (password.isEmpty() || password.length() <= 5) {
+            Toast.makeText(this, "Password does not meet requirements.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        boolean hasUppercase = !password.equals(password.toLowerCase());
+        boolean hasSpecial = password.matches(".*[!@#$%^&*()_+=<>?{}\\[\\]~-].*");
+
+        return hasUppercase && hasSpecial;
+
+
     }
 }
