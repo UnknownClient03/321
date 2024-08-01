@@ -16,16 +16,16 @@
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-40:/mipmap-mdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-38:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-40:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-38:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-40:/mipmap-xxxhdpi/ic_launcher_round.webp"
     },
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-38:/drawable_ozbluelogo_foreground.webp.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-40:/drawable/ozbluelogo_foreground.webp"
     },
     {
-        "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-38:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-40:/mipmap-xxxhdpi/ic_launcher_round.webp"
+        "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-38:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-40:/mipmap-anydpi-v26/ic_launcher_round.xml"
     },
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-38:/layout_activity_user_login.xml.flat",
@@ -40,12 +40,12 @@
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-40:/drawable/add_person.xml"
     },
     {
-        "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-38:/layout_fragment_allaboutme.xml.flat",
-        "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-40:/layout/fragment_allaboutme.xml"
-    },
-    {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-38:/layout_footer.xml.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-40:/layout/footer.xml"
+    },
+    {
+        "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-38:/layout_fragment_allaboutme.xml.flat",
+        "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-40:/layout/fragment_allaboutme.xml"
     },
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-38:/layout_fragment_newborn_examination.xml.flat",
@@ -88,10 +88,6 @@
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-40:/layout/account_settings.xml"
     },
     {
-        "merged": "com.example.myapplication.app-debug-38:/layout_activity_reset_password.xml.flat",
-        "source": "com.example.myapplication.app-main-40:/layout/activity_reset_password.xml"
-    },
-    {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-38:/mipmap-xhdpi_ic_launcher.webp.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-40:/mipmap-xhdpi/ic_launcher.webp"
     },
@@ -122,6 +118,10 @@
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-38:/mipmap-hdpi_ic_launcher_round.webp.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-40:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-38:/layout_parent_info.xml.flat",
+        "source": "com.example.myapplication.app-main-40:/layout/parent_info.xml"
     },
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-38:/layout_activity_reset_password.xml.flat",
@@ -292,8 +292,16 @@
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-40:/drawable/round_button.xml"
     },
     {
+        "merged": "com.example.myapplication.app-debug-38:/layout_useful_contacts.xml.flat",
+        "source": "com.example.myapplication.app-main-40:/layout/useful_contacts.xml"
+    },
+    {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-38:/layout_fragment_myaddress.xml.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-40:/layout/fragment_myaddress.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-38:/drawable_table_cell_border.xml.flat",
+        "source": "com.example.myapplication.app-main-40:/drawable/table_cell_border.xml"
     },
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-38:/layout_activity_immunisation_schedule.xml.flat",

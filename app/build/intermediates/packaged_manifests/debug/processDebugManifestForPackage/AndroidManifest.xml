@@ -81,6 +81,14 @@
             android:name="com.example.myapplication.BirthDetailsAndNewbornExamination"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name="com.example.myapplication.ResetPasswordActivity" />
+
+        <!-- Added activities for ParentInfo and UsefulContacts -->
+        <activity
+            android:name="com.example.myapplication.ParentInfo"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.example.myapplication.UsefulContacts"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name="com.google.firebase.auth.internal.GenericIdpActivity"
             android:excludeFromRecents="true"

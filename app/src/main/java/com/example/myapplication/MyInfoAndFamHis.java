@@ -63,6 +63,8 @@ public class MyInfoAndFamHis extends AppCompatActivity {
         setButtons((Button)findViewById(R.id.button_MIAFH_5), Fragments[4]);
         setButtons((Button)findViewById(R.id.button_MIAFH_6), Fragments[5]);
         setButtons((Button)findViewById(R.id.button_MIAFH_7), Fragments[6]);
+
+        NavBarManager.setNavBarButtons(MyInfoAndFamHis.this);
     }
     private void setButtons(Button button, Fragment newFragment) {
         button.setOnClickListener(new View.OnClickListener() {

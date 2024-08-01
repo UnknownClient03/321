@@ -9,5 +9,7 @@ public class UsefulContacts extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.useful_contacts);
+
+        NavBarManager.setNavBarButtons(UsefulContacts.this);
     }
 }
