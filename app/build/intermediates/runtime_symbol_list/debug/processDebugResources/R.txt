@@ -1370,8 +1370,10 @@ int color browser_actions_bg_grey 0x7f060028
 int color browser_actions_divider_color 0x7f060029
 int color browser_actions_text_color 0x7f06002a
 int color browser_actions_title_color 0x7f06002b
+int color button_background 0x7f0602f7
 int color button_material_dark 0x7f06002c
 int color button_material_light 0x7f06002d
+int color button_text 0x7f0602f8
 int color cardview_dark_background 0x7f06002e
 int color cardview_light_background 0x7f06002f
 int color cardview_shadow_end_color 0x7f060030

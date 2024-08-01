@@ -6,13 +6,13 @@
     android:layout_height="match_parent">
 
     <ScrollView
-        android:layout_width="377dp"
-        android:layout_height="653dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/footer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header"
         app:layout_constraintVertical_bias="0.501">
 
         <LinearLayout
@@ -24,7 +24,7 @@
                 android:id="@+id/textView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Useful contacts"
+                android:text="Useful Contacts"
                 android:textAlignment="center"
                 android:textSize="34sp"
                 android:textStyle="bold" />
@@ -494,7 +494,7 @@
                 android:id="@+id/textView39"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="\n Websites and online resources"
+                android:text="\n Websites and Online Resources"
                 android:textAlignment="center"
                 android:textSize="36sp"
                 android:textStyle="bold" />

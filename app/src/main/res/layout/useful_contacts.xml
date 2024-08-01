@@ -24,7 +24,7 @@
                 android:id="@+id/textView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Useful contacts"
+                android:text="Useful Contacts"
                 android:textAlignment="center"
                 android:textSize="34sp"
                 android:textStyle="bold" />
@@ -494,7 +494,7 @@
                 android:id="@+id/textView39"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="\n Websites and online resources"
+                android:text="\n Websites and Online Resources"
                 android:textAlignment="center"
                 android:textSize="36sp"
                 android:textStyle="bold" />
