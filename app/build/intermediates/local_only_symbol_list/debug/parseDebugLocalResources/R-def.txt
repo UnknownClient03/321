@@ -5,6 +5,7 @@ color black
 color button_background
 color button_text
 color clear
+color ozbluelogo_background
 color white
 drawable add_person
 drawable back_arrow

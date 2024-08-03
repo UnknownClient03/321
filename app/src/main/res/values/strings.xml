@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">OzBlue</string>
     <string name="txt_LOGIN">LOGIN</string>
     <string name="txt_email">email</string>
     <string name="txt_password">password</string>

@@ -8,8 +8,9 @@
     <color name="button_background">#2196F3</color>
     <color name="button_text">#FFFFFF</color>
     <color name="clear">#00000000</color>
+    <color name="ozbluelogo_background">#FFFFFF</color>
     <color name="white">#FFFFFFFF</color>
-    <string name="app_name">My Application</string>
+    <string name="app_name">OzBlue</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="login">Login</string>
     <string name="practitioner_login">Practitioner Login</string>

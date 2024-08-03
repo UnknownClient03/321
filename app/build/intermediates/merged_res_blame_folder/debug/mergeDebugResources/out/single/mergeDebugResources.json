@@ -4,12 +4,20 @@
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-40:/mipmap-xhdpi/ozbluelogo_foreground.webp"
     },
     {
+        "merged": "com.example.myapplication.app-debug-38:/mipmap-xxhdpi_ozbluelogo_round.webp.flat",
+        "source": "com.example.myapplication.app-main-40:/mipmap-xxhdpi/ozbluelogo_round.webp"
+    },
+    {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-38:/layout_fragment_birth_details.xml.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-40:/layout/fragment_birth_details.xml"
     },
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-38:/layout_practitioner_login.xml.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-40:/layout/practitioner_login.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-38:/mipmap-hdpi_ozbluelogo_foreground.webp.flat",
+        "source": "com.example.myapplication.app-main-40:/mipmap-hdpi/ozbluelogo_foreground.webp"
     },
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-38:/mipmap-mdpi_ic_launcher_round.webp.flat",
@@ -26,6 +34,10 @@
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-38:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-40:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-38:/mipmap-xxxhdpi_ozbluelogo_round.webp.flat",
+        "source": "com.example.myapplication.app-main-40:/mipmap-xxxhdpi/ozbluelogo_round.webp"
     },
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-38:/layout_activity_user_login.xml.flat",
@@ -58,6 +70,10 @@
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-38:/layout_activity_my_info_and_fam_his.xml.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-40:/layout/activity_my_info_and_fam_his.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-38:/mipmap-xxhdpi_ozbluelogo_foreground.webp.flat",
+        "source": "com.example.myapplication.app-main-40:/mipmap-xxhdpi/ozbluelogo_foreground.webp"
     },
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-38:/mipmap-xxxhdpi_ic_launcher.webp.flat",
@@ -110,6 +126,10 @@
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-38:/layout_activity_signup.xml.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-40:/layout/activity_signup.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-38:/mipmap-mdpi_ozbluelogo_foreground.webp.flat",
+        "source": "com.example.myapplication.app-main-40:/mipmap-mdpi/ozbluelogo_foreground.webp"
     },
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-38:/mipmap-xhdpi_ic_launcher_foreground.webp.flat",
@@ -176,6 +196,22 @@
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-40:/mipmap-mdpi/ic_launcher.webp"
     },
     {
+        "merged": "com.example.myapplication.app-debug-38:/mipmap-xxxhdpi_ozbluelogo_foreground.webp.flat",
+        "source": "com.example.myapplication.app-main-40:/mipmap-xxxhdpi/ozbluelogo_foreground.webp"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-38:/mipmap-xxxhdpi_ozbluelogo.webp.flat",
+        "source": "com.example.myapplication.app-main-40:/mipmap-xxxhdpi/ozbluelogo.webp"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-38:/mipmap-hdpi_ozbluelogo_round.webp.flat",
+        "source": "com.example.myapplication.app-main-40:/mipmap-hdpi/ozbluelogo_round.webp"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-38:/mipmap-xhdpi_ozbluelogo_foreground.webp.flat",
+        "source": "com.example.myapplication.app-main-40:/mipmap-xhdpi/ozbluelogo_foreground.webp"
+    },
+    {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-38:/drawable_roundstyle.xml.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-40:/drawable/roundstyle.xml"
     },
@@ -210,6 +246,10 @@
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-38:/drawable_ic_launcher_foreground.xml.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-40:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-38:/mipmap-hdpi_ozbluelogo.webp.flat",
+        "source": "com.example.myapplication.app-main-40:/mipmap-hdpi/ozbluelogo.webp"
     },
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-38:/mipmap-xxxhdpi_ozbluelogo_round.webp.flat",
@@ -248,8 +288,16 @@
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-40:/mipmap-xhdpi/ozbluelogo.webp"
     },
     {
+        "merged": "com.example.myapplication.app-debug-38:/mipmap-mdpi_ozbluelogo_round.webp.flat",
+        "source": "com.example.myapplication.app-main-40:/mipmap-mdpi/ozbluelogo_round.webp"
+    },
+    {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-38:/mipmap-xxxhdpi_ozbluelogo_foreground.webp.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-40:/mipmap-xxxhdpi/ozbluelogo_foreground.webp"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-38:/mipmap-xxhdpi_ozbluelogo.webp.flat",
+        "source": "com.example.myapplication.app-main-40:/mipmap-xxhdpi/ozbluelogo.webp"
     },
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-38:/drawable_back_arrow.xml.flat",
@@ -268,6 +316,10 @@
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-40:/mipmap-xhdpi/ic_launcher_round.webp"
     },
     {
+        "merged": "com.example.myapplication.app-debug-38:/mipmap-anydpi-v26_ozbluelogo_round.xml.flat",
+        "source": "com.example.myapplication.app-main-40:/mipmap-anydpi-v26/ozbluelogo_round.xml"
+    },
+    {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-38:/mipmap-hdpi_ozbluelogo_round.webp.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-40:/mipmap-hdpi/ozbluelogo_round.webp"
     },
@@ -276,8 +328,20 @@
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-40:/mipmap-anydpi-v26/ozbluelogo.xml"
     },
     {
+        "merged": "com.example.myapplication.app-debug-38:/mipmap-anydpi-v26_ozbluelogo.xml.flat",
+        "source": "com.example.myapplication.app-main-40:/mipmap-anydpi-v26/ozbluelogo.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-38:/mipmap-mdpi_ozbluelogo.webp.flat",
+        "source": "com.example.myapplication.app-main-40:/mipmap-mdpi/ozbluelogo.webp"
+    },
+    {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-38:/layout_child_select.xml.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-40:/layout/child_select.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-38:/mipmap-xhdpi_ozbluelogo_round.webp.flat",
+        "source": "com.example.myapplication.app-main-40:/mipmap-xhdpi/ozbluelogo_round.webp"
     },
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-38:/mipmap-hdpi_ic_launcher_foreground.webp.flat",
@@ -300,8 +364,8 @@
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-40:/drawable/round_button.xml"
     },
     {
-        "merged": "com.example.myapplication.app-debug-38:/layout_useful_contacts.xml.flat",
-        "source": "com.example.myapplication.app-main-40:/layout/useful_contacts.xml"
+        "merged": "com.example.myapplication.app-debug-38:/mipmap-xhdpi_ozbluelogo.webp.flat",
+        "source": "com.example.myapplication.app-main-40:/mipmap-xhdpi/ozbluelogo.webp"
     },
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-38:/layout_fragment_myaddress.xml.flat",
