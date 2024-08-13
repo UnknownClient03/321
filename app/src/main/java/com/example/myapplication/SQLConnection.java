@@ -17,16 +17,18 @@ import java.util.HashMap;
 public class SQLConnection {
 
     private Connection conn;
-    private final String ip =       "192.168.0.249"
-                       , port =     "1066"
-                       , db =       "BlueBookDB"
-                       , username = "user1"
-                       , password = "";
+    private final String ip =       "192.168.0.249"    //IP address of local computer
+                       , port =     "1066"             //Port the sql server resides on
+                       , db =       "BlueBookDB"       //Database name
+                       , username = "user1"            //Keep the same unless changed in users.sql
+                       , password = "";                //Keep the same unless changed in users.sql
 
     @SuppressLint("NewApi")
+    //Establishes connection between Android API and sql server
     public SQLConnection() {
         connect(username, password);
     }
+    //Establishes connection  using variable username and password
     public SQLConnection(String username, String password) {
         connect(username, password);
     }
@@ -48,6 +50,7 @@ public class SQLConnection {
             Log.e("SQLError", E.getMessage());
         }
     }
+    //Disconnects from sql server
     public void disconnect() {
         try {
             conn.close();
@@ -59,6 +62,7 @@ public class SQLConnection {
         }
 
     }
+    //Writes on the sql server using a TSQL statement (SELECT, UPDATE, INSERT, DELETE)
     public void update(String SQLStatement) {
         try {
             Statement stmt = conn.createStatement();
@@ -69,6 +73,7 @@ public class SQLConnection {
             Log.e("SQLError", E.getMessage());
         }
     }
+    //Returns A hashmap of the results from a TSQL SELECT statement
     public HashMap<String, String[]> select(String SQLStatement) {
         HashMap<String, String[]> hash= new HashMap<String, String[]>();
         try {
@@ -92,6 +97,7 @@ public class SQLConnection {
         }
         return hash;
     }
+    //Gets Row from Hashmap
     public String[] getRow(HashMap<String, String[]> hash, int rowNum) {
         int rowCount = hash.keySet().size();
         String[] row = new String[rowCount];
@@ -106,7 +112,7 @@ public class SQLConnection {
 
         return row;
     }
-
+    //Gets the maximum ID from table only if ID variable is called "ID"
     public int getMaxID(String table)
     {
         HashMap<String, String[]> result = select("SELECT MIN(ID) + 1 as maxID FROM " + table + " WHERE ID + 1 NOT IN (SELECT ID FROM " + table + ");");
@@ -115,3 +121,17 @@ public class SQLConnection {
         return Integer.parseInt(maxID);
     }
 }
+
+
+/*example
+import com.example.myapplication.SQLConnection;
+
+SQLConnection conn = new SQLConnection("user1", "");
+HashMap<String, String[]> result = c.select("SELECT * FROM GuardianLanguage WHERE guardianID > 10");
+for(int i = 0; i < result.get("guardianID").length; i++)
+{
+    Log.d("msg", result.get("language")[i]);
+}
+
+c.disconnect();
+*/
