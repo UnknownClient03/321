@@ -123,8 +123,7 @@ public class SQLConnection {
 }
 
 
-/*example
-import com.example.myapplication.SQLConnection;
+/*example inside an onCreate function
 
 SQLConnection conn = new SQLConnection("user1", "");
 HashMap<String, String[]> result = c.select("SELECT * FROM GuardianLanguage WHERE guardianID > 10");
