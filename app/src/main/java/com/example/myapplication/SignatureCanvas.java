@@ -18,14 +18,14 @@ import android.view.ViewGroup.LayoutParams;
 import java.io.ByteArrayOutputStream;
 
 
-public class paintView extends View{
+public class SignatureCanvas extends View{
 
     public LayoutParams params;
     private Path path = new Path();
     private Paint brush = new Paint();
 
     //constructor for the creation of a drawable canvas
-    public paintView(Context context) {
+    public SignatureCanvas(Context context) {
         super(context);
 
         brush.setAntiAlias(true);
@@ -38,7 +38,7 @@ public class paintView extends View{
     }
 
     //constructor for the creation of a bitmap on a view
-    public paintView(Context context, String imageEncoded)
+    public SignatureCanvas(Context context, String imageEncoded)
     {
         super(context);
         params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
@@ -104,16 +104,16 @@ public class paintView extends View{
 /*example inside an onCreate function
         //The output frame layout and input frame layout need to be the same size
 
-        paintView = new paintView(this);
+        signatureCanvas = new SignatureCanvas(this);
         FrameLayout frmLayout = (FrameLayout)findViewById(R.id.canvas_1);
-        frmLayout.addView(paintView);
+        frmLayout.addView(signatureCanvas);
 
 
         Button button = findViewById(R.id.button_9);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Log.d("BUTTON", "submit signature");
-                String imageEncoded = paintView.convertCanvas();
+                String imageEncoded = signatureCanvas.convertCanvas();
 
                 SQLConnection c = new SQLConnection("user1", "");
                 String query = "INSERT INTO ImmunisationRecord VALUES (0, 0, 2, 'HepB', '2024-08-19', 53, '" + imageEncoded + "');";
@@ -138,7 +138,7 @@ public class paintView extends View{
                 c.disconnect();
 
                 FrameLayout frmLayout = (FrameLayout)findViewById(R.id.canvas_2);
-                frmLayout.addView(new paintView(drawingExample.this, imageEncoded));
+                frmLayout.addView(new SignatureCanvas(drawingExample.this, imageEncoded));
             }
         });
 */
