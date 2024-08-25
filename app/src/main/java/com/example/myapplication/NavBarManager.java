@@ -56,6 +56,14 @@ public class NavBarManager {
                     x.startActivity(intent);
                 }
             });
+            //Sets the records out button by going to the records
+            button = x.findViewById(R.id.records_button);
+            button.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent intent=new Intent(x, Records.class);
+                    x.startActivity(intent);
+                }
+            });
         }
     }
 }
