@@ -13,6 +13,7 @@ public class NavBarManager {
     {
         if(x.findViewById(R.id.header) != null)
         {
+            //Sets the Home button to go home
             Button button = x.findViewById(R.id.home_button);
             button.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
@@ -40,12 +41,14 @@ public class NavBarManager {
         }
         if(x.findViewById(R.id.footer) != null)
         {
+            //Sets the back button by removing form the stack of activities from the cache
             Button button = x.findViewById(R.id.back_button);
             button.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     x.getOnBackPressedDispatcher().onBackPressed();
                 }
             });
+            //Sets the log out button
             button = x.findViewById(R.id.logout_button);
             button.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
@@ -56,3 +59,9 @@ public class NavBarManager {
         }
     }
 }
+
+/*example
+
+navBarManager.setNavBarButtons(Homepage.this);
+
+ */
