@@ -25,7 +25,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
-        android:name="com.example.myapplication.Fragment_ProgressNotes_Read"
+        android:name="com.example.myapplication.Fragments.Fragment_ProgressNotes_Read"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
