@@ -24,7 +24,7 @@ public class IllnessInjuryNotes extends AppCompatActivity {
 
         });
 
-        navBarManager.setNavBarButtons(IllnessInjuryNotes.this);
+        NavBarManager.setNavBarButtons(IllnessInjuryNotes.this);
         Bundle extras = getIntent().getExtras();
         if (extras != null) manager = new LoginManager(extras.getInt("guardianID"), extras.getInt("childID"));
     }

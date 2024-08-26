@@ -23,7 +23,7 @@ public class ProgressNotes extends AppCompatActivity {
             return insets;
         });
 
-        navBarManager.setNavBarButtons(ProgressNotes.this);
+        NavBarManager.setNavBarButtons(ProgressNotes.this);
         Bundle extras = getIntent().getExtras();
         if (extras != null) manager = new LoginManager(extras.getInt("guardianID"), extras.getInt("childID"));
     }

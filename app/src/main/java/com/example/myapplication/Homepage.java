@@ -102,19 +102,5 @@ public class Homepage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        button = findViewById(R.id.button_5);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Log.d("BUTTON", "changing to records");
-                Intent intent=new Intent(Homepage.this, Records.class);
-                Bundle extras = getIntent().getExtras();
-                if (extras != null) {
-                    intent.putExtra("guardianID", extras.getInt("guardianID"));
-                    intent.putExtra("childID", extras.getInt("childID"));
-                }
-                startActivity(intent);
-            }
-        });
     }
 }
