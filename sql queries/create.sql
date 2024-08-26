@@ -46,8 +46,9 @@ CREATE TABLE GuardianLanguage(
 CREATE TABLE UsefulContact(
 	guardianID int not null,
 	name varchar(31) not null,
-	phoneNumber int not null,
-	PRIMARY KEY(guardianID),
+	phoneNumber int not bigint,
+	email varchar(63),
+	PRIMARY KEY(name),
 	CHECK (name = 'Family doctor' OR
 		   name = 'Child and Family Health Centre' OR
 		   name = 'Dentist' OR
