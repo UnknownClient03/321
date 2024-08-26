@@ -48,6 +48,12 @@ CREATE TABLE UsefulContact(
 	name varchar(31) not null,
 	phoneNumber int not bigint,
 	email varchar(63),
+	Country varchar(31) not null,
+	City varchar(31) not null,
+	Street varchar(31) not null,
+	StreetNumber int not null,
+	unit CHAR,
+	postcode int,
 	PRIMARY KEY(name),
 	CHECK (name = 'Family doctor' OR
 		   name = 'Child and Family Health Centre' OR
