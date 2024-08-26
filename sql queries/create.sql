@@ -53,7 +53,7 @@ CREATE TABLE UsefulContact(
 	Street varchar(31) not null,
 	StreetNumber int not null,
 	unit CHAR,
-	postcode int,
+	postcode int not null,
 	PRIMARY KEY(name),
 	CHECK (name = 'Family doctor' OR
 		   name = 'Child and Family Health Centre' OR
