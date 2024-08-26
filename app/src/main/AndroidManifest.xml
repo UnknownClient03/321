@@ -69,7 +69,14 @@
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".UsefulContacts"
             android:windowSoftInputMode="adjustPan" />
-
+        
+      <!-- Added activities for My Records-->
+      <activity android:name=".Records"
+    android:windowSoftInputMode="adjustPan" />
+      <activity android:name=".IllnessInjuryNotes"
+          android:windowSoftInputMode="adjustPan" />
+      <activity android:name=".ProgressNotes"
+    android:windowSoftInputMode="adjustPan" />
     </application>
 
 </manifest>
