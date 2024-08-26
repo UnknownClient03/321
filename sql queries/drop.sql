@@ -15,7 +15,7 @@ DROP TABLE newBornHearing;
 DROP TABLE NBTable;
 DROP TABLE NewbornExamination;
 DROP TABLE BirthDetails;
-DROP TABLE IllnessInjries;
+DROP TABLE IllnessInjuries;
 DROP TABLE ProgressNotes;
 DROP TABLE HealthChecks;
 DROP TABLE FamilyDentalHistory;
