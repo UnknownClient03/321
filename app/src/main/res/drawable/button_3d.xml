@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        // shadow effect
+        <shape android:shape="rectangle">
+            <solid android:color="#80000000" />
+            <corners android:radius="80dp" />
+        </shape>
+    </item>
+
+    <item android:top="2dp" android:left="2dp">
+        // main button background
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="270"
+                android:startColor="#ffffff"
+                android:endColor="#cccccc" />
+            <corners android:radius="80dp" />
+            <padding
+                android:left="10dp"
+                android:top="10dp"
+                android:right="10dp"
+                android:bottom="10dp" />
+        </shape>
+    </item>
+</layer-list>
