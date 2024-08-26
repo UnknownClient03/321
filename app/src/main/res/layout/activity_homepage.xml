@@ -37,60 +37,80 @@
                 android:id="@+id/button_growth_charts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button_3d"
+                android:elevation="12dp"
                 android:text="Growth Charts" />
 
             <Button
                 android:id="@+id/button_info_for_parents"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button_3d"
+                android:elevation="12dp"
                 android:text="Info For parents" />
 
             <Button
                 android:id="@+id/button_immunisation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button_3d"
+                android:elevation="12dp"
                 android:text="Immunisation" />
 
             <Button
                 android:id="@+id/button_checks"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button_3d"
+                android:elevation="12dp"
                 android:text="Checks" />
 
             <Button
                 android:id="@+id/button_my_records"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button_3d"
+                android:elevation="12dp"
                 android:text="My Records" />
 
             <Button
                 android:id="@+id/button_cpr_chart"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button_3d"
+                android:elevation="12dp"
                 android:text="CPR Chart" />
 
             <Button
                 android:id="@+id/button_primary_and_secondary_education"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button_3d"
+                android:elevation="12dp"
                 android:text="Primary &amp; Secondary Education" />
 
             <Button
                 android:id="@+id/button_my_information_and_family_history"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button_3d"
+                android:elevation="12dp"
                 android:text="My Infomation And Family History" />
 
             <Button
                 android:id="@+id/button_useful_contacts_and_websites"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button_3d"
+                android:elevation="12dp"
                 android:text="Useful Contacts &amp; Websites" />
 
             <Button
                 android:id="@+id/button_birth_details_and_newborn_examination"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button_3d"
+                android:elevation="12dp"
                 android:text="Birth Details &amp; Newborn Examination" />
 
             <View

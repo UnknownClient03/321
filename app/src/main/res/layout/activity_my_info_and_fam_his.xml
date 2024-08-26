@@ -44,6 +44,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="20dp"
+                android:background="@drawable/button_3d"
+                android:elevation="12dp"
                 android:text="All about Me"
                 android:textSize="10sp" />
 
@@ -53,6 +55,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="20dp"
+                android:background="@drawable/button_3d"
+                android:elevation="12dp"
                 android:text="My Address"
                 android:textSize="10sp" />
 
@@ -62,6 +66,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="20dp"
+                android:background="@drawable/button_3d"
+                android:elevation="12dp"
                 android:text="Language"
                 android:textSize="10sp" />
 
@@ -71,6 +77,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="20dp"
+                android:background="@drawable/button_3d"
+                android:elevation="12dp"
                 android:text="Mother"
                 android:textSize="10sp" />
 
@@ -80,6 +88,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="20dp"
+                android:background="@drawable/button_3d"
+                android:elevation="12dp"
                 android:text="Father"
                 android:textSize="10sp" />
 
@@ -89,6 +99,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="20dp"
+                android:background="@drawable/button_3d"
+                android:elevation="12dp"
                 android:text="Health History"
                 android:textSize="10sp" />
 
@@ -98,6 +110,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="0dp"
+                android:background="@drawable/button_3d"
+                android:elevation="12dp"
                 android:text="Dental History"
                 android:textSize="10sp" />
 

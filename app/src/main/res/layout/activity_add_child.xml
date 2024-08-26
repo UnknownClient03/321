@@ -169,6 +169,8 @@
                 android:text="Add Child"
                 android:textSize="20sp"
                 android:padding="16dp"
+                android:background="@drawable/button_3d"
+                android:elevation="12dp"
                 app:layout_constraintTop_toBottomOf="@id/birth_weight_input"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
