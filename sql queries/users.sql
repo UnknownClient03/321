@@ -9,3 +9,6 @@ GRANT INSERT, SELECT ON Address TO user1;
 GRANT INSERT, SELECT ON Parent TO user1;
 GRANT INSERT, SELECT ON familyHealthHistory TO user1;
 GRANT INSERT, SELECT ON FamilyDentalHistory TO user1;
+GRANT INSERT, SELECT ON ProgressNotes TO user1;
+GRANT INSERT, SELECT ON IllnessInjuries TO user1;
+GRANT INSERT, SELECT ON UsefulContact TO user1;
