@@ -84,15 +84,15 @@ public class Fragment_ProgressNotes_Write extends Fragment {
         Button submit = (Button)layout.findViewById(R.id.button_progressNotes_submit);
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Button button = (Button)getActivity().findViewById(R.id.button_PN_toTable);
-                button.performClick();
+                LoginManager manager = ((ProgressNotes)getActivity()).manager;
+                getActivity().getOnBackPressedDispatcher().onBackPressed();
+
                 EditText M = (EditText)layout.findViewById(R.id.input_progressNotes_year_m);
                 EditText D = (EditText)layout.findViewById(R.id.input_progressNotes_year_d);
                 EditText Y = (EditText)layout.findViewById(R.id.input_progressNotes_year_y);
                 EditText reason = (EditText)layout.findViewById(R.id.input_progressNotes_reason);
 
                 SQLConnection c = new SQLConnection("user1", "");
-                LoginManager manager = ((ProgressNotes)getActivity()).manager;
                 int ID = c.getMaxID("ProgressNotes");
                 String query = "SELECT DOB FROM child WHERE ID = " + manager.childID + ";";
                 HashMap<String, String[]> result = c.select(query);
