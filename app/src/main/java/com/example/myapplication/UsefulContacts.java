@@ -37,6 +37,6 @@ public class UsefulContacts extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) manager = new LoginManager(extras.getInt("guardianID"), extras.getInt("childID"));
 
-        navBarManager.setNavBarButtons(UsefulContacts.this);
+        NavBarManager.setNavBarButtons(UsefulContacts.this);
     }
 }
