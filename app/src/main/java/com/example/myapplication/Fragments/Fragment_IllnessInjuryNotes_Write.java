@@ -82,8 +82,9 @@ public class Fragment_IllnessInjuryNotes_Write extends Fragment {
         Button submit = (Button)layout.findViewById(R.id.button_IllnessInjuryNotes_submit);
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Button button = (Button)getActivity().findViewById(R.id.button_IIN_toTable);
-                button.performClick();
+                LoginManager manager = ((IllnessInjuryNotes)getActivity()).manager;
+                getActivity().getOnBackPressedDispatcher().onBackPressed();
+                
                 EditText M = (EditText)layout.findViewById(R.id.input_illnessInjuryNotes_year_m);
                 EditText D = (EditText)layout.findViewById(R.id.input_illnessInjuryNotes_year_d);
                 EditText Y = (EditText)layout.findViewById(R.id.input_illnessInjuryNotes_year_y);
@@ -91,7 +92,6 @@ public class Fragment_IllnessInjuryNotes_Write extends Fragment {
                 EditText signed = (EditText)layout.findViewById(R.id.input_illnessInjuryNotes_signed);
 
                 SQLConnection c = new SQLConnection("user1", "");
-                LoginManager manager = ((IllnessInjuryNotes)getActivity()).manager;
                 int ID = c.getMaxID("IllnessInjuries");
 
                 String query = "INSERT INTO IllnessInjuries VALUES (" + manager.childID + ", "
