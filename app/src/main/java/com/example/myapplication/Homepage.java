@@ -99,6 +99,11 @@ public class Homepage extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("BUTTON", "changing to Useful Contacts");
                 Intent intent = new Intent(Homepage.this, UsefulContacts.class);
+                Bundle extras = getIntent().getExtras();
+                if (extras != null) {
+                    intent.putExtra("guardianID", extras.getInt("guardianID"));
+                    intent.putExtra("childID", extras.getInt("childID"));
+                }
                 startActivity(intent);
             }
         });
