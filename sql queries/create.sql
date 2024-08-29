@@ -46,7 +46,7 @@ CREATE TABLE GuardianLanguage(
 CREATE TABLE UsefulContact(
 	guardianID int not null,
 	name varchar(31) not null,
-	phoneNumber int not bigint,
+	phoneNumber bigint,
 	email varchar(63),
 	Country varchar(31) not null,
 	City varchar(31) not null,
