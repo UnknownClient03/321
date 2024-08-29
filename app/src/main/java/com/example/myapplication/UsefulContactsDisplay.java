@@ -115,7 +115,7 @@ public class UsefulContactsDisplay extends Fragment {
                             + result.get("postcode")[i];
                 col1.setText(txt1);
             }
-
+        c.disconnect();
         return layout;
     }
 }
