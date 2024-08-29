@@ -128,7 +128,7 @@ CREATE TABLE ProgressNotes(
 	FOREIGN KEY (childID) REFERENCES Child(ID)
 );
 
-CREATE TABLE IllnessInjries(
+CREATE TABLE IllnessInjuries(
 	childID int not null,
 	ID int not null,
 	date DATE not null,
