@@ -52,7 +52,6 @@ CREATE TABLE UsefulContact(
 	StreetNumber int not null,
 	unit CHAR,
 	postcode int not null,
-	PRIMARY KEY(name),
 	CHECK (name = 'Family doctor' OR
 		   name = 'Child and Family Health Centre' OR
 		   name = 'Dentist' OR
