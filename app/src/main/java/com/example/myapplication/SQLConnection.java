@@ -13,10 +13,12 @@ import java.sql.Statement;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Properties;
 
 public class SQLConnection {
 
     private Connection conn;
+    private boolean isConnected;
     private final String ip =       "192.168.0.249"    //IP address of local computer
                        , port =     "1066"             //Port the sql server resides on
                        , db =       "BlueBookDB"       //Database name
@@ -42,12 +44,16 @@ public class SQLConnection {
                     +"; user="+username
                     +"; password="+password+";";
 
+
+            Log.d("SQLMessage", "Attempting to establish connection to database.");
             conn = DriverManager.getConnection(ConnectURL, username, password);
             Log.d("SQLMessage", "Connected to database.");
+            isConnected = true;
         }
         catch (Exception E){
             Log.d("SQLMessage", "Cannot connect to database.");
             Log.e("SQLError", E.getMessage());
+            isConnected = false;
         }
     }
     //Disconnects from sql server
@@ -61,6 +67,12 @@ public class SQLConnection {
             Log.e("SQLError", E.getMessage());
         }
 
+    }
+
+    //checks if a connection is established
+    public boolean isConn()
+    {
+        return isConnected;
     }
     //Writes on the sql server using a TSQL statement (SELECT, UPDATE, INSERT, DELETE)
     public boolean update(String SQLStatement) {

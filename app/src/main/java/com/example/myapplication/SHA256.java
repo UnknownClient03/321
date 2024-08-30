@@ -29,6 +29,11 @@ public class SHA256 {
         for(int i = 0; i < size; i++)
         {
             int randInt = 32 + rand.nextInt(96);
+            if(randInt == 39)
+            {
+                i--;
+                continue;
+            }
             output.append((char)randInt);
         }
         return output.toString();

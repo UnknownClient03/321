@@ -13,6 +13,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class Homepage extends AppCompatActivity {
+    LoginManager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +27,8 @@ public class Homepage extends AppCompatActivity {
         });
 
         NavBarManager.setNavBarButtons(Homepage.this);
-
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) manager = new LoginManager(extras.getInt("guardianID"), extras.getInt("childID"));
         // Setting up the Immunisation button
         Button buttonImmunisation = findViewById(R.id.button_immunisation);
         buttonImmunisation.setOnClickListener(new View.OnClickListener() {
@@ -35,8 +37,8 @@ public class Homepage extends AppCompatActivity {
                 Intent intent = new Intent(Homepage.this, ImmunisationSchedule.class);
                 Bundle extras = getIntent().getExtras();
                 if (extras != null) {
-                    intent.putExtra("guardianID", extras.getInt("guardianID"));
-                    intent.putExtra("childID", extras.getInt("childID"));
+                    intent.putExtra("guardianID", manager.guardianID);
+                    intent.putExtra("childID", manager.childID);
                 }
                 startActivity(intent);
             }
@@ -49,6 +51,11 @@ public class Homepage extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("BUTTON", "changing to CPR Chart");
                 Intent intent = new Intent(Homepage.this, CPRChart.class);
+                Bundle extras = getIntent().getExtras();
+                if (extras != null) {
+                    intent.putExtra("guardianID", manager.guardianID);
+                    intent.putExtra("childID", manager.childID);
+                }
                 startActivity(intent);
             }
         });
@@ -61,8 +68,8 @@ public class Homepage extends AppCompatActivity {
                 Intent intent = new Intent(Homepage.this, MyInfoAndFamHis.class);
                 Bundle extras = getIntent().getExtras();
                 if (extras != null) {
-                    intent.putExtra("guardianID", extras.getInt("guardianID"));
-                    intent.putExtra("childID", extras.getInt("childID"));
+                    intent.putExtra("guardianID", manager.guardianID);
+                    intent.putExtra("childID", manager.childID);
                 }
                 startActivity(intent);
             }
@@ -76,8 +83,8 @@ public class Homepage extends AppCompatActivity {
                 Intent intent = new Intent(Homepage.this, BirthDetailsAndNewbornExamination.class);
                 Bundle extras = getIntent().getExtras();
                 if (extras != null) {
-                    intent.putExtra("guardianID", extras.getInt("guardianID"));
-                    intent.putExtra("childID", extras.getInt("childID"));
+                    intent.putExtra("guardianID", manager.guardianID);
+                    intent.putExtra("childID", manager.childID);
                 }
                 startActivity(intent);
             }
@@ -89,6 +96,11 @@ public class Homepage extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("BUTTON", "changing to Parent Info");
                 Intent intent = new Intent(Homepage.this, ParentInfo.class);
+                Bundle extras = getIntent().getExtras();
+                if (extras != null) {
+                    intent.putExtra("guardianID", manager.guardianID);
+                    intent.putExtra("childID", manager.childID);
+                }
                 startActivity(intent);
             }
         });
@@ -101,8 +113,8 @@ public class Homepage extends AppCompatActivity {
                 Intent intent = new Intent(Homepage.this, UsefulContacts.class);
                 Bundle extras = getIntent().getExtras();
                 if (extras != null) {
-                    intent.putExtra("guardianID", extras.getInt("guardianID"));
-                    intent.putExtra("childID", extras.getInt("childID"));
+                    intent.putExtra("guardianID", manager.guardianID);
+                    intent.putExtra("childID", manager.childID);
                 }
                 startActivity(intent);
             }
@@ -114,8 +126,8 @@ public class Homepage extends AppCompatActivity {
                 Intent intent=new Intent(Homepage.this, Records.class);
                 Bundle extras = getIntent().getExtras();
                 if (extras != null) {
-                    intent.putExtra("guardianID", extras.getInt("guardianID"));
-                    intent.putExtra("childID", extras.getInt("childID"));
+                    intent.putExtra("guardianID", manager.guardianID);
+                    intent.putExtra("childID", manager.childID);
                 }
                 startActivity(intent);
             }

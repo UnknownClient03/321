@@ -44,7 +44,6 @@ public class UserLoginActivity extends AppCompatActivity {
                     Log.d("BUTTON", "Changing to select child page");
                     Intent intent = new Intent(UserLoginActivity.this, ChildSelectActivity.class);
                     intent.putExtra("guardianID", guardianID);
-                    intent.putExtra("childID", 0);
                     startActivity(intent);
                 } else {
                     Toast.makeText(UserLoginActivity.this, "Please enter a valid email or password", Toast.LENGTH_LONG).show();
@@ -57,8 +56,6 @@ public class UserLoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("BUTTON", "Changing to sign up");
                 Intent intent=new Intent(UserLoginActivity.this, SignUpActivity.class);
-                intent.putExtra("guardianID", 0);
-                intent.putExtra("childID", 0);
                 startActivity(intent);
             }
         });
@@ -79,7 +76,6 @@ public class UserLoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("BUTTON", "Changing to Reset Password page");
                 Intent intent = new Intent(UserLoginActivity.this, ResetPasswordActivity.class);
-                intent.putExtra("guardianID", 0);
                 startActivity(intent);
             }
         });
