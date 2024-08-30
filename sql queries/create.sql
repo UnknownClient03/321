@@ -11,6 +11,15 @@ CREATE TABLE Guardian (
 	UNIQUE(email)
 );
 
+CREATE TABLE GuardianAccountDetails(
+	guardianID int not null,
+	Hashpassword varchar(64) not null,
+	salt varchar(16) not null,
+	pepper varchar(16) not null,
+	PRIMARY KEY (guardianID),
+	FOREIGN KEY (guardianID) REFERENCES Guardian(ID)
+);
+
 CREATE TABLE Parent (
 	guardianID int not null,
 	parent varchar(6) not null,
