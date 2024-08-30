@@ -85,7 +85,11 @@ public class Fragment_ProgressNotes_Write extends Fragment {
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 LoginManager manager = ((ProgressNotes)getActivity()).manager;
-                getActivity().getOnBackPressedDispatcher().onBackPressed();
+                ProgressNotes activity = ((ProgressNotes)getActivity());
+                activity.getOnBackPressedDispatcher().onBackPressed();
+                Intent intent = activity.getIntent();
+                activity.finish();
+                activity.startActivity(intent);
 
                 EditText M = (EditText)layout.findViewById(R.id.input_progressNotes_year_m);
                 EditText D = (EditText)layout.findViewById(R.id.input_progressNotes_year_d);
