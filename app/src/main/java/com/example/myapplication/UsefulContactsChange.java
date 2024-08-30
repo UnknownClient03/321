@@ -73,7 +73,11 @@ public class UsefulContactsChange extends Fragment {
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 LoginManager manager = ((UsefulContacts)getActivity()).manager;
-                getActivity().getOnBackPressedDispatcher().onBackPressed();
+                UsefulContacts activity = ((UsefulContacts)getActivity());
+                activity.getOnBackPressedDispatcher().onBackPressed();
+                Intent intent = activity.getIntent();
+                activity.finish();
+                activity.startActivity(intent);
 
                 EditText rawphone = (EditText)layout.findViewById(R.id.input_usefulContact_phone);
                 EditText rawemail = (EditText)layout.findViewById(R.id.input_usefulContact_email);
