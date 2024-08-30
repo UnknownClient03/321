@@ -87,6 +87,7 @@ public class UserLoginActivity extends AppCompatActivity {
 
     private int validateLogin(String pass, String email) {
         SQLConnection conn = new SQLConnection("user1", "");
+        if(!conn.isConn()) return -1;
         String query = "SELECT salt, pepper FROM GuardianAccountDetails INNER JOIN Guardian ON guardianID = ID where email = '" + email + "';";
         HashMap<String, String[]> result = conn.select(query);
         if(result.get("salt").length == 0)
