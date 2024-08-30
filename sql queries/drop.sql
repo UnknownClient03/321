@@ -25,4 +25,5 @@ DROP TABLE usefulContact;
 DROP TABLE GuardianLanguage;
 DROP TABLE Address;
 DROP TABLE parent;
+DROP TABLE GuardianAccountDetails;
 DROP TABLE Guardian;
