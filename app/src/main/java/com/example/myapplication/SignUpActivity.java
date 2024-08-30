@@ -100,6 +100,7 @@ public class SignUpActivity extends AppCompatActivity {
     private boolean registeruser()
     {
         SQLConnection conn = new SQLConnection("user1", "");
+        if(!conn.isConn()) return false;
         int ID = conn.getMaxID("Guardian");
         String query = "INSERT INTO Guardian VALUES (" + ID + ", '"
                                                        + firstNameInput.getText() + "', '"
