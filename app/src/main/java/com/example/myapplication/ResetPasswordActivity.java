@@ -81,6 +81,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
     private boolean validateEmail(String email)
     {
         SQLConnection conn = new SQLConnection("user1", "");
+        if(!conn.isConn()) return false;
         String query = "SELECT email FROM Guardian where email = '" + email + "';";
         HashMap<String, String[]> result = conn.select(query);
         Log.d("msg", query);
