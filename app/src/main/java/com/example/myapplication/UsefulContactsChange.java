@@ -120,7 +120,7 @@ public class UsefulContactsChange extends Fragment {
                 SQLConnection c = new SQLConnection("user1", "");
                 String query = "SELECT name FROM UsefulContact WHERE guardianID = " + manager.guardianID + " AND name = '" + name + "';";
                 HashMap<String, String[]> result = c.select(query);
-                query = (result.get("name").length == 0) ? "INSERT INTO UsefulContact VALUES(" + manager.childID + ", '"
+                query = (result.get("name").length == 0) ? "INSERT INTO UsefulContact VALUES(" + manager.guardianID + ", '"
                         + name + "', "
                         + phone + ", "
                         + email + ", '"
@@ -138,7 +138,7 @@ public class UsefulContactsChange extends Fragment {
                         + "', StreetNumber = '" + streetNumber.getText()
                         + "', unit = " + unit + ", postcode = "
                         + postcode.getText() + " WHERE guardianID = "
-                        + manager.childID + " AND name = '"
+                        + manager.guardianID + " AND name = '"
                         + name + "';";
                 c.update(query);
                 c.disconnect();
