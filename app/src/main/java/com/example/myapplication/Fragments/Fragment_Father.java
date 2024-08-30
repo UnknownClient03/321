@@ -16,6 +16,8 @@ import com.example.myapplication.MyInfoAndFamHis;
 import com.example.myapplication.R;
 import com.example.myapplication.SQLConnection;
 
+import java.util.HashMap;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link Fragment_Father#newInstance} factory method to
@@ -63,13 +65,18 @@ public class Fragment_Father extends Fragment {
         }
     }
 
+    //this flag denotes wether the
+    private boolean updateFlag = false;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        SQLConnection c = new SQLConnection("user1", "");
+        LoginManager manager = ((MyInfoAndFamHis)getActivity()).manager;
         View layout = inflater.inflate(R.layout.fragment_father, container, false);
         Button submit = (Button)layout.findViewById(R.id.button_father);
-        if(submit == null) throw new NullPointerException("could not find button: " + R.id.button_father);
-        else submit.setOnClickListener(new View.OnClickListener() {
+        Button update = (Button)layout.findViewById(R.id.update_father);
+        HashMap<String, String[]> result = c.select("SELECT childID, fname, lname, DOB, MRN, isAboriginal, isTorresStraitIslander, career FROM Parent WHERE childID = "+manager.childID+" AND parent = 'Father';");
+        submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Button button = (Button)getActivity().findViewById(R.id.button_MIAFH_6);
                 button.performClick();
@@ -82,30 +89,87 @@ public class Fragment_Father extends Fragment {
                 CheckBox isAboRaw = (CheckBox)layout.findViewById(R.id.input_father_isAboriginal);
                 CheckBox isTSIRaw = (CheckBox)layout.findViewById(R.id.input_father_isTorresStrait);
                 EditText career = (EditText)layout.findViewById(R.id.input_father_career);
-
                 if(dobD.getText().length() == 0 || dobM.getText().length() == 0 || dobY.getText().length() == 0 || mrn.getText().length() == 0)
                 {
                     Log.e("query syntax error", "integers need to be set.");
                     return;
                 }
-
                 int isAbo = (isAboRaw.isChecked()) ? 1 : 0;
                 int isTSI = (isTSIRaw.isChecked()) ? 1 : 0;
-
                 SQLConnection c = new SQLConnection("user1", "");
-                LoginManager manager = ((MyInfoAndFamHis)getActivity()).manager;
-                String query = "INSERT INTO Parent VALUES (" + manager.guardianID + ", 'Father', '"
-                        + fname.getText() + "', '"
-                        + lname.getText() + "', '"
-                        + dobY.getText() + "-" + dobM.getText()+"-"+dobD.getText() + "', "
-                        + mrn.getText() + ", "
-                        + isAbo + ", "
-                        + isTSI + ", '"
-                        + career.getText() + "');";
+                String query = (updateFlag) ? "UPDATE Parent SET fname = '" + fname.getText()
+                                                           + "', lname = '" + lname.getText()
+                                                           + "', DOB = '" + dobY.getText() + "-" + dobM.getText()+"-"+dobD.getText()
+                                                           + "', MRN = '" + mrn.getText()
+                                                           + "', isAboriginal = " + isAbo
+                                                           + ", isTorresStraitIslander = " + isTSI
+                                                           + ", career = '" + career.getText()
+                                                           + "' WHERE childID = " + manager.childID + " AND parent = 'Father';"
+                                            : "INSERT INTO Parent VALUES (" + manager.childID + ", 'Father', '"
+                                                                            + fname.getText() + "', '"
+                                                                            + lname.getText() + "', '"
+                                                                            + dobY.getText() + "-" + dobM.getText()+"-"+dobD.getText() + "', "
+                                                                            + mrn.getText() + ", "
+                                                                            + isAbo + ", "
+                                                                            + isTSI + ", '"
+                                                                            + career.getText() + "');";
+                Log.d("msg", query);
                 c.update(query);
                 c.disconnect();
             }
         });
+
+        if(result.get("childID").length == 0) update.setVisibility(View.INVISIBLE);
+        else
+        {
+            submit.setVisibility(View.INVISIBLE);
+
+            EditText fname = (EditText)layout.findViewById(R.id.input_father_fname);
+            EditText lname = (EditText)layout.findViewById(R.id.input_father_lname);
+            EditText dobD = (EditText)layout.findViewById(R.id.input_father_dob_d);
+            EditText dobM = (EditText)layout.findViewById(R.id.input_father_dob_m);
+            EditText dobY = (EditText)layout.findViewById(R.id.input_father_dob_y);
+            EditText mrn = (EditText)layout.findViewById(R.id.input_father_MRN);
+            CheckBox isAboRaw = (CheckBox)layout.findViewById(R.id.input_father_isAboriginal);
+            CheckBox isTSIRaw = (CheckBox)layout.findViewById(R.id.input_father_isTorresStrait);
+            EditText career = (EditText)layout.findViewById(R.id.input_father_career);
+            fname.setText(result.get("fname")[0]);
+            lname.setText(result.get("lname")[0]);
+            dobD.setText(result.get("DOB")[0].substring(8, 10));
+            dobM.setText(result.get("DOB")[0].substring(5, 7));
+            dobY.setText(result.get("DOB")[0].substring(0, 4));
+            mrn.setText(result.get("MRN")[0]);
+            if(result.get("isAboriginal")[0].charAt(0) == '1') isAboRaw.setChecked(true);
+            if(result.get("isTorresStraitIslander")[0].charAt(0) == '1') isTSIRaw.setChecked(true);
+            career.setText("career");
+            fname.setEnabled(false);
+            lname.setEnabled(false);
+            dobD.setEnabled(false);
+            dobM.setEnabled(false);
+            dobY.setEnabled(false);
+            mrn.setEnabled(false);
+            isAboRaw.setEnabled(false);
+            isTSIRaw.setEnabled(false);
+            career.setEnabled(false);
+
+            update.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    fname.setEnabled(true);
+                    lname.setEnabled(true);
+                    dobD.setEnabled(true);
+                    dobM.setEnabled(true);
+                    dobY.setEnabled(true);
+                    mrn.setEnabled(true);
+                    isAboRaw.setEnabled(true);
+                    isTSIRaw.setEnabled(true);
+                    career.setEnabled(true);
+
+                    submit.setVisibility(View.VISIBLE);
+                    updateFlag = true;
+                }
+            });
+        }
+        c.disconnect();
         return layout;
     }
 }

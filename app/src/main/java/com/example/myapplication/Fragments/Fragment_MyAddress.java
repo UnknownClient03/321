@@ -15,6 +15,8 @@ import com.example.myapplication.MyInfoAndFamHis;
 import com.example.myapplication.R;
 import com.example.myapplication.SQLConnection;
 
+import java.util.HashMap;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link Fragment_MyAddress#newInstance} factory method to
@@ -62,13 +64,18 @@ public class Fragment_MyAddress extends Fragment {
         }
     }
 
+    //this flag denotes wether the
+    private boolean updateFlag = false;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        SQLConnection c = new SQLConnection("user1", "");
+        LoginManager manager = ((MyInfoAndFamHis)getActivity()).manager;
         View layout = inflater.inflate(R.layout.fragment_myaddress, container, false);
         Button submit = (Button)layout.findViewById(R.id.button_myAddress);
-        if(submit == null) throw new NullPointerException("could not find button: " + R.id.button_myAddress);
-        else submit.setOnClickListener(new View.OnClickListener() {
+        Button update = (Button)layout.findViewById(R.id.update_myAddress);
+        HashMap<String, String[]> result = c.select("SELECT guardianID, Country, City, Street, StreetNumber, unit, postcode FROM Address WHERE guardianID = "+manager.guardianID+";");
+        submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Button button = (Button)getActivity().findViewById(R.id.button_MIAFH_3);
                 button.performClick();
@@ -78,27 +85,72 @@ public class Fragment_MyAddress extends Fragment {
                 EditText streetNumber = (EditText)layout.findViewById(R.id.input_address_streetNumber);
                 EditText rawUnit = (EditText)layout.findViewById(R.id.input_address_unit);
                 EditText postcode = (EditText)layout.findViewById(R.id.input_address_postcode);
-
                 if(streetNumber.getText().length() == 0 || postcode.getText().length() == 0)
                 {
                     Log.e("query syntax error", "integers need to be set");
                     return;
                 }
-
                 String unit = (rawUnit.getText().length() == 0) ? "null" : "'"+rawUnit.getText()+"'";
                 SQLConnection c = new SQLConnection("user1", "");
-                LoginManager manager = ((MyInfoAndFamHis)getActivity()).manager;
-                String query = "INSERT INTO Address VALUES (" + manager.guardianID + ", '"
-                        + country.getText() + "', '"
-                        + city.getText() + "', '"
-                        + street.getText() + "', "
-                        + streetNumber.getText() + ", "
-                        + unit + ", "
-                        + postcode.getText() + ");";
+                String query = (updateFlag) ? "UPDATE Address SET Country = '" + country.getText()
+                                                            + "', City = '" + city.getText()
+                                                            + "', Street = '" + street.getText()
+                                                            + "', StreetNumber = " + streetNumber.getText()
+                                                            + ", unit = " + unit
+                                                            + ", postcode = '" + postcode.getText()
+                                                            + "' WHERE guardianID = " + manager.guardianID + ";"
+                                            : "INSERT INTO Address VALUES (" + manager.guardianID + ", '"
+                                                                             + country.getText() + "', '"
+                                                                             + city.getText() + "', '"
+                                                                             + street.getText() + "', "
+                                                                             + streetNumber.getText() + ", "
+                                                                             + unit + ", "
+                                                                             + postcode.getText() + ");";
                 c.update(query);
                 c.disconnect();
             }
         });
+
+        if(result.get("guardianID").length == 0) update.setVisibility(View.INVISIBLE);
+        else
+        {
+            submit.setVisibility(View.INVISIBLE);
+
+            EditText country = (EditText)layout.findViewById(R.id.input_address_country);
+            EditText city = (EditText)layout.findViewById(R.id.input_address_city);
+            EditText street = (EditText)layout.findViewById(R.id.input_address_street);
+            EditText streetNumber = (EditText)layout.findViewById(R.id.input_address_streetNumber);
+            EditText rawUnit = (EditText)layout.findViewById(R.id.input_address_unit);
+            EditText postcode = (EditText)layout.findViewById(R.id.input_address_postcode);
+
+            country.setText(result.get("Country")[0]);
+            city.setText(result.get("City")[0]);
+            street.setText(result.get("Street")[0]);
+            streetNumber.setText(result.get("StreetNumber")[0]);
+            rawUnit.setText(result.get("unit")[0]);
+            postcode.setText(result.get("postcode")[0]);
+
+            country.setEnabled(false);
+            city.setEnabled(false);
+            street.setEnabled(false);
+            streetNumber.setEnabled(false);
+            rawUnit.setEnabled(false);
+            postcode.setEnabled(false);
+
+            update.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    country.setEnabled(true);
+                    city.setEnabled(true);
+                    street.setEnabled(true);
+                    streetNumber.setEnabled(true);
+                    rawUnit.setEnabled(true);
+                    postcode.setEnabled(true);
+                    submit.setVisibility(View.VISIBLE);
+                    updateFlag = true;
+                }
+            });
+        }
+        c.disconnect();
         return layout;
     }
 }
