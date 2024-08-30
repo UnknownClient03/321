@@ -63,14 +63,16 @@ public class SQLConnection {
 
     }
     //Writes on the sql server using a TSQL statement (SELECT, UPDATE, INSERT, DELETE)
-    public void update(String SQLStatement) {
+    public boolean update(String SQLStatement) {
         try {
             Statement stmt = conn.createStatement();
             int count = stmt.executeUpdate(SQLStatement);
             Log.d("Message", "rows effected: " + count);
+            return true;
         } catch(SQLException E) {
             Log.d("SQLMessage", "Could not process query.");
             Log.e("SQLError", E.getMessage());
+            return false;
         }
     }
     //Returns A hashmap of the results from a TSQL SELECT statement
