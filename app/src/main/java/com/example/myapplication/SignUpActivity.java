@@ -50,8 +50,7 @@ public class SignUpActivity extends AppCompatActivity {
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validateInputs()) {
-                    // Register the user
+                if (validateInputs() && registeruser()) {
                     Toast.makeText(SignUpActivity.this, "Sign Up Successful", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(SignUpActivity.this, UserLoginActivity.class);
                     startActivity(intent);
@@ -97,4 +96,31 @@ public class SignUpActivity extends AppCompatActivity {
 
 
     }
+
+    private boolean registeruser()
+    {
+        SQLConnection conn = new SQLConnection("user1", "");
+        int ID = conn.getMaxID("Guardian");
+        String query = "INSERT INTO Guardian VALUES (" + ID + ", '"
+                                                       + firstNameInput.getText() + "', '"
+                                                       + lastNameInput.getText() + "', "
+                                                       + phoneNumberInput.getText() + ", "
+                                                       + phoneNumberInput.getText() + ", '"
+                                                       + emailInput.getText() + "');";
+        if(!conn.update(query))
+        {
+            Toast.makeText(this, "email Address is already a user.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        String salt = SHA256.randomUTF8(16);
+        String pepper = SHA256.randomUTF8(16);
+        String password = salt + passwordInput.getText() + pepper;
+        String hash = SHA256.convert(password);
+        query = "INSERT INTO GuardianAccountDetails VALUES (" + ID + ",'" + hash + "','" + salt + "','" + pepper + "');";
+        conn.update(query);
+        conn.disconnect();
+        return true;
+    }
+
 }

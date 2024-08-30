@@ -14,9 +14,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.HashMap;
+
 public class UserLoginActivity extends AppCompatActivity {
 
-    private EditText editTextPassword;
     private Button loginButton;
     private Button signupButton;
     private Button practitionerLoginButton;
@@ -33,18 +34,20 @@ public class UserLoginActivity extends AppCompatActivity {
             return insets;
         });
 
-        editTextPassword = findViewById(R.id.editTextTextPassword2);
+        EditText passwordView = findViewById(R.id.editTextTextPassword2);
+        EditText emailView = findViewById(R.id.editTextTextEmailAddress2);
         loginButton = findViewById(R.id.login_button);
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (validatePassword()) {
+                int guardianID = validateLogin(passwordView.getText().toString(), emailView.getText().toString());
+                if (guardianID != -1) {
                     Log.d("BUTTON", "Changing to select child page");
                     Intent intent = new Intent(UserLoginActivity.this, ChildSelectActivity.class);
-                    intent.putExtra("guardianID", 0);
+                    intent.putExtra("guardianID", guardianID);
                     intent.putExtra("childID", 0);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(UserLoginActivity.this, "Please enter a valid password", Toast.LENGTH_LONG).show();
+                    Toast.makeText(UserLoginActivity.this, "Please enter a valid email or password", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -77,22 +80,32 @@ public class UserLoginActivity extends AppCompatActivity {
                 Log.d("BUTTON", "Changing to Reset Password page");
                 Intent intent = new Intent(UserLoginActivity.this, ResetPasswordActivity.class);
                 intent.putExtra("guardianID", 0);
-                intent.putExtra("childID", 0);
                 startActivity(intent);
             }
         });
     }
 
-    private boolean validatePassword() {
-        String password = editTextPassword.getText().toString().trim();
-
-        if (password.isEmpty() || password.length() <= 5) {
-            return false;
+    private int validateLogin(String pass, String email) {
+        SQLConnection conn = new SQLConnection("user1", "");
+        String query = "SELECT salt, pepper FROM GuardianAccountDetails INNER JOIN Guardian ON guardianID = ID where email = '" + email + "';";
+        HashMap<String, String[]> result = conn.select(query);
+        if(result.get("salt").length == 0)
+        {
+            conn.disconnect();
+            return -1;
         }
-
-        boolean hasUppercase = !password.equals(password.toLowerCase());
-        boolean hasSpecial = password.matches(".*[!@#$%^&*()_+=<>?{}\\[\\]~-].*");
-
-        return hasUppercase && hasSpecial;
+        String salt = result.get("salt")[0];
+        String pepper = result.get("pepper")[0];
+        String password = salt + pass + pepper;
+        String hash = SHA256.convert(password);
+        query = "SELECT ID FROM Guardian INNER JOIN GuardianAccountDetails ON ID = guardianID where email = '" + email + "' AND Hashpassword = '" + hash + "';";
+        result = conn.select(query);
+        int ID = -1;
+        if(result.get("ID").length > 0)
+        {
+            ID = Integer.parseInt(result.get("ID")[0]);
+        }
+        conn.disconnect();
+        return ID;
     }
 }
