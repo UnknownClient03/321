@@ -83,7 +83,11 @@ public class Fragment_IllnessInjuryNotes_Write extends Fragment {
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 LoginManager manager = ((IllnessInjuryNotes)getActivity()).manager;
-                getActivity().getOnBackPressedDispatcher().onBackPressed();
+                IllnessInjuryNotes activity = ((IllnessInjuryNotes)getActivity());
+                activity.getOnBackPressedDispatcher().onBackPressed();
+                Intent intent = activity.getIntent();
+                activity.finish();
+                activity.startActivity(intent);
                 
                 EditText M = (EditText)layout.findViewById(R.id.input_illnessInjuryNotes_year_m);
                 EditText D = (EditText)layout.findViewById(R.id.input_illnessInjuryNotes_year_d);
