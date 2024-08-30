@@ -2,10 +2,13 @@ USE BlueBookDB;
 
 CREATE TABLE Guardian (
 	ID int not null,
-	phoneNumber int not null,
-	altPhoneNumber int not null,
+	fname varchar(31) not null,
+	lname varchar(31) not null,
+	phoneNumber bigint not null,
+	altPhoneNumber bigint not null,
 	email varchar(127) not null,
 	PRIMARY KEY (ID),
+	UNIQUE(email)
 );
 
 CREATE TABLE Parent (
