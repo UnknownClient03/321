@@ -20,20 +20,6 @@ CREATE TABLE GuardianAccountDetails(
 	FOREIGN KEY (guardianID) REFERENCES Guardian(ID)
 );
 
-CREATE TABLE Parent (
-	guardianID int not null,
-	parent varchar(6) not null,
-	fname varchar(31) not null,
-	lname varchar(31) not null,
-	DOB DATE not null,
-	MRN int not null,
-	isAboriginal BIT DEFAULT 0,
-	isTorresStraitIslander BIT  DEFAULT 0,
-	career varchar(31) not null,
-	CHECK (parent = 'Mother' OR parent = 'Father'),
-	FOREIGN KEY (guardianID) REFERENCES Guardian(ID)
-);
-
 CREATE TABLE Address (
 	guardianID int not null,
 	Country varchar(31) not null,
@@ -90,6 +76,20 @@ CREATE TABLE Child(
 	PRIMARY KEY(ID),
 	CHECK (sex = 'M' OR sex = 'F'),
 	FOREIGN KEY (guardianID) REFERENCES Guardian(ID)
+);
+
+CREATE TABLE Parent (
+	childID int not null,
+	parent varchar(6) not null,
+	fname varchar(31) not null,
+	lname varchar(31) not null,
+	DOB DATE not null,
+	MRN int not null,
+	isAboriginal BIT DEFAULT 0,
+	isTorresStraitIslander BIT  DEFAULT 0,
+	career varchar(31) not null,
+	CHECK (parent = 'Mother' OR parent = 'Father'),
+	FOREIGN KEY (childID) REFERENCES Child(ID)
 );
 
 CREATE TABLE familyHealthHistory(
@@ -192,7 +192,7 @@ CREATE TABLE BirthDetails(
 	dischargeWeight int,
 	headCirc int,
 	printName varchar(31),
-	signature varchar(31),
+	signature varchar(max),
 	designation varchar(31),
 	--Constraints
 	PRIMARY KEY(childID),
@@ -214,7 +214,7 @@ CREATE TABLE NewbornExamination(
 	anyConcernsComment varchar(255),
 	examiner varchar(31) not null,
 	designation varchar(31) not null,
-	signature varchar(31) not null,
+	signature varchar(max) not null,
 	date DATE not null,
 	PRIMARY KEY(childID),
 	FOREIGN KEY (childID) REFERENCES Child(ID),
@@ -274,7 +274,7 @@ CREATE TABLE Hearingscreen(
 	location varchar(127) not null,
 	date DATE not null,
 	screenBy varchar(31) not null,
-	signature varchar(31) not null,
+	signature varchar(max) not null,
 	rightOutcome varchar(5) not null,
 	leftOutcome varchar(5) not null,
 	referToAudiologist BIT DEFAULT 0 not null,
@@ -292,7 +292,7 @@ CREATE TABLE ImmunisationRecord(
 	vaccine varchar(31) not null,
 	dateGiven DATE not null,
 	batchNum int not null,
-	signature varchar(31),
+	signature varchar(max),
 	PRIMARY KEY(ID),
 	FOREIGN KEY (childID) REFERENCES Child(ID)
 );
@@ -327,7 +327,7 @@ CREATE TABLE ChildCheck(
 	comments varchar(255),
 	actionTaken varchar(255),
 	nameOfDoctor varchar(31) not null,
-	signature varchar(31) not null,
+	signature varchar(max) not null,
 	venue varchar(31) not null,
 	date DATE not null,
 	PRIMARY KEY(checkType),
