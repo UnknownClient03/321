@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.HashMap;
+
 public class ResetPasswordActivity extends AppCompatActivity {
 
     private ImageView logoImageView;
@@ -41,7 +43,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String email = emailEditText.getText().toString().trim();
-                if (email.isEmpty()) {
+                if (!validateEmail(email)) {
                     Toast.makeText(ResetPasswordActivity.this, "Please enter your email address", Toast.LENGTH_SHORT).show();
                 } else {
                     // Here you would normally call a method to send the reset email
@@ -59,8 +61,6 @@ public class ResetPasswordActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("BUTTON", "Changing to sign up");
                 Intent intent=new Intent(ResetPasswordActivity.this, SignUpActivity.class);
-                intent.putExtra("guardianID", 0);
-                intent.putExtra("childID", 0);
                 startActivity(intent);
             }
         });
@@ -71,12 +71,19 @@ public class ResetPasswordActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("BUTTON", "Changing to practitioner login");
                 Intent intent = new Intent(ResetPasswordActivity.this, PractitionerLoginActivity.class);
-                intent.putExtra("guardianID", 0);
-                intent.putExtra("childID", 0);
                 startActivity(intent);
             }
         });
 
         backArrow.setOnClickListener(v -> finish());
+    }
+
+    private boolean validateEmail(String email)
+    {
+        SQLConnection conn = new SQLConnection("user1", "");
+        String query = "SELECT email FROM Guardian where email = '" + email + "';";
+        HashMap<String, String[]> result = conn.select(query);
+        Log.d("msg", query);
+        return (result.get("email").length == 0) ? false : true;
     }
 }
