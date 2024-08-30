@@ -3,6 +3,7 @@ USE BlueBookDB;
 CREATE LOGIN user1 WITH PASSWORD = '';
 CREATE USER user1 FOR LOGIN user1;
 GRANT INSERT, SELECT ON Guardian TO user1;
+GRANT INSERT, SELECT ON GuardianAccountDetails TO user1;
 GRANT INSERT, SELECT ON Child TO user1;
 GRANT INSERT, SELECT ON GuardianLanguage TO user1;
 GRANT INSERT, SELECT ON Address TO user1;
