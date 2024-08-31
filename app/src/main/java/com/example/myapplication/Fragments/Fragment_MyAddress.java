@@ -72,6 +72,7 @@ public class Fragment_MyAddress extends Fragment {
         SQLConnection c = new SQLConnection("user1", "");
         LoginManager manager = ((MyInfoAndFamHis)getActivity()).manager;
         View layout = inflater.inflate(R.layout.fragment_myaddress, container, false);
+        if(!c.isConn()) return layout;
         Button submit = (Button)layout.findViewById(R.id.button_myAddress);
         Button update = (Button)layout.findViewById(R.id.update_myAddress);
         HashMap<String, String[]> result = c.select("SELECT guardianID, Country, City, Street, StreetNumber, unit, postcode FROM Address WHERE guardianID = "+manager.guardianID+";");

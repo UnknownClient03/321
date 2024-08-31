@@ -73,6 +73,7 @@ public class Fragment_Language extends Fragment {
         SQLConnection c = new SQLConnection("user1", "");
         LoginManager manager = ((MyInfoAndFamHis)getActivity()).manager;
         View layout = inflater.inflate(R.layout.fragment_language, container, false);
+        if(!c.isConn()) return layout;
         Button submit = (Button)layout.findViewById(R.id.button_Language);
         Button update = (Button)layout.findViewById(R.id.update_Language);
         LinearLayout lanContainer = (LinearLayout)layout.findViewById(R.id.languageContainer);

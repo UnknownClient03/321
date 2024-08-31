@@ -1,7 +1,8 @@
 package com.example.myapplication.Fragments;
 
-import android.os.Bundle;
 import android.content.Intent;
+import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import com.example.myapplication.IllnessInjuryNotes;
 import com.example.myapplication.LoginManager;
 import com.example.myapplication.R;
 import com.example.myapplication.SQLConnection;
+import com.example.myapplication.UsefulContacts;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -96,15 +98,18 @@ public class Fragment_IllnessInjuryNotes_Write extends Fragment {
                 EditText signed = (EditText)layout.findViewById(R.id.input_illnessInjuryNotes_signed);
 
                 SQLConnection c = new SQLConnection("user1", "");
-                int ID = c.getMaxID("IllnessInjuries");
+                if(c.isConn())
+                {
+                    int ID = c.getMaxID("IllnessInjuries");
 
-                String query = "INSERT INTO IllnessInjuries VALUES (" + manager.childID + ", "
-                                                                    + ID + ", '"
-                                                                    + Y.getText() + "-" + M.getText() + "-" + D.getText() + "', '"
-                                                                    + problem.getText() + "', '"
-                                                                    + signed.getText() + "');";
-                c.update(query);
-                c.disconnect();
+                    String query = "INSERT INTO IllnessInjuries VALUES (" + manager.childID + ", "
+                            + ID + ", '"
+                            + Y.getText() + "-" + M.getText() + "-" + D.getText() + "', '"
+                            + problem.getText() + "', '"
+                            + signed.getText() + "');";
+                    c.update(query);
+                    c.disconnect();
+                }
             }
         });
         return layout;

@@ -1,9 +1,11 @@
 package com.example.myapplication.Fragments;
 
-import android.os.Bundle;
 import android.content.Intent;
+import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,7 @@ import com.example.myapplication.LoginManager;
 import com.example.myapplication.ProgressNotes;
 import com.example.myapplication.R;
 import com.example.myapplication.SQLConnection;
+import com.example.myapplication.UsefulContacts;
 
 import java.util.HashMap;
 
@@ -97,19 +100,27 @@ public class Fragment_ProgressNotes_Write extends Fragment {
                 EditText reason = (EditText)layout.findViewById(R.id.input_progressNotes_reason);
 
                 SQLConnection c = new SQLConnection("user1", "");
-                int ID = c.getMaxID("ProgressNotes");
-                String query = "SELECT DOB FROM child WHERE ID = " + manager.childID + ";";
-                HashMap<String, String[]> result = c.select(query);
-                String DOB = result.get("DOB")[0];
+                if(c.isConn())
+                {
+                    int ID = c.getMaxID("ProgressNotes");
+                    String query = "SELECT DOB FROM child WHERE ID = " + manager.childID + ";";
+                    HashMap<String, String[]> result = c.select(query);
+                    if(result.get("DOB").length == 0)
+                    {
+                        Log.d("SQLLogicError", "Child with ID " + manager.childID + " does not exist in the database");
+                        return;
+                    }
+                    String DOB = result.get("DOB")[0];
 
 
-                query = "INSERT INTO ProgressNotes VALUES (" + manager.childID + ", "
-                                                                    + ID + ", '"
-                                                                    + Y.getText() + "-" + M.getText() + "-" + D.getText() + "', "
-                                                                    + "(SELECT DATEDIFF(year, '" + DOB + "', '" + Y.getText() + "-" + M.getText() + "-" + D.getText() + "')), '"
-                                                                    + reason.getText() + "');";
-                c.update(query);
-                c.disconnect();
+                    query = "INSERT INTO ProgressNotes VALUES (" + manager.childID + ", "
+                            + ID + ", '"
+                            + Y.getText() + "-" + M.getText() + "-" + D.getText() + "', "
+                            + "(SELECT DATEDIFF(year, '" + DOB + "', '" + Y.getText() + "-" + M.getText() + "-" + D.getText() + "')), '"
+                            + reason.getText() + "');";
+                    c.update(query);
+                    c.disconnect();
+                }
             }
         });
 

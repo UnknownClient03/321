@@ -73,6 +73,7 @@ public class Fragment_Mother extends Fragment {
         SQLConnection c = new SQLConnection("user1", "");
         LoginManager manager = ((MyInfoAndFamHis)getActivity()).manager;
         View layout = inflater.inflate(R.layout.fragment_mother, container, false);
+        if(!c.isConn()) return layout;
         Button submit = (Button)layout.findViewById(R.id.button_mother);
         Button update = (Button)layout.findViewById(R.id.update_mother);
         HashMap<String, String[]> result = c.select("SELECT childID, fname, lname, DOB, MRN, isAboriginal, isTorresStraitIslander, career FROM Parent WHERE childID = "+manager.childID+" AND parent = 'Mother';");

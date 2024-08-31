@@ -76,6 +76,7 @@ public class Fragment_AllAboutMe extends Fragment {
         SQLConnection c = new SQLConnection("user1", "");
         LoginManager manager = ((MyInfoAndFamHis)getActivity()).manager;
         View layout = inflater.inflate(R.layout.fragment_allaboutme, container, false);
+        if(!c.isConn()) return layout;
         Button submit = (Button)layout.findViewById(R.id.button_AllAboutMe);
         Button update = (Button)layout.findViewById(R.id.update_AllAboutMe);
         HashMap<String, String[]> result = c.select("SELECT ID, guardianID, fname, lname, DOB, sex FROM Child WHERE ID = "+manager.childID+" AND guardianID = "+manager.guardianID+";");

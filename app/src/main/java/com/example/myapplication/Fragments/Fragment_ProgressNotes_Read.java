@@ -85,42 +85,45 @@ public class Fragment_ProgressNotes_Read extends Fragment {
         });
 
         SQLConnection c = new SQLConnection("user1", "");
-        LoginManager manager = ((ProgressNotes)getActivity()).manager;
-        String query = "SELECT date, age, reason FROM ProgressNotes WHERE childID = "+manager.childID+";";
-        HashMap<String, String[]> result = c.select(query);
-        TableLayout table = (TableLayout)layout.findViewById(R.id.Table_ProgressNotes);
-        for(int i = 0; i < result.get("date").length; i++)
+        if(c.isConn())
         {
-            TableRow newRow = new TableRow(this.getContext());
-            TableRow.LayoutParams thparams = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT);
-            thparams.setMargins(0, 0, 0, 0);
-            thparams.weight = 1;
-            newRow.setLayoutParams(thparams);
-            newRow.setBackgroundColor(Color.BLACK);
+            LoginManager manager = ((ProgressNotes)getActivity()).manager;
+            String query = "SELECT date, age, reason FROM ProgressNotes WHERE childID = "+manager.childID+";";
+            HashMap<String, String[]> result = c.select(query);
+            TableLayout table = (TableLayout)layout.findViewById(R.id.Table_ProgressNotes);
+            for(int i = 0; i < result.get("date").length; i++)
+            {
+                TableRow newRow = new TableRow(this.getContext());
+                TableRow.LayoutParams thparams = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT);
+                thparams.setMargins(0, 0, 0, 0);
+                thparams.weight = 1;
+                newRow.setLayoutParams(thparams);
+                newRow.setBackgroundColor(Color.BLACK);
 
-            FrameLayout newFL0 = createframeLayout(0);
-            FrameLayout newFL1 = createframeLayout(1);
-            FrameLayout newFL2 = createframeLayout(2);
+                FrameLayout newFL0 = createframeLayout(0);
+                FrameLayout newFL1 = createframeLayout(1);
+                FrameLayout newFL2 = createframeLayout(2);
 
-            TextView newText0 = new TextView(this.getContext());
-            newText0.setText(result.get("date")[i]);
+                TextView newText0 = new TextView(this.getContext());
+                newText0.setText(result.get("date")[i]);
 
 
-            TextView newText1 = new TextView(this.getContext());
-            newText1.setText(result.get("age")[i]);
+                TextView newText1 = new TextView(this.getContext());
+                newText1.setText(result.get("age")[i]);
 
-            TextView newText2 = new TextView(this.getContext());
-            newText2.setText(result.get("reason")[i]);
+                TextView newText2 = new TextView(this.getContext());
+                newText2.setText(result.get("reason")[i]);
 
-            newFL0.addView(newText0);
-            newFL1.addView(newText1);
-            newFL2.addView(newText2);
-            newRow.addView(newFL0);
-            newRow.addView(newFL1);
-            newRow.addView(newFL2);
-            table.addView(newRow);
+                newFL0.addView(newText0);
+                newFL1.addView(newText1);
+                newFL2.addView(newText2);
+                newRow.addView(newFL0);
+                newRow.addView(newFL1);
+                newRow.addView(newFL2);
+                table.addView(newRow);
+            }
+            c.disconnect();
         }
-        c.disconnect();
         return layout;
     }
 
