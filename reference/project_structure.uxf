@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>4</zoom_level>
+  <zoom_level>7</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>592</x>
-      <y>204</y>
-      <w>68</w>
-      <h>48</h>
+      <x>490</x>
+      <y>147</y>
+      <w>119</w>
+      <h>84</h>
     </coordinates>
-    <panel_attributes>Main Activity
+    <panel_attributes>User Login
 --
 Where the login page is
 bg=#f5f5f5
@@ -21,10 +21,10 @@ bg=orange
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>592</x>
-      <y>280</y>
-      <w>68</w>
-      <h>48</h>
+      <x>490</x>
+      <y>462</y>
+      <w>119</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>Homepage
 --
@@ -39,36 +39,36 @@ bg=orange
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>624</x>
-      <y>248</y>
-      <w>12</w>
-      <h>40</h>
+      <x>539</x>
+      <y>224</y>
+      <w>21</w>
+      <h>98</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 bg=black
 </panel_attributes>
-    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>624</x>
-      <y>324</y>
-      <w>440</w>
-      <h>60</h>
+      <x>546</x>
+      <y>490</y>
+      <w>602</w>
+      <h>98</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 bg=black
 </panel_attributes>
-    <additional_attributes>1080.0;130.0;1080.0;50.0;10.0;50.0;10.0;10.0</additional_attributes>
+    <additional_attributes>840.0;10.0;700.0;10.0;700.0;120.0;10.0;120.0;10.0;80.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>756</x>
-      <y>372</y>
-      <w>68</w>
-      <h>48</h>
+      <x>777</x>
+      <y>623</y>
+      <w>119</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>My Info and Family
 History
@@ -85,10 +85,10 @@ bg=orange
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>632</x>
-      <y>440</y>
-      <w>68</w>
-      <h>48</h>
+      <x>560</x>
+      <y>742</y>
+      <w>119</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>Child Info
 --
@@ -103,10 +103,10 @@ bg=red
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>712</x>
-      <y>440</y>
-      <w>68</w>
-      <h>48</h>
+      <x>700</x>
+      <y>742</y>
+      <w>119</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>Mother Info
 --
@@ -121,10 +121,10 @@ bg=red
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>792</x>
-      <y>440</y>
-      <w>68</w>
-      <h>48</h>
+      <x>840</x>
+      <y>742</y>
+      <w>119</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>Father Info
 --
@@ -139,10 +139,10 @@ bg=red
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>872</x>
-      <y>440</y>
-      <w>68</w>
-      <h>48</h>
+      <x>980</x>
+      <y>742</y>
+      <w>119</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>Family Language
 --
@@ -157,10 +157,10 @@ bg=red
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>952</x>
-      <y>440</y>
-      <w>68</w>
-      <h>48</h>
+      <x>1120</x>
+      <y>742</y>
+      <w>119</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>Home Addres
 --
@@ -175,10 +175,10 @@ bg=red
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1032</x>
-      <y>440</y>
-      <w>68</w>
-      <h>48</h>
+      <x>1260</x>
+      <y>742</y>
+      <w>119</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>health History
 --
@@ -193,10 +193,10 @@ bg=red
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1112</x>
-      <y>440</y>
-      <w>68</w>
-      <h>48</h>
+      <x>1400</x>
+      <y>742</y>
+      <w>119</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>Dental History
 --
@@ -211,10 +211,10 @@ bg=red
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>660</x>
-      <y>416</y>
-      <w>140</w>
-      <h>32</h>
+      <x>609</x>
+      <y>700</y>
+      <w>245</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;60.0;10.0;30.0;330.0;30.0;330.0;10.0</additional_attributes>
@@ -222,10 +222,10 @@ bg=red
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>736</x>
-      <y>424</y>
-      <w>12</w>
-      <h>24</h>
+      <x>742</x>
+      <y>714</y>
+      <w>21</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -233,10 +233,10 @@ bg=red
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>788</x>
-      <y>424</y>
-      <w>368</w>
-      <h>24</h>
+      <x>833</x>
+      <y>714</y>
+      <w>644</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>900.0;40.0;900.0;10.0;10.0;10.0</additional_attributes>
@@ -244,10 +244,10 @@ bg=red
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>820</x>
-      <y>424</y>
-      <w>12</w>
-      <h>24</h>
+      <x>889</x>
+      <y>714</y>
+      <w>21</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -255,10 +255,10 @@ bg=red
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>904</x>
-      <y>424</y>
-      <w>12</w>
-      <h>24</h>
+      <x>1036</x>
+      <y>714</y>
+      <w>21</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -266,10 +266,10 @@ bg=red
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>980</x>
-      <y>424</y>
-      <w>12</w>
-      <h>24</h>
+      <x>1169</x>
+      <y>714</y>
+      <w>21</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -277,10 +277,10 @@ bg=red
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1060</x>
-      <y>424</y>
-      <w>12</w>
-      <h>24</h>
+      <x>1309</x>
+      <y>714</y>
+      <w>21</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -288,10 +288,10 @@ bg=red
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>900</x>
-      <y>340</y>
-      <w>12</w>
-      <h>40</h>
+      <x>1029</x>
+      <y>567</y>
+      <w>21</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 bg=black
@@ -301,10 +301,10 @@ bg=black
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>868</x>
-      <y>372</y>
-      <w>68</w>
-      <h>48</h>
+      <x>973</x>
+      <y>623</y>
+      <w>119</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>Infomation for parents
 History
@@ -322,10 +322,10 @@ bg=orange
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1016</x>
-      <y>376</y>
-      <w>68</w>
-      <h>48</h>
+      <x>1134</x>
+      <y>462</y>
+      <w>119</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>Useful Contacts
 History
@@ -342,10 +342,10 @@ bg=orange
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>784</x>
-      <y>340</y>
-      <w>12</w>
-      <h>40</h>
+      <x>826</x>
+      <y>567</y>
+      <w>21</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 bg=black
@@ -355,10 +355,10 @@ bg=black
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>824</x>
-      <y>200</y>
-      <w>24</w>
-      <h>56</h>
+      <x>763</x>
+      <y>413</y>
+      <w>42</w>
+      <h>98</h>
     </coordinates>
     <panel_attributes>Color
 --
@@ -373,10 +373,10 @@ bg=green
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>848</x>
-      <y>200</y>
-      <w>52</w>
-      <h>56</h>
+      <x>805</x>
+      <y>413</y>
+      <w>91</w>
+      <h>98</h>
     </coordinates>
     <panel_attributes>File
 --
@@ -391,10 +391,10 @@ bg=green
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
-      <y>340</y>
-      <w>156</w>
-      <h>40</h>
+      <x>294</x>
+      <y>567</y>
+      <w>273</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 bg=black
@@ -404,10 +404,10 @@ bg=black
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>452</x>
-      <y>372</y>
-      <w>68</w>
-      <h>48</h>
+      <x>245</x>
+      <y>623</y>
+      <w>119</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>Records
 --
@@ -424,10 +424,10 @@ bg=orange
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>416</x>
-      <y>416</y>
-      <w>76</w>
-      <h>64</h>
+      <x>182</x>
+      <y>700</y>
+      <w>133</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 bg=black
@@ -437,10 +437,10 @@ bg=black
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
-      <y>440</y>
-      <w>76</w>
-      <h>40</h>
+      <x>294</x>
+      <y>742</y>
+      <w>133</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 bg=black
@@ -450,10 +450,10 @@ bg=black
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>388</x>
-      <y>472</y>
-      <w>68</w>
-      <h>48</h>
+      <x>133</x>
+      <y>798</y>
+      <w>119</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>ProgressNotes
 --
@@ -470,10 +470,10 @@ bg=orange
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>516</x>
-      <y>472</y>
-      <w>68</w>
-      <h>48</h>
+      <x>357</x>
+      <y>798</y>
+      <w>119</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>IllnessInjuryNotes
 --
@@ -489,10 +489,10 @@ bg=orange
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>328</x>
-      <y>548</y>
-      <w>68</w>
-      <h>48</h>
+      <x>28</x>
+      <y>931</y>
+      <w>119</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>Child Info
 --
@@ -507,10 +507,10 @@ bg=red
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>408</x>
-      <y>548</y>
-      <w>68</w>
-      <h>48</h>
+      <x>168</x>
+      <y>931</y>
+      <w>119</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>Mother Info
 --
@@ -525,10 +525,10 @@ bg=red
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>492</x>
-      <y>548</y>
-      <w>68</w>
-      <h>48</h>
+      <x>315</x>
+      <y>931</y>
+      <w>119</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>Mother Info
 --
@@ -543,10 +543,10 @@ bg=red
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>572</x>
-      <y>548</y>
-      <w>68</w>
-      <h>48</h>
+      <x>455</x>
+      <y>931</y>
+      <w>119</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>Child Info
 --
@@ -561,10 +561,10 @@ bg=red
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>356</x>
-      <y>516</y>
-      <w>76</w>
-      <h>40</h>
+      <x>77</x>
+      <y>875</y>
+      <w>133</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;80.0;10.0;40.0;170.0;40.0;170.0;10.0</additional_attributes>
@@ -572,10 +572,10 @@ bg=red
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>520</x>
-      <y>516</y>
-      <w>40</w>
-      <h>40</h>
+      <x>364</x>
+      <y>875</y>
+      <w>70</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;80.0;10.0;40.0;80.0;40.0;80.0;10.0</additional_attributes>
@@ -583,10 +583,10 @@ bg=red
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>420</x>
-      <y>528</y>
-      <w>28</w>
-      <h>28</h>
+      <x>189</x>
+      <y>896</y>
+      <w>49</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>50.0;50.0;50.0;10.0;10.0;10.0</additional_attributes>
@@ -594,12 +594,165 @@ bg=red
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>548</x>
-      <y>528</y>
-      <w>64</w>
-      <h>28</h>
+      <x>413</x>
+      <y>896</y>
+      <w>112</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>140.0;50.0;140.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1337</x>
+      <y>406</y>
+      <w>119</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>UsefulContactsDisplay
+--
+Where you can see all the
+user contacts you have
+put in the database
+bg=#f5f5f5
+bg=red
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1337</x>
+      <y>532</y>
+      <w>119</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>UsefulContactsChange
+--
+Where you can write in 
+your own user contcts
+bg=#f5f5f5
+bg=red
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1246</x>
+      <y>448</y>
+      <w>105</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>130.0;10.0;60.0;10.0;60.0;90.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1281</x>
+      <y>504</y>
+      <w>70</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>80.0;90.0;10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>490</x>
+      <y>308</y>
+      <w>119</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>Child Select
+--
+Where you can select which children you are seeing
+bg=#f5f5f5
+bg=orange
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>539</x>
+      <y>385</y>
+      <w>21</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+bg=black
+</panel_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>756</x>
+      <y>147</y>
+      <w>119</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>Sign Up
+--
+Where you can create an
+account
+bg=#f5f5f5
+bg=orange
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>756</x>
+      <y>266</y>
+      <w>119</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>User Login
+--
+uif you lost your password
+you can enter you email
+and you will be emailed
+your password
+bg=#f5f5f5
+bg=orange
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>602</x>
+      <y>175</y>
+      <w>168</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+bg=black
+</panel_attributes>
+    <additional_attributes>220.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>665</x>
+      <y>182</y>
+      <w>105</w>
+      <h>147</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+bg=black
+</panel_attributes>
+    <additional_attributes>130.0;190.0;10.0;190.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>
