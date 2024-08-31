@@ -79,7 +79,6 @@ public class Fragment_Language extends Fragment {
         LinearLayout lanContainer = (LinearLayout)layout.findViewById(R.id.languageContainer);
         Button addLanguage = (Button)layout.findViewById(R.id.button_add_langauge);
 
-        HashMap<String, String[]> result = c.select("SELECT guardianID, ID, language FROM GuardianLanguage WHERE guardianID = "+manager.guardianID+";");
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Button button = (Button)getActivity().findViewById(R.id.button_MIAFH_4);
@@ -89,16 +88,18 @@ public class Fragment_Language extends Fragment {
                 int ID = c.getMaxID("GuardianLanguage");
                 if(updateFlag)
                 {
-                    String query = "DELETE FROM GuardianLanguage WHERE guardianID = " + manager.guardianID + ";";
-                    c.update(query);
+                    String query = "DELETE FROM GuardianLanguage WHERE guardianID = ?";
+                    c.update(query, new String[]{ String.valueOf(manager.guardianID) }, new char[]{ 'i' });
                 }
 
                 for(int i = 0; i < lanContainer.getChildCount(); i++)
                 {
                     EditText language = (EditText)lanContainer.getChildAt(i);
                     if(language.getText().length() == 0) continue;
-                    String query = "INSERT INTO GuardianLanguage VALUES (" + manager.guardianID + ", "+(ID+i)+", '" + language.getText() + "');";
-                    c.update(query);
+                    String query = "INSERT INTO GuardianLanguage VALUES (?, ?, ?)";
+                    String[] params = { String.valueOf(manager.guardianID), String.valueOf(ID+i), language.getText().toString() };
+                    char[] paramTypes = { 'i', 'i', 's' };
+                    c.update(query, params, paramTypes);
                 }
                 c.disconnect();
             }});
@@ -108,6 +109,8 @@ public class Fragment_Language extends Fragment {
                 else addlanguageInput(lanContainer, new EditText(layout.getContext()));
             }});
 
+        String query = "SELECT guardianID, ID, language FROM GuardianLanguage WHERE guardianID = ?;";
+        HashMap<String, String[]> result = c.select(query, new String[]{String.valueOf(manager.guardianID)}, new char[]{'i'});
         if(result.get("ID").length == 0) update.setVisibility(View.INVISIBLE);
         else
         {

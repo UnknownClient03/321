@@ -75,7 +75,6 @@ public class Fragment_MyAddress extends Fragment {
         if(!c.isConn()) return layout;
         Button submit = (Button)layout.findViewById(R.id.button_myAddress);
         Button update = (Button)layout.findViewById(R.id.update_myAddress);
-        HashMap<String, String[]> result = c.select("SELECT guardianID, Country, City, Street, StreetNumber, unit, postcode FROM Address WHERE guardianID = "+manager.guardianID+";");
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Button button = (Button)getActivity().findViewById(R.id.button_MIAFH_3);
@@ -84,34 +83,27 @@ public class Fragment_MyAddress extends Fragment {
                 EditText city = (EditText)layout.findViewById(R.id.input_address_city);
                 EditText street = (EditText)layout.findViewById(R.id.input_address_street);
                 EditText streetNumber = (EditText)layout.findViewById(R.id.input_address_streetNumber);
-                EditText rawUnit = (EditText)layout.findViewById(R.id.input_address_unit);
+                EditText unit = (EditText)layout.findViewById(R.id.input_address_unit);
                 EditText postcode = (EditText)layout.findViewById(R.id.input_address_postcode);
                 if(streetNumber.getText().length() == 0 || postcode.getText().length() == 0)
                 {
                     Log.e("query syntax error", "integers need to be set");
                     return;
                 }
-                String unit = (rawUnit.getText().length() == 0) ? "null" : "'"+rawUnit.getText()+"'";
                 SQLConnection c = new SQLConnection("user1", "");
-                String query = (updateFlag) ? "UPDATE Address SET Country = '" + country.getText()
-                                                            + "', City = '" + city.getText()
-                                                            + "', Street = '" + street.getText()
-                                                            + "', StreetNumber = " + streetNumber.getText()
-                                                            + ", unit = " + unit
-                                                            + ", postcode = '" + postcode.getText()
-                                                            + "' WHERE guardianID = " + manager.guardianID + ";"
-                                            : "INSERT INTO Address VALUES (" + manager.guardianID + ", '"
-                                                                             + country.getText() + "', '"
-                                                                             + city.getText() + "', '"
-                                                                             + street.getText() + "', "
-                                                                             + streetNumber.getText() + ", "
-                                                                             + unit + ", "
-                                                                             + postcode.getText() + ");";
-                c.update(query);
+                String query = (updateFlag) ? "UPDATE UsefulContact SET Country = ?, City = ?, Street = ?, StreetNumber = ?, unit = ?, postcode = ? WHERE guardianID = ?;"
+                                            : "INSERT INTO Address VALUES(?, ?, ?, ?, ?, ?, ?);";
+                String[] params = (updateFlag) ? new String[]{ country.getText().toString(), city.getText().toString(), street.getText().toString(), streetNumber.getText().toString(), unit.getText().toString(), postcode.getText().toString(), String.valueOf(manager.guardianID) }
+                                               : new String[]{ String.valueOf(manager.guardianID), country.getText().toString(), city.getText().toString(), street.getText().toString(), streetNumber.getText().toString(), unit.getText().toString(), postcode.getText().toString() };
+                char[] paramTypes = (updateFlag) ? new char[]{ 's', 's', 's', 'i', (unit.getText().length() == 0) ? 'n' : 's', 'i', 'i' }
+                                                 : new char[]{ 'i', 's', 's', 's', 'i', (unit.getText().length() == 0) ? 'n' : 's', 'i' };
+                c.update(query, params, paramTypes);
                 c.disconnect();
             }
         });
 
+        String query = "SELECT guardianID, Country, City, Street, StreetNumber, unit, postcode FROM Address WHERE guardianID = ?;";
+        HashMap<String, String[]> result = c.select(query, new String[]{String.valueOf(manager.guardianID)}, new char[]{'i'});
         if(result.get("guardianID").length == 0) update.setVisibility(View.INVISIBLE);
         else
         {

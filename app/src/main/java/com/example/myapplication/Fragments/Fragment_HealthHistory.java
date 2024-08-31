@@ -77,7 +77,8 @@ public class Fragment_HealthHistory extends Fragment {
         if(!c.isConn()) return layout;
         Button submit = (Button)layout.findViewById(R.id.button_healthHistory);
 
-        HashMap<String, String[]> result = c.select("SELECT childID, riskFactor, condition, note FROM familyHealthHistory WHERE childID = "+manager.childID+";");
+        String query = "SELECT childID, riskFactor, condition, note FROM familyHealthHistory WHERE childID = ?;";
+        HashMap<String, String[]> result = c.select(query, new String[]{String.valueOf(manager.guardianID)}, new char[]{'i'});
         HashMap<String, String[]> resultB = c.select("SELECT ID FROM Child WHERE ID = "+manager.childID+" AND guardianID = "+manager.guardianID+";");
         if(resultB.get("ID").length == 0)
         {
@@ -89,8 +90,7 @@ public class Fragment_HealthHistory extends Fragment {
         }
         else if(result.get("childID").length == 0)
         {
-            if(submit == null) throw new NullPointerException("could not find button: " + R.id.button_healthHistory);
-            else submit.setOnClickListener(new View.OnClickListener() {
+            submit.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     Button button = (Button)getActivity().findViewById(R.id.button_MIAFH_7);
                     button.performClick();
@@ -118,12 +118,10 @@ public class Fragment_HealthHistory extends Fragment {
                     for(int i = 0; i < 8; i++, ID++)
                     {
                         String note = (info[0][i].length() == 0) ? "null" : "'"+info[0][i]+"'";
-                        String query = "INSERT INTO familyHealthHistory VALUES (" + ID + ", "
-                                + manager.childID + ", '"
-                                + info[1][i] + "', "
-                                + info[2][i]+", "
-                                + note+");";
-                        c.update(query);
+                        String query = "INSERT INTO familyHealthHistory VALUES (?, ?, ?, ?, ?)";
+                        String[] params = { String.valueOf(ID), String.valueOf(manager.childID), info[1][i], info[2][i], info[0][i] };
+                        char[] paramTypes = { 'i', 'i', 's', 'i', (info[0][i].length() == 0) ? 'n' : 's' };
+                        c.update(query, params, paramTypes);
                     }
                     c.disconnect();
                 }

@@ -79,7 +79,8 @@ public class Fragment_DentalHistory extends Fragment {
         if(!c.isConn()) return layout;
         Button submit = (Button)layout.findViewById(R.id.button_dentlHealth);
 
-        HashMap<String, String[]> result = c.select("SELECT childID, riskFactor, condition, note FROM FamilyDentalHistory WHERE childID = "+manager.childID+";");
+        String query = "SELECT childID, riskFactor, condition, note FROM FamilyDentalHistory WHERE childID = ?;";
+        HashMap<String, String[]> result = c.select(query, new String[]{String.valueOf(manager.guardianID)}, new char[]{'i'});
         HashMap<String, String[]> resultB = c.select("SELECT ID FROM Child WHERE ID = "+manager.childID+" AND guardianID = "+manager.guardianID+";");
         if(resultB.get("ID").length == 0)
         {
@@ -91,8 +92,7 @@ public class Fragment_DentalHistory extends Fragment {
         }
         else if(result.get("childID").length == 0)
         {
-            if(submit == null) throw new NullPointerException("could not find button: " + R.id.button_dentlHealth);
-            else submit.setOnClickListener(new View.OnClickListener() {
+            submit.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     Intent intent=new Intent(getActivity(), Homepage.class);
                     getActivity().startActivity(intent);
@@ -120,12 +120,10 @@ public class Fragment_DentalHistory extends Fragment {
                     for(int i = 0; i < 3; i++, ID++)
                     {
                         String note = (info[0][i].length() == 0) ? "null" : "'"+info[0][i]+"'";
-                        String query = "INSERT INTO FamilyDentalHistory VALUES (" + ID + ", "
-                                + manager.childID + ", '"
-                                + info[1][i] + "', "
-                                + info[2][i]+", "
-                                + note+");";
-                        c.update(query);
+                        String query = "INSERT INTO FamilyDentalHistory VALUES (?, ?, ?, ?, ?)";
+                        String[] params = { String.valueOf(ID), String.valueOf(manager.childID), info[1][i], info[2][i], info[0][i] };
+                        char[] paramTypes = { 'i', 'i', 's', 'i', (info[0][i].length() == 0) ? 'n' : 's' };
+                        c.update(query, params, paramTypes);
                     }
                     c.disconnect();
                 }

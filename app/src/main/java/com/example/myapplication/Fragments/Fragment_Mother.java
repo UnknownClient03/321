@@ -76,7 +76,6 @@ public class Fragment_Mother extends Fragment {
         if(!c.isConn()) return layout;
         Button submit = (Button)layout.findViewById(R.id.button_mother);
         Button update = (Button)layout.findViewById(R.id.update_mother);
-        HashMap<String, String[]> result = c.select("SELECT childID, fname, lname, DOB, MRN, isAboriginal, isTorresStraitIslander, career FROM Parent WHERE childID = "+manager.childID+" AND parent = 'Mother';");
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Button button = (Button)getActivity().findViewById(R.id.button_MIAFH_5);
@@ -98,27 +97,21 @@ public class Fragment_Mother extends Fragment {
                 int isAbo = (isAboRaw.isChecked()) ? 1 : 0;
                 int isTSI = (isTSIRaw.isChecked()) ? 1 : 0;
                 SQLConnection c = new SQLConnection("user1", "");
-                String query = (updateFlag) ? "UPDATE Parent SET fname = '" + fname.getText()
-                                                           + "', lname = '" + lname.getText()
-                                                           + "', DOB = '" + dobY.getText() + "-" + dobM.getText()+"-"+dobD.getText()
-                                                           + "', MRN = '" + mrn.getText()
-                                                           + "', isAboriginal = " + isAbo
-                                                           + ", isTorresStraitIslander = " + isTSI
-                                                           + ", career = '" + career.getText()
-                                                           + "' WHERE childID = " + manager.childID + " AND parent = 'Mother';"
-                                            : "INSERT INTO Parent VALUES (" + manager.childID + ", 'Mother', '"
-                                                                            + fname.getText() + "', '"
-                                                                            + lname.getText() + "', '"
-                                                                            + dobY.getText() + "-" + dobM.getText()+"-"+dobD.getText() + "', "
-                                                                            + mrn.getText() + ", "
-                                                                            + isAbo + ", "
-                                                                            + isTSI + ", '"
-                                                                            + career.getText() + "');";
-                c.update(query);
+                String query = (updateFlag) ? "UPDATE Parent SET fname = ?, lname = ?, DOB = ?, MRN = ?, isAboriginal = ?, isTorresStraitIslander = ?, career = ? WHERE childID = ? AND parent = ?;"
+                                            : "INSERT INTO Parent VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                String[] params = (updateFlag) ? new String[]{ fname.getText().toString(), lname.getText().toString(), dobY.getText() + "-" + dobM.getText()+"-"+dobD.getText(), mrn.getText().toString(), String.valueOf(isAbo), String.valueOf(isTSI), career.getText().toString(), String.valueOf(manager.childID), "Mother" }
+                                               : new String[]{ String.valueOf(manager.childID), "Mother", fname.getText().toString(), lname.getText().toString(), dobY.getText() + "-" + dobM.getText()+"-"+dobD.getText(), mrn.getText().toString(), String.valueOf(isAbo), String.valueOf(isTSI), career.getText().toString() };
+                char[] paramTypes = (updateFlag) ? new char[]{ 's', 's', 's', 'i', 'i', 'i', 's', 'i', 's' }
+                                                 : new char[]{ 'i', 's', 's', 's', 's', 'i', 'i', 'i', 's' };
+                c.update(query, params, paramTypes);
                 c.disconnect();
             }
         });
 
+        String query = "SELECT childID, fname, lname, DOB, MRN, isAboriginal, isTorresStraitIslander, career FROM Parent WHERE childID = ? AND parent = ?;";
+        String[] params = { String.valueOf(manager.childID), "Mother" };
+        char[] paramTypes = { 'i', 's' };
+        HashMap<String, String[]> result = c.select(query, params, paramTypes);
         if(result.get("childID").length == 0) update.setVisibility(View.INVISIBLE);
         else
         {
@@ -141,7 +134,7 @@ public class Fragment_Mother extends Fragment {
             mrn.setText(result.get("MRN")[0]);
             if(result.get("isAboriginal")[0].charAt(0) == '1') isAboRaw.setChecked(true);
             if(result.get("isTorresStraitIslander")[0].charAt(0) == '1') isTSIRaw.setChecked(true);
-            career.setText("career");
+            career.setText(result.get("career")[0]);
             fname.setEnabled(false);
             lname.setEnabled(false);
             dobD.setEnabled(false);

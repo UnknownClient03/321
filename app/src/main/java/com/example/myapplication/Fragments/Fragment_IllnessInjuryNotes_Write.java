@@ -101,13 +101,10 @@ public class Fragment_IllnessInjuryNotes_Write extends Fragment {
                 if(c.isConn())
                 {
                     int ID = c.getMaxID("IllnessInjuries");
-
-                    String query = "INSERT INTO IllnessInjuries VALUES (" + manager.childID + ", "
-                            + ID + ", '"
-                            + Y.getText() + "-" + M.getText() + "-" + D.getText() + "', '"
-                            + problem.getText() + "', '"
-                            + signed.getText() + "');";
-                    c.update(query);
+                    String query = "INSERT INTO IllnessInjuries VALUES (?, ?, ?, ?, ?);";
+                    String[] params = { String.valueOf(manager.childID), String.valueOf(ID), Y.getText() + "-" + M.getText() + "-" + D.getText(), problem.getText().toString(), signed.getText().toString() };
+                    char[] paramTypes = { 'i', 'i', 's', 's', 's' };
+                    c.update(query, params, paramTypes);
                     c.disconnect();
                 }
             }

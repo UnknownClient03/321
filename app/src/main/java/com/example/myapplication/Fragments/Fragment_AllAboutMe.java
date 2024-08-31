@@ -79,7 +79,6 @@ public class Fragment_AllAboutMe extends Fragment {
         if(!c.isConn()) return layout;
         Button submit = (Button)layout.findViewById(R.id.button_AllAboutMe);
         Button update = (Button)layout.findViewById(R.id.update_AllAboutMe);
-        HashMap<String, String[]> result = c.select("SELECT ID, guardianID, fname, lname, DOB, sex FROM Child WHERE ID = "+manager.childID+" AND guardianID = "+manager.guardianID+";");
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Button button = (Button)getActivity().findViewById(R.id.button_MIAFH_2);
@@ -98,22 +97,20 @@ public class Fragment_AllAboutMe extends Fragment {
                 }
                 SQLConnection c = new SQLConnection("user1", "");
                 char sex = (sexM.isChecked()) ? 'M':(sexF.isChecked()) ? 'F' : ' ';
-                String query = (updateFlag) ? "UPDATE Child SET fname = '" + fname.getText()
-                                                          + "', lname = '" + lname.getText()
-                                                          + "', DOB = '" + dobY.getText() + "-" + dobM.getText()+"-"+dobD.getText()
-                                                          + "', sex = '" + sex
-                                                          + "' WHERE ID = " + manager.childID
-                                                          + " AND guardianID = " + manager.guardianID + ";"
-                                              : "INSERT INTO Child VALUES (" + manager.childID + ", "
-                                                                             + manager.guardianID + ", '"
-                                                                             + fname.getText() + "','"
-                                                                             + lname.getText() + "','"
-                                                                             + dobY.getText() + "-" + dobM.getText()+"-"+dobD.getText() + "','"
-                                                                             + sex +"');";
-                c.update(query);
+                String query = (updateFlag) ? "UPDATE Child SET fname = ?, lname = ?, DOB = ?, sex = ? WHERE ID = ? AND guardianID = ?"
+                                            : "INSERT INTO Child VALUES (?, ?, ?, ?, ?, ?);";
+                String[] params = (updateFlag) ? new String[]{ fname.getText().toString(), lname.getText().toString(), dobY.getText() + "-" + dobM.getText()+"-"+dobD.getText(), String.valueOf(sex), String.valueOf(manager.childID), String.valueOf(manager.guardianID) }
+                                               : new String[]{ String.valueOf(manager.childID), String.valueOf(manager.guardianID), fname.getText().toString(), lname.getText().toString(), dobY.getText() + "-" + dobM.getText()+"-"+dobD.getText(), String.valueOf(sex) };
+                char[] paramTypes = (updateFlag) ? new char[]{ 's', 's', 's', 's', 'i', 'i' } : new char[]{ 'i', 'i', 's', 's', 's', 's' };
+                c.update(query, params, paramTypes);
                 c.disconnect();
             }
         });
+
+        String query = "SELECT ID, guardianID, fname, lname, DOB, sex FROM Child WHERE ID = ? AND guardianID = ?;";
+        String[] params = { String.valueOf(manager.childID), String.valueOf(manager.guardianID) };
+        char[] paramTypes = { 'i', 'i' };
+        HashMap<String, String[]> result = c.select(query, params, paramTypes);
         if(result.get("ID").length == 0)
             update.setVisibility(View.INVISIBLE);
         else

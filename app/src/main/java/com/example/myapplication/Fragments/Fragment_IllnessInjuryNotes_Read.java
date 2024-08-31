@@ -89,8 +89,8 @@ public class Fragment_IllnessInjuryNotes_Read extends Fragment {
         if(c.isConn())
         {
             LoginManager manager = ((IllnessInjuryNotes)getActivity()).manager;
-            String query = "SELECT date, problem, signed FROM IllnessInjuries WHERE childID = "+manager.childID+";";
-            HashMap<String, String[]> result = c.select(query);
+            String query = "SELECT date, problem, signed FROM IllnessInjuries WHERE childID = ?;";
+            HashMap<String, String[]> result = c.select(query, new String[]{String.valueOf(manager.childID)}, new char[]{'i'});
             TableLayout table = (TableLayout)layout.findViewById(R.id.Table_IllnessInjuryNotes);
             for(int i = 0; i < result.get("date").length; i++)
             {

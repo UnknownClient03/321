@@ -88,8 +88,8 @@ public class Fragment_ProgressNotes_Read extends Fragment {
         if(c.isConn())
         {
             LoginManager manager = ((ProgressNotes)getActivity()).manager;
-            String query = "SELECT date, age, reason FROM ProgressNotes WHERE childID = "+manager.childID+";";
-            HashMap<String, String[]> result = c.select(query);
+            String query = "SELECT date, age, reason FROM ProgressNotes WHERE childID = ?;";
+            HashMap<String, String[]> result = c.select(query, new String[]{String.valueOf(manager.childID)}, new char[]{'i'});
             TableLayout table = (TableLayout)layout.findViewById(R.id.Table_ProgressNotes);
             for(int i = 0; i < result.get("date").length; i++)
             {

@@ -103,8 +103,8 @@ public class Fragment_ProgressNotes_Write extends Fragment {
                 if(c.isConn())
                 {
                     int ID = c.getMaxID("ProgressNotes");
-                    String query = "SELECT DOB FROM child WHERE ID = " + manager.childID + ";";
-                    HashMap<String, String[]> result = c.select(query);
+                    String query = "SELECT DOB FROM child WHERE ID = ?;";
+                    HashMap<String, String[]> result = c.select(query, new String[]{String.valueOf(manager.childID)}, new char[]{'i'});
                     if(result.get("DOB").length == 0)
                     {
                         Log.d("SQLLogicError", "Child with ID " + manager.childID + " does not exist in the database");
@@ -112,13 +112,10 @@ public class Fragment_ProgressNotes_Write extends Fragment {
                     }
                     String DOB = result.get("DOB")[0];
 
-
-                    query = "INSERT INTO ProgressNotes VALUES (" + manager.childID + ", "
-                            + ID + ", '"
-                            + Y.getText() + "-" + M.getText() + "-" + D.getText() + "', "
-                            + "(SELECT DATEDIFF(year, '" + DOB + "', '" + Y.getText() + "-" + M.getText() + "-" + D.getText() + "')), '"
-                            + reason.getText() + "');";
-                    c.update(query);
+                    query = "INSERT INTO ProgressNotes VALUES (?, ?, ?, (SELECT DATEDIFF(year, ?, ?)), ?);";
+                    String[] params = { String.valueOf(manager.childID), String.valueOf(ID), Y.getText() + "-" + M.getText() + "-" + D.getText(),DOB, Y.getText() + "-" + M.getText() + "-" + D.getText(), reason.getText().toString() };
+                    char[] paramTypes = { 'i', 'i', 's', 's', 's', 's' };
+                    c.update(query, params, paramTypes);
                     c.disconnect();
                 }
             }
