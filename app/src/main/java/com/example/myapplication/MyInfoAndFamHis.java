@@ -52,7 +52,6 @@ public class MyInfoAndFamHis extends AppCompatActivity {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.FRAG_MIAFH, currentFrag)
-                .addToBackStack(null)
                 .commit();
 
 
