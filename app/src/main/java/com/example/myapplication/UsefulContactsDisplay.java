@@ -80,42 +80,45 @@ public class UsefulContactsDisplay extends Fragment {
         });
 
         SQLConnection c = new SQLConnection("user1", "");
-        String query = "SELECT name, phoneNumber, email, Country, City, Street, StreetNumber, unit, postcode FROM UsefulContact WHERE guardianID = " + manager.guardianID + ";";
-        HashMap<String, String[]> result = c.select(query);
-        TableLayout table = layout.findViewById(R.id.Table_UsefulContacts);
-        for(int i = 0; i < result.get("name").length; i++)
-            if(table.getChildAt(i) instanceof TableRow)
-            {
-                int tableRowIndex = 0;
-                switch(result.get("name")[i])
+        if(c.isConn())
+        {
+            String query = "SELECT name, phoneNumber, email, Country, City, Street, StreetNumber, unit, postcode FROM UsefulContact WHERE guardianID = " + manager.guardianID + ";";
+            HashMap<String, String[]> result = c.select(query);
+            TableLayout table = layout.findViewById(R.id.Table_UsefulContacts);
+            for(int i = 0; i < result.get("name").length; i++)
+                if(table.getChildAt(i) instanceof TableRow)
                 {
-                    case "Child and Family Health Centre": tableRowIndex = 1; break;
-                    case "Community Health Centre": tableRowIndex = 2; break;
-                    case "Dentist":tableRowIndex = 3; break;
-                    case "Family daycare/Childcare centre": tableRowIndex = 4; break;
-                    case "Family doctor": tableRowIndex = 5; break;
-                    case "High school": tableRowIndex = 6; break;
-                    case "Local government/Council": tableRowIndex = 7; break;
-                    case "Pre-school/Kindergarten": tableRowIndex = 8; break;
-                    case "Primary school": tableRowIndex = 9; break;
-                    case "Specialist doctor": tableRowIndex = 10;
-                }
-                TableRow tableRow = (TableRow)table.getChildAt(tableRowIndex);
-                TextView col2 = (TextView)tableRow.getChildAt(2);
-                String txt2 = ((result.get("phoneNumber")[i] == null) ? "" : "PhoneNumber: " + result.get("phoneNumber")[i])
-                        + ((result.get("email")[i] == null) ? "" : "\nEmail: " + result.get("email")[i]);
-                col2.setText(txt2);
+                    int tableRowIndex = 0;
+                    switch(result.get("name")[i])
+                    {
+                        case "Child and Family Health Centre": tableRowIndex = 1; break;
+                        case "Community Health Centre": tableRowIndex = 2; break;
+                        case "Dentist":tableRowIndex = 3; break;
+                        case "Family daycare/Childcare centre": tableRowIndex = 4; break;
+                        case "Family doctor": tableRowIndex = 5; break;
+                        case "High school": tableRowIndex = 6; break;
+                        case "Local government/Council": tableRowIndex = 7; break;
+                        case "Pre-school/Kindergarten": tableRowIndex = 8; break;
+                        case "Primary school": tableRowIndex = 9; break;
+                        case "Specialist doctor": tableRowIndex = 10;
+                    }
+                    TableRow tableRow = (TableRow)table.getChildAt(tableRowIndex);
+                    TextView col2 = (TextView)tableRow.getChildAt(2);
+                    String txt2 = ((result.get("phoneNumber")[i] == null) ? "" : "PhoneNumber: " + result.get("phoneNumber")[i])
+                            + ((result.get("email")[i] == null) ? "" : "\nEmail: " + result.get("email")[i]);
+                    col2.setText(txt2);
 
-                TextView col1 = (TextView)tableRow.getChildAt(1);
-                String txt1 = result.get("Country")[i] + ", "
+                    TextView col1 = (TextView)tableRow.getChildAt(1);
+                    String txt1 = result.get("Country")[i] + ", "
                             + result.get("City")[i] + ", "
                             + result.get("Street")[i] + ", "
                             + result.get("StreetNumber")[i] + ", "
                             + ((result.get("unit")[i] == null) ? "" : result.get("unit")[i] + ", ")
                             + result.get("postcode")[i];
-                col1.setText(txt1);
-            }
-        c.disconnect();
+                    col1.setText(txt1);
+                }
+            c.disconnect();
+        }
         return layout;
     }
 }

@@ -1,8 +1,11 @@
 package com.example.myapplication;
 
-import android.os.Bundle;
+import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -79,6 +82,7 @@ public class UsefulContactsChange extends Fragment {
                 activity.finish();
                 activity.startActivity(intent);
 
+
                 EditText rawphone = (EditText)layout.findViewById(R.id.input_usefulContact_phone);
                 EditText rawemail = (EditText)layout.findViewById(R.id.input_usefulContact_email);
                 EditText country = (EditText)layout.findViewById(R.id.input_usefulContact_country);
@@ -122,30 +126,33 @@ public class UsefulContactsChange extends Fragment {
                 }
 
                 SQLConnection c = new SQLConnection("user1", "");
-                String query = "SELECT name FROM UsefulContact WHERE guardianID = " + manager.guardianID + " AND name = '" + name + "';";
-                HashMap<String, String[]> result = c.select(query);
-                query = (result.get("name").length == 0) ? "INSERT INTO UsefulContact VALUES(" + manager.guardianID + ", '"
-                        + name + "', "
-                        + phone + ", "
-                        + email + ", '"
-                        + country.getText() + "', '"
-                        + city.getText() + "', '"
-                        + street.getText() + "', "
-                        + streetNumber.getText() + ", "
-                        + unit + ", "
-                        + postcode.getText() + ");" :
-                "UPDATE UsefulContact SET phoneNumber = " + phone
-                        + ", email = " + email
-                        + ", Country = '" + country.getText()
-                        + "', City = '" + city.getText()
-                        + "', Street = '" + street.getText()
-                        + "', StreetNumber = '" + streetNumber.getText()
-                        + "', unit = " + unit + ", postcode = "
-                        + postcode.getText() + " WHERE guardianID = "
-                        + manager.guardianID + " AND name = '"
-                        + name + "';";
-                c.update(query);
-                c.disconnect();
+                if(c.isConn())
+                {
+                    String query = "SELECT name FROM UsefulContact WHERE guardianID = " + manager.guardianID + " AND name = '" + name + "';";
+                    HashMap<String, String[]> result = c.select(query);
+                    query = (result.get("name").length == 0) ? "INSERT INTO UsefulContact VALUES(" + manager.guardianID + ", '"
+                            + name + "', "
+                            + phone + ", "
+                            + email + ", '"
+                            + country.getText() + "', '"
+                            + city.getText() + "', '"
+                            + street.getText() + "', "
+                            + streetNumber.getText() + ", "
+                            + unit + ", "
+                            + postcode.getText() + ");" :
+                            "UPDATE UsefulContact SET phoneNumber = " + phone
+                                    + ", email = " + email
+                                    + ", Country = '" + country.getText()
+                                    + "', City = '" + city.getText()
+                                    + "', Street = '" + street.getText()
+                                    + "', StreetNumber = '" + streetNumber.getText()
+                                    + "', unit = " + unit + ", postcode = "
+                                    + postcode.getText() + " WHERE guardianID = "
+                                    + manager.guardianID + " AND name = '"
+                                    + name + "';";
+                    c.update(query);
+                    c.disconnect();
+                }
             }
         });
 

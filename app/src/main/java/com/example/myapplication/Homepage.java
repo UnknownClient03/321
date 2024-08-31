@@ -5,12 +5,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import java.util.HashMap;
 
 public class Homepage extends AppCompatActivity {
     LoginManager manager;
@@ -29,6 +32,19 @@ public class Homepage extends AppCompatActivity {
         NavBarManager.setNavBarButtons(Homepage.this);
         Bundle extras = getIntent().getExtras();
         if (extras != null) manager = new LoginManager(extras.getInt("guardianID"), extras.getInt("childID"));
+
+        TextView textView = (TextView)findViewById(R.id.textView_homepage_name);
+        SQLConnection conn = new SQLConnection("user1", "");
+        if(conn.isConn())
+        {
+            String query = "SELECT fname, lname from Guardian WHERE ID = " + manager.guardianID + ";";
+            HashMap<String, String[]> result = conn.select(query);
+            conn.disconnect();
+            String fname = result.get("fname")[0];
+            String lname = result.get("lname")[0];
+            textView.setText(fname + " " + lname);
+        }
+
         // Setting up the Immunisation button
         Button buttonImmunisation = findViewById(R.id.button_immunisation);
         buttonImmunisation.setOnClickListener(new View.OnClickListener() {
@@ -119,6 +135,7 @@ public class Homepage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         Button buttonRecords = findViewById(R.id.button_my_records);
         buttonRecords.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
