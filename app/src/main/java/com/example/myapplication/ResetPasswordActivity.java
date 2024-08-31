@@ -82,9 +82,8 @@ public class ResetPasswordActivity extends AppCompatActivity {
     {
         SQLConnection conn = new SQLConnection("user1", "");
         if(!conn.isConn()) return false;
-        String query = "SELECT email FROM Guardian where email = '" + email + "';";
-        HashMap<String, String[]> result = conn.select(query);
-        Log.d("msg", query);
+        String query = "SELECT email FROM Guardian where email = ?;";
+        HashMap<String, String[]> result = conn.select(query, new String[]{email}, new char[]{'s'});
         return (result.get("email").length == 0) ? false : true;
     }
 }

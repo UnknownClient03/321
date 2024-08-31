@@ -6,6 +6,7 @@ import android.util.Log;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -17,6 +18,11 @@ import java.util.Properties;
 
 public class SQLConnection {
 
+    /*for prepared statement use:
+          i - signify an integer
+          s - signify a String
+          n - signify a null type
+     */
     private Connection conn;
     private boolean isConnected;
     private final String ip =       "192.168.0.249"    //IP address of local computer
@@ -69,7 +75,7 @@ public class SQLConnection {
 
     }
 
-    //checks if a connection is established
+    //Checks if a connection is established
     public boolean isConn()
     {
         return isConnected;
@@ -87,12 +93,47 @@ public class SQLConnection {
             return false;
         }
     }
+    public boolean update(String SQLStatement, String[] params, char[] paramTypes) {
+        try {
+            PreparedStatement stmt = preparedSTMT(SQLStatement, params, paramTypes);
+            int count = stmt.executeUpdate();
+            Log.d("Message", "rows effected: " + count);
+            return true;
+        } catch(SQLException E) {
+            Log.d("SQLMessage", "Could not process query.");
+            Log.e("SQLError", E.getMessage());
+            return false;
+        }
+    }
     //Returns A hashmap of the results from a TSQL SELECT statement
     public HashMap<String, String[]> select(String SQLStatement) {
         HashMap<String, String[]> hash= new HashMap<String, String[]>();
         try {
             Statement stmt = conn.createStatement();
             ResultSet set = stmt.executeQuery(SQLStatement);
+            ResultSetMetaData rsmd = set.getMetaData();
+            int colNum = rsmd.getColumnCount();
+
+            String[][] arr = new String[colNum+1][100];
+            int rowCount = 0;
+            for(rowCount = 0; set.next() && rowCount < 100; rowCount++)
+                for(int i = 0; i < colNum; i++)
+                    arr[i][rowCount] = set.getString(i+1);
+
+            for(int i = 0; i < colNum; i++)
+                hash.put(rsmd.getColumnName(i+1), Arrays.copyOf(arr[i], rowCount));
+            Log.d("SQLMessage", rowCount + " Rows gathered");
+        } catch(SQLException E) {
+            Log.d("SQLMessage", "Could not process query.");
+            Log.e("SQLError", E.getMessage());
+        }
+        return hash;
+    }
+    public HashMap<String, String[]> select(String SQLStatement, String[] params, char[] paramTypes) {
+        HashMap<String, String[]> hash= new HashMap<String, String[]>();
+        try {
+            PreparedStatement stmt = preparedSTMT(SQLStatement, params, paramTypes);
+            ResultSet set = stmt.executeQuery();
             ResultSetMetaData rsmd = set.getMetaData();
             int colNum = rsmd.getColumnCount();
 
@@ -127,12 +168,31 @@ public class SQLConnection {
         return row;
     }
     //Gets the maximum ID from table only if ID variable is called "ID"
-    public int getMaxID(String table)
-    {
+    public int getMaxID(String table) {
         HashMap<String, String[]> result = select("SELECT MIN(ID) + 1 as maxID FROM " + table + " WHERE ID + 1 NOT IN (SELECT ID FROM " + table + ");");
+        if(result.get("maxID")[0] == null) return 0;
         String maxID = result.get("maxID")[0];
-        if(maxID == null) return 0;
         return Integer.parseInt(maxID);
+    }
+
+    private PreparedStatement preparedSTMT(String SQLStatement, String[] params, char[] paramTypes)
+            throws SQLException {
+        if(params.length != paramTypes.length) throw new android.database.SQLException("The params and the types of params entered for the prepared statement is not equal. " + String.valueOf(params.length) + " : " + String.valueOf(paramTypes.length));
+        char[] charArr = SQLStatement.toCharArray();
+        int charCount = 0;
+        for(int i = 0; i < charArr.length; i++) if(charArr[i] == '?') charCount++;
+        if(charCount != params.length) throw new android.database.SQLException("The params and the amount of '?' entered for the prepared statement is not equal. " + String.valueOf(params.length) + " : " + String.valueOf(charCount));
+
+        PreparedStatement stmt = conn.prepareStatement(SQLStatement);
+        for(int i = 0; i < params.length; i++)
+            switch(paramTypes[i])
+            {
+                case 's': stmt.setString(i+1, params[i]); break;
+                case 'i': stmt.setInt(i+1, Integer.parseInt(params[i])); break;
+                case 'n': stmt.setNull(i+1, java.sql.Types.NULL); break;
+                default: throw new android.database.SQLException("param in ParamTypes is unknown: " + paramTypes[i]);
+            }
+        return stmt;
     }
 }
 

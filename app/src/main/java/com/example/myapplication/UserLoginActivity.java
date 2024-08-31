@@ -84,8 +84,8 @@ public class UserLoginActivity extends AppCompatActivity {
     private int validateLogin(String pass, String email) {
         SQLConnection conn = new SQLConnection("user1", "");
         if(!conn.isConn()) return -1;
-        String query = "SELECT salt, pepper FROM GuardianAccountDetails INNER JOIN Guardian ON guardianID = ID where email = '" + email + "';";
-        HashMap<String, String[]> result = conn.select(query);
+        String query = "SELECT salt, pepper FROM GuardianAccountDetails INNER JOIN Guardian ON guardianID = ID where email = ?;";
+        HashMap<String, String[]> result = conn.select(query, new String[]{email}, new char[]{'s'});
         if(result.get("salt").length == 0)
         {
             conn.disconnect();
@@ -95,9 +95,9 @@ public class UserLoginActivity extends AppCompatActivity {
         String pepper = result.get("pepper")[0];
         String password = salt + pass + pepper;
         String hash = SHA256.convert(password);
-        query = "SELECT ID FROM Guardian INNER JOIN GuardianAccountDetails ON ID = guardianID where email = '" + email + "' AND Hashpassword = '" + hash + "';";
-        result = conn.select(query);
         int ID = -1;
+        query = "SELECT ID FROM Guardian INNER JOIN GuardianAccountDetails ON ID = guardianID where email = ? AND Hashpassword = ?;";
+        result = conn.select(query, new String[]{email, hash}, new char[]{'s', 's'});
         if(result.get("ID").length > 0)
         {
             ID = Integer.parseInt(result.get("ID")[0]);

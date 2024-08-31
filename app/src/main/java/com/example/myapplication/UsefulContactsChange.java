@@ -83,13 +83,13 @@ public class UsefulContactsChange extends Fragment {
                 activity.startActivity(intent);
 
 
-                EditText rawphone = (EditText)layout.findViewById(R.id.input_usefulContact_phone);
-                EditText rawemail = (EditText)layout.findViewById(R.id.input_usefulContact_email);
+                EditText phone = (EditText)layout.findViewById(R.id.input_usefulContact_phone);
+                EditText email = (EditText)layout.findViewById(R.id.input_usefulContact_email);
                 EditText country = (EditText)layout.findViewById(R.id.input_usefulContact_country);
                 EditText city = (EditText)layout.findViewById(R.id.input_usefulContact_city);
                 EditText street = (EditText)layout.findViewById(R.id.input_usefulContact_street);
                 EditText streetNumber = (EditText)layout.findViewById(R.id.input_usefulContact_streetNumber);
-                EditText rawUnit = (EditText)layout.findViewById(R.id.input_usefulContact_unit);
+                EditText unit = (EditText)layout.findViewById(R.id.input_usefulContact_unit);
                 EditText postcode = (EditText)layout.findViewById(R.id.input_usefulContact_postcode);
 
                 RadioGroup group = (RadioGroup)layout.findViewById(R.id.radiogroup_usefulContacts);
@@ -116,9 +116,6 @@ public class UsefulContactsChange extends Fragment {
                     case 9: name = "Specialist doctor";
                 }
 
-                String phone = (rawphone.getText().length() == 0) ? "NULL" : ""+rawphone.getText();
-                String email = (rawemail.getText().length() == 0) ? "NULL" : "'" + rawemail.getText() + "'";
-                String unit = (rawUnit.getText().length() == 0) ? "null" : "'"+rawUnit.getText()+"'";
                 if(streetNumber.getText().length() == 0 || postcode.getText().length() == 0)
                 {
                     Log.e("query syntax error", "integers need to be set");
@@ -128,29 +125,15 @@ public class UsefulContactsChange extends Fragment {
                 SQLConnection c = new SQLConnection("user1", "");
                 if(c.isConn())
                 {
-                    String query = "SELECT name FROM UsefulContact WHERE guardianID = " + manager.guardianID + " AND name = '" + name + "';";
-                    HashMap<String, String[]> result = c.select(query);
-                    query = (result.get("name").length == 0) ? "INSERT INTO UsefulContact VALUES(" + manager.guardianID + ", '"
-                            + name + "', "
-                            + phone + ", "
-                            + email + ", '"
-                            + country.getText() + "', '"
-                            + city.getText() + "', '"
-                            + street.getText() + "', "
-                            + streetNumber.getText() + ", "
-                            + unit + ", "
-                            + postcode.getText() + ");" :
-                            "UPDATE UsefulContact SET phoneNumber = " + phone
-                                    + ", email = " + email
-                                    + ", Country = '" + country.getText()
-                                    + "', City = '" + city.getText()
-                                    + "', Street = '" + street.getText()
-                                    + "', StreetNumber = '" + streetNumber.getText()
-                                    + "', unit = " + unit + ", postcode = "
-                                    + postcode.getText() + " WHERE guardianID = "
-                                    + manager.guardianID + " AND name = '"
-                                    + name + "';";
-                    c.update(query);
+                    String query = "SELECT name FROM UsefulContact WHERE guardianID = ? AND name = ?;";
+                    HashMap<String, String[]> result = c.select(query, new String[]{String.valueOf(manager.guardianID), name}, new char[]{'i', 's'});
+                    query = (result.get("name").length == 0) ? "INSERT INTO UsefulContact VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"
+                                                             : "UPDATE UsefulContact SET phoneNumber = ?, email = ?, Country = ?, City = ?, Street = ?, StreetNumber = ?, unit = ?, postcode = ? WHERE guardianID = ? AND name = ?;";
+                    String[] params = (result.get("name").length == 0) ? new String[]{ String.valueOf(manager.guardianID), name, phone.getText().toString(), email.getText().toString(), country.getText().toString(), city.getText().toString(), street.getText().toString(), streetNumber.getText().toString(), unit.getText().toString(), postcode.getText().toString() }
+                                                                       : new String[]{ phone.getText().toString(), email.getText().toString(), country.getText().toString(), city.getText().toString(), street.getText().toString(), streetNumber.getText().toString(), unit.getText().toString(), postcode.getText().toString(), String.valueOf(manager.guardianID), name };
+                    char[] paramTypes = (result.get("name").length == 0) ? new char[]{ 'i', 's', (phone.getText().length() == 0) ? 'n' : 'i', (email.getText().length() == 0) ? 'n' : 's', 's', 's', 's', 'i', (unit.getText().length() == 0) ? 'n' : 's', 'i' }
+                                                                         : new char[]{ (phone.getText().length() == 0) ? 'n' : 'i', (email.getText().length() == 0) ? 'n' : 's', 's', 's', 's', 'i', (unit.getText().length() == 0) ? 'n' : 's', 'i', 'i', 's' };
+                    c.update(query, params, paramTypes);
                     c.disconnect();
                 }
             }

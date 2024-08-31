@@ -102,13 +102,10 @@ public class SignUpActivity extends AppCompatActivity {
         SQLConnection conn = new SQLConnection("user1", "");
         if(!conn.isConn()) return false;
         int ID = conn.getMaxID("Guardian");
-        String query = "INSERT INTO Guardian VALUES (" + ID + ", '"
-                                                       + firstNameInput.getText() + "', '"
-                                                       + lastNameInput.getText() + "', "
-                                                       + phoneNumberInput.getText() + ", "
-                                                       + phoneNumberInput.getText() + ", '"
-                                                       + emailInput.getText() + "');";
-        if(!conn.update(query))
+        String query = "INSERT INTO Guardian VALUES (?, ?, ?, ?, ?, ?)";
+        String[] params = { String.valueOf(ID), firstNameInput.getText().toString(), lastNameInput.getText().toString(), phoneNumberInput.getText().toString(), phoneNumberInput.getText().toString(), emailInput.getText().toString()};
+        char[] paramTypes = {'i', 's', 's', 'i', 'i', 's' };
+        if(!conn.update(query, params, paramTypes))
         {
             Toast.makeText(this, "email Address is already a user.", Toast.LENGTH_SHORT).show();
             return false;
@@ -118,8 +115,10 @@ public class SignUpActivity extends AppCompatActivity {
         String pepper = SHA256.randomUTF8(16);
         String password = salt + passwordInput.getText() + pepper;
         String hash = SHA256.convert(password);
-        query = "INSERT INTO GuardianAccountDetails VALUES (" + ID + ",'" + hash + "','" + salt + "','" + pepper + "');";
-        conn.update(query);
+        query = "INSERT INTO GuardianAccountDetails VALUES (?, ?, ?, ?)";
+        String[] params2 = { String.valueOf(ID), hash, salt, pepper };
+        char[] paramTypes2 = {'i', 's', 's', 's'};
+        conn.update(query, params2, paramTypes2);
         conn.disconnect();
         return true;
     }

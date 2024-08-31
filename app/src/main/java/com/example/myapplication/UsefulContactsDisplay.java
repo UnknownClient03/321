@@ -82,8 +82,8 @@ public class UsefulContactsDisplay extends Fragment {
         SQLConnection c = new SQLConnection("user1", "");
         if(c.isConn())
         {
-            String query = "SELECT name, phoneNumber, email, Country, City, Street, StreetNumber, unit, postcode FROM UsefulContact WHERE guardianID = " + manager.guardianID + ";";
-            HashMap<String, String[]> result = c.select(query);
+            String query = "SELECT name, phoneNumber, email, Country, City, Street, StreetNumber, unit, postcode FROM UsefulContact WHERE guardianID = ?;";
+            HashMap<String, String[]> result = c.select(query, new String[]{String.valueOf(manager.guardianID)}, new char[]{'i'});
             TableLayout table = layout.findViewById(R.id.Table_UsefulContacts);
             for(int i = 0; i < result.get("name").length; i++)
                 if(table.getChildAt(i) instanceof TableRow)

@@ -37,8 +37,8 @@ public class Homepage extends AppCompatActivity {
         SQLConnection conn = new SQLConnection("user1", "");
         if(conn.isConn())
         {
-            String query = "SELECT fname, lname from Guardian WHERE ID = " + manager.guardianID + ";";
-            HashMap<String, String[]> result = conn.select(query);
+            String query = "SELECT fname, lname from Guardian WHERE ID = ?;";
+            HashMap<String, String[]> result = conn.select(query, new String[]{String.valueOf(manager.guardianID)}, new char[]{'i'});
             conn.disconnect();
             String fname = result.get("fname")[0];
             String lname = result.get("lname")[0];
