@@ -15,8 +15,9 @@ import java.sql.Statement;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Properties;
+import java.lang.Thread;
 
-public class SQLConnection {
+public class SQLConnection extends Thread {
 
     /*for prepared statement use:
           i - signify an integer
@@ -30,38 +31,62 @@ public class SQLConnection {
                        , db =       "BlueBookDB"       //Database name
                        , username = "user1"            //Keep the same unless changed in users.sql
                        , password = "";                //Keep the same unless changed in users.sql
+    private int ConnecitonTimeout = 2000;              //Connection Timeout in milliseconds. Would advise the ConnecitonTimeout to be > 3 for local networks and > 10 for public networks
 
     @SuppressLint("NewApi")
     //Establishes connection between Android API and sql server
     public SQLConnection() {
         connect(username, password);
     }
+    //Constructor, only for use of threads
+    private SQLConnection(boolean bool) {}
     //Establishes connection  using variable username and password
     public SQLConnection(String username, String password) {
         connect(username, password);
     }
-    public void connect(String username, String password) {
+    //connects too the database
+    private void connect(String username, String password) {
         StrictMode.ThreadPolicy a=new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(a);
-        try
-        {
+        try {
+            SQLConnection thread = new SQLConnection(false);
+            thread.start();
+            /*Thread.sleep(ConnecitonTimeout);
+            isConnected = thread.isConnected;
+            conn = thread.conn;
+            if(!isConnected || thread.isAlive())
+                throw new SQLException("Connection timed out ");*/
+            for(int time = 0; thread.isAlive() && time < ConnecitonTimeout; time += 10)
+                Thread.sleep(10);
+            isConnected = thread.isConnected;
+            conn = thread.conn;
+            if(!isConnected)
+                throw new SQLException("Connection timed out ");
+        }
+        catch (Exception e) {
+            Log.d("SQLMessage", "Cannot connect to database.");
+            Log.d("SQLError", e.getMessage());
+        }
+    }
+    //thread
+    public void run() {
+        try {
             Class.forName("net.sourceforge.jtds.jdbc.Driver");
-            String ConnectURL = "jdbc:jtds:sqlserver://"+ip+":"+port+"/" + db + ";"
-                    +"; user="+username
-                    +"; password="+password+";";
-
-
+            String ConnectURL = "jdbc:jtds:sqlserver://"+ip+":"+port+"/" + db;
             Log.d("SQLMessage", "Attempting to establish connection to database.");
-            conn = DriverManager.getConnection(ConnectURL, username, password);
+            Properties properties = new Properties();
+            properties.put("user", username);
+            properties.put("password", password);
+            conn = DriverManager.getConnection(ConnectURL, properties);
             Log.d("SQLMessage", "Connected to database.");
             isConnected = true;
-        }
-        catch (Exception E){
+        } catch (Exception E) {
             Log.d("SQLMessage", "Cannot connect to database.");
             Log.e("SQLError", E.getMessage());
             isConnected = false;
         }
     }
+
     //Disconnects from sql server
     public void disconnect() {
         try {
