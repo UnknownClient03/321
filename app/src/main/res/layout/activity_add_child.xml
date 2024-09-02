@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -21,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:gravity="center"
-        android:text="Personal Details"
+        android:text="Add Child"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,36 +36,26 @@
         android:src="@drawable/back_arrow"
         android:contentDescription="Back"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintTop_toBottomOf="@id/header"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/profile_picture_background"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/round_button"
-        android:scaleType="center"
-        app:layout_constraintTop_toBottomOf="@id/title_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
+    <ImageButton
         android:id="@+id/profile_picture"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
         android:src="@drawable/profile_picture"
-        android:scaleType="center"
+        android:background="@drawable/round_button"
+        android:contentDescription="Profile Picture"
         app:layout_constraintTop_toBottomOf="@id/title_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp" />
 
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintTop_toBottomOf="@id/profile_picture"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -77,108 +68,93 @@
             android:padding="16dp">
 
             <EditText
-                android:id="@+id/given_name_input"
+                android:id="@+id/fname_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:hint="First Name"
+                android:padding="12dp"
+                android:inputType="text"
+                android:backgroundTint="#FFFFFF" />
+
+            <EditText
+                android:id="@+id/lname_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Last Name"
+                android:padding="12dp"
+                android:inputType="text"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#FFFFFF" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Date of Birth"
+                android:textSize="18sp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:hint="Given Names"
-                android:padding="12dp"
-                android:inputType="text"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/profile_picture" />
+                android:textColor="#333333"
+                android:fontFamily="sans-serif-medium" />
 
-            <EditText
-                android:id="@+id/surname_input"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Surname"
-                android:padding="12dp"
-                android:inputType="text"
-                app:layout_constraintTop_toBottomOf="@id/given_name_input"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp" />
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
 
-            <EditText
-                android:id="@+id/address_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Home address"
-                android:padding="12dp"
-                android:inputType="textMultiLine"
-                android:lines="3"
-                android:gravity="top"
-                app:layout_constraintTop_toBottomOf="@id/surname_input"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp" />
+                <EditText
+                    android:id="@+id/dob_day_input"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="DD"
+                    android:padding="12dp"
+                    android:inputType="number"
+                    android:backgroundTint="#FFFFFF" />
+
+                <EditText
+                    android:id="@+id/dob_month_input"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="MM"
+                    android:padding="12dp"
+                    android:inputType="number"
+                    android:backgroundTint="#FFFFFF" />
+
+                <EditText
+                    android:id="@+id/dob_year_input"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="YYYY"
+                    android:padding="12dp"
+                    android:inputType="number"
+                    android:backgroundTint="#FFFFFF" />
+            </LinearLayout>
 
             <Spinner
                 android:id="@+id/sex_input"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:hint="Sex"
-                android:inputType="text"
-                android:padding="12dp"
-                app:layout_constraintTop_toBottomOf="@id/address_input"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp" />
-
-            <EditText
-                android:id="@+id/dob_input"
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Date of Birth"
+                android:layout_marginTop="16dp"
                 android:padding="12dp"
-                android:inputType="text"
-                app:layout_constraintTop_toBottomOf="@id/sex_input"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp" />
-
-            <EditText
-                android:id="@+id/birth_weight_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Birth Weight"
-                android:padding="12dp"
-                android:inputType="text"
-                app:layout_constraintTop_toBottomOf="@id/dob_input"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp" />
+                android:popupBackground="#FFFFFF"
+                android:gravity="start"
+                android:textAlignment="viewStart"
+                android:spinnerMode="dropdown" />
 
             <Button
                 android:id="@+id/save_child_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Add Child"
-                android:textSize="20sp"
-                android:padding="16dp"
+                android:textSize="22sp"
+                android:padding="20dp"
                 android:background="@drawable/button_3d"
                 android:elevation="12dp"
-                app:layout_constraintTop_toBottomOf="@id/birth_weight_input"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="24dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
-                android:backgroundTint="#6482AD"/>
+                android:backgroundTint="#6482AD" />
 
         </LinearLayout>
     </ScrollView>
