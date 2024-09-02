@@ -47,7 +47,6 @@
         app:layout_constraintTop_toBottomOf="@id/header"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <!-- Move the "No children added" text closer to the top -->
     <TextView
         android:id="@+id/no_children_message"
         android:layout_width="wrap_content"
@@ -74,7 +73,6 @@
         android:dividerHeight="1dp"
         android:padding="10dp" />
 
-    <!-- Adjusted button layout to ensure no overlap -->
     <Button
         android:id="@+id/add_child_button"
         android:layout_width="0dp"
