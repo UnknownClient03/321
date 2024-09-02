@@ -30,12 +30,15 @@ public class ManageChildrenActivity extends AppCompatActivity {
 
     private boolean isRemoveMode = false; // Track the removal mode
 
-    private int currentGuardianID = 0; // Guardian ID set to 0
+    private int currentGuardianID; // Store the current guardian ID
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_children);
+
+        // Retrieve the guardian ID from the intent
+        currentGuardianID = getIntent().getIntExtra("guardianID", 0);
 
         childListView = findViewById(R.id.child_list_view);
         removeChildButton = findViewById(R.id.remove_child_button);
@@ -81,7 +84,7 @@ public class ManageChildrenActivity extends AppCompatActivity {
             for (Child child : selectedChildren) {
                 // Remove child from the list and the database
                 childrenList.remove(child);
-                removeChildFromDatabase(child.getId());
+                removeChildFromDatabase(child.getId(), currentGuardianID);
             }
             Toast.makeText(ManageChildrenActivity.this, "Selected children removed.", Toast.LENGTH_SHORT).show();
 
@@ -95,6 +98,7 @@ public class ManageChildrenActivity extends AppCompatActivity {
         addChildButton.setOnClickListener(v -> {
             // Start AddChildActivity to add a new child
             Intent intent = new Intent(ManageChildrenActivity.this, AddChildActivity.class);
+            intent.putExtra("guardianID", currentGuardianID); // Pass the guardian ID
             startActivityForResult(intent, ADD_CHILD_REQUEST);
         });
 
@@ -137,7 +141,6 @@ public class ManageChildrenActivity extends AppCompatActivity {
                 int guardianID = Integer.parseInt(guardianIDs[i]);
 
                 if (guardianID == currentGuardianID) {
-
                     childrenList.add(new Child(id, fname, lname, dob, sex));
                 }
             }
@@ -158,9 +161,9 @@ public class ManageChildrenActivity extends AppCompatActivity {
     }
 
     // Remove child from the database
-    private void removeChildFromDatabase(int childId) {
+    private void removeChildFromDatabase(int childId, int guardianID) {
         SQLConnection sqlConnection = new SQLConnection("user1", "");
-        sqlConnection.update("DELETE FROM Child WHERE ID = " + childId);
+        sqlConnection.update("DELETE FROM Child WHERE ID = " + childId + " AND guardianID = " + guardianID);
         sqlConnection.disconnect();
     }
 }
