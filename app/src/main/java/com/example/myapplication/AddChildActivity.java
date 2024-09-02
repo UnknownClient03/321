@@ -121,8 +121,7 @@ public class AddChildActivity extends AppCompatActivity {
     }
 
     private void insertChildToDatabase(String givenNames, String surname, String dob, String sex) {
-        SQLConnection sqlConnection = new SQLConnection();
-        sqlConnection.connect("user1", "");
+        SQLConnection sqlConnection = new SQLConnection("user1", "");
 
         // Get the next available ID
         int newChildId = sqlConnection.getMaxID("Child");
