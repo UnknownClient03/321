@@ -23,11 +23,15 @@ public class ChildSelectActivity extends AppCompatActivity {
     private LinearLayout childContainer;
     private Button manageChildrenButton;
     private List<Child> childrenList = new ArrayList<>();
+    private int guardianID; // Store the current guardian ID
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.child_select);
+
+        // Retrieve the guardian ID from the intent
+        guardianID = getIntent().getIntExtra("guardianID", 0);
 
         // Initialize UI components
         childContainer = findViewById(R.id.child_container);
@@ -35,6 +39,7 @@ public class ChildSelectActivity extends AppCompatActivity {
 
         manageChildrenButton.setOnClickListener(v -> {
             Intent intent = new Intent(ChildSelectActivity.this, ManageChildrenActivity.class);
+            intent.putExtra("guardianID", guardianID); // Pass the guardian ID
             startActivity(intent);
         });
 
@@ -49,23 +54,12 @@ public class ChildSelectActivity extends AppCompatActivity {
     }
 
     private void loadChildrenFromDatabase() {
-        int guardianID = getCurrentGuardianID();
-
         Log.d("ChildSelectActivity", "Fetching children for guardian ID: " + guardianID);
 
-        Log.d("ChildSelectActivity", "Connecting to the database...");
         SQLConnection sqlConnection = new SQLConnection("user1", "");
 
         HashMap<String, String[]> result = sqlConnection.select("SELECT ID, fname, lname, DOB, sex FROM Child WHERE guardianID = " + guardianID);
         sqlConnection.disconnect();
-
-        if (result == null) {
-            Log.e("ChildSelectActivity", "Failed to fetch data from the database.");
-        } else if (result.get("ID") == null) {
-            Log.d("ChildSelectActivity", "No data found in the database for the given guardianID.");
-        } else {
-            Log.d("ChildSelectActivity", "Data retrieved from the database: " + result.toString());
-        }
 
         if (result != null && result.get("ID") != null) {
             String[] ids = result.get("ID");
@@ -110,6 +104,7 @@ public class ChildSelectActivity extends AppCompatActivity {
             Log.d("ChildSelectActivity", "Child view added: " + child.getName());
         }
 
+        // Add "Add Child" button
         View addChildView = LayoutInflater.from(this).inflate(R.layout.child_item_layout, childContainer, false);
         ImageButton addButton = addChildView.findViewById(R.id.child_image_button);
         addButton.setImageResource(R.drawable.add_person);
@@ -123,6 +118,7 @@ public class ChildSelectActivity extends AppCompatActivity {
 
         addButton.setOnClickListener(v -> {
             Intent intent = new Intent(ChildSelectActivity.this, AddChildActivity.class);
+            intent.putExtra("guardianID", guardianID); // Pass the guardian ID
             startActivity(intent);
         });
 
@@ -131,9 +127,5 @@ public class ChildSelectActivity extends AppCompatActivity {
         if (childrenList.isEmpty()) {
             Log.d("ChildSelectActivity", "No children available to display.");
         }
-    }
-
-    private int getCurrentGuardianID() {
-        return 0; // Replace this with actual method to get the guardian ID associated with the user
     }
 }
