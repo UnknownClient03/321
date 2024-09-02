@@ -1,0 +1,84 @@
+package com.example.myapplication;
+
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+
+public class Child {
+    private int id;
+    private String fname;
+    private String lname;
+    private String dob;
+    private String sex;
+
+    public Child(int id, String fname, String lname, String dob, String sex) {
+        this.id = id;
+        this.fname = fname;
+        this.lname = lname;
+        this.dob = dob;
+        this.sex = sex;
+    }
+
+    // Getter and Setter methods for ID
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    // Getter and Setter methods for First Name
+    public String getFname() {
+        return fname;
+    }
+
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
+    // Getter and Setter methods for Last Name
+    public String getLname() {
+        return lname;
+    }
+
+    public void setLname(String lname) {
+        this.lname = lname;
+    }
+
+    // Getter and Setter methods for Date of Birth
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
+
+    // Getter and Setter methods for Sex
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getName() {
+        return fname + " " + lname;
+    }
+
+    // Method to calculate age from DOB
+    public int getAge() {
+        // Parse the DOB string to a LocalDate object
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate birthDate = LocalDate.parse(dob, formatter);
+        // Calculate the age
+        return Period.between(birthDate, LocalDate.now()).getYears();
+    }
+
+    // Getter for full name
+    public String getFullName() {
+        return fname + " " + lname;
+    }
+}
