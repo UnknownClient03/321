@@ -27,11 +27,15 @@ public class AddChildActivity extends AppCompatActivity {
     private ImageView backArrow;
 
     private boolean isButtonClicked = false; // Flag to prevent multiple executions
+    private int guardianID; // Store the current guardian ID
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_child);
+
+        // Retrieve the guardian ID from the intent
+        guardianID = getIntent().getIntExtra("guardianID", 0);
 
         // Initialize the views
         initializeViews();
@@ -68,8 +72,6 @@ public class AddChildActivity extends AppCompatActivity {
         backArrow = findViewById(R.id.back_arrow);
     }
 
-    // Creates an adapter to hold the gender options ("Male" and "Female")
-    // Sets up the appearance of the dropdown menu
     private void configureGenderSpinner() {
         ArrayAdapter<CharSequence> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, new String[]{"Male", "Female"});
@@ -92,8 +94,8 @@ public class AddChildActivity extends AppCompatActivity {
             return;
         }
 
-        // Insert the child into the database
-        insertChildToDatabase(givenNames, surname, dob, sex);
+        // Insert the child into the database with the current guardian ID
+        insertChildToDatabase(givenNames, surname, dob, sex, guardianID);
 
         Toast.makeText(AddChildActivity.this, "You have added a new child", Toast.LENGTH_SHORT).show();
         finish();
@@ -120,15 +122,15 @@ public class AddChildActivity extends AppCompatActivity {
         }
     }
 
-    private void insertChildToDatabase(String givenNames, String surname, String dob, String sex) {
+    private void insertChildToDatabase(String givenNames, String surname, String dob, String sex, int guardianID) {
         SQLConnection sqlConnection = new SQLConnection("user1", "");
 
         // Get the next available ID
         int newChildId = sqlConnection.getMaxID("Child");
 
-        // Formulate the INSERT query with the new ID
+        // Formulate the INSERT query with the new ID and guardian ID
         String insertQuery = "INSERT INTO Child (ID, guardianID, fname, lname, DOB, sex) VALUES ("
-                + newChildId + ", 0, '"
+                + newChildId + ", " + guardianID + ", '"
                 + givenNames + "', '" + surname + "', '" + dob + "', '" + sex + "')";
 
         sqlConnection.update(insertQuery);
