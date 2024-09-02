@@ -113,8 +113,7 @@ public class ManageChildrenActivity extends AppCompatActivity {
     }
 
     private void loadChildrenFromDatabase() {
-        SQLConnection sqlConnection = new SQLConnection();
-        sqlConnection.connect("user1", "");
+        SQLConnection sqlConnection = new SQLConnection("user1", "");
 
         // Clear the existing children list
         childrenList.clear();
@@ -160,8 +159,7 @@ public class ManageChildrenActivity extends AppCompatActivity {
 
     // Remove child from the database
     private void removeChildFromDatabase(int childId) {
-        SQLConnection sqlConnection = new SQLConnection();
-        sqlConnection.connect("user1", "");
+        SQLConnection sqlConnection = new SQLConnection("user1", "");
         sqlConnection.update("DELETE FROM Child WHERE ID = " + childId);
         sqlConnection.disconnect();
     }
