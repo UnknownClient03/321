@@ -53,9 +53,8 @@ public class ChildSelectActivity extends AppCompatActivity {
 
         Log.d("ChildSelectActivity", "Fetching children for guardian ID: " + guardianID);
 
-        SQLConnection sqlConnection = new SQLConnection();
         Log.d("ChildSelectActivity", "Connecting to the database...");
-        sqlConnection.connect("user1", "");
+        SQLConnection sqlConnection = new SQLConnection("user1", "");
 
         HashMap<String, String[]> result = sqlConnection.select("SELECT ID, fname, lname, DOB, sex FROM Child WHERE guardianID = " + guardianID);
         sqlConnection.disconnect();
