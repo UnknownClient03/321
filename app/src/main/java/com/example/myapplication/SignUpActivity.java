@@ -100,7 +100,7 @@ public class SignUpActivity extends AppCompatActivity {
         }
 
         return true;
-
+//test
     }
 
     private boolean registeruser()
