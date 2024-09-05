@@ -41,8 +41,7 @@ public class Homepage extends AppCompatActivity {
             HashMap<String, String[]> result = conn.select(query, new String[]{String.valueOf(manager.guardianID)}, new char[]{'i'});
             conn.disconnect();
             String fname = result.get("fname")[0];
-            String lname = result.get("lname")[0];
-            textView.setText(fname + " " + lname);
+            textView.setText(fname + "!");
         }
 
         // Setting up the Immunisation button
