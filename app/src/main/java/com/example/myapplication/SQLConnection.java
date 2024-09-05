@@ -26,11 +26,11 @@ public class SQLConnection extends Thread {
      */
     private Connection conn;
     private boolean isConnected;
-    private final String ip =       "192.168.0.249"    //IP address of local computer
-                       , port =     "1066"             //Port the sql server resides on
+    private final String ip =       "192.168.86.22"    //IP address of local computer
+                       , port =     "1433"                //Port the sql server resides on
                        , db =       "BlueBookDB"       //Database name
                        , username = "user1"            //Keep the same unless changed in users.sql
-                       , password = "";                //Keep the same unless changed in users.sql
+                       , password = "strongPwd123";    //Keep the same unless changed in users.sql
     private int ConnecitonTimeout = 2000;              //Connection Timeout in milliseconds. Would advise the ConnecitonTimeout to be > 3 for local networks and > 10 for public networks
 
     @SuppressLint("NewApi")

@@ -85,15 +85,21 @@ public class SignUpActivity extends AppCompatActivity {
         String password = editTextPassword.getText().toString().trim();
 
         if (password.isEmpty() || password.length() <= 5) {
-            Toast.makeText(this, "Password does not meet requirements.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Password must be greater than 5 characters.", Toast.LENGTH_SHORT).show();
             return false;
         }
 
-        boolean hasUppercase = !password.equals(password.toLowerCase());
-        boolean hasSpecial = password.matches(".*[!@#$%^&*()_+=<>?{}\\[\\]~-].*");
+        if (password.equals(password.toLowerCase())) {
+            Toast.makeText(this, "Password must have an uppercase letter.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
 
-        return hasUppercase && hasSpecial;
+        if (!password.matches(".*[!@#$%^&*()_+=<>?{}\\[\\]~-].*")) {
+            Toast.makeText(this, "Password must have a special character.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
 
+        return true;
     }
 
     private boolean registeruser()
