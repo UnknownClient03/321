@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="6dp"
+    android:layout_marginBottom="10dp">
+
+    <ImageButton
+        android:id="@+id/child_image_button"
+        android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:background="@drawable/round_button"
+    android:src="@drawable/profile_picture"
+    android:scaleType="centerInside" />
+
+    <TextView
+        android:id="@+id/child_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Child Name"
+        android:textSize="16sp"
+    android:textStyle="bold"
+    android:gravity="center"
+    android:layout_marginTop="6dp" />
+
+    <TextView
+        android:id="@+id/child_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Age: 0"
+        android:textSize="14sp"
+    android:gravity="center"
+    android:layout_marginTop="4dp" />
+
+</LinearLayout>

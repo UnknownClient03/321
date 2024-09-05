@@ -94,7 +94,6 @@ public class SignUpActivity extends AppCompatActivity {
 
         return hasUppercase && hasSpecial;
 
-
     }
 
     private boolean registeruser()

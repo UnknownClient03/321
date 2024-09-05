@@ -88,6 +88,17 @@
         <activity
             android:name="com.example.myapplication.UsefulContacts"
             android:windowSoftInputMode="adjustPan" />
+
+        <!-- Added activities for My Records -->
+        <activity
+            android:name="com.example.myapplication.Records"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.example.myapplication.IllnessInjuryNotes"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.example.myapplication.ProgressNotes"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name="com.google.firebase.auth.internal.GenericIdpActivity"
             android:excludeFromRecents="true"
