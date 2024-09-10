@@ -12,7 +12,7 @@
     <string name="practitioner_login">Practitioner Login</string>
     <string name="login">Login</string>
     <string name="reset_password">Reset Password</string>
-
+    <string name="share_button">Share</string>
     <string-array name="sex_input_options">
         <item>Male</item>
         <item>Female</item>
