@@ -82,7 +82,7 @@
                 android:text="CPR Chart" />
 
             <Button
-                android:id="@+id/button_primary_and_secondary_education"
+                android:id="@+id/button_primary_secondary_school"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_3d"
