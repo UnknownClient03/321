@@ -77,6 +77,13 @@
           android:windowSoftInputMode="adjustPan" />
       <activity android:name=".ProgressNotes"
     android:windowSoftInputMode="adjustPan" />
+
+        <!-- PrimarySecondarySchool.java -->
+        <activity android:name=".PrimarySecondarySchool" />
+
+
     </application>
+
+
 
 </manifest>
