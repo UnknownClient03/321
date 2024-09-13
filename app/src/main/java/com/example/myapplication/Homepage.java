@@ -148,5 +148,22 @@ public class Homepage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // Primary and Secondary School button
+        Button buttonPrimarySecondarySchool = findViewById(R.id.button_primary_secondary_school);
+        buttonPrimarySecondarySchool.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Log.d("BUTTON", "changing to Primary & Secondary School page");
+                Intent intent = new Intent(Homepage.this, PrimarySecondarySchool.class);
+                Bundle extras = getIntent().getExtras();
+                if (extras != null) {
+                    intent.putExtra("guardianID", manager.guardianID);
+                    intent.putExtra("childID", manager.childID);
+                }
+                startActivity(intent);
+            }
+        });
+
+
     }
 }
