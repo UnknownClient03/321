@@ -87,8 +87,8 @@
 50        </activity>
 51        <activity
 51-->/Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:35:9-38:55
-52            android:name="com.example.myapplication.ImmunisationSchedule"
-52-->/Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:36:13-49
+52            android:name="com.example.myapplication.Immunisation"
+52-->/Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:36:13-41
 53            android:exported="false"
 53-->/Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:37:13-37
 54            android:windowSoftInputMode="adjustPan" />

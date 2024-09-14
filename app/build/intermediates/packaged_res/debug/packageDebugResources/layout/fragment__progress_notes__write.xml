@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:paddingTop="100dp"
     android:paddingBottom="100dp"
-    tools:context=".Fragment_ProgressNotes_Write">
+    tools:context=".Fragments.Fragment_ProgressNotes_Write">
 
     <LinearLayout
         android:layout_width="match_parent"

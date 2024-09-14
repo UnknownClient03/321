@@ -187,14 +187,14 @@ category#android.intent.category.LAUNCHER
 ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:32:17-77
 	android:name
 		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:32:27-74
-activity#com.example.myapplication.ImmunisationSchedule
+activity#com.example.myapplication.Immunisation
 ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:35:9-38:55
 	android:windowSoftInputMode
 		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:38:13-52
 	android:exported
 		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:37:13-37
 	android:name
-		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:36:13-49
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:36:13-41
 activity#com.example.myapplication.CPRChart
 ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:40:9-41:55
 	android:windowSoftInputMode

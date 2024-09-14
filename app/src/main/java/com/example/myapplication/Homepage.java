@@ -49,7 +49,7 @@ public class Homepage extends AppCompatActivity {
         buttonImmunisation.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Log.d("BUTTON", "changing to Immunisation Schedule page");
-                Intent intent = new Intent(Homepage.this, ImmunisationSchedule.class);
+                Intent intent = new Intent(Homepage.this, Immunisation.class);
                 Bundle extras = getIntent().getExtras();
                 if (extras != null) {
                     intent.putExtra("guardianID", manager.guardianID);

@@ -49,7 +49,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.myapplication.ImmunisationSchedule"
+            android:name="com.example.myapplication.Immunisation"
             android:exported="false"
             android:windowSoftInputMode="adjustPan" />
         <activity

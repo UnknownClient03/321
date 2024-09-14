@@ -26,9 +26,12 @@ drawable white_button
 id FRAG_MIAFH
 id Immunisation_Schedule
 id TableHeading_IllnessInjuryNotes
+id TableHeading_Immunisation
 id TableHeading_ProgressNotes
+id TableLayout_Immunisation
 id TableLayout_ProgressNotes
 id Table_IllnessInjuryNotes
+id Table_Immunisation
 id Table_ProgressNotes
 id Table_UsefulContacts
 id add_child_button
@@ -38,6 +41,7 @@ id buttonManageChildren
 id button_AllAboutMe
 id button_IIN_addAnotherEntry
 id button_IIN_toTable
+id button_IM_addAnotherEntry
 id button_IllnessInjuryNotes_submit
 id button_Language
 id button_MIAFH_1
@@ -64,6 +68,7 @@ id button_forgot_password
 id button_growth_charts
 id button_healthHistory
 id button_immunisation
+id button_immunisation_submit
 id button_info_for_parents
 id button_mother
 id button_myAddress
@@ -206,6 +211,12 @@ id input_illnessInjuryNotes_signed
 id input_illnessInjuryNotes_year_d
 id input_illnessInjuryNotes_year_m
 id input_illnessInjuryNotes_year_y
+id input_immunisation_age
+id input_immunisation_batch_no
+id input_immunisation_dateGiven_d
+id input_immunisation_dateGiven_m
+id input_immunisation_dateGiven_y
+id input_immunisation_vaccine
 id input_language
 id input_mother_MRN
 id input_mother_career
@@ -415,6 +426,7 @@ layout activity_add_child
 layout activity_cpr_chart
 layout activity_homepage
 layout activity_illness_injury_notes
+layout activity_immunisation
 layout activity_immunisation_schedule
 layout activity_manage_children
 layout activity_my_info_and_fam_his
@@ -439,6 +451,8 @@ layout fragment_birth_details
 layout fragment_dentalhistory
 layout fragment_father
 layout fragment_healthhistory
+layout fragment_immunisation_read
+layout fragment_immunisation_write
 layout fragment_language
 layout fragment_mother
 layout fragment_myaddress
