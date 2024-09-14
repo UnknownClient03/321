@@ -287,11 +287,10 @@ CREATE TABLE Hearingscreen(
 CREATE TABLE ImmunisationRecord(
 	childID int not null,
 	ID int not null,
-	age int not null,
+	age varchar(20) not null,
 	vaccine varchar(31) not null,
 	dateGiven DATE not null,
 	batchNum int not null,
-	signature varchar(max),
 	PRIMARY KEY(ID),
 	FOREIGN KEY (childID) REFERENCES Child(ID)
 );
