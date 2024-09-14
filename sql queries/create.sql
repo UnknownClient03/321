@@ -291,7 +291,6 @@ CREATE TABLE ImmunisationRecord(
 	vaccine varchar(31) not null,
 	dateGiven DATE not null,
 	batchNum int not null,
-	signature varchar(max),
 	PRIMARY KEY(ID),
 	FOREIGN KEY (childID) REFERENCES Child(ID)
 );
