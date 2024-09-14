@@ -54,7 +54,6 @@ public class MyInfoAndFamHis extends AppCompatActivity {
                 .replace(R.id.FRAG_MIAFH, currentFrag)
                 .commit();
 
-
         setButtons((Button)findViewById(R.id.button_MIAFH_1), Fragments[0]);
         setButtons((Button)findViewById(R.id.button_MIAFH_2), Fragments[1]);
         setButtons((Button)findViewById(R.id.button_MIAFH_3), Fragments[2]);
