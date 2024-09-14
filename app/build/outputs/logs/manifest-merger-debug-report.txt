@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:2:1-82:12
-INJECTED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:2:1-82:12
-INJECTED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:2:1-82:12
-INJECTED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:2:1-82:12
+ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:2:1-89:12
+INJECTED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:2:1-89:12
+INJECTED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:2:1-89:12
+INJECTED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:2:1-89:12
 MERGED from [com.google.android.material:material:1.10.0] /Users/thomas/.gradle/caches/transforms-4/c45c3f651698451b790ef61f9e12331d/transformed/material-1.10.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/thomas/.gradle/caches/transforms-4/32313e308c80cdc3ab761c974c4770ef/transformed/constraintlayout-2.1.4/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /Users/thomas/.gradle/caches/transforms-4/c3238d27647b0242eeefe2c191b74bea/transformed/appcompat-resources-1.6.1/AndroidManifest.xml:17:1-22:12
@@ -91,8 +91,8 @@ MERGED from [com.google.android.recaptcha:recaptcha:18.4.0] /Users/thomas/.gradl
 	android:name
 		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:6:22-76
 application
-ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:8:5-80:19
-INJECTED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:8:5-80:19
+ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:8:5-85:19
+INJECTED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:8:5-85:19
 MERGED from [com.google.android.material:material:1.10.0] /Users/thomas/.gradle/caches/transforms-4/c45c3f651698451b790ef61f9e12331d/transformed/material-1.10.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.10.0] /Users/thomas/.gradle/caches/transforms-4/c45c3f651698451b790ef61f9e12331d/transformed/material-1.10.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/thomas/.gradle/caches/transforms-4/32313e308c80cdc3ab761c974c4770ef/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
@@ -283,6 +283,10 @@ ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:78:
 		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:79:5-44
 	android:name
 		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:78:17-46
+activity#com.example.myapplication.PrimarySecondarySchool
+ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:82:9-60
+	android:name
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:82:19-57
 uses-sdk
 INJECTED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml

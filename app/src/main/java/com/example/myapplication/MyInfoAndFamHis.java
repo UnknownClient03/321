@@ -71,7 +71,6 @@ public class MyInfoAndFamHis extends AppCompatActivity {
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(currentFrag.getId(), newFragment)
-                        .addToBackStack(null)
                         .commit();
                 currentFrag = newFragment;
             }

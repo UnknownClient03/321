@@ -11,6 +11,13 @@
     <color name="ozbluelogo_background">#FFFFFF</color>
     <color name="white">#FFFFFFFF</color>
     <string name="app_name">OzBlue</string>
+    <string name="daisy_link">
+        Daisy’s First Day, a storybook about starting school featuring Australian animals:
+        <a href="https://education.nsw.gov.au/content/dam/maineducation/public-schools/going-to-a-public-school/media/documents/Daisys_First_Day_web.pdf">https://education.nsw.gov.au/Daisys_First_Day_web.pdf</a>
+    </string>
+    <string name="healthy_eating_text">
+        Healthy Eating and Active Living is a NSW Government website helping people in NSW to make simple changes that help them lead healthier lives. Find simple, practical tools and expert tips to help you and your family to start some healthy habits, including healthy recipes, lunchbox ideas and access to free programs.<br/><br/>Visit <a href="https://healthyliving.nsw.gov.au">healthyliving.nsw.gov.au</a> to find out more.
+    </string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="login">Login</string>
     <string name="practitioner_login">Practitioner Login</string>

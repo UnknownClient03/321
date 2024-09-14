@@ -3242,12 +3242,13 @@ id button_PN_toTable
 id button_add_langauge
 id button_birth_details
 id button_birth_details_and_newborn_examination
+id button_cancel
+id button_change_password
 id button_checks
 id button_container
 id button_cpr_chart
 id button_dentlHealth
 id button_editUsefulContacts
-id button_edit_info
 id button_father
 id button_forgot_password
 id button_growth_charts
@@ -3261,7 +3262,7 @@ id button_myRecords_2
 id button_my_information_and_family_history
 id button_my_records
 id button_newborn_examination
-id button_primary_and_secondary_education
+id button_primary_secondary_school
 id button_progressNotes_submit
 id button_save
 id button_saveBirthDetails
@@ -3370,11 +3371,11 @@ id easeInOut
 id easeOut
 id east
 id edge
+id editTextCurrentPassword
 id editTextTextEmailAddress
 id editTextTextEmailAddress2
 id editTextTextPassword
 id editTextTextPassword2
-id editTextTextUsername
 id editText_birthDate
 id editText_birthLength
 id editText_birthPlace
@@ -3423,6 +3424,7 @@ id fragment_container
 id fragment_container_view_tag
 id frost
 id fullscreen_header
+id gettingReadySchoolLink
 id ghost_view
 id ghost_view_holder
 id gone
@@ -3436,6 +3438,8 @@ id guideline_scrollview_end
 id guideline_text_top
 id header
 id header_title
+id healthyEatingText
+id healthyEatingTitle
 id hideable
 id home
 id homeAsUp
@@ -3450,11 +3454,8 @@ id ignore
 id ignoreRequest
 id image
 id imageView2
-id imageView3
-id imageView4
-id imageView4_rec2
-id imageView4_rec3
 id imageViewCPRChart
+id imageView_email_background
 id immediateStop
 id included
 id indeterminate
@@ -3686,8 +3687,12 @@ id position
 id postLayout
 id practitioner_login_button
 id pressed
+id primarySecondaryText
+id primarySecondaryTitle
 id profile_picture
 id profile_picture_background
+id profile_picture_border
+id profile_picture_container
 id progress_button
 id progress_circular
 id progress_horizontal
@@ -3950,8 +3955,11 @@ id toggle
 id top
 id topPanel
 id touch_outside
+id transitionSchoolText
+id transitionSchoolTitle
 id transitionToEnd
 id transitionToStart
+id transitionVideoLink
 id transition_current_scene
 id transition_layout_save
 id transition_position
@@ -4113,6 +4121,7 @@ layout activity_illness_injury_notes
 layout activity_immunisation_schedule
 layout activity_manage_children
 layout activity_my_info_and_fam_his
+layout activity_primary_secondary_school
 layout activity_progress_notes
 layout activity_records
 layout activity_reset_password
@@ -4292,6 +4301,7 @@ string common_open_on_phone
 string common_signin_button_text
 string common_signin_button_text_long
 string copy_toast_msg
+string daisy_link
 string error_a11y_label
 string error_icon_content_description
 string exposed_dropdown_menu_content_description
@@ -4300,6 +4310,7 @@ string fab_transformation_sheet_behavior
 string fallback_menu_item_copy_link
 string fallback_menu_item_open_in_browser
 string fallback_menu_item_share_link
+string healthy_eating_text
 string hello_blank_fragment
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description

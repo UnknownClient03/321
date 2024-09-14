@@ -27,5 +27,7 @@ public class PrimarySecondarySchool extends AppCompatActivity {
         TextView healthyEatingText = findViewById(R.id.healthyEatingText);
         healthyEatingText.setText(Html.fromHtml(getString(R.string.healthy_eating_text), Html.FROM_HTML_MODE_LEGACY));
         healthyEatingText.setMovementMethod(LinkMovementMethod.getInstance());
+
+        NavBarManager.setNavBarButtons(PrimarySecondarySchool.this);
     }
 }

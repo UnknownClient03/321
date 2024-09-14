@@ -99,6 +99,9 @@
         <activity
             android:name="com.example.myapplication.ProgressNotes"
             android:windowSoftInputMode="adjustPan" />
+
+        <!-- PrimarySecondarySchool.java -->
+        <activity android:name="com.example.myapplication.PrimarySecondarySchool" />
         <activity
             android:name="com.google.firebase.auth.internal.GenericIdpActivity"
             android:excludeFromRecents="true"

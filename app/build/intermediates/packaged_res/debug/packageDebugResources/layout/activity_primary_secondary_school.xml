@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/main"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Include Header Layout -->
+    <include
+        android:id="@+id/header"
+        layout="@layout/header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Main Content -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="100dp"
+        app:layout_constraintTop_toBottomOf="@+id/header"
+        app:layout_constraintBottom_toTopOf="@+id/footer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Title -->
+            <TextView
+                android:id="@+id/primarySecondaryTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Primary and secondary school"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/primarySecondaryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="If you have taken your child to the scheduled health checks in this application from birth to 4 years of age, you have given her or him the best chance of having health issues found and dealt with before starting school. \n\nA strong partnership with your doctor and/or child and family health nurse is important in caring for your child’s health. The relationship you have with health professionals to care for your child will now expand to include your child’s teachers.\n\nRemember that if you, your child, or their teacher, have any concerns about your child’s health at any time during their school years, you and your child should talk to your health professional. Sometimes behavioural problems or learning issues can be related to health problems. If your child develops any of these issues, a health assessment is a good idea.\n\nA health assessment prior to your child starting high school is highly recommended. As children reach their teens and become adolescents, they go through a time of rapid development and change. Health issues or questions can emerge, and a health assessment is an opportunity to deal with these. As part of this assessment, it is recommended that your child’s eyes and vision are assessed in each eye separately. Hearing testing can be done at any age.\n\nRemember to use this application at any health assessment. Having all your child’s health history with you will help you, your child and your doctor or nurse to best assess your child’s health.\n\nRemember to keep recording significant health events, immunisations and other health information in this application, so that your child’s health history is available and easy to find."
+                android:layout_marginTop="8dp"
+                android:justificationMode="inter_word"
+                android:textAlignment="viewStart"
+                android:lineSpacingExtra="4dp"/>
+
+            <!-- Transitioning to school -->
+            <TextView
+                android:id="@+id/transitionSchoolTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Transitioning to school resources for families"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/transitionSchoolText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="The following resources from the NSW Department of Education will help you and your child with the transition to primary school."
+                android:layout_marginTop="8dp"
+                android:justificationMode="inter_word"
+                android:textAlignment="viewStart"/>
+
+            <TextView
+                android:id="@+id/gettingReadySchoolLink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Getting ready for primary school, a practical guide for parents and carers: https://education.nsw.gov.au/content/dam/maineducation/public-schools/going-to-a-public-school/media/documents/Daisys_First_Day_web.pdf"
+                android:autoLink="web"
+                android:layout_marginTop="8dp"
+                android:justificationMode="inter_word"
+                android:textAlignment="viewStart"/>
+
+            <TextView
+                android:id="@+id/transitionVideoLink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="A video about the transition to primary school: https://education.nsw.gov.au/public-schools/going-to-apublic-school/primary-schools/starting-school"
+                android:autoLink="web"
+                android:layout_marginTop="8dp"
+                android:justificationMode="inter_word"
+                android:textAlignment="viewStart"/>
+
+            <!-- Healthy Eating Active Living Section -->
+            <TextView
+                android:id="@+id/healthyEatingTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Healthy Eating Active Living"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/healthyEatingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/healthy_eating_text"
+                android:layout_marginTop="8dp"
+                android:justificationMode="inter_word"
+                android:textAlignment="viewStart"
+                android:autoLink="web"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Include Footer Layout -->
+    <include
+        android:id="@+id/footer"
+        layout="@layout/footer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
