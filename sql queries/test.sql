@@ -15,7 +15,8 @@ SELECT * FROM Address WHERE guardianID = 0;
 SELECT * FROM Parent WHERE guardianID = 0 AND parent = 'Mother';
 SELECT * FROM familyHealthHistory WHERE childID = 0;
 SELECT * FROM FamilyDentalHistory WHERE childID = 0;
-
+SELECT * FROM ImmunisationRecord WHERE childID = 0 ORDER BY age ASC;
+SELECT * FROM FourMonthImmunisation WHERE childID = 0 ORDER BY CAST(SUBSTRING(question, PATINDEX('%[0-9]%', question), LEN(question)) AS INT);
 
 DROP TABLE GuardianLanguage;
 GRANT INSERT, SELECT ON GuardianLanguage TO user1;
