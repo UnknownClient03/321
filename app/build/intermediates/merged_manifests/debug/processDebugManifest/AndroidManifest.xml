@@ -53,6 +53,12 @@
             android:exported="false"
             android:windowSoftInputMode="adjustPan" />
         <activity
+            android:name="com.example.myapplication.ImmunisationRecord"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.example.myapplication.FourMonthImmunisationCheck"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
             android:name="com.example.myapplication.CPRChart"
             android:windowSoftInputMode="adjustPan" />
         <activity
