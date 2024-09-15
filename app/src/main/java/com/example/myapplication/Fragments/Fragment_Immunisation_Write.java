@@ -10,11 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.myapplication.LoginManager;
-import com.example.myapplication.Immunisation;
+import com.example.myapplication.ImmunisationRecord;
 import com.example.myapplication.R;
 import com.example.myapplication.SQLConnection;
-
-import java.util.HashMap;
 
 public class Fragment_Immunisation_Write extends Fragment {
 
@@ -30,14 +28,12 @@ public class Fragment_Immunisation_Write extends Fragment {
         viewTableBut.setOnClickListener(v -> requireActivity().getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragmentContainerView, new Fragment_Immunisation_Read())
-                .addToBackStack(null)
                 .commit());
 
         Button submit = layout.findViewById(R.id.button_immunisation_submit);
         submit.setOnClickListener(v -> {
-            LoginManager manager = ((Immunisation)getActivity()).manager;
-            Immunisation activity = ((Immunisation)getActivity());
-            activity.getOnBackPressedDispatcher().onBackPressed();
+            LoginManager manager = ((ImmunisationRecord)getActivity()).manager;
+            ImmunisationRecord activity = ((ImmunisationRecord)getActivity());
             Intent intent = activity.getIntent();
             activity.finish();
             activity.startActivity(intent);

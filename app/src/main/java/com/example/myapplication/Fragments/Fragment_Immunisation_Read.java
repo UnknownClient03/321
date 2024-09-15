@@ -13,7 +13,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.example.myapplication.LoginManager;
-import com.example.myapplication.Immunisation;
+import com.example.myapplication.ImmunisationRecord;
 import com.example.myapplication.R;
 import com.example.myapplication.SQLConnection;
 
@@ -35,14 +35,13 @@ public class Fragment_Immunisation_Read extends Fragment {
             requireActivity().getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.fragmentContainerView, new Fragment_Immunisation_Write())
-                    .addToBackStack(null)
                     .commit();
             }
         });
 
         SQLConnection c = new SQLConnection("user1", "");
         if(c.isConn()) {
-            LoginManager manager = ((Immunisation)getActivity()).manager;
+            LoginManager manager = ((ImmunisationRecord)getActivity()).manager;
             String query = "SELECT age, vaccine, dateGiven, batchNum FROM ImmunisationRecord WHERE childID = ? ORDER BY dateGiven ASC;";
             HashMap<String, String[]> result = c.select(query, new String[]{String.valueOf(manager.childID)}, new char[]{'i'});
             TableLayout table = layout.findViewById(R.id.Table_Immunisation);

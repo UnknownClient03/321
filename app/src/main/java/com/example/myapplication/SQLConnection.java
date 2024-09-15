@@ -215,6 +215,7 @@ public class SQLConnection extends Thread {
                 case 's': stmt.setString(i+1, params[i]); break;
                 case 'i': stmt.setInt(i+1, Integer.parseInt(params[i])); break;
                 case 'n': stmt.setNull(i+1, java.sql.Types.NULL); break;
+                case 'b': stmt.setBoolean(i + 1, Boolean.parseBoolean(params[i])); break;
                 default: throw new android.database.SQLException("param in ParamTypes is unknown: " + paramTypes[i]);
             }
         return stmt;

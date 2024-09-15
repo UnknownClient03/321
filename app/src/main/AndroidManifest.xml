@@ -32,9 +32,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Immunisation"
+        <activity android:name=".Immunisation"
             android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".ImmunisationRecord"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".FourMonthImmunisationCheck"
             android:windowSoftInputMode="adjustPan" />
 
         <activity android:name=".CPRChart"
