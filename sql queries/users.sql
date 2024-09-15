@@ -14,3 +14,4 @@ GRANT INSERT, SELECT ON ProgressNotes TO user1;
 GRANT INSERT, SELECT ON IllnessInjuries TO user1;
 GRANT INSERT, SELECT, UPDATE ON UsefulContact TO user1;
 GRANT INSERT, SELECT ON ImmunisationRecord to user1;
+GRANT INSERT, SELECT ON FourMonthImmunisation to user1;
