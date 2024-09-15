@@ -298,8 +298,8 @@ CREATE TABLE ImmunisationRecord(
 CREATE TABLE FourMonthImmunisation(
 	childID int not null,
 	question varchar(63) not null,
-	condition BIT DEFAULT 0 not null,
-	PRIMARY KEY(childID),
+	answer BIT DEFAULT 0 not null,
+	PRIMARY KEY(childID, question),
 	FOREIGN KEY (childID) REFERENCES Child(ID)
 );
 
