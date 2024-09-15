@@ -347,6 +347,7 @@ id scrollView
 id scrollView2
 id settings_button
 id sex_input
+id show_password_checkbox
 id signup_button
 id signup_title
 id socialEmotionalQuestions
@@ -467,12 +468,7 @@ id textView96
 id textView97
 id textView98
 id textView99
-id textViewDate
-id textViewDateDue
-id textViewDescription
 id textViewSelectChild
-id textViewTime
-id textViewVaccineName
 id textView_change_profilePicture
 id textView_homepage_name
 id textView_name
@@ -522,7 +518,6 @@ layout activity_records
 layout activity_reset_password
 layout activity_signup
 layout activity_user_login
-layout appointment_item
 layout birth_details_and_newborn_examination
 layout child_item_layout
 layout child_list_item
@@ -544,7 +539,6 @@ layout fragment_mother
 layout fragment_myaddress
 layout fragment_newborn_examination
 layout header
-layout immunisation_item
 layout parent_info
 layout practitioner_login
 layout useful_contacts

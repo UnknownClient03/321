@@ -2,9 +2,11 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -80,6 +82,20 @@ public class PractitionerLoginActivity extends AppCompatActivity {
                 intent.putExtra("childID", 0);
                 startActivity(intent);
             }
+        });
+
+        CheckBox showPasswordCheckbox = findViewById(R.id.show_password_checkbox);
+
+        showPasswordCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                // Show password
+                editTextPassword.setInputType(InputType.TYPE_CLASS_TEXT);
+            } else {
+                // Hide password
+                editTextPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            }
+            // Move cursor to the end of the text
+            editTextPassword.setSelection(editTextPassword.getText().length());
         });
     }
 

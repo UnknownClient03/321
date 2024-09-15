@@ -77,6 +77,18 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress2"
         app:layout_constraintVertical_bias="0.269" />
 
+    <CheckBox
+        android:id="@+id/show_password_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPassword2"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword2"
+        app:layout_constraintHorizontal_bias="0.946"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextPassword2"
+        app:layout_constraintTop_toTopOf="@+id/editTextTextPassword2"
+        app:layout_constraintVertical_bias="0.0" />
+
     <Button
         android:id="@+id/signup_button"
         android:layout_width="140dp"

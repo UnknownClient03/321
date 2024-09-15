@@ -3832,6 +3832,7 @@ int id shortcut 0x7f09024d
 int id showCustom 0x7f09024e
 int id showHome 0x7f09024f
 int id showTitle 0x7f090250
+int id show_password_checkbox 0x7f090436
 int id signup_button 0x7f090251
 int id signup_title 0x7f090252
 int id sin 0x7f090253
@@ -4005,12 +4006,7 @@ int id textView96 0x7f09033d
 int id textView97 0x7f09033e
 int id textView98 0x7f09033f
 int id textView99 0x7f090340
-int id textViewDate 0x7f09029a
-int id textViewDateDue 0x7f09029b
-int id textViewDescription 0x7f09029c
 int id textViewSelectChild 0x7f09029e
-int id textViewTime 0x7f09029f
-int id textViewVaccineName 0x7f0902a1
 int id textView_change_profilePicture 0x7f0902a2
 int id textView_homepage_name 0x7f090384
 int id textView_name 0x7f0902a3
@@ -4224,7 +4220,6 @@ int layout activity_records 0x7f0c0089
 int layout activity_reset_password 0x7f0c0084
 int layout activity_signup 0x7f0c0023
 int layout activity_user_login 0x7f0c0024
-int layout appointment_item 0x7f0c0025
 int layout birth_details_and_newborn_examination 0x7f0c0026
 int layout browser_actions_context_menu_page 0x7f0c0027
 int layout browser_actions_context_menu_row 0x7f0c0028
@@ -4264,7 +4259,6 @@ int layout fragment_mother 0x7f0c0041
 int layout fragment_myaddress 0x7f0c0042
 int layout fragment_newborn_examination 0x7f0c0043
 int layout header 0x7f0c0044
-int layout immunisation_item 0x7f0c0045
 int layout m3_alert_dialog 0x7f0c0046
 int layout m3_alert_dialog_actions 0x7f0c0047
 int layout m3_alert_dialog_title 0x7f0c0048

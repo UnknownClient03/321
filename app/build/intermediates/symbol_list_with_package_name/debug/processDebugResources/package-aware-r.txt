@@ -3833,6 +3833,7 @@ id shortcut
 id showCustom
 id showHome
 id showTitle
+id show_password_checkbox
 id signup_button
 id signup_title
 id sin
@@ -4006,12 +4007,7 @@ id textView96
 id textView97
 id textView98
 id textView99
-id textViewDate
-id textViewDateDue
-id textViewDescription
 id textViewSelectChild
-id textViewTime
-id textViewVaccineName
 id textView_change_profilePicture
 id textView_homepage_name
 id textView_name
@@ -4225,7 +4221,6 @@ layout activity_records
 layout activity_reset_password
 layout activity_signup
 layout activity_user_login
-layout appointment_item
 layout birth_details_and_newborn_examination
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
@@ -4265,7 +4260,6 @@ layout fragment_mother
 layout fragment_myaddress
 layout fragment_newborn_examination
 layout header
-layout immunisation_item
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title
