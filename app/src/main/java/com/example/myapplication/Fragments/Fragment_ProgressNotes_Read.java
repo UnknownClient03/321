@@ -1,10 +1,12 @@
 package com.example.myapplication.Fragments;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import android.widget.FrameLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myapplication.LoginManager;
 import com.example.myapplication.ProgressNotes;
@@ -84,6 +87,14 @@ public class Fragment_ProgressNotes_Read extends Fragment {
             }
         });
 
+        Button shareButton = layout.findViewById(R.id.button_share_child_progress);
+        shareButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                shareChildProgress();
+            }
+        });
+
         SQLConnection c = new SQLConnection("user1", "");
         if(c.isConn())
         {
@@ -125,6 +136,81 @@ public class Fragment_ProgressNotes_Read extends Fragment {
             c.disconnect();
         }
         return layout;
+    }
+
+    public void shareChildProgress() {
+        TableLayout table = (TableLayout) getView().findViewById(R.id.Table_ProgressNotes);
+
+        StringBuilder dataToShare = new StringBuilder("Child's Progress Notes:\n\n");
+
+        if (table == null) {
+            Log.e("SHARE_DATA", "TableLayout is null.");
+            Toast.makeText(getContext(), "Unable to retrieve progress notes.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (table.getChildCount() == 0) {
+            Log.e("SHARE_DATA", "No rows found in TableLayout.");
+            Toast.makeText(getContext(), "No progress notes available to share.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Add headers with fixed-width format
+        dataToShare.append(String.format("%-20s %-8s %-20s\n", "Date", "Age", "Reason/Action"));
+        dataToShare.append("-----------------------------------------------------------\n");
+
+        for (int i = 1; i < table.getChildCount(); i++) {
+            View rowView = table.getChildAt(i);
+            if (rowView instanceof TableRow) {
+                TableRow row = (TableRow) rowView;
+
+                String date = "";
+                String age = "";
+                String reason = "";
+
+                // Extract data from each column
+                for (int j = 0; j < row.getChildCount(); j++) {
+                    View cellView = row.getChildAt(j);
+
+                    if (cellView instanceof TextView) {
+                        // Get text from each TextView
+                        String cellText = ((TextView) cellView).getText().toString().trim();
+                        if (j == 0) date = cellText;   
+                        else if (j == 1) age = cellText; 
+                        else if (j == 2) reason = cellText; 
+                    } else if (cellView instanceof FrameLayout) {
+                        FrameLayout frameLayout = (FrameLayout) cellView;
+                        if (frameLayout.getChildCount() > 0 && frameLayout.getChildAt(0) instanceof TextView) {
+                            String cellText = ((TextView) frameLayout.getChildAt(0)).getText().toString().trim();
+                            if (j == 0) date = cellText;
+                            else if (j == 1) age = cellText;
+                            else if (j == 2) reason = cellText;
+                        }
+                    }
+                }
+
+                // Append the row data to StringBuilder with fixed-width formatting
+                dataToShare.append(String.format("%-15s %-8s %-20s\n", date, age, reason));
+            }
+        }
+
+        String shareBody = dataToShare.toString().trim();
+
+        Log.d("SHARE_DATA", "Final data to share: \n" + shareBody);
+
+        // Create the share intent
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Child's Progress Notes");
+        shareIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+
+        // Check if there is an app available to handle the intent
+        if (shareIntent.resolveActivity(requireContext().getPackageManager()) != null) {
+            startActivity(Intent.createChooser(shareIntent, "Share Child's Progress"));
+        } else {
+            // Inform the user if no app is available for sharing
+            Toast.makeText(getContext(), "No app available to share progress notes.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private FrameLayout createframeLayout(int column)
