@@ -17,6 +17,7 @@ import java.util.HashMap;
 
 public class Homepage extends AppCompatActivity {
     LoginManager manager;
+    private CameraActivity cameraDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,8 @@ public class Homepage extends AppCompatActivity {
             return insets;
         });
 
+        cameraDialog = new CameraActivity(this);
+        
         NavBarManager.setNavBarButtons(Homepage.this);
         Bundle extras = getIntent().getExtras();
         if (extras != null) manager = new LoginManager(extras.getInt("guardianID"), extras.getInt("childID"));
@@ -44,6 +47,13 @@ public class Homepage extends AppCompatActivity {
             textView.setText(fname + "!");
         }
 
+        ImageButton shareButton = findViewById(R.id.share_button);
+        shareButton.setVisibility(View.VISIBLE); // Make it visible only on the homepage
+        shareButton.setOnClickListener(v -> {
+            CameraActivity cameraDialog = new CameraActivity(this);
+            cameraDialog.show();
+        });
+        
         // Setting up the Immunisation button
         Button buttonImmunisation = findViewById(R.id.button_immunisation);
         buttonImmunisation.setOnClickListener(new View.OnClickListener() {
@@ -164,6 +174,49 @@ public class Homepage extends AppCompatActivity {
             }
         });
 
-
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == CameraActivity.CAMERA_REQUEST_CODE && resultCode == RESULT_OK) {
+            // Get the photo as a bitmap
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
+            if (photo != null) {
+                // Share the photo immediately
+                sharePhotoToSocialMedia(photo);
+            }
+        } else {
+            Toast.makeText(this, "Failed to take photo", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void sharePhotoToSocialMedia(Bitmap photo) {
+        // Save the bitmap to a file
+        File photoFile = new File(getExternalFilesDir(null), "photo.jpg");
+        try (FileOutputStream out = new FileOutputStream(photoFile)) {
+            photo.compress(Bitmap.CompressFormat.JPEG, 100, out);
+            out.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Failed to save photo", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Get the URI for the photo file using FileProvider
+        Uri photoUri = FileProvider.getUriForFile(this, getApplicationContext().getPackageName() + ".provider", photoFile);
+
+        // Create an intent to share the photo
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("image/jpeg");
+        shareIntent.putExtra(Intent.EXTRA_STREAM, photoUri);
+        shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        startActivity(Intent.createChooser(shareIntent, "Share photo via"));
+    }
+
+    public LoginManager getManager() {  // Make sure this method is public
+        return manager;
+    }
+    
 }
