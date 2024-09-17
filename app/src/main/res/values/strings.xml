@@ -12,7 +12,7 @@
     <string name="practitioner_login">Practitioner Login</string>
     <string name="login">Login</string>
     <string name="reset_password">Reset Password</string>
-
+    <string name="share_button">Share</string>
     <!-- activity_primary_secondary_school.xml -->
     <string name="daisy_link">
         Daisy’s First Day, a storybook about starting school featuring Australian animals:
