@@ -38,6 +38,15 @@ public class NavBarManager {
                     x.startActivity(intent);
                 }
             });
+
+            ImageButton shareButton = x.findViewById(R.id.share_button);
+            shareButton.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    // Show the dialog with camera options on the same screen
+                    CameraActivity dialog = new CameraActivity(x);
+                    dialog.show();
+                }
+            });
         }
         if(x.findViewById(R.id.footer) != null)
         {
