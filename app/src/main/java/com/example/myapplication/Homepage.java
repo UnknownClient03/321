@@ -1,18 +1,26 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.HashMap;
 
 public class Homepage extends AppCompatActivity {
@@ -181,10 +189,9 @@ public class Homepage extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == CameraActivity.CAMERA_REQUEST_CODE && resultCode == RESULT_OK) {
-            // Get the photo as a bitmap
+
             Bitmap photo = (Bitmap) data.getExtras().get("data");
             if (photo != null) {
-                // Share the photo immediately
                 sharePhotoToSocialMedia(photo);
             }
         } else {
@@ -193,7 +200,6 @@ public class Homepage extends AppCompatActivity {
     }
 
     private void sharePhotoToSocialMedia(Bitmap photo) {
-        // Save the bitmap to a file
         File photoFile = new File(getExternalFilesDir(null), "photo.jpg");
         try (FileOutputStream out = new FileOutputStream(photoFile)) {
             photo.compress(Bitmap.CompressFormat.JPEG, 100, out);
@@ -204,7 +210,6 @@ public class Homepage extends AppCompatActivity {
             return;
         }
 
-        // Get the URI for the photo file using FileProvider
         Uri photoUri = FileProvider.getUriForFile(this, getApplicationContext().getPackageName() + ".provider", photoFile);
 
         // Create an intent to share the photo
@@ -215,7 +220,7 @@ public class Homepage extends AppCompatActivity {
         startActivity(Intent.createChooser(shareIntent, "Share photo via"));
     }
 
-    public LoginManager getManager() {  // Make sure this method is public
+    public LoginManager getManager() {
         return manager;
     }
     
