@@ -53,6 +53,8 @@ public class ManageChildrenActivity extends AppCompatActivity {
 
         // Set up listeners
         setupListeners();
+
+        NavBarManager.setNavBarButtons(ManageChildrenActivity.this);
     }
 
     @Override
