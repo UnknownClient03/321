@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose an Option"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:id="@+id/take_photo_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Take a Photo"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/share_progress_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Share Child's Progress"
+        android:layout_marginTop="5dp" />
+
+</LinearLayout>
