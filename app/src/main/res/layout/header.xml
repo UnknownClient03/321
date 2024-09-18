@@ -49,17 +49,18 @@
             android:layout_marginEnd="8dp"
             android:layout_marginTop="10dp"
             android:visibility="gone"/>
-        
+
 
         <ImageButton
             android:id="@+id/settings_button"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="center|end"
             android:layout_marginEnd="20dp"
+            android:scaleType="fitXY"
             android:background="@android:drawable/list_selector_background"
-            android:contentDescription="settings"
-            android:src="@android:drawable/ic_menu_preferences"/>
+            android:contentDescription="Settings"
+            android:src="@drawable/settinglogoemboss" />
         
     </LinearLayout>
 
