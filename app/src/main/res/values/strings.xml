@@ -21,32 +21,5 @@
     <string name="healthy_eating_text">
         Healthy Eating and Active Living is a NSW Government website helping people in NSW to make simple changes that help them lead healthier lives. Find simple, practical tools and expert tips to help you and your family to start some healthy habits, including healthy recipes, lunchbox ideas and access to free programs.<br /><br />Visit <a href="https://healthyliving.nsw.gov.au">healthyliving.nsw.gov.au</a> to find out more.
     </string>
-
-    <string-array name="sex_input_options">
-        <item>Male</item>
-        <item>Female</item>
-    </string-array>
-
-     <string-array name="child_status_options">
-        <item>normal</item>
-        <item>review</item>
-        <item>refer</item>
-    </string-array>
-    <string-array name="outcome_options">
-        <item>normal</item>
-        <item>review</item>
-        <item>refer</item>
-    </string-array>
-    <string-array name="check_type_options">
-        <item>1-4 weeks</item>
-        <item>6-8 weeks</item>
-        <item>4 month</item>
-        <item>6 month</item>
-        <item>12 month</item>
-        <item>18 month</item>
-        <item>2 year</item>
-        <item>3 year</item>
-        <item>4 year</item>
-    </string-array>
     
 </resources>
