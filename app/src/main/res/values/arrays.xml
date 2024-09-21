@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="child_status_options">
+        <item>normal</item>
+        <item>review</item>
+        <item>refer</item>
+    </string-array>
+    <string-array name="outcome_options">
+        <item>normal</item>
+        <item>review</item>
+        <item>refer</item>
+    </string-array>
+    <string-array name="check_type_array">
+        <item>1-4 weeks</item>
+        <item>6-8 weeks</item>
+        <item>4 month</item>
+        <item>6 month</item>
+        <item>12 month</item>
+        <item>18 month</item>
+        <item>2 year</item>
+        <item>3 year</item>
+        <item>4 year</item>
+    </string-array>
+</resources>
