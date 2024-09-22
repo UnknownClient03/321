@@ -305,6 +305,7 @@ CREATE TABLE FourMonthImmunisation(
 
 CREATE TABLE ChildCheck(
 	childID int not null,
+	childCheckID int not null,
 	checkType varchar(10),
 	DOB DATE not null,
 	age int not null,
@@ -328,7 +329,7 @@ CREATE TABLE ChildCheck(
 	signature varchar(max) not null,
 	venue varchar(31) not null,
 	date DATE not null,
-	PRIMARY KEY(checkType),
+	PRIMARY KEY(childCheckID),
 	CHECK(checkType = '1-4 weeks' OR
 	      checkType = '6-8 weeks' OR
 	      checkType = '4 month' OR
@@ -348,18 +349,17 @@ CREATE TABLE ChildCheck(
 );
 
 CREATE TABLE ChildCheckQuestion(
-	checkType varchar(10) not null,
+	childCheckID int not null,
 	question varchar(63) not null,
 	condition BIT DEFAULT 0 not null,
-	PRIMARY KEY(checkType),
-	FOREIGN KEY (checkType) REFERENCES childCheck(checkType)
+	FOREIGN KEY (childCheckID) REFERENCES childCheck(childCheckID)
 );
 
 CREATE TABLE ChildCheckAssessment(
-	checkType varchar(10) not null,
+	childCheckID int not null,
 	item varchar(63) not null,
 	status varchar(6) not null,
-	PRIMARY KEY(checkType),
+	PRIMARY KEY(childCheckID),
 	CHECK (status = 'normal' OR
 		   status = 'review' OR
 		   status = 'Refer'),
@@ -389,16 +389,16 @@ CREATE TABLE ChildCheckAssessment(
 		   item = 'anal region' OR
 		   item = 'skin' OR
 		   item = 'reflexes'),
-	FOREIGN KEY (checkType) REFERENCES childCheck(checkType)
+	FOREIGN KEY (childCheckID) REFERENCES childCheck(childCheckID)
 );
 
 CREATE TABLE ChildHealthFactors(
-	checkType varchar(10) not null,
+	childCheckID int not null,
 	immunisationUpToDate BIT DEFAULT 0 not null,
 	hearing BIT DEFAULT 0 not null,
 	vision BIT DEFAULT 0 not null,
 	hips BIT,
 	oralHealth BIT DEFAULT 0 not null,
-	PRIMARY KEY(checkType),
-	FOREIGN KEY (checkType) REFERENCES childCheck(checkType)
+	PRIMARY KEY(childCheckID),
+	FOREIGN KEY (childCheckID) REFERENCES childCheck(childCheckID)
 );
