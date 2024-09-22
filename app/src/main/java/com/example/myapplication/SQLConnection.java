@@ -49,17 +49,9 @@ public class SQLConnection extends Thread {
         StrictMode.ThreadPolicy a=new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(a);
         try {
-            SQLConnection thread = new SQLConnection(false);
-            thread.start();
-            /*Thread.sleep(ConnecitonTimeout);
-            isConnected = thread.isConnected;
-            conn = thread.conn;
-            if(!isConnected || thread.isAlive())
-                throw new SQLException("Connection timed out ");*/
-            for(int time = 0; thread.isAlive() && time < ConnecitonTimeout; time += 10)
+            start();
+            for(int time = 0; isAlive() && time < ConnecitonTimeout; time += 10)
                 Thread.sleep(10);
-            isConnected = thread.isConnected;
-            conn = thread.conn;
             if(!isConnected)
                 throw new SQLException("Connection timed out ");
         }
