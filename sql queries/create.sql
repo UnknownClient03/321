@@ -224,7 +224,6 @@ CREATE TABLE NBTable(
 	_check varchar(31) not null,
 	isNormal BIT not null,
 	comment varchar(255),
-	PRIMARY KEY(childID),
 	CHECK ( _check = 'Head and Fontanelles' OR 
 		_check = 'Eyes' OR 
 		_check = 'Ears' OR 
