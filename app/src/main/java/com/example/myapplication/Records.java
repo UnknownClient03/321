@@ -59,5 +59,7 @@ public class Records extends AppCompatActivity {
             }
         });
 
+        NavBarManager.setNavBarButtons(Records.this);
+
     }
 }
