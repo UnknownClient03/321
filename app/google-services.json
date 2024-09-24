@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "847510898917",
+    "project_id": "ozblue-613c5",
+    "storage_bucket": "ozblue-613c5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:847510898917:android:cd360888af92b8070fac0c",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9DDbLzId7BSxtpmrVMfhgVgqtJ1mkuYc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
