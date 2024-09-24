@@ -30,7 +30,7 @@
         android:layout_marginBottom="100dp"
         android:padding="10dp">
 
-        <ImageView
+        <com.github.chrisbanes.photoview.PhotoView
             android:id="@+id/imageViewCPRChart"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
