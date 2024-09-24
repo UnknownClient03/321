@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.bottomnavigation.BottomNavigationView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.bottomnavigation.BottomNavigationView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/footer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,58 +9,59 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginStart="20dp"
         android:orientation="horizontal">
 
-        <Button
+        <ImageButton
             android:id="@+id/back_button"
             android:layout_width="80dp"
-            android:layout_height="50dp"
-            android:background="@drawable/button_3d"
+            android:layout_height="80dp"
+            android:background="@android:color/transparent"
             android:elevation="12dp"
-            android:padding="0dp"
+            android:padding="8dp"
             android:rotationX="180"
-            android:text="Back"
-            android:textSize="12sp" />
+            android:scaleType="fitXY"
+            android:src="@drawable/backimg" />
 
-        <Button
+        <ImageButton
             android:id="@+id/records_button"
             android:layout_width="80dp"
-            android:layout_height="50dp"
+            android:layout_height="80dp"
             android:layout_marginStart="10dp"
-            android:background="@drawable/button_3d"
+            android:background="@android:color/transparent"
             android:elevation="12dp"
-            android:padding="0dp"
+            android:padding="8dp"
             android:rotationX="180"
-            android:text="Records"
-            android:textSize="12sp" />
+            android:scaleType="fitXY"
+            android:src="@drawable/recordsimg" />
 
-        <Button
+        <ImageButton
             android:id="@+id/progress_button"
             android:layout_width="80dp"
-            android:layout_height="50dp"
+            android:layout_height="80dp"
             android:layout_marginStart="10dp"
-            android:background="@drawable/button_3d"
+            android:background="@android:color/transparent"
             android:elevation="12dp"
-            android:padding="0dp"
+            android:padding="8dp"
             android:rotationX="180"
-            android:text="Progress"
-            android:textSize="12sp" />
+            android:scaleType="fitXY"
+            android:src="@drawable/progressimg" />
 
-        <Button
+        <ImageButton
             android:id="@+id/logout_button"
             android:layout_width="80dp"
-            android:layout_height="50dp"
+            android:layout_height="80dp"
             android:layout_marginStart="10dp"
-            android:background="@drawable/button_3d"
+            android:background="@android:color/transparent"
             android:elevation="12dp"
-            android:padding="0dp"
+            android:padding="8dp"
             android:rotationX="180"
-            android:text="Logout"
-            android:textSize="12sp" />
+            android:scaleType="fitXY"
+            android:src="@drawable/logoutimg" />
 
     </LinearLayout>
 
 </com.google.android.material.bottomnavigation.BottomNavigationView>
+
