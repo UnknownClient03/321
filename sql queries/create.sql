@@ -305,30 +305,15 @@ CREATE TABLE FourMonthImmunisation(
 
 CREATE TABLE ChildCheck(
 	childID int not null,
+	childCheckID int not null,
 	checkType varchar(10),
 	DOB DATE not null,
-	age int not null,
 	sex char(1) not null,
 	fname varchar(31) not null,
 	lname varchar(31) not null,
-	childStatus varchar(6) not null,
 	parentsNotes varchar(255),
 	feeding BIT DEFAULT 0,
-	--health assessement & protective factors
-	weight int not null,
-	length int not null,
-	headCirc int not null,
-	outcome varchar(6) not null,
-	healthInfoDiscussed BIT DEFAULT 0 not null,
-	--signage
-	results varchar(255),
-	comments varchar(255),
-	actionTaken varchar(255),
-	nameOfDoctor varchar(31) not null,
-	signature varchar(max) not null,
-	venue varchar(31) not null,
-	date DATE not null,
-	PRIMARY KEY(checkType),
+	PRIMARY KEY(childCheckID),
 	CHECK(checkType = '1-4 weeks' OR
 	      checkType = '6-8 weeks' OR
 	      checkType = '4 month' OR
@@ -338,28 +323,39 @@ CREATE TABLE ChildCheck(
 	      checkType = '2 year' OR
 	      checkType = '3 year' OR
 	      checkType = '4 year'),
-	CHECK(childStatus = 'normal' OR
-		  childStatus = 'review' OR
-		  childStatus = 'refer'),
-	CHECK(outcome = 'normal' OR
-		  outcome = 'review' OR
-		  outcome = 'refer'),
 	FOREIGN KEY (childID) REFERENCES Child(ID)
 );
 
 CREATE TABLE ChildCheckQuestion(
-	checkType varchar(10) not null,
+	childCheckID int not null,
 	question varchar(63) not null,
 	condition BIT DEFAULT 0 not null,
-	PRIMARY KEY(checkType),
-	FOREIGN KEY (checkType) REFERENCES childCheck(checkType)
+	FOREIGN KEY (childCheckID) REFERENCES childCheck(childCheckID)
 );
 
 CREATE TABLE ChildCheckAssessment(
-	checkType varchar(10) not null,
+	childCheckID int not null,
+	childQuestionStatus varchar(6) not null,
+	weight int not null,
+	length int not null,
+	headCirc int not null,
+	outcome varchar(6) not null,
+	healthInfoDiscussed BIT DEFAULT 0 not null,
+	PRIMARY KEY(childCheckID),
+	CHECK(childQuestionStatus = 'normal' OR
+	    childQuestionStatus = 'review' OR
+		childQuestionStatus = 'refer'),
+	CHECK(outcome = 'normal' OR
+	    outcome = 'review' OR
+		outcome = 'refer'),
+	FOREIGN KEY (childCheckID) REFERENCES childCheck(childCheckID)
+);
+
+CREATE TABLE ChildCheckAssessmentVariables(
+	childCheckID int not null,
 	item varchar(63) not null,
 	status varchar(6) not null,
-	PRIMARY KEY(checkType),
+	PRIMARY KEY(childCheckID),
 	CHECK (status = 'normal' OR
 		   status = 'review' OR
 		   status = 'Refer'),
@@ -389,16 +385,29 @@ CREATE TABLE ChildCheckAssessment(
 		   item = 'anal region' OR
 		   item = 'skin' OR
 		   item = 'reflexes'),
-	FOREIGN KEY (checkType) REFERENCES childCheck(checkType)
+	FOREIGN KEY (childCheckID) REFERENCES childCheck(childCheckID)
 );
 
-CREATE TABLE ChildHealthFactors(
-	checkType varchar(10) not null,
+CREATE TABLE ChildCheckProtectiveFactors(
+	childCheckID int not null,
 	immunisationUpToDate BIT DEFAULT 0 not null,
 	hearing BIT DEFAULT 0 not null,
 	vision BIT DEFAULT 0 not null,
 	hips BIT,
 	oralHealth BIT DEFAULT 0 not null,
-	PRIMARY KEY(checkType),
-	FOREIGN KEY (checkType) REFERENCES childCheck(checkType)
+	PRIMARY KEY(childCheckID),
+	FOREIGN KEY (childCheckID) REFERENCES childCheck(childCheckID)
+);
+
+CREATE TABLE ChildCheckSignage(
+	childCheckID int not null,
+	results varchar(255),
+	comments varchar(255),
+	actionTaken varchar(255),
+	nameOfDoctor varchar(31) not null,
+	signature varchar(max) not null,
+	venue varchar(31) not null,
+	date DATE not null,
+	PRIMARY KEY(childCheckID),
+	FOREIGN KEY (childCheckID) REFERENCES childCheck(childCheckID)
 );
