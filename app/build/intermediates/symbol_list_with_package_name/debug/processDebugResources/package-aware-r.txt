@@ -77,7 +77,9 @@ animator mtrl_fab_hide_motion_spec
 animator mtrl_fab_show_motion_spec
 animator mtrl_fab_transformation_sheet_collapse_spec
 animator mtrl_fab_transformation_sheet_expand_spec
-array sex_input_options
+array check_type_array
+array child_status_options
+array outcome_options
 attr SharedValue
 attr SharedValueId
 attr actionBarDivider
@@ -2965,10 +2967,12 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
+drawable add_message
 drawable add_person
 drawable avd_hide_password
 drawable avd_show_password
 drawable back_arrow
+drawable backimg
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -3023,6 +3027,7 @@ drawable ic_other_sign_in
 drawable ic_passkey
 drawable ic_password
 drawable ic_search_black_24
+drawable logoutimg
 drawable m3_appbar_background
 drawable m3_avd_hide_password
 drawable m3_avd_show_password
@@ -3098,9 +3103,13 @@ drawable notify_panel_notification_icon_bg
 drawable ozbluelogo_background
 drawable ozbluelogo_foreground
 drawable profile_picture
+drawable progressimg
+drawable recordsimg
 drawable round_1
 drawable round_button
 drawable roundstyle
+drawable settinglogoemboss
+drawable share_button_background
 drawable square
 drawable table_cell_border
 drawable test_level_drawable
@@ -3199,6 +3208,7 @@ id allStates
 id always
 id animateToEnd
 id animateToStart
+id answerInput
 id antiClockwise
 id anticipate
 id arc
@@ -3276,6 +3286,7 @@ id button_progressNotes_submit
 id button_save
 id button_saveBirthDetails
 id button_saveNewbornExamination
+id button_share_child_progress
 id button_submit_contact
 id button_useful_contacts_and_websites
 id cache_measures
@@ -3290,6 +3301,14 @@ id center_vertical
 id chain
 id chain2
 id chains
+id check1Button
+id check2Button
+id check3Button
+id check4Button
+id check5Button
+id check6Button
+id check7Button
+id check8Button
 id checkBox_abdomenUmbilicus
 id checkBox_anus
 id checkBox_calender
@@ -3308,7 +3327,10 @@ id checkBox_reflexes
 id checkBox_respiratoryRate
 id checkBox_skin
 id checkBox_testes
+id checkTypeInput
+id checkTypeSpinner
 id checkbox
+id checkboxHealthInfoDiscussed
 id checked
 id child_age
 id child_checkbox
@@ -3318,6 +3340,7 @@ id child_list_view
 id child_name
 id chronometer
 id circle_center
+id clear_button
 id clear_text
 id clip_horizontal
 id clip_vertical
@@ -3325,6 +3348,7 @@ id clockwise
 id closest
 id cognitiveQuestions
 id collapseActionView
+id commentsInput
 id compress
 id confirm_button
 id confirm_password_input
@@ -3367,6 +3391,7 @@ id disjoint
 id dob_day_input
 id dob_month_input
 id dob_year_input
+id doctorInput
 id dragAnticlockwise
 id dragClockwise
 id dragDown
@@ -3447,6 +3472,8 @@ id groups
 id guideline_profiles_top
 id guideline_scrollview_end
 id guideline_text_top
+id headCircInput
+id head_circumference_input
 id header
 id header_title
 id heading1
@@ -3455,8 +3482,10 @@ id heading3
 id heading4
 id heading5
 id heading6
+id health_factor_input
 id healthyEatingText
 id healthyEatingTitle
+id height_input
 id hideable
 id home
 id homeAsUp
@@ -3580,6 +3609,7 @@ id layout
 id left
 id leftToRight
 id legacy
+id lengthInput
 id light
 id line1
 id line3
@@ -3708,6 +3738,7 @@ id open_search_view_search_prefix
 id open_search_view_status_bar_spacer
 id open_search_view_toolbar
 id open_search_view_toolbar_container
+id outcomeInput
 id outline
 id outward
 id overshoot
@@ -3739,6 +3770,7 @@ id progress_button
 id progress_circular
 id progress_horizontal
 id question2text
+id questionText
 id questionTextView1
 id questionTextView10
 id questionTextView11
@@ -3758,6 +3790,7 @@ id questionTextView6
 id questionTextView7
 id questionTextView8
 id questionTextView9
+id question_checkbox
 id radio
 id radioGroup1
 id radioGroup10
@@ -3791,6 +3824,7 @@ id radiogroup_usefulContacts
 id ratio
 id records_button
 id rectangles
+id recycler_view
 id remove_child_button
 id report_drawn
 id reverseSawtooth
@@ -3800,6 +3834,7 @@ id right_icon
 id right_side
 id rounded
 id row_index_key
+id save_button
 id save_child_button
 id save_non_transition_alpha
 id save_overlay_view
@@ -3827,6 +3862,8 @@ id selected
 id selection_type
 id settings_button
 id sex_input
+id share_button
+id share_progress_button
 id sharedValueSet
 id sharedValueUnset
 id shortcut
@@ -3834,6 +3871,8 @@ id showCustom
 id showHome
 id showTitle
 id show_password_checkbox
+id signatureInput
+id signature_view
 id signup_button
 id signup_title
 id sin
@@ -3848,6 +3887,8 @@ id socialEmotionalQuestions
 id south
 id spacer
 id special_effects_controller_view_tag
+id spinnerChildStatus
+id spinnerOutcome
 id spline
 id split_action_bar
 id spread
@@ -3867,7 +3908,9 @@ id staticPostLayout
 id stop
 id stretch
 id submenuarrow
+id submitButton
 id submit_area
+id submit_button
 id submit_remove_button
 id supportScrollUp
 id tabMode
@@ -3884,6 +3927,7 @@ id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
 id tag_window_insets_animation_callback
+id take_photo_button
 id text
 id text2
 id textEnd
@@ -4011,6 +4055,7 @@ id textViewSelectChild
 id textView_change_profilePicture
 id textView_homepage_name
 id textView_name
+id text_health_check_title
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -4052,6 +4097,7 @@ id update_myAddress
 id upload_button
 id useLogo
 id user_login_button
+id venueInput
 id vertical_only
 id view3
 id view_offset_helper
@@ -4062,6 +4108,8 @@ id view_tree_saved_state_registry_owner
 id view_tree_view_model_store_owner
 id visible
 id visible_removing_fragment_view_tag
+id weightInput
+id weight_input
 id west
 id wide
 id withText
@@ -4208,7 +4256,10 @@ layout abc_tooltip
 layout account_settings
 layout activity_add_child
 layout activity_cpr_chart
+layout activity_encapsulating
 layout activity_four_month_immunisation_check
+layout activity_health_check_form
+layout activity_health_checks
 layout activity_homepage
 layout activity_illness_injury_notes
 layout activity_immunisation
@@ -4252,6 +4303,9 @@ layout fragment_allaboutme
 layout fragment_birth_details
 layout fragment_dentalhistory
 layout fragment_father
+layout fragment_health_assessment
+layout fragment_health_check_questions
+layout fragment_health_protective_factors
 layout fragment_healthhistory
 layout fragment_immunisation_read
 layout fragment_immunisation_write
@@ -4259,7 +4313,10 @@ layout fragment_language
 layout fragment_mother
 layout fragment_myaddress
 layout fragment_newborn_examination
+layout fragment_signature
 layout header
+layout health_check_item
+layout item_question
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title
@@ -4322,6 +4379,7 @@ layout practitioner_login
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
+layout share_options
 layout support_simple_spinner_dropdown_item
 layout useful_contacts
 layout useful_contacts_change
@@ -4521,6 +4579,7 @@ string search_menu_title
 string searchbar_scrolling_view_behavior
 string searchview_clear_text_content_description
 string searchview_navigation_content_description
+string share_button
 string side_sheet_accessibility_pane_title
 string side_sheet_behavior
 string status_bar_notification_info_overflow
@@ -5806,4 +5865,5 @@ styleable ViewTransition android_id SharedValue SharedValueId clearsTag duration
 styleable include constraintSet
 xml backup_rules
 xml data_extraction_rules
+xml file_paths
 xml image_share_filepaths

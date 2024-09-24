@@ -125,6 +125,15 @@
                     </TableRow>
 
                 </TableLayout>
+
+                <Button
+                    android:id="@+id/button_share_child_progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Share Child's Progress"
+                    android:layout_marginTop="20dp"
+                    android:layout_gravity="center" />
+                
             </LinearLayout>
         </ScrollView>
 

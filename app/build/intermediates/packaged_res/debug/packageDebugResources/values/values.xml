@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="sex_input_options">
-        <item>Male</item>
-        <item>Female</item>
+    <string-array name="check_type_array">
+        <item>1-4 weeks</item>
+        <item>6-8 weeks</item>
+        <item>4 month</item>
+        <item>6 month</item>
+        <item>12 month</item>
+        <item>18 month</item>
+        <item>2 year</item>
+        <item>3 year</item>
+        <item>4 year</item>
+    </string-array>
+    <string-array name="child_status_options">
+        <item>normal</item>
+        <item>review</item>
+        <item>refer</item>
+    </string-array>
+    <string-array name="outcome_options">
+        <item>normal</item>
+        <item>review</item>
+        <item>refer</item>
     </string-array>
     <color name="black">#FF000000</color>
     <color name="button_background">#2196F3</color>
@@ -22,6 +39,7 @@
     <string name="login">Login</string>
     <string name="practitioner_login">Practitioner Login</string>
     <string name="reset_password">Reset Password</string>
+    <string name="share_button">Share</string>
     <string name="txt_Home">Practitioner\nLogin</string>
     <string name="txt_LOGIN">LOGIN</string>
     <string name="txt_Practitioner_login">Practitioner\nLogin</string>

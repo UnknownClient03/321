@@ -42,6 +42,7 @@
                 android:layout_height="wrap_content"
                 android:text="Information for Parents"
                 android:textAlignment="center"
+                android:textColor="#90EBF7"
                 android:textSize="34sp"
                 android:textStyle="bold" />
 
@@ -57,7 +58,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Child and Family Health Centres  "
-                android:textSize="19sp"
+                android:textColor="#90EBF7"
+                android:textSize="23sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -71,8 +73,9 @@
                 android:id="@+id/textView14"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="#90EBF7"
                 android:text="Other important child health professionals "
-                android:textSize="19sp"
+                android:textSize="23sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -91,8 +94,9 @@
                 android:id="@+id/textView22"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="#90EBF7"
                 android:text="The importance of child health and development checks "
-                android:textSize="19sp"
+                android:textSize="23sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -210,7 +214,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="• 6 to 8 weeks"
+                        android:text="• 6 years"
                         android:textAlignment="center" />
 
                     <TextView
@@ -218,7 +222,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="• 18 months"
+                        android:text="• 4 years"
                         android:textAlignment="center" />
 
                     <TextView
@@ -226,10 +230,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="• 4 years"
+                        android:text="• 5 years"
                         android:textAlignment="center" />
                 </TableRow>
-
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" >
@@ -242,165 +245,168 @@
                         android:textAlignment="center" />
                 </TableRow>
 
+                <TextView
+                    android:id="@+id/textView88"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="All children grow and develop at different rates but if you have a concern it is important to see a health professional. If your nurse or doctor needs to further investigate a concern they can use screening tests and other checks to understand what action will be best. \n" />
+
+                <TextView
+                    android:id="@+id/textView91"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Screening tests, checks and examinations can never be 100% accurate. Sometimes a health check or screening test may suggest there is a problem when there isn’t one or miss a problem that does exist. Occasionally a new problem may occur after your child has had a screening test or health check. This is why it is so important to attend all recommended health checks and to complete the questions for parents in this book. \n" />
+
+                <TextView
+                    android:id="@+id/textView89"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Learn the Signs. Act Early.  "
+                    android:textColor="#90EBF7"
+                    android:textSize="23sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView90"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="At every health check from 2 months you will see a set of questions under the heading Learn the Signs. Act Early. These questions help you see whether your child’s development is on track, and when it is a good idea to ask a professional for help. \n" />
+
+                <TextView
+                    android:id="@+id/textView86"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Answer these questions as accurately as you can, because they can help you and your doctor or Child and Family Health nurse understand the way your child is learning, developing and behaving. \n" />
+
+                <TextView
+                    android:id="@+id/textView87"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="For more information on developmental milestones and extra resources for parents, including videos, go to the NSW Health website at www.health.nsw.gov.au/mybluebook. \n" />
+
+                <TextView
+                    android:id="@+id/textView85"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="For extra ideas on how you can encourage your child’s development, download the Love, Talk, Sing, Read, Play app on Android and iPhone and the Bright Tomorrows app at www.brighttomorrows.org.au. \n" />
+
+                <TextView
+                    android:id="@+id/textView82"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="You can also find detailed information and more ideas about supporting your child’s development at raisingchildren.net.au. \n" />
+
+                <TextView
+                    android:id="@+id/textView84"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="You should make notes about your child’s health and progress in the ‘Progress Notes’ section of this Blue Book. \n" />
+
+                <TextView
+                    android:id="@+id/textView83"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#90EBF7"
+                    android:text="Brighter Beginnings to help your child get the best start"
+                    android:textSize="23sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView79"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="The early years of a child’s life are exciting and also exhausting. There are many supports and services available to help parents and carers during this important time. Brighter Beginnings: the first 2000 days of life, is the NSW Government initiative to give all children in NSW the best start in life. At the Brighter Beginnings website you’ll find step-by-step help from when you’re having a baby, after you bring baby home, up to when your child is starting primary school and if you need financial and parenting support. \n" />
+
+                <TextView
+                    android:id="@+id/textView81"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Find Brighter Beginnings: step by step guides at www.nsw.gov.au/lifeevents/brighter-beginnings-step-by-step-guides." />
+
+                <TextView
+                    android:id="@+id/textView80"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Safe sleeping recommendations"
+                    android:textColor ="#90EBF7"
+                    android:textSize="23sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView107"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tragically some babies die unexpectedly and for no obvious reason in their sleep. You can reduce the risk for your baby by following these safe sleeping recommendations every time you place your baby to sleep: " />
+
+                <TextView
+                    android:id="@+id/textView106"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="• Place your baby on their back to sleep." />
+
+                <TextView
+                    android:id="@+id/textView110"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="• Your baby should have their own cot that meets the Australian safety standard and has a firm, well fitted mattress." />
+
+                <TextView
+                    android:id="@+id/textView115"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="• Sleep your baby in your bedroom at night for the first six to 12 months of life" />
+
+                <TextView
+                    android:id="@+id/textView114"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="• Do not let your baby sleep on the couch or an armchair, especially with another person." />
+
+                <TextView
+                    android:id="@+id/textView113"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="• Make sure your baby’s head and face cannot become covered while sleeping to prevent suffocation or overheating. Tuck in sheets and blankets or use a safe infant sleeping bag. Do not use a doona, cot bumper, mattress padding, sheep skin or leave soft toys in the cot." />
+
+                <TextView
+                    android:id="@+id/textView112"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="• Dress your baby to be comfortably warm but not hot, to avoid overheating." />
+
+                <TextView
+                    android:id="@+id/textView111"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="• Breastfeed your baby for the first six months where possible." />
+
+                <TextView
+                    android:id="@+id/textView109"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="• Don’t smoke during pregnancy or after your child is born and don’t allow anyone to smoke near your baby" />
+
+                <TextView
+                    android:id="@+id/textView108"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="• Make sure anyone who looks after your baby understands these safe sleeping recommendations \n" />
+
+                <TextView
+                    android:id="@+id/textView105"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="The recommended safe sleeping practices are adapted from raisingchildren.net.au/safesleep \n" />
+
+                <TextView
+                    android:id="@+id/textView103"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TO BE CONTINUED..."
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
             </TableLayout>
-
-            <TextView
-                android:id="@+id/textView88"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="All children grow and develop at different rates but if you have a concern it is important to see a health professional. If your nurse or doctor needs to further investigate a concern they can use screening tests and other checks to understand what action will be best. \n" />
-
-            <TextView
-                android:id="@+id/textView91"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Screening tests, checks and examinations can never be 100% accurate. Sometimes a health check or screening test may suggest there is a problem when there isn’t one or miss a problem that does exist. Occasionally a new problem may occur after your child has had a screening test or health check. This is why it is so important to attend all recommended health checks and to complete the questions for parents in this book. \n" />
-
-            <TextView
-                android:id="@+id/textView89"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Learn the Signs. Act Early.  "
-                android:textSize="19sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textView90"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="At every health check from 2 months you will see a set of questions under the heading Learn the Signs. Act Early. These questions help you see whether your child’s development is on track, and when it is a good idea to ask a professional for help. \n" />
-
-            <TextView
-                android:id="@+id/textView86"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Answer these questions as accurately as you can, because they can help you and your doctor or Child and Family Health nurse understand the way your child is learning, developing and behaving. \n" />
-
-            <TextView
-                android:id="@+id/textView87"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="For more information on developmental milestones and extra resources for parents, including videos, go to the NSW Health website at www.health.nsw.gov.au/mybluebook. \n" />
-
-            <TextView
-                android:id="@+id/textView85"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="For extra ideas on how you can encourage your child’s development, download the Love, Talk, Sing, Read, Play app on Android and iPhone and the Bright Tomorrows app at www.brighttomorrows.org.au. \n" />
-
-            <TextView
-                android:id="@+id/textView82"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="You can also find detailed information and more ideas about supporting your child’s development at raisingchildren.net.au. \n" />
-
-            <TextView
-                android:id="@+id/textView84"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="You should make notes about your child’s health and progress in the ‘Progress Notes’ section of this Blue Book. \n" />
-
-            <TextView
-                android:id="@+id/textView83"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Brighter Beginnings to help your child get the best start"
-                android:textSize="19sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textView79"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="The early years of a child’s life are exciting and also exhausting. There are many supports and services available to help parents and carers during this important time. Brighter Beginnings: the first 2000 days of life, is the NSW Government initiative to give all children in NSW the best start in life. At the Brighter Beginnings website you’ll find step-by-step help from when you’re having a baby, after you bring baby home, up to when your child is starting primary school and if you need financial and parenting support. \n" />
-
-            <TextView
-                android:id="@+id/textView81"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Find Brighter Beginnings: step by step guides at www.nsw.gov.au/lifeevents/brighter-beginnings-step-by-step-guides." />
-
-            <TextView
-                android:id="@+id/textView80"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Safe sleeping recommendations"
-                android:textSize="19sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textView107"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Tragically some babies die unexpectedly and for no obvious reason in their sleep. You can reduce the risk for your baby by following these safe sleeping recommendations every time you place your baby to sleep: " />
-
-            <TextView
-                android:id="@+id/textView106"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="• Place your baby on their back to sleep." />
-
-            <TextView
-                android:id="@+id/textView110"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="• Your baby should have their own cot that meets the Australian safety standard and has a firm, well fitted mattress." />
-
-            <TextView
-                android:id="@+id/textView115"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="• Sleep your baby in your bedroom at night for the first six to 12 months of life" />
-
-            <TextView
-                android:id="@+id/textView114"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="• Do not let your baby sleep on the couch or an armchair, especially with another person." />
-
-            <TextView
-                android:id="@+id/textView113"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="• Make sure your baby’s head and face cannot become covered while sleeping to prevent suffocation or overheating. Tuck in sheets and blankets or use a safe infant sleeping bag. Do not use a doona, cot bumper, mattress padding, sheep skin or leave soft toys in the cot." />
-
-            <TextView
-                android:id="@+id/textView112"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="• Dress your baby to be comfortably warm but not hot, to avoid overheating." />
-
-            <TextView
-                android:id="@+id/textView111"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="• Breastfeed your baby for the first six months where possible." />
-
-            <TextView
-                android:id="@+id/textView109"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="• Don’t smoke during pregnancy or after your child is born and don’t allow anyone to smoke near your baby" />
-
-            <TextView
-                android:id="@+id/textView108"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="• Make sure anyone who looks after your baby understands these safe sleeping recommendations \n" />
-
-            <TextView
-                android:id="@+id/textView105"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="The recommended safe sleeping practices are adapted from raisingchildren.net.au/safesleep \n" />
-
-            <TextView
-                android:id="@+id/textView103"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TO BE CONTINUED..."
-                android:textSize="20sp"
-                android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

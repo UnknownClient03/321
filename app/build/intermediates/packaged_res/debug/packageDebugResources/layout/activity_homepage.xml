@@ -6,6 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#90EBF7"
     tools:context=".Homepage">
 
     <include
@@ -130,6 +131,7 @@
 
     <ImageView
         android:id="@+id/profile_picture_background"
+        android:layout_marginStart="15dp"
         android:layout_width="59dp"
         android:layout_height="57dp"
         android:layout_marginTop="112dp"
@@ -143,7 +145,7 @@
         android:id="@+id/profile_picture"
         android:layout_width="50dp"
         android:layout_height="56dp"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="112dp"
         android:src="@drawable/profile_picture"
         app:layout_constraintEnd_toStartOf="@+id/textView3"
@@ -164,6 +166,7 @@
 
         <TextView
             android:id="@+id/textView104"
+            android:layout_marginStart="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HealthChecksActivity">
+
+    <include
+        android:id="@+id/header"
+        layout="@layout/header"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="170dp"
+        app:layout_constraintBottom_toTopOf="@+id/footer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/check1Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_3d"
+                android:elevation="12dp"
+                android:layout_gravity="center_horizontal"
+                android:text="1-4 Week Check: Assess weight, length, head circumference, and general health" />
+
+            <Button
+                android:id="@+id/check2Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_3d"
+                android:elevation="12dp"
+                android:layout_gravity="center_horizontal"
+                android:text="6-8 Week Check: Assess growth, development, and feeding" />
+
+            <Button
+                android:id="@+id/check3Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_3d"
+                android:elevation="12dp"
+                android:layout_gravity="center_horizontal"
+                android:text="6 Month Check: Assess growth, oral health, and immunization status" />
+
+            <Button
+                android:id="@+id/check4Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_3d"
+                android:elevation="12dp"
+                android:layout_gravity="center_horizontal"
+                android:text="12 Month Check: Monitor development and screen for anemia" />
+
+            <Button
+                android:id="@+id/check5Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_3d"
+                android:elevation="12dp"
+                android:layout_gravity="center_horizontal"
+                android:text="18 Month Check: Developmental assessment and immunization update" />
+
+            <Button
+                android:id="@+id/check6Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_3d"
+                android:elevation="12dp"
+                android:layout_gravity="center_horizontal"
+                android:text="2 Year Check: Assess language and social skills" />
+
+            <Button
+                android:id="@+id/check7Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_3d"
+                android:elevation="12dp"
+                android:layout_gravity="center_horizontal"
+                android:text="3.5 Year Check: Pre-school development assessment" />
+
+            <Button
+                android:id="@+id/check8Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_3d"
+                android:elevation="12dp"
+                android:layout_gravity="center_horizontal"
+                android:text="5 Year Check: School readiness and hearing/vision screening" />
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Include Footer -->
+    <include
+    layout="@layout/footer"
+    android:layout_width="0dp"
+    android:layout_height="100dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

@@ -61,6 +61,8 @@ public class SignUpActivity extends AppCompatActivity {
 
         backArrow.setOnClickListener(v -> finish());
 
+        NavBarManager.setNavBarButtons(SignUpActivity.this);
+
     }
 
     private boolean validateInputs() {

@@ -29,14 +29,39 @@
         android:textSize="30sp"
         android:textStyle="bold" />
 
-    <ImageButton
-        android:id="@+id/settings_button"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_gravity="center|end"
-        android:layout_marginEnd="20dp"
-        android:background="@android:drawable/list_selector_background"
-        android:contentDescription="settings"
-        android:src="@android:drawable/ic_menu_preferences"/>
+        android:layout_marginEnd="20dp">
+
+        <ImageButton
+            android:id="@+id/share_button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/add_message"
+            android:background="@drawable/share_button_background"
+            android:contentDescription="@string/share_button"
+            android:padding="1dp"
+            android:scaleType="centerCrop"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"/>
+
+
+        <ImageButton
+            android:id="@+id/settings_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center|end"
+            android:layout_marginEnd="20dp"
+            android:scaleType="fitXY"
+            android:background="@android:drawable/list_selector_background"
+            android:contentDescription="Settings"
+            android:src="@drawable/settinglogoemboss" />
+        
+    </LinearLayout>
 
 </com.google.android.material.bottomnavigation.BottomNavigationView>

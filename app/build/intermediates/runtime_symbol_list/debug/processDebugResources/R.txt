@@ -76,7 +76,9 @@ int animator mtrl_fab_hide_motion_spec 0x7f02001e
 int animator mtrl_fab_show_motion_spec 0x7f02001f
 int animator mtrl_fab_transformation_sheet_collapse_spec 0x7f020020
 int animator mtrl_fab_transformation_sheet_expand_spec 0x7f020021
-int array sex_input_options 0x7f030000
+int array check_type_array 0x7f030001
+int array child_status_options 0x7f030002
+int array outcome_options 0x7f030003
 int attr SharedValue 0x7f040000
 int attr SharedValueId 0x7f040001
 int attr actionBarDivider 0x7f040002
@@ -2964,10 +2966,12 @@ int drawable abc_textfield_search_activated_mtrl_alpha 0x7f080074
 int drawable abc_textfield_search_default_mtrl_alpha 0x7f080075
 int drawable abc_textfield_search_material 0x7f080076
 int drawable abc_vector_test 0x7f080077
+int drawable add_message 0x7f080106
 int drawable add_person 0x7f080078
 int drawable avd_hide_password 0x7f080079
 int drawable avd_show_password 0x7f08007a
 int drawable back_arrow 0x7f08007b
+int drawable backimg 0x7f080107
 int drawable btn_checkbox_checked_mtrl 0x7f08007c
 int drawable btn_checkbox_checked_to_unchecked_mtrl_animation 0x7f08007d
 int drawable btn_checkbox_unchecked_mtrl 0x7f08007e
@@ -3022,6 +3026,7 @@ int drawable ic_other_sign_in 0x7f0800ad
 int drawable ic_passkey 0x7f0800ae
 int drawable ic_password 0x7f0800af
 int drawable ic_search_black_24 0x7f0800b0
+int drawable logoutimg 0x7f080108
 int drawable m3_appbar_background 0x7f0800b1
 int drawable m3_avd_hide_password 0x7f0800b2
 int drawable m3_avd_show_password 0x7f0800b3
@@ -3097,9 +3102,13 @@ int drawable notify_panel_notification_icon_bg 0x7f0800f8
 int drawable ozbluelogo_background 0x7f0800f9
 int drawable ozbluelogo_foreground 0x7f0800fa
 int drawable profile_picture 0x7f0800fb
+int drawable progressimg 0x7f080109
+int drawable recordsimg 0x7f08010a
 int drawable round_1 0x7f080105
 int drawable round_button 0x7f0800fc
 int drawable roundstyle 0x7f0800fd
+int drawable settinglogoemboss 0x7f08010b
+int drawable share_button_background 0x7f08010c
 int drawable square 0x7f0800fe
 int drawable table_cell_border 0x7f080103
 int drawable test_level_drawable 0x7f0800ff
@@ -3198,6 +3207,7 @@ int id allStates 0x7f090051
 int id always 0x7f090052
 int id animateToEnd 0x7f090053
 int id animateToStart 0x7f090054
+int id answerInput 0x7f090437
 int id antiClockwise 0x7f090055
 int id anticipate 0x7f090056
 int id arc 0x7f090057
@@ -3275,6 +3285,7 @@ int id button_progressNotes_submit 0x7f090350
 int id button_save 0x7f09008f
 int id button_saveBirthDetails 0x7f090090
 int id button_saveNewbornExamination 0x7f090091
+int id button_share_child_progress 0x7f090438
 int id button_submit_contact 0x7f090351
 int id button_useful_contacts_and_websites 0x7f090092
 int id cache_measures 0x7f090093
@@ -3289,6 +3300,14 @@ int id center_vertical 0x7f09009b
 int id chain 0x7f09009c
 int id chain2 0x7f09009d
 int id chains 0x7f09009e
+int id check1Button 0x7f090439
+int id check2Button 0x7f09043a
+int id check3Button 0x7f09043b
+int id check4Button 0x7f09043c
+int id check5Button 0x7f09043d
+int id check6Button 0x7f09043e
+int id check7Button 0x7f09043f
+int id check8Button 0x7f090440
 int id checkBox_abdomenUmbilicus 0x7f09009f
 int id checkBox_anus 0x7f0900a0
 int id checkBox_calender 0x7f0900a1
@@ -3307,7 +3326,10 @@ int id checkBox_reflexes 0x7f0900ad
 int id checkBox_respiratoryRate 0x7f0900ae
 int id checkBox_skin 0x7f0900af
 int id checkBox_testes 0x7f0900b0
+int id checkTypeInput 0x7f090441
+int id checkTypeSpinner 0x7f090442
 int id checkbox 0x7f0900b1
+int id checkboxHealthInfoDiscussed 0x7f090443
 int id checked 0x7f0900b2
 int id child_age 0x7f090352
 int id child_checkbox 0x7f090353
@@ -3317,6 +3339,7 @@ int id child_list_view 0x7f090356
 int id child_name 0x7f090357
 int id chronometer 0x7f0900b9
 int id circle_center 0x7f0900ba
+int id clear_button 0x7f090444
 int id clear_text 0x7f0900bb
 int id clip_horizontal 0x7f0900bc
 int id clip_vertical 0x7f0900bd
@@ -3324,6 +3347,7 @@ int id clockwise 0x7f0900be
 int id closest 0x7f0900bf
 int id cognitiveQuestions 0x7f0903ad
 int id collapseActionView 0x7f0900c0
+int id commentsInput 0x7f090445
 int id compress 0x7f0900c1
 int id confirm_button 0x7f0900c2
 int id confirm_password_input 0x7f0900c3
@@ -3366,6 +3390,7 @@ int id disjoint 0x7f0900e7
 int id dob_day_input 0x7f090358
 int id dob_month_input 0x7f090359
 int id dob_year_input 0x7f09035a
+int id doctorInput 0x7f090446
 int id dragAnticlockwise 0x7f0900e9
 int id dragClockwise 0x7f0900ea
 int id dragDown 0x7f0900eb
@@ -3446,6 +3471,8 @@ int id groups 0x7f090130
 int id guideline_profiles_top 0x7f09035f
 int id guideline_scrollview_end 0x7f090360
 int id guideline_text_top 0x7f090361
+int id headCircInput 0x7f090447
+int id head_circumference_input 0x7f090448
 int id header 0x7f090131
 int id header_title 0x7f090132
 int id heading1 0x7f0903af
@@ -3454,8 +3481,10 @@ int id heading3 0x7f0903b1
 int id heading4 0x7f0903b2
 int id heading5 0x7f0903b3
 int id heading6 0x7f0903b4
+int id health_factor_input 0x7f090449
 int id healthyEatingText 0x7f09038f
 int id healthyEatingTitle 0x7f090390
+int id height_input 0x7f09044a
 int id hideable 0x7f090133
 int id home 0x7f090134
 int id homeAsUp 0x7f090135
@@ -3579,6 +3608,7 @@ int id layout 0x7f090196
 int id left 0x7f090197
 int id leftToRight 0x7f090198
 int id legacy 0x7f090199
+int id lengthInput 0x7f09044b
 int id light 0x7f09019a
 int id line1 0x7f09019b
 int id line3 0x7f09019d
@@ -3707,6 +3737,7 @@ int id open_search_view_search_prefix 0x7f090203
 int id open_search_view_status_bar_spacer 0x7f090204
 int id open_search_view_toolbar 0x7f090205
 int id open_search_view_toolbar_container 0x7f090206
+int id outcomeInput 0x7f09044c
 int id outline 0x7f090207
 int id outward 0x7f090208
 int id overshoot 0x7f090209
@@ -3738,6 +3769,7 @@ int id progress_button 0x7f090220
 int id progress_circular 0x7f090221
 int id progress_horizontal 0x7f090222
 int id question2text 0x7f0903ca
+int id questionText 0x7f09044d
 int id questionTextView1 0x7f0903cb
 int id questionTextView10 0x7f0903cc
 int id questionTextView11 0x7f0903cd
@@ -3757,6 +3789,7 @@ int id questionTextView6 0x7f0903da
 int id questionTextView7 0x7f0903db
 int id questionTextView8 0x7f0903dc
 int id questionTextView9 0x7f0903dd
+int id question_checkbox 0x7f09044e
 int id radio 0x7f090223
 int id radioGroup1 0x7f090416
 int id radioGroup10 0x7f090417
@@ -3790,6 +3823,7 @@ int id radiogroup_usefulContacts 0x7f090380
 int id ratio 0x7f090224
 int id records_button 0x7f090225
 int id rectangles 0x7f090226
+int id recycler_view 0x7f09044f
 int id remove_child_button 0x7f090227
 int id report_drawn 0x7f090228
 int id reverseSawtooth 0x7f090229
@@ -3799,6 +3833,7 @@ int id right_icon 0x7f09022c
 int id right_side 0x7f09022d
 int id rounded 0x7f09022e
 int id row_index_key 0x7f09022f
+int id save_button 0x7f090450
 int id save_child_button 0x7f090230
 int id save_non_transition_alpha 0x7f090231
 int id save_overlay_view 0x7f090232
@@ -3826,6 +3861,8 @@ int id selected 0x7f090247
 int id selection_type 0x7f090248
 int id settings_button 0x7f090249
 int id sex_input 0x7f09024a
+int id share_button 0x7f090451
+int id share_progress_button 0x7f090452
 int id sharedValueSet 0x7f09024b
 int id sharedValueUnset 0x7f09024c
 int id shortcut 0x7f09024d
@@ -3833,6 +3870,8 @@ int id showCustom 0x7f09024e
 int id showHome 0x7f09024f
 int id showTitle 0x7f090250
 int id show_password_checkbox 0x7f090436
+int id signatureInput 0x7f090453
+int id signature_view 0x7f090454
 int id signup_button 0x7f090251
 int id signup_title 0x7f090252
 int id sin 0x7f090253
@@ -3847,6 +3886,8 @@ int id socialEmotionalQuestions 0x7f0903de
 int id south 0x7f09025b
 int id spacer 0x7f09025c
 int id special_effects_controller_view_tag 0x7f09025d
+int id spinnerChildStatus 0x7f090455
+int id spinnerOutcome 0x7f090456
 int id spline 0x7f09025e
 int id split_action_bar 0x7f09025f
 int id spread 0x7f090260
@@ -3866,7 +3907,9 @@ int id staticPostLayout 0x7f09026d
 int id stop 0x7f09026e
 int id stretch 0x7f09026f
 int id submenuarrow 0x7f090270
+int id submitButton 0x7f090457
 int id submit_area 0x7f090271
+int id submit_button 0x7f090458
 int id submit_remove_button 0x7f090381
 int id supportScrollUp 0x7f090272
 int id tabMode 0x7f090274
@@ -3883,6 +3926,7 @@ int id tag_transition_group 0x7f09027e
 int id tag_unhandled_key_event_manager 0x7f09027f
 int id tag_unhandled_key_listeners 0x7f090280
 int id tag_window_insets_animation_callback 0x7f090281
+int id take_photo_button 0x7f090459
 int id text 0x7f090282
 int id text2 0x7f090283
 int id textEnd 0x7f090284
@@ -4010,6 +4054,7 @@ int id textViewSelectChild 0x7f09029e
 int id textView_change_profilePicture 0x7f0902a2
 int id textView_homepage_name 0x7f090384
 int id textView_name 0x7f0902a3
+int id text_health_check_title 0x7f09045a
 int id text_input_end_icon 0x7f0902a4
 int id text_input_error_icon 0x7f0902a5
 int id text_input_start_icon 0x7f0902a6
@@ -4051,6 +4096,7 @@ int id update_myAddress 0x7f090389
 int id upload_button 0x7f0902c2
 int id useLogo 0x7f0902c3
 int id user_login_button 0x7f0902c4
+int id venueInput 0x7f09045b
 int id vertical_only 0x7f0902c5
 int id view3 0x7f0902c6
 int id view_offset_helper 0x7f0902c7
@@ -4061,6 +4107,8 @@ int id view_tree_saved_state_registry_owner 0x7f0902cb
 int id view_tree_view_model_store_owner 0x7f0902cc
 int id visible 0x7f0902cd
 int id visible_removing_fragment_view_tag 0x7f0902ce
+int id weightInput 0x7f09045c
+int id weight_input 0x7f09045d
 int id west 0x7f0902cf
 int id wide 0x7f0902d0
 int id withText 0x7f0902d1
@@ -4207,7 +4255,10 @@ int layout abc_tooltip 0x7f0c001b
 int layout account_settings 0x7f0c001c
 int layout activity_add_child 0x7f0c001d
 int layout activity_cpr_chart 0x7f0c001e
+int layout activity_encapsulating 0x7f0c0098
 int layout activity_four_month_immunisation_check 0x7f0c0096
+int layout activity_health_check_form 0x7f0c0099
+int layout activity_health_checks 0x7f0c009a
 int layout activity_homepage 0x7f0c001f
 int layout activity_illness_injury_notes 0x7f0c0087
 int layout activity_immunisation 0x7f0c0093
@@ -4251,6 +4302,9 @@ int layout fragment_allaboutme 0x7f0c003b
 int layout fragment_birth_details 0x7f0c003c
 int layout fragment_dentalhistory 0x7f0c003d
 int layout fragment_father 0x7f0c003e
+int layout fragment_health_assessment 0x7f0c009b
+int layout fragment_health_check_questions 0x7f0c009c
+int layout fragment_health_protective_factors 0x7f0c009d
 int layout fragment_healthhistory 0x7f0c003f
 int layout fragment_immunisation_read 0x7f0c0094
 int layout fragment_immunisation_write 0x7f0c0095
@@ -4258,7 +4312,10 @@ int layout fragment_language 0x7f0c0040
 int layout fragment_mother 0x7f0c0041
 int layout fragment_myaddress 0x7f0c0042
 int layout fragment_newborn_examination 0x7f0c0043
+int layout fragment_signature 0x7f0c009e
 int layout header 0x7f0c0044
+int layout health_check_item 0x7f0c009f
+int layout item_question 0x7f0c00a0
 int layout m3_alert_dialog 0x7f0c0046
 int layout m3_alert_dialog_actions 0x7f0c0047
 int layout m3_alert_dialog_title 0x7f0c0048
@@ -4321,6 +4378,7 @@ int layout practitioner_login 0x7f0c007f
 int layout select_dialog_item_material 0x7f0c0080
 int layout select_dialog_multichoice_material 0x7f0c0081
 int layout select_dialog_singlechoice_material 0x7f0c0082
+int layout share_options 0x7f0c00a1
 int layout support_simple_spinner_dropdown_item 0x7f0c0083
 int layout useful_contacts 0x7f0c0086
 int layout useful_contacts_change 0x7f0c0090
@@ -4520,6 +4578,7 @@ int string search_menu_title 0x7f1100b4
 int string searchbar_scrolling_view_behavior 0x7f1100b5
 int string searchview_clear_text_content_description 0x7f1100b6
 int string searchview_navigation_content_description 0x7f1100b7
+int string share_button 0x7f1100c5
 int string side_sheet_accessibility_pane_title 0x7f1100b8
 int string side_sheet_behavior 0x7f1100b9
 int string status_bar_notification_info_overflow 0x7f1100ba
@@ -7733,4 +7792,5 @@ int[] styleable include { 0x7f040134 }
 int styleable include_constraintSet 0
 int xml backup_rules 0x7f140000
 int xml data_extraction_rules 0x7f140001
+int xml file_paths 0x7f140003
 int xml image_share_filepaths 0x7f140002
