@@ -29,3 +29,4 @@ DROP TABLE GuardianLanguage;
 DROP TABLE Address;
 DROP TABLE GuardianAccountDetails;
 DROP TABLE Guardian;
+DROP TABLE Appointments;
