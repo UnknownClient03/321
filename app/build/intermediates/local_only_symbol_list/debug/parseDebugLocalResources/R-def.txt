@@ -43,8 +43,11 @@ id Table_IllnessInjuryNotes
 id Table_Immunisation
 id Table_ProgressNotes
 id Table_UsefulContacts
+id addAppointmentButton
+id add_appointment_button_container
 id add_child_button
 id answerInput
+id appointmentsListView
 id back_arrow
 id back_button
 id breastfeedingQuestions
@@ -67,6 +70,7 @@ id button_MIAFH_7
 id button_PN_addAnotherEntry
 id button_PN_toTable
 id button_add_langauge
+id button_appointments
 id button_birth_details
 id button_birth_details_and_newborn_examination
 id button_cancel
@@ -552,6 +556,7 @@ id yesRadioButton8
 id yesRadioButton9
 layout account_settings
 layout activity_add_child
+layout activity_appointments
 layout activity_cpr_chart
 layout activity_encapsulating
 layout activity_four_month_immunisation_check

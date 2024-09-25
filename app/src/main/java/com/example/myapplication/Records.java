@@ -13,6 +13,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class Records extends AppCompatActivity {
+
     public LoginManager manager;
 
     @Override
@@ -58,8 +59,6 @@ public class Records extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        NavBarManager.setNavBarButtons(Records.this);
 
     }
 }

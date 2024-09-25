@@ -61,13 +61,28 @@ public class Homepage extends AppCompatActivity {
             CameraActivity cameraDialog = new CameraActivity(this);
             cameraDialog.show();
         });
-        
+
         // Setting up the Immunisation button
         Button buttonImmunisation = findViewById(R.id.button_immunisation);
         buttonImmunisation.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Log.d("BUTTON", "changing to Immunisation Schedule page");
+                Log.d("BUTTON", "changing to Immunisation page");
                 Intent intent = new Intent(Homepage.this, Immunisation.class);
+                Bundle extras = getIntent().getExtras();
+                if (extras != null) {
+                    intent.putExtra("guardianID", manager.guardianID);
+                    intent.putExtra("childID", manager.childID);
+                }
+                startActivity(intent);
+            }
+        });
+
+        // Setting up the Appointments button
+        Button buttonAppointments = findViewById(R.id.button_appointments);
+        buttonAppointments.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Log.d("BUTTON", "changing to Appointments page");
+                Intent intent = new Intent(Homepage.this, AppointmentsActivity.class);
                 Bundle extras = getIntent().getExtras();
                 if (extras != null) {
                     intent.putExtra("guardianID", manager.guardianID);

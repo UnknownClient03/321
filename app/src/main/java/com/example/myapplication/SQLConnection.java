@@ -4,6 +4,10 @@ import android.annotation.SuppressLint;
 import android.os.StrictMode;
 import android.util.Log;
 
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -13,6 +17,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Properties;
 import java.lang.Thread;
@@ -212,6 +217,11 @@ public class SQLConnection extends Thread {
             }
         return stmt;
     }
+
+    public Connection getConnection() {
+        return conn; // return the current connection
+    }
+
 }
 
 

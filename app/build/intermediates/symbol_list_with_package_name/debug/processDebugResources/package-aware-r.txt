@@ -1328,7 +1328,11 @@ attr yearStyle
 attr yearTodayStyle
 bool abc_action_bar_embed_tabs
 bool abc_config_actionMenuItemAllCaps
+bool enable_system_alarm_service_default
+bool enable_system_foreground_service_default
+bool enable_system_job_service_default
 bool mtrl_btn_textappearance_all_caps
+bool workmanager_test_configuration
 color abc_background_cache_hint_selector_material_dark
 color abc_background_cache_hint_selector_material_light
 color abc_btn_colored_borderless_text_material
@@ -3198,6 +3202,8 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
+id addAppointmentButton
+id add_appointment_button_container
 id add_child_button
 id adjust_height
 id adjust_width
@@ -3211,6 +3217,7 @@ id animateToStart
 id answerInput
 id antiClockwise
 id anticipate
+id appointmentsListView
 id arc
 id asConfigured
 id async
@@ -3257,6 +3264,7 @@ id button_MIAFH_7
 id button_PN_addAnotherEntry
 id button_PN_toTable
 id button_add_langauge
+id button_appointments
 id button_birth_details
 id button_birth_details_and_newborn_examination
 id button_cancel
@@ -4255,6 +4263,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout account_settings
 layout activity_add_child
+layout activity_appointments
 layout activity_cpr_chart
 layout activity_encapsulating
 layout activity_four_month_immunisation_check

@@ -59,6 +59,14 @@
                 android:text="Immunisation" />
 
             <Button
+                android:id="@+id/button_appointments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_3d"
+                android:elevation="12dp"
+                android:text="Appointments" />
+
+            <Button
                 android:id="@+id/button_checks"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

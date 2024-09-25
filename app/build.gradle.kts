@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.myapplication"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -36,8 +36,10 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(files("..\\libs\\jtds-1.3.1.jar"))
     implementation(libs.firebase.auth)
+    implementation(libs.work.runtime)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     implementation("com.github.chrisbanes:PhotoView:2.3.0")
+    implementation("androidx.work:work-runtime-ktx:2.7.1")
 }
