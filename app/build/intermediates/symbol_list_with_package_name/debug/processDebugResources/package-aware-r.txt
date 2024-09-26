@@ -3112,6 +3112,8 @@ drawable recordsimg
 drawable round_1
 drawable round_button
 drawable roundstyle
+drawable sample_child_pic
+drawable sample_guardian_pic
 drawable settinglogoemboss
 drawable share_button_background
 drawable square
@@ -3866,6 +3868,7 @@ id search_plate
 id search_src_text
 id search_voice_btn
 id select_dialog_listview
+id select_image_button
 id selected
 id selection_type
 id settings_button

@@ -3111,6 +3111,8 @@ int drawable recordsimg 0x7f080101
 int drawable round_1 0x7f080102
 int drawable round_button 0x7f080103
 int drawable roundstyle 0x7f080104
+int drawable sample_child_pic 0x7f08010f
+int drawable sample_guardian_pic 0x7f08010e
 int drawable settinglogoemboss 0x7f080105
 int drawable share_button_background 0x7f080106
 int drawable square 0x7f080107
@@ -3865,6 +3867,7 @@ int id search_plate 0x7f0902e6
 int id search_src_text 0x7f0902e7
 int id search_voice_btn 0x7f0902e8
 int id select_dialog_listview 0x7f0902e9
+int id select_image_button 0x7f090402
 int id selected 0x7f0902ea
 int id selection_type 0x7f0902eb
 int id settings_button 0x7f0902ec

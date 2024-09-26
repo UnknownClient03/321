@@ -27,6 +27,8 @@ drawable recordsimg
 drawable round_1
 drawable round_button
 drawable roundstyle
+drawable sample_child_pic
+drawable sample_guardian_pic
 drawable settinglogoemboss
 drawable share_button_background
 drawable square
@@ -384,6 +386,7 @@ id save_button
 id save_child_button
 id scrollView
 id scrollView2
+id select_image_button
 id settings_button
 id sex_input
 id share_button

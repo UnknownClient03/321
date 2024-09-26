@@ -22,12 +22,11 @@
         android:id="@+id/scrollView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="170dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toTopOf="@+id/footer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header">
+        app:layout_constraintTop_toBottomOf="@+id/profile_picture_background">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -142,24 +141,12 @@
         android:layout_marginStart="15dp"
         android:layout_width="59dp"
         android:layout_height="57dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="120dp"
         app:layout_constraintEnd_toStartOf="@+id/textView3"
         app:layout_constraintHorizontal_bias="0.742"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/round_button" />
-
-    <ImageView
-        android:id="@+id/profile_picture"
-        android:layout_width="50dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="112dp"
-        android:src="@drawable/profile_picture"
-        app:layout_constraintEnd_toStartOf="@+id/textView3"
-        app:layout_constraintHorizontal_bias="0.69"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:src="@drawable/sample_guardian_pic" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -174,9 +161,9 @@
 
         <TextView
             android:id="@+id/textView104"
-            android:layout_marginStart="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_weight="1"
             android:text="Welcome back "
             android:textSize="20sp"
@@ -196,31 +183,5 @@
             android:layout_height="wrap_content"
             android:layout_weight="100" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="127dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        android:text="Notifications"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.056"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_picture_background" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="363dp"
-        android:layout_height="55dp"
-        android:layout_marginBottom="15dp"
-        android:text="• Notification 1\n• Notification 2\n• Notification 3"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9"
-        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
