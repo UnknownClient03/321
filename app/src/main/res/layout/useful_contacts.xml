@@ -18,22 +18,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Useful Contacts"
-                android:textAlignment="center"
-                android:textSize="34sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Emergency telephone numbers are listed on the back cover of this book. \n" />
+            android:orientation="vertical"
+            android:padding="16dp">
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/fragmentContainerView3"
@@ -45,219 +31,336 @@
                 android:id="@+id/textView39"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="\n Websites and Online Resources"
+                android:text="Websites and Online Resources"
                 android:textAlignment="center"
                 android:textSize="36sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:lineSpacingExtra="4dp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Emergency telephone numbers are listed under Emergency Contacts. \n"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textStyle="italic"
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/textView40"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="NSW Ministry of Health - health.nsw.gov.au "
-                android:textStyle="bold" />
+                android:autoLink="web"
+                android:textStyle="bold"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/textView41"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="The NSW Health website provides access to a range of resources and information on child health and development under Public / Children and Families. \n" />
+                android:text="The NSW Health website provides access to a range of resources and information on child health and development under Public / Children and Families.\n"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="viewStart" />
 
             <TextView
                 android:id="@+id/textView42"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Raising Children Network - raisingchildren.net.au"
-                android:textStyle="bold" />
+                android:autoLink="web"
+                android:textStyle="bold"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/textView43"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="raisingchildren.net.au provides free, reliable, accessible information to help families grow and thrive together. It’s supported by the Australian Government, reviewed by experts and non-commercial. Full of easy to understand articles, videos and resources, raisingchildren.net.au is the complete Australian resource for expectant parents, and those who are parenting newborns to teens." />
+                android:text="raisingchildren.net.au provides free, reliable, accessible information to help families grow and thrive together. It’s supported by the Australian Government, reviewed by experts and non-commercial. Full of easy to understand articles, videos and resources, raisingchildren.net.au is the complete Australian resource for expectant parents, and those who are parenting newborns to teens.\n"
+                android:autoLink="web"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="viewStart" />
 
             <TextView
                 android:id="@+id/textView44"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Bright Tomorrows - brighttomorrows.org.au "
-                android:textStyle="bold" />
+                android:autoLink="web"
+                android:textStyle="bold"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/textView45"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="The Bright Tomorrows website provides practical tools and tips to support children’s health, development and learning.\n" />
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:text="The Bright Tomorrows website provides practical tools and tips to support children’s health, development and learning.\n"
+                android:textAlignment="viewStart" />
 
             <TextView
                 android:id="@+id/textView46"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Children’s Hospitals "
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/textView47"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="These hospitals have a range of online fact sheets on children’s health issues: " />
+                android:text="These hospitals have a range of online fact sheets on children’s health issues: "
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="viewStart" />
 
             <TextView
                 android:id="@+id/textView48"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="The Sydney Children’s Hospital Network "
-                android:textStyle="italic" />
+                android:text="• The Sydney Children’s Hospital Network "
+                android:textStyle="italic"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="viewStart" />
 
             <TextView
                 android:id="@+id/textView49"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="www.schn.health.nsw.gov.au/fact-sheets "
-                android:textStyle="bold" />
+                android:text="   www.schn.health.nsw.gov.au/fact-sheets"
+                android:autoLink="web"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="viewStart" />
 
             <TextView
                 android:id="@+id/textView50"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="John Hunter Children’s Hospital "
-                android:textStyle="italic" />
+                android:text="• John Hunter Children’s Hospital "
+                android:textStyle="italic"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="viewStart" />
 
             <TextView
                 android:id="@+id/textView51"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="hnekidshealth.nsw.gov.au \n"
-                android:textStyle="bold" />
+                android:text="   hnekidshealth.nsw.gov.au \n"
+                android:autoLink="web"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="viewStart" />
 
             <TextView
                 android:id="@+id/textView52"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Association for the Wellbeing of Children in Healthcare (AWCH) -  awch.org.au"
-                android:textStyle="bold" />
+                android:autoLink="web"
+                android:textStyle="bold"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/textView53"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="AWCH is a peak organisation that advocates for the needs of children, young people and families within the health care system in Australia. " />
+                android:text="AWCH is a peak organisation that advocates for the needs of children, young people and families within the health care system in Australia.\n"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="viewStart" />
 
             <TextView
                 android:id="@+id/textView54"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Healthdirect Australia - healthdirect.gov.au - 1800 022 222"
-                android:textStyle="bold" />
+                android:autoLink="web"
+                android:textStyle="bold"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/textView55"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Healthdirect Australia is a free 24-hour telephone health advice and information service." />
+                android:text="Healthdirect Australia is a free 24-hour telephone health advice and information service.\n"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/textView56"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Australian Breastfeeding Association - www.breastfeeding.asn.au"
-                android:textStyle="bold" />
+                android:autoLink="web"
+                android:textStyle="bold"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/textView57"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Breastfeeding support and information are available from Australian Breastfeeding Association (ABA) volunteers via the Breastfeeding Helpline 1800 686 268. Mums can get together at local groups for friendship, sharing of parenting experiences and face-to-face breastfeeding support. Expert breastfeeding information and links to all ABA services can be found at the above website address. \n" />
+                android:text="Breastfeeding support and information are available from Australian Breastfeeding Association (ABA) volunteers via the Breastfeeding Helpline 1800 686 268. Mums can get together at local groups for friendship, sharing of parenting experiences and face-to-face breastfeeding support. Expert breastfeeding information and links to all ABA services can be found at the above website address. \n"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="viewStart" />
 
             <TextView
                 android:id="@+id/textView58"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="For information on breastfeeding your baby visit health.nsw.gov.au/ breastfeeding or go to the Raising Children Network raisingchildren.net.au/ breastfeeding/babies_breastfeeding.html \n" />
+                android:text="For information on breastfeeding your baby visit health.nsw.gov.au/breastfeeding or go to the Raising Children Network raisingchildren.net.au/breastfeeding/babies_breastfeeding.html \n"
+                android:autoLink="web"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="viewStart" />
 
             <TextView
                 android:id="@+id/textView59"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Parenting Resources"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/textView60"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="•Download the Deadly Tot app for ideas to help your bub learn and grow. Available on Android and iPhone." />
+                android:text="• Download the Deadly Tot app for ideas to help your bub learn and grow. Available on Android and iPhone."
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="viewStart" />
 
             <TextView
                 android:id="@+id/textView61"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="•Download the Love, Talk, Sing, Read, Play app for ideas to spending time with your child. Available on Android and iPhone. \n" />
+                android:text="• Download the Love, Talk, Sing, Read, Play app for ideas to spending time with your child. Available on Android and iPhone. \n"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="viewStart" />
 
             <TextView
                 android:id="@+id/textView62"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Kidsafe (NSW) - www.kidsafensw.org"
-                android:textStyle="bold" />
+                android:autoLink="web"
+                android:textStyle="bold"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/textView63"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Kidsafe NSW is dedicated to reducing the number and severity of unintentional child injuries through promoting child safety. Their website has information about current news and events, fact sheets, resources and program information to help keep children safe. \n" />
+                android:text="Kidsafe NSW is dedicated to reducing the number and severity of unintentional child injuries through promoting child safety. Their website has information about current news and events, fact sheets, resources and program information to help keep children safe. \n"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="viewStart" />
 
             <TextView
                 android:id="@+id/textView64"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Early Childhood Education - education.nsw.gov.au/early-childhood-education/information-for-parentsand-carers"
-                android:textStyle="bold" />
+                android:autoLink="web"
+                android:textStyle="bold"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/textView65"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="See My Records for information about why Early Childhood Education is important for your child. \n" />
+                android:text="See My Records for information about why Early Childhood Education is important for your child. \n"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="viewStart" />
 
             <TextView
                 android:id="@+id/textView66"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Australian Immunisation Register  "
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/textView67"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="The Australian Immunisation Register (AIR) will keep track of your child’s immunisation history. All children enrolled in Medicare are automatically included on the AIR: servicesaustralia.gov.au/individuals/ services/medicare/australian-immunisation-register \n" />
+                android:text="The Australian Immunisation Register (AIR) will keep track of your child’s immunisation history. All children enrolled in Medicare are automatically included on the AIR: servicesaustralia.gov.au/individuals/services/medicare/australian-immunisation-register \n"
+                android:autoLink="web"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="viewStart" />
 
             <TextView
                 android:id="@+id/textView68"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="myGov website"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/textView69"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="If your child is not enrolled in Medicare you can create a Medicare online account through the myGov website at www.my.gov.au \n" />
+                android:text="If your child is not enrolled in Medicare you can create a Medicare online account through the myGov website at www.my.gov.au \n"
+                android:autoLink="web"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="viewStart" />
 
             <TextView
                 android:id="@+id/textView70"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="The myGov website provides a single location that links to a range of Australian Government services, including Medicare, Centrelink, Australian Taxation Office, Personally Controlled eHealth Record, Child Support, Australian JobSearch and the National Disability Insurance Scheme. \n" />
+                android:text="The myGov website provides a single location that links to a range of Australian Government services, including Medicare, Centrelink, Australian Taxation Office, Personally Controlled eHealth Record, Child Support, Australian JobSearch and the National Disability Insurance Scheme. \n"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="viewStart" />
 
             <TextView
                 android:id="@+id/textView71"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Healthy Eating Active Living - health.nsw.gov.au/heal"
-                android:textStyle="bold" />
+                android:autoLink="web"
+                android:textStyle="bold"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/textView72"
@@ -269,26 +372,41 @@
                 android:id="@+id/textView73"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="• Starting Family Foods – Introducing your baby to solid foods brochure health.nsw.gov.au/heal/Pages/Starting-Family-Foods.aspx" />
+                android:text="• Starting Family Foods – Introducing your baby to solid foods brochure health.nsw.gov.au/heal/Pages/Starting-Family-Foods.aspx"
+                android:autoLink="web"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="viewStart" />
 
             <TextView
                 android:id="@+id/textView74"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="• Caring for Children – Birth to 5 years (Food, Nutrition and Learning Experiences) health.nsw.gov.au/heal/Pages/caring-for-childrenmanual.aspx \n" />
+                android:text="• Caring for Children – Birth to 5 years (Food, Nutrition and Learning Experiences) health.nsw.gov.au/heal/Pages/caring-for-childrenmanual.aspx \n"
+                android:autoLink="web"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="viewStart" />
 
             <TextView
                 android:id="@+id/textView75"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Childhood vaccination "
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/textView76"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Vaccination is the best way to protect your child from serious preventable diseases. All vaccines given to Australian children are carefully tested to ensure they are safe and effective. Children should be vaccinated as close as possible to the scheduled milestones on the NSW Immunisation Schedule to provide the earliest possible protection. More information about childhood vaccination is available at health.nsw.gov.au/vaccinate" />
+                android:text="Vaccination is the best way to protect your child from serious preventable diseases. All vaccines given to Australian children are carefully tested to ensure they are safe and effective. Children should be vaccinated as close as possible to the scheduled milestones on the NSW Immunisation Schedule to provide the earliest possible protection. More information about childhood vaccination is available at health.nsw.gov.au/vaccinate"
+                android:autoLink="web"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="viewStart" />
 
         </LinearLayout>
     </ScrollView>
