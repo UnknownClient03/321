@@ -5,12 +5,15 @@
     android:layout_height="match_parent"
     tools:context=".UsefulContactsDisplay">
 
+
     <Button
         android:id="@+id/button_editUsefulContacts"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
+        android:layout_gravity="end"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="10dp"
+        android:padding="16dp"
         android:text="Edit Useful Contacts Table" />
 
     <TableLayout
@@ -20,7 +23,8 @@
         android:layout_marginTop="60dp"
         android:divider="@drawable/table_cell_border"
         android:showDividers="middle|beginning|end"
-        android:stretchColumns="*">
+        android:stretchColumns="*"
+        android:padding="16dp">
 
         <TableRow
             android:layout_width="match_parent"
@@ -33,7 +37,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/table_cell_border"
                 android:text="Name"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textAlignment="center"/>
 
             <TextView
                 android:id="@+id/textView4"
@@ -42,7 +47,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/table_cell_border"
                 android:text="Address"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textAlignment="center"/>
 
             <TextView
                 android:id="@+id/textView5"
@@ -51,7 +57,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/table_cell_border"
                 android:text="Tel/Email"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textAlignment="center"/>
         </TableRow>
 
         <TableRow
@@ -64,9 +71,10 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="@drawable/table_cell_border"
-                android:text="Child and Family Health Centre"
+                android:text="\nChild and Family Health Centre"
                 android:textSize="10dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textAlignment="center"/>
 
             <TextView
                 android:id="@+id/textView7"
@@ -100,9 +108,10 @@
                 android:linksClickable="false"
                 android:maxLines="2"
                 android:singleLine="false"
-                android:text="Community Health Centre"
+                android:text="\nCommunity Health Centre"
                 android:textSize="10dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/textView10"
@@ -141,9 +150,10 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="@drawable/table_cell_border"
-                android:text="Dentist"
+                android:text="\nDentist"
                 android:textSize="10dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textAlignment="center"/>
 
             <TextView
                 android:id="@+id/textView13"
@@ -182,9 +192,10 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="@drawable/table_cell_border"
-                android:text="Family daycare/Childcare centre"
+                android:text="\nFamily daycare/Childcare centre"
                 android:textSize="10dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textAlignment="center"/>
 
             <TextView
                 android:id="@+id/textView16"
@@ -223,9 +234,10 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="@drawable/table_cell_border"
-                android:text="Family doctor"
+                android:text="\nFamily doctor"
                 android:textSize="10dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textAlignment="center"/>
 
             <TextView
                 android:id="@+id/textView19"
@@ -264,9 +276,10 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="@drawable/table_cell_border"
-                android:text="High school"
+                android:text="\nHigh school"
                 android:textSize="10dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textAlignment="center"/>
 
             <TextView
                 android:id="@+id/textView25"
@@ -305,9 +318,10 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="@drawable/table_cell_border"
-                android:text="Local government/Council"
+                android:text="\nLocal government/Council"
                 android:textSize="10dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textAlignment="center"/>
 
             <TextView
                 android:id="@+id/textView28"
@@ -346,9 +360,10 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="@drawable/table_cell_border"
-                android:text="Pre-school/Kindergarten"
+                android:text="\nPre-school/Kindergarten"
                 android:textSize="10dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textAlignment="center"/>
 
             <TextView
                 android:id="@+id/textView31"
@@ -387,9 +402,10 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="@drawable/table_cell_border"
-                android:text="Primary school"
+                android:text="\nPrimary school"
                 android:textSize="10dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textAlignment="center"/>
 
             <TextView
                 android:id="@+id/textView34"
@@ -428,9 +444,10 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="@drawable/table_cell_border"
-                android:text="Specialist doctor"
+                android:text="\nSpecialist doctor"
                 android:textSize="10dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textAlignment="center"/>
 
             <TextView
                 android:id="@+id/textView37"
