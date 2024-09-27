@@ -34,112 +34,148 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="16dp">
 
             <TextView
                 android:id="@+id/textView11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Information for Parents"
-                android:textAlignment="center"
-                android:textColor="#90EBF7"
-                android:textSize="34sp"
-                android:textStyle="bold" />
+                android:textSize="36sp"
+                android:textStyle="bold"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/textView10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:linksClickable="true"
-                android:text="The NSW Health system and health workers play a key role in assisting children and families to achieve health and wellbeing. For detailed information refer to www.health.nsw.gov.au\n" />
+                android:text="The NSW Health system and health workers play a key role in assisting children and families to achieve health and wellbeing. For detailed information refer to www.health.nsw.gov.au.\n"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="viewStart"
+                android:autoLink="web" />
 
             <TextView
                 android:id="@+id/textView12"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Child and Family Health Centres  "
-                android:textColor="#90EBF7"
-                android:textSize="23sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/textView13"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:linksClickable="true"
-                android:text="Child and Family Health Centres provide a free service for all new parents in NSW. They are staffed by child and family health nurses who offer health, development and wellbeing checks for your child as well as support, education and information on all aspects of parenting. To find a Child and Family Health Centre near you visit www.health.nsw.gov.au/ child-family-health-services\n" />
+                android:text="Child and Family Health Centres provide a free service for all new parents in NSW. They are staffed by child and family health nurses who offer health, development and wellbeing checks for your child as well as support, education and information on all aspects of parenting. To find a Child and Family Health Centre near you visit www.health.nsw.gov.au/child-family-health-services\n"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="viewStart"
+                android:autoLink="web" />
 
             <TextView
                 android:id="@+id/textView14"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#90EBF7"
                 android:text="Other important child health professionals "
-                android:textSize="23sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/textView16"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Your general practitioner (GP) or family doctor is the person to see if your child is sick, or if you have any concerns about your child’s wellbeing. A GP provides primary health care, referrals to specialists and, where necessary, coordinates your child’s health care. \n" />
+                android:text="Your general practitioner (GP) or family doctor is the person to see if your child is sick, or if you have any concerns about your child’s wellbeing. A GP provides primary health care, referrals to specialists and, where necessary, coordinates your child’s health care. \n"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="viewStart" />
 
             <TextView
                 android:id="@+id/textView21"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="A paediatrician can provide specialist health care for your child. You need a referral from a GP to make an appointment with a paediatrician. \n" />
+                android:text="A paediatrician can provide specialist health care for your child. You need a referral from a GP to make an appointment with a paediatrician. \n"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="viewStart"/>
 
             <TextView
                 android:id="@+id/textView22"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#90EBF7"
                 android:text="The importance of child health and development checks "
-                android:textSize="23sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/textView17"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Most of your child’s brain structure is developed before they turn 5 years old. These early days set the foundation for how well they will do in school and right through their lives. \n" />
+                android:text="Most of your child’s brain structure is developed before they turn 5 years old. These early days set the foundation for how well they will do in school and right through their lives. \n"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="viewStart" />
 
             <TextView
                 android:id="@+id/textView20"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="This is why it’s very important your child has their health and development checked regularly by a health professional from birth and up to 5 years old. \n" />
+                android:text="This is why it’s very important your child has their health and development checked regularly by a health professional from birth and up to 5 years old. \n"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="viewStart" />
 
             <TextView
                 android:id="@+id/textView18"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Regular health and development checks are important to track your child’s growth and help us discover potential issues early. It is easier to fix the brain while it is still developing than when problems occur later in life. \n" />
+                android:text="Regular health and development checks are important to track your child’s growth and help us discover potential issues early. It is easier to fix the brain while it is still developing than when problems occur later in life. \n"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="viewStart" />
 
             <TextView
                 android:id="@+id/textView19"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="The regular scheduled checks in this Blue Book have been designed to help you check your child’s development against the milestones for their age.  \n" />
+                android:text="The regular scheduled checks in this application have been designed to help you check your child’s development against the milestones for their age.  \n"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="viewStart" />
 
             <TextView
                 android:id="@+id/textView23"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Before each health check at your local Child and Family Health Centre, read and answer the development questions in the Blue Book sections called Learn the Signs. Act Early. \n" />
+                android:text="Before each health check at your local Child and Family Health Centre, read and answer the development questions in this application sections called Learn the Signs. Act Early. \n"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="viewStart" />
 
             <TextView
                 android:id="@+id/textView77"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="These appointments can also be a useful way of finding out more about your child’s growth and development and can be an opportunity to discuss other issues about your child’s health and wellbeing. \n" />
+                android:text="These appointments can also be a useful way of finding out more about your child’s growth and development and can be an opportunity to discuss other issues about your child’s health and wellbeing. \n"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="viewStart" />
 
             <TextView
                 android:id="@+id/textView78"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Even if you think your child is developing properly, you should always take them for their scheduled health checks at your local Child and Family Health Centre or your family doctor at each of the following ages. \n" />
+                android:text="Even if you think your child is developing properly, you should always take them for their scheduled health checks at your local Child and Family Health Centre or your family doctor at each of the following ages: \n"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="viewStart" />
 
             <TableLayout
                 android:layout_width="match_parent"
@@ -148,7 +184,8 @@
                 <TableRow
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:background="#ADD8E6">
 
                     <TextView
                         android:id="@+id/textView92"
@@ -178,7 +215,8 @@
                 <TableRow
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:background="#ADD8E6" >
 
                     <TextView
                         android:id="@+id/textView95"
@@ -207,7 +245,8 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:background="#ADD8E6">
 
                     <TextView
                         android:id="@+id/textView98"
@@ -242,143 +281,205 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="\n If you are concerned about your child’s health, growth, development or behaviour between the scheduled health checks, take your child to your Child and Family Health Centre or doctor so that early action can be taken. \n"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:background="#ADD8E6" />
                 </TableRow>
 
                 <TextView
                     android:id="@+id/textView88"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="All children grow and develop at different rates but if you have a concern it is important to see a health professional. If your nurse or doctor needs to further investigate a concern they can use screening tests and other checks to understand what action will be best. \n" />
+                    android:text="All children grow and develop at different rates but if you have a concern it is important to see a health professional. If your nurse or doctor needs to further investigate a concern they can use screening tests and other checks to understand what action will be best. \n"
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="4dp"
+                    android:textAlignment="viewStart" />
 
                 <TextView
                     android:id="@+id/textView91"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Screening tests, checks and examinations can never be 100% accurate. Sometimes a health check or screening test may suggest there is a problem when there isn’t one or miss a problem that does exist. Occasionally a new problem may occur after your child has had a screening test or health check. This is why it is so important to attend all recommended health checks and to complete the questions for parents in this book. \n" />
+                    android:text="Screening tests, checks and examinations can never be 100% accurate. Sometimes a health check or screening test may suggest there is a problem when there isn’t one or miss a problem that does exist. Occasionally a new problem may occur after your child has had a screening test or health check. This is why it is so important to attend all recommended health checks and to complete the questions for parents in this application."
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="4dp"
+                    android:textAlignment="viewStart"
+                    android:background="#ADD8E6"/>
 
                 <TextView
                     android:id="@+id/textView89"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Learn the Signs. Act Early.  "
-                    android:textColor="#90EBF7"
-                    android:textSize="23sp"
-                    android:textStyle="bold" />
+                    android:text="\nLearn the Signs. Act Early.  "
+                    android:textStyle="bold"
+                    android:lineSpacingExtra="4dp"
+                    android:textAlignment="center" />
 
                 <TextView
                     android:id="@+id/textView90"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="At every health check from 2 months you will see a set of questions under the heading Learn the Signs. Act Early. These questions help you see whether your child’s development is on track, and when it is a good idea to ask a professional for help. \n" />
+                    android:text="At every health check from 2 months you will see a set of questions under the heading Learn the Signs. Act Early. These questions help you see whether your child’s development is on track, and when it is a good idea to ask a professional for help. \n"
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="4dp"
+                    android:textAlignment="viewStart" />
 
                 <TextView
                     android:id="@+id/textView86"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Answer these questions as accurately as you can, because they can help you and your doctor or Child and Family Health nurse understand the way your child is learning, developing and behaving. \n" />
+                    android:text="Answer these questions as accurately as you can, because they can help you and your doctor or Child and Family Health nurse understand the way your child is learning, developing and behaving. \n"
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="4dp"
+                    android:textAlignment="viewStart" />
 
                 <TextView
                     android:id="@+id/textView87"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="For more information on developmental milestones and extra resources for parents, including videos, go to the NSW Health website at www.health.nsw.gov.au/mybluebook. \n" />
+                    android:text="For more information on developmental milestones and extra resources for parents, including videos, go to the NSW Health website at www.health.nsw.gov.au/mybluebook. \n"
+                    android:autoLink="web"
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="4dp"
+                    android:textAlignment="viewStart" />
 
                 <TextView
                     android:id="@+id/textView85"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="For extra ideas on how you can encourage your child’s development, download the Love, Talk, Sing, Read, Play app on Android and iPhone and the Bright Tomorrows app at www.brighttomorrows.org.au. \n" />
+                    android:text="For extra ideas on how you can encourage your child’s development, download the Love, Talk, Sing, Read, Play app on Android and iPhone and the Bright Tomorrows app at www.brighttomorrows.org.au. \n"
+                    android:autoLink="web"
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="4dp"
+                    android:textAlignment="viewStart" />
 
                 <TextView
                     android:id="@+id/textView82"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="You can also find detailed information and more ideas about supporting your child’s development at raisingchildren.net.au. \n" />
+                    android:text="You can also find detailed information and more ideas about supporting your child’s development at raisingchildren.net.au. \n"
+                    android:autoLink="web"
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="4dp"
+                    android:textAlignment="viewStart" />
 
                 <TextView
                     android:id="@+id/textView84"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="You should make notes about your child’s health and progress in the ‘Progress Notes’ section of this Blue Book. \n" />
+                    android:text="You should make notes about your child’s health and progress in the ‘Progress Notes’ section of this Blue Book application. \n"
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="4dp"
+                    android:textAlignment="viewStart" />
 
                 <TextView
                     android:id="@+id/textView83"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#90EBF7"
                     android:text="Brighter Beginnings to help your child get the best start"
-                    android:textSize="23sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="4dp"
+                    android:textAlignment="center" />
 
                 <TextView
                     android:id="@+id/textView79"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="The early years of a child’s life are exciting and also exhausting. There are many supports and services available to help parents and carers during this important time. Brighter Beginnings: the first 2000 days of life, is the NSW Government initiative to give all children in NSW the best start in life. At the Brighter Beginnings website you’ll find step-by-step help from when you’re having a baby, after you bring baby home, up to when your child is starting primary school and if you need financial and parenting support. \n" />
+                    android:text="The early years of a child’s life are exciting and also exhausting. There are many supports and services available to help parents and carers during this important time. Brighter Beginnings: the first 2000 days of life, is the NSW Government initiative to give all children in NSW the best start in life. At the Brighter Beginnings website you’ll find step-by-step help from when you’re having a baby, after you bring baby home, up to when your child is starting primary school and if you need financial and parenting support. \n"
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="4dp"
+                    android:textAlignment="viewStart" />
 
                 <TextView
                     android:id="@+id/textView81"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Find Brighter Beginnings: step by step guides at www.nsw.gov.au/lifeevents/brighter-beginnings-step-by-step-guides." />
+                    android:text="Find Brighter Beginnings: step by step guides at www.nsw.gov.au/lifeevents/brighter-beginnings-step-by-step-guides."
+                    android:autoLink="web"
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="4dp"
+                    android:textAlignment="viewStart" />
 
                 <TextView
                     android:id="@+id/textView80"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Safe sleeping recommendations"
-                    android:textColor ="#90EBF7"
-                    android:textSize="23sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="4dp"
+                    android:textAlignment="center" />
 
                 <TextView
                     android:id="@+id/textView107"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Tragically some babies die unexpectedly and for no obvious reason in their sleep. You can reduce the risk for your baby by following these safe sleeping recommendations every time you place your baby to sleep: " />
+                    android:text="Tragically some babies die unexpectedly and for no obvious reason in their sleep. You can reduce the risk for your baby by following these safe sleeping recommendations every time you place your baby to sleep: "
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="4dp"
+                    android:textAlignment="viewStart" />
 
                 <TextView
                     android:id="@+id/textView106"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="• Place your baby on their back to sleep." />
+                    android:text="• Place your baby on their back to sleep."
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="4dp"
+                    android:textAlignment="viewStart" />
 
                 <TextView
                     android:id="@+id/textView110"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="• Your baby should have their own cot that meets the Australian safety standard and has a firm, well fitted mattress." />
+                    android:text="• Your baby should have their own cot that meets the Australian safety standard and has a firm, well fitted mattress."
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="4dp"
+                    android:textAlignment="viewStart" />
 
                 <TextView
                     android:id="@+id/textView115"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="• Sleep your baby in your bedroom at night for the first six to 12 months of life" />
+                    android:text="• Sleep your baby in your bedroom at night for the first six to 12 months of life"
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="4dp"
+                    android:textAlignment="viewStart" />
 
                 <TextView
                     android:id="@+id/textView114"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="• Do not let your baby sleep on the couch or an armchair, especially with another person." />
+                    android:text="• Do not let your baby sleep on the couch or an armchair, especially with another person."
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="4dp"
+                    android:textAlignment="viewStart" />
 
                 <TextView
                     android:id="@+id/textView113"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="• Make sure your baby’s head and face cannot become covered while sleeping to prevent suffocation or overheating. Tuck in sheets and blankets or use a safe infant sleeping bag. Do not use a doona, cot bumper, mattress padding, sheep skin or leave soft toys in the cot." />
+                    android:text="• Make sure your baby’s head and face cannot become covered while sleeping to prevent suffocation or overheating. Tuck in sheets and blankets or use a safe infant sleeping bag. Do not use a doona, cot bumper, mattress padding, sheep skin or leave soft toys in the cot."
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="4dp"
+                    android:textAlignment="viewStart" />
 
                 <TextView
                     android:id="@+id/textView112"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="• Dress your baby to be comfortably warm but not hot, to avoid overheating." />
+                    android:text="• Dress your baby to be comfortably warm but not hot, to avoid overheating."
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="4dp"
+                    android:textAlignment="viewStart" />
 
                 <TextView
                     android:id="@+id/textView111"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="• Breastfeed your baby for the first six months where possible." />
+                    android:text="• Breastfeed your baby for the first six months where possible."
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="4dp"
+                    android:textAlignment="viewStart" />
 
                 <TextView
                     android:id="@+id/textView109"
@@ -390,21 +491,20 @@
                     android:id="@+id/textView108"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="• Make sure anyone who looks after your baby understands these safe sleeping recommendations \n" />
+                    android:text="• Make sure anyone who looks after your baby understands these safe sleeping recommendations \n"
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="4dp"
+                    android:textAlignment="viewStart" />
 
                 <TextView
                     android:id="@+id/textView105"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="The recommended safe sleeping practices are adapted from raisingchildren.net.au/safesleep \n" />
-
-                <TextView
-                    android:id="@+id/textView103"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="TO BE CONTINUED..."
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:text="The recommended safe sleeping practices are adapted from raisingchildren.net.au/safesleep \n"
+                    android:autoLink="web"
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="4dp"
+                    android:textAlignment="viewStart" />
 
             </TableLayout>
         </LinearLayout>
