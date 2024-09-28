@@ -16,3 +16,6 @@ GRANT INSERT, SELECT, UPDATE ON UsefulContact TO user1;
 GRANT INSERT, SELECT ON ImmunisationRecord to user1;
 GRANT INSERT, SELECT, UPDATE ON FourMonthImmunisation to user1;
 GRANT INSERT, SELECT, UPDATE, DELETE ON Appointments to user1;
+GRANT INSERT, SELECT, UPDATE ON BirthDetails TO user1;
+GRANT INSERT, SELECT, UPDATE ON NewbornExamination TO user1;
+GRANT INSERT, SELECT, UPDATE ON NBTable TO user1;
