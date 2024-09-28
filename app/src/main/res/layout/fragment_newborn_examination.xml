@@ -1,121 +1,895 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView_newbornExamination"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
     <LinearLayout
+        android:id="@+id/linearLayout_newbornExamination"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp">
 
+        <!-- Newborn Examination Title -->
         <TextView
+            android:id="@+id/textView_newbornExamination"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Newborn Examination"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="bold"
+            android:textSize="18sp"
             android:paddingBottom="8dp" />
 
+        <!-- Date of Birth -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+            <TextView
+                android:id="@+id/label_dob"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Date of Birth"
+                android:gravity="center_vertical" />
+            <EditText
+                android:id="@+id/editText_dob"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="yyyy-MM-dd" />
+        </LinearLayout>
+
+        <!-- Age -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+            <TextView
+                android:id="@+id/label_age"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Age in Days"
+                android:gravity="center_vertical" />
+            <EditText
+                android:id="@+id/editText_age"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <!-- Sex -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+            <TextView
+                android:id="@+id/label_sex"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Sex"
+                android:gravity="center_vertical" />
+            <Spinner
+                android:id="@+id/spinner_sex"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:entries="@array/sex_options" />
+        </LinearLayout>
+
+        <!-- First Name -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+            <TextView
+                android:id="@+id/label_fname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="First Name"
+                android:gravity="center_vertical" />
+            <EditText
+                android:id="@+id/editText_fname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <!-- Last Name -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+            <TextView
+                android:id="@+id/label_lname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Last Name"
+                android:gravity="center_vertical" />
+            <EditText
+                android:id="@+id/editText_lname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <!-- Any Concerns -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+            <TextView
+                android:id="@+id/label_anyConcerns"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Any Concerns"
+                android:gravity="center_vertical" />
+            <CheckBox
+                android:id="@+id/checkBox_anyConcerns"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <!-- Any Concerns Comment -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="8dp">
+            <TextView
+                android:id="@+id/label_anyConcernsComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Any Concerns Comment" />
+            <EditText
+                android:id="@+id/editText_anyConcernsComment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:lines="3" />
+        </LinearLayout>
+
+        <!-- Examiner -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+            <TextView
+                android:id="@+id/label_examiner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Examiner"
+                android:gravity="center_vertical" />
+            <EditText
+                android:id="@+id/editText_examiner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <!-- Designation -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+            <TextView
+                android:id="@+id/label_designation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Designation"
+                android:gravity="center_vertical" />
+            <EditText
+                android:id="@+id/editText_designation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <!-- Signature -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+            <TextView
+                android:id="@+id/label_signature"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Signature"
+                android:gravity="center_vertical" />
+            <EditText
+                android:id="@+id/editText_signature"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <!-- Date -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="16dp">
+            <TextView
+                android:id="@+id/label_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Date"
+                android:gravity="center_vertical" />
+            <EditText
+                android:id="@+id/editText_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="yyyy-MM-dd" />
+        </LinearLayout>
+
+        <!-- Checks -->
         <TextView
+            android:id="@+id/textView_checks"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Check" />
+            android:text="Checks"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:paddingBottom="8dp" />
 
-        <CheckBox
-            android:id="@+id/checkBox_headFontanelles"
-            android:layout_width="wrap_content"
+        <!-- Head and Fontanelles -->
+        <LinearLayout
+            android:id="@+id/layout_headandfontanelles"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Head and Fontanelles" />
+            android:orientation="vertical"
+            android:paddingBottom="8dp">
 
-        <CheckBox
-            android:id="@+id/checkBox_eyes"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/label_headandfontanelles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Head and Fontanelles" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/label_isNormal_headandfontanelles"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Is Normal"
+                    android:gravity="center_vertical" />
+
+                <CheckBox
+                    android:id="@+id/checkBox_isNormal_headandfontanelles"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/editText_comment_headandfontanelles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Comment"
+                android:inputType="textMultiLine"
+                android:lines="2" />
+        </LinearLayout>
+
+        <!-- Eyes -->
+        <LinearLayout
+            android:id="@+id/layout_eyes"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Eyes" />
+            android:orientation="vertical"
+            android:paddingBottom="8dp">
 
-        <CheckBox
-            android:id="@+id/checkBox_ears"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/label_eyes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Eyes" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/label_isNormal_eyes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Is Normal"
+                    android:gravity="center_vertical" />
+
+                <CheckBox
+                    android:id="@+id/checkBox_isNormal_eyes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/editText_comment_eyes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Comment"
+                android:inputType="textMultiLine"
+                android:lines="2" />
+        </LinearLayout>
+
+        <!-- Ears -->
+        <LinearLayout
+            android:id="@+id/layout_ears"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ears" />
+            android:orientation="vertical"
+            android:paddingBottom="8dp">
 
-        <CheckBox
-            android:id="@+id/checkBox_mouthPalate"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/label_ears"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ears" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/label_isNormal_ears"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Is Normal"
+                    android:gravity="center_vertical" />
+
+                <CheckBox
+                    android:id="@+id/checkBox_isNormal_ears"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/editText_comment_ears"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Comment"
+                android:inputType="textMultiLine"
+                android:lines="2" />
+        </LinearLayout>
+
+        <!-- Mouth and palate -->
+        <LinearLayout
+            android:id="@+id/layout_mouthandpalate"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Mouth and Palate" />
+            android:orientation="vertical"
+            android:paddingBottom="8dp">
 
-        <CheckBox
-            android:id="@+id/checkBox_cardiovascular"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/label_mouthandpalate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mouth and Palate" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/label_isNormal_mouthandpalate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Is Normal"
+                    android:gravity="center_vertical" />
+
+                <CheckBox
+                    android:id="@+id/checkBox_isNormal_mouthandpalate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/editText_comment_mouthandpalate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Comment"
+                android:inputType="textMultiLine"
+                android:lines="2" />
+        </LinearLayout>
+
+        <!-- Cardiovascular -->
+        <LinearLayout
+            android:id="@+id/layout_cardiovascular"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cardiovascular" />
+            android:orientation="vertical"
+            android:paddingBottom="8dp">
 
-        <CheckBox
-            android:id="@+id/checkBox_femoralPulses"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/label_cardiovascular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cardiovascular" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/label_isNormal_cardiovascular"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Is Normal"
+                    android:gravity="center_vertical" />
+
+                <CheckBox
+                    android:id="@+id/checkBox_isNormal_cardiovascular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/editText_comment_cardiovascular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Comment"
+                android:inputType="textMultiLine"
+                android:lines="2" />
+        </LinearLayout>
+
+        <!-- Femoral Pulses -->
+        <LinearLayout
+            android:id="@+id/layout_femoralpulses"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Femoral Pulses" />
+            android:orientation="vertical"
+            android:paddingBottom="8dp">
 
-        <CheckBox
-            android:id="@+id/checkBox_respiratoryRate"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/label_femoralpulses"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Femoral Pulses" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/label_isNormal_femoralpulses"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Is Normal"
+                    android:gravity="center_vertical" />
+
+                <CheckBox
+                    android:id="@+id/checkBox_isNormal_femoralpulses"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/editText_comment_femoralpulses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Comment"
+                android:inputType="textMultiLine"
+                android:lines="2" />
+        </LinearLayout>
+
+        <!-- Respiratory rate -->
+        <LinearLayout
+            android:id="@+id/layout_respiratoryrate"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Respiratory Rate" />
+            android:orientation="vertical"
+            android:paddingBottom="8dp">
 
-        <CheckBox
-            android:id="@+id/checkBox_abdomenUmbilicus"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/label_respiratoryrate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Respiratory Rate" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/label_isNormal_respiratoryrate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Is Normal"
+                    android:gravity="center_vertical" />
+
+                <CheckBox
+                    android:id="@+id/checkBox_isNormal_respiratoryrate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/editText_comment_respiratoryrate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Comment"
+                android:inputType="textMultiLine"
+                android:lines="2" />
+        </LinearLayout>
+
+        <!-- Abdomen and umbilicus -->
+        <LinearLayout
+            android:id="@+id/layout_abdomenandumbilicus"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Abdomen and Umbilicus" />
+            android:orientation="vertical"
+            android:paddingBottom="8dp">
 
-        <CheckBox
-            android:id="@+id/checkBox_anus"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/label_abdomenandumbilicus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Abdomen and Umbilicus" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/label_isNormal_abdomenandumbilicus"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Is Normal"
+                    android:gravity="center_vertical" />
+
+                <CheckBox
+                    android:id="@+id/checkBox_isNormal_abdomenandumbilicus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/editText_comment_abdomenandumbilicus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Comment"
+                android:inputType="textMultiLine"
+                android:lines="2" />
+        </LinearLayout>
+
+        <!-- Anus -->
+        <LinearLayout
+            android:id="@+id/layout_anus"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Anus" />
+            android:orientation="vertical"
+            android:paddingBottom="8dp">
 
-        <CheckBox
-            android:id="@+id/checkBox_genitalia"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/label_anus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Anus" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/label_isNormal_anus"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Is Normal"
+                    android:gravity="center_vertical" />
+
+                <CheckBox
+                    android:id="@+id/checkBox_isNormal_anus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/editText_comment_anus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Comment"
+                android:inputType="textMultiLine"
+                android:lines="2" />
+        </LinearLayout>
+
+        <!-- Genitalia -->
+        <LinearLayout
+            android:id="@+id/layout_genitalia"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Genitalia" />
+            android:orientation="vertical"
+            android:paddingBottom="8dp">
 
-        <CheckBox
-            android:id="@+id/checkBox_testes"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/label_genitalia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Genitalia" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/label_isNormal_genitalia"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Is Normal"
+                    android:gravity="center_vertical" />
+
+                <CheckBox
+                    android:id="@+id/checkBox_isNormal_genitalia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/editText_comment_genitalia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Comment"
+                android:inputType="textMultiLine"
+                android:lines="2" />
+        </LinearLayout>
+
+        <!-- Testes fully descended R/L -->
+        <LinearLayout
+            android:id="@+id/layout_testesfullydescendedrl"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Testes fully descended R/L" />
+            android:orientation="vertical"
+            android:paddingBottom="8dp">
 
-        <CheckBox
-            android:id="@+id/checkBox_musculoskeletal"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/label_testesfullydescendedrl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Testes fully descended R/L" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/label_isNormal_testesfullydescendedrl"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Is Normal"
+                    android:gravity="center_vertical" />
+
+                <CheckBox
+                    android:id="@+id/checkBox_isNormal_testesfullydescendedrl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/editText_comment_testesfullydescendedrl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Comment"
+                android:inputType="textMultiLine"
+                android:lines="2" />
+        </LinearLayout>
+
+        <!-- Musculo-skeletal -->
+        <LinearLayout
+            android:id="@+id/layout_musculoskeletal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Musculo-skeletal" />
+            android:orientation="vertical"
+            android:paddingBottom="8dp">
 
-        <CheckBox
-            android:id="@+id/checkBox_hips"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/label_musculoskeletal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Musculo-skeletal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/label_isNormal_musculoskeletal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Is Normal"
+                    android:gravity="center_vertical" />
+
+                <CheckBox
+                    android:id="@+id/checkBox_isNormal_musculoskeletal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/editText_comment_musculoskeletal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Comment"
+                android:inputType="textMultiLine"
+                android:lines="2" />
+        </LinearLayout>
+
+        <!-- Hips -->
+        <LinearLayout
+            android:id="@+id/layout_hips"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hips" />
+            android:orientation="vertical"
+            android:paddingBottom="8dp">
 
-        <CheckBox
-            android:id="@+id/checkBox_skin"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/label_hips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hips" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/label_isNormal_hips"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Is Normal"
+                    android:gravity="center_vertical" />
+
+                <CheckBox
+                    android:id="@+id/checkBox_isNormal_hips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/editText_comment_hips"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Comment"
+                android:inputType="textMultiLine"
+                android:lines="2" />
+        </LinearLayout>
+
+        <!-- Skin -->
+        <LinearLayout
+            android:id="@+id/layout_skin"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Skin" />
+            android:orientation="vertical"
+            android:paddingBottom="8dp">
 
-        <CheckBox
-            android:id="@+id/checkBox_reflexes"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/label_skin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Skin" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/label_isNormal_skin"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Is Normal"
+                    android:gravity="center_vertical" />
+
+                <CheckBox
+                    android:id="@+id/checkBox_isNormal_skin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/editText_comment_skin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Comment"
+                android:inputType="textMultiLine"
+                android:lines="2" />
+        </LinearLayout>
+
+        <!-- Reflexes -->
+        <LinearLayout
+            android:id="@+id/layout_reflexes"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Reflexes" />
+            android:orientation="vertical"
+            android:paddingBottom="24dp">
 
+            <TextView
+                android:id="@+id/label_reflexes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reflexes" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/label_isNormal_reflexes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Is Normal"
+                    android:gravity="center_vertical" />
+
+                <CheckBox
+                    android:id="@+id/checkBox_isNormal_reflexes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/editText_comment_reflexes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Comment"
+                android:inputType="textMultiLine"
+                android:lines="2" />
+        </LinearLayout>
+
+        <!-- Save Button -->
         <Button
             android:id="@+id/button_saveNewbornExamination"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_3d"
-            android:elevation="12dp"
-            android:text="Save" />
+            android:text="Save"
+            android:layout_marginTop="24dp" />
     </LinearLayout>
 </ScrollView>
