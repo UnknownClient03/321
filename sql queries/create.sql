@@ -154,7 +154,7 @@ CREATE TABLE BirthDetails(
 	fname varchar(31) not null,
 	lname varchar(31) not null,
 	birthFacility varchar(63) not null,
-	DOB DATETIME not null,
+	DOB DATE not null,
 	sex CHAR(1) not null,
 	--maternal Infomation
 	mothersFName varchar(31) not null,
@@ -170,7 +170,7 @@ CREATE TABLE BirthDetails(
 	estimatedGestation int not null,
 	apgarScore1Min int not null,
 	apgarScore5Min int not null,
-	abnormaltiesAtBirth varchar(255),
+	abnormalitiesAtBirth varchar(255),
 	problemsRequiringTreatment varchar(255),
 	birthWeight int,
 	birthLength int,
@@ -180,12 +180,12 @@ CREATE TABLE BirthDetails(
 	vitaminKGiven varchar(10),
 	vitaminKGiven1st DATE,
 	vitaminKGiven2nd DATE,
-	vitaminKGiven3nd DATE,
-	helpBImmunisationGiven DATE,
-	helpBImmunoglobinGiven DATE,
+	vitaminKGiven3rd DATE,
+	hepBImmunisationGiven DATE,
+	hepBImmunoglobinGiven DATE,
 	--Discharge Infomation
 	postPartumComplications varchar(255),
-	feedingAtDischarge varchar(6),
+	feedingAtDischarge varchar(50),
 	difficultiesWithFeeding varchar(255),
 	dateOfDischarge DATE,
 	dischargeWeight int,
@@ -198,8 +198,8 @@ CREATE TABLE BirthDetails(
 	CHECK (apgarScore1Min > 0 AND apgarScore1Min < 10),
 	CHECK (apgarScore5Min > 0 AND apgarScore5Min < 10),
 	CHECK(vitaminKGiven = 'injection' OR vitaminKGiven = 'oral'),
-	CHECK (feedingAtDischarge = 'breast' OR feedingAtDischarge = 'bottle'),
-	FOREIGN KEY (childID) REFERENCES Child(ID),
+	CHECK (feedingAtDischarge = 'Breastfeeding' OR feedingAtDischarge = 'Formula Feeding' OR feedingAtDischarge = 'Mixed Feeding'),
+	FOREIGN KEY (childID) REFERENCES Child(ID)
 );
 
 CREATE TABLE NewbornExamination(
@@ -219,29 +219,30 @@ CREATE TABLE NewbornExamination(
 	FOREIGN KEY (childID) REFERENCES Child(ID),
 );
 
-CREATE TABLE NBTable(
-	childID int not null,
-	_check varchar(31) not null,
-	isNormal BIT not null,
-	comment varchar(255),
-	PRIMARY KEY(childID),
-	CHECK ( _check = 'Head and Fontanelles' OR 
-		_check = 'Eyes' OR 
-		_check = 'Ears' OR 
-		_check = 'Mouth and palate' OR 
-		_check = 'Cardiovascular' OR 
-		_check = 'Femoral Pulses' OR 
-		_check = 'Resiratory rate' OR 
-		_check = 'Abdomen and umbilicus' OR 
-		_check = 'Anus' OR 
-		_check = 'Genitalia' OR 
-		_check = 'Testes fully descended R/L' OR 
-		_check = 'Musculo-skeletal' OR 
-		_check = 'Hips' OR 
-		_check = 'Skin' OR 
-		_check = 'Reflexes'
-	),
-	FOREIGN KEY (childID) REFERENCES NewbornExamination(childID),
+CREATE TABLE NBTable (
+    childID INT NOT NULL,
+    _check VARCHAR(31) NOT NULL,
+    isNormal BIT NOT NULL,
+    comment VARCHAR(255),
+    PRIMARY KEY (childID, _check),
+    CHECK (_check IN (
+        'Head and Fontanelles',
+        'Eyes',
+        'Ears',
+        'Mouth and palate',
+        'Cardiovascular',
+        'Femoral Pulses',
+        'Respiratory rate',
+        'Abdomen and umbilicus',
+        'Anus',
+        'Genitalia',
+        'Testes fully descended R/L',
+        'Musculo-skeletal',
+        'Hips',
+        'Skin',
+        'Reflexes'
+    )),
+    FOREIGN KEY (childID) REFERENCES NewbornExamination(childID)
 );
 
 CREATE TABLE NewBornHearing(
