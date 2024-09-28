@@ -1,60 +1,904 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView_birthDetails"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
     <LinearLayout
+        android:id="@+id/linearLayout_birthDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp">
 
+        <!-- Child's Details -->
         <TextView
+            android:id="@+id/textView_childDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Child's Details"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:paddingBottom="8dp" />
+
+        <!-- First Name -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/label_fname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="First Name"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_fname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <!-- Last Name -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/label_lname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Last Name"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_lname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <!-- Birth Facility -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/label_birthPlace"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Birth Facility"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_birthPlace"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <!-- Date of Birth -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/label_birthDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Date of Birth"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_birthDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="yyyy-MM-dd" />
+        </LinearLayout>
+
+        <!-- Sex -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/label_sex"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Sex"
+                android:gravity="center_vertical" />
+
+            <Spinner
+                android:id="@+id/spinner_sex"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:entries="@array/sex_options" />
+        </LinearLayout>
+
+        <!-- Mother's Details -->
+        <TextView
+            android:id="@+id/textView_motherDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mother's Details"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp" />
+
+        <!-- Mother's First Name -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/label_mothersFName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Mother's First Name"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_mothersFName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <!-- Mother's Last Name -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/label_mothersLName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Mother's Last Name"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_mothersLName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <!-- Mother's MRN -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/label_mothersMRN"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Mother's MRN"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_mothersMRN"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <!-- Pregnancy Complications -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/label_pregnancyComplications"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Pregnancy Complications"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_pregnancyComplications"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <!-- Blood Group -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/label_bloodGroup"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Blood Group"
+                android:gravity="center_vertical" />
+
+            <Spinner
+                android:id="@+id/spinner_bloodGroup"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:entries="@array/blood_group_options" />
+        </LinearLayout>
+
+        <!-- Labour Details -->
+        <TextView
+            android:id="@+id/textView_labourDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Labour Details"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp" />
+
+        <!-- Labour -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/label_labour"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Labour"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_labour"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <!-- Labour Complications -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/label_labourComplications"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Labour Complications"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_labourComplications"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <!-- Type of Birth -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/label_typeofBirth"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Type of Birth"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_typeofBirth"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <!-- Birth Details -->
+        <TextView
+            android:id="@+id/textView_birthDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Birth Details"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:paddingTop="16dp"
             android:paddingBottom="8dp" />
 
-        <EditText
-            android:id="@+id/editText_birthDate"
+        <!-- Estimated Gestation -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Birth Date"
-            android:inputType="date" />
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
 
-        <EditText
-            android:id="@+id/editText_birthTime"
+            <TextView
+                android:id="@+id/label_estimatedGestation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Estimated Gestation"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_estimatedGestation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <!-- Apgar Score 1 Min -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Birth Time"
-            android:inputType="time" />
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
 
-        <EditText
-            android:id="@+id/editText_birthPlace"
+            <TextView
+                android:id="@+id/label_apgarScore1Min"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Apgar Score at 1 Min"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_apgarScore1Min"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <!-- Apgar Score 5 Min -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Birth Place"
-            android:inputType="text" />
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
 
-        <EditText
-            android:id="@+id/editText_birthWeight"
+            <TextView
+                android:id="@+id/label_apgarScore5Min"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Apgar Score at 5 Min"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_apgarScore5Min"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <!-- Abnormalities at Birth -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Birth Weight"
-            android:inputType="numberDecimal" />
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
 
-        <EditText
-            android:id="@+id/editText_birthLength"
+            <TextView
+                android:id="@+id/label_abnormalitiesAtBirth"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Abnormalities at Birth"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_abnormalitiesAtBirth"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <!-- Problems Requiring Treatment -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Birth Length"
-            android:inputType="numberDecimal" />
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
 
-        <Button
-            android:id="@+id/button_saveBirthDetails"
+            <TextView
+                android:id="@+id/label_problemsRequiringTreatment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Problems Requiring Treatment"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_problemsRequiringTreatment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <!-- Birth Weight -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/label_birthWeight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Birth Weight"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_birthWeight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <!-- Birth Length -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/label_birthLength"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Birth Length"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_birthLength"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <!-- Birth Head Circumference -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/label_birthHeadCirc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Birth Head Circumference"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_birthHeadCirc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <!-- Post-Birth Details -->
+        <TextView
+            android:id="@+id/textView_postBirthDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Post-Birth Details"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp" />
+
+        <!-- Newborn Bloodspot Screen Test -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/label_newBornBloodspotScreenTest"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Newborn Bloodspot Screen Test"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_newBornBloodspotScreenTest"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="yyyy-MM-dd"/>
+        </LinearLayout>
+
+        <!-- Vitamin K Given -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/label_vitaminKGiven"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Vitamin K Given"
+                android:gravity="center_vertical" />
+
+            <Spinner
+                android:id="@+id/spinner_vitaminKGiven"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:entries="@array/vitamin_k_given_options" />
+        </LinearLayout>
+
+        <!-- Vitamin K 1st Dose -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/label_vitaminKGiven1st"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Vitamin K 1st Dose"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_vitaminKGiven1st"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="yyyy-MM-dd" />
+        </LinearLayout>
+
+        <!-- Vitamin K 2nd Dose -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/label_vitaminKGiven2nd"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Vitamin K 2nd Dose"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_vitaminKGiven2nd"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="yyyy-MM-dd" />
+        </LinearLayout>
+
+        <!-- Vitamin K 3rd Dose -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/label_vitaminKGiven3rd"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Vitamin K 3rd Dose"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_vitaminKGiven3rd"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="yyyy-MM-dd" />
+        </LinearLayout>
+
+        <!-- Postpartum Complications -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/label_postPartumComplications"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Postpartum Complications"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_postPartumComplications"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <!-- Feeding at Discharge -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/label_feedingAtDischarge"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Feeding at Discharge"
+                android:gravity="center_vertical" />
+
+            <Spinner
+                android:id="@+id/spinner_feedingAtDischarge"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:entries="@array/feeding_at_discharge_options" />
+        </LinearLayout>
+
+        <!-- Difficulties with Feeding -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/label_difficultiesWithFeeding"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Difficulties with Feeding"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_difficultiesWithFeeding"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <!-- Date of Discharge -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/label_dateOfDischarge"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Date of Discharge"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_dateOfDischarge"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="yyyy-MM-dd" />
+        </LinearLayout>
+
+        <!-- Discharge Weight -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/label_dischargeWeight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Discharge Weight"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_dischargeWeight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <!-- Head Circumference -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/label_headCirc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Head Circumference"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_headCirc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <!-- Print Name -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/label_printName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Print Name"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_printName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <!-- Signature -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/label_signature"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Signature"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_signature"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <!-- Designation -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/label_designation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Designation"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_designation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <!-- Hep B Immunisation Given -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="24dp">
+
+            <TextView
+                android:id="@+id/label_hepBImmunisationGiven"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Hep B Immunisation Given"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_hepBImmunisationGiven"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="yyyy-MM-dd" />
+        </LinearLayout>
+
+        <!-- Hep B Immunoglobulin Given -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="24dp">
+
+            <TextView
+                android:id="@+id/label_hepBImmunoglobinGiven"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Hep B Immunoglobulin Given"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_hepBImmunoglobinGiven"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="yyyy-MM-dd" />
+        </LinearLayout>
+
+        <!-- Save Button -->
+        <Button
+            android:id="@+id/button_saveBirthDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Save"
-            android:background="@drawable/button_3d" />
+            android:layout_marginTop="24dp" />
+
     </LinearLayout>
 </ScrollView>
