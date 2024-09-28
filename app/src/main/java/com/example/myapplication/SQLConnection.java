@@ -213,11 +213,33 @@ public class SQLConnection extends Thread {
                 case 'i': stmt.setInt(i+1, Integer.parseInt(params[i])); break;
                 case 'n': stmt.setNull(i+1, java.sql.Types.NULL); break;
                 case 'b': stmt.setBoolean(i + 1, Boolean.parseBoolean(params[i])); break;
+                case 'd':
+                    java.sql.Date sqlDate = parseDate(params[i]);
+                    if (sqlDate != null) {
+                        stmt.setDate(i + 1, sqlDate);
+                    } else {
+                        stmt.setNull(i + 1, java.sql.Types.DATE);
+                    }
+                    break;
                 default: throw new android.database.SQLException("param in ParamTypes is unknown: " + paramTypes[i]);
             }
         return stmt;
     }
 
+    private java.sql.Date parseDate(String dateStr) throws SQLException {
+        if (dateStr == null || dateStr.isEmpty()) {
+            return null;
+        }
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            sdf.setLenient(false);
+            java.util.Date utilDate = sdf.parse(dateStr);
+            return new java.sql.Date(utilDate.getTime());
+        } catch (ParseException e) {
+            throw new SQLException("Invalid date format for value: " + dateStr, e);
+        }
+    }
+    
     public Connection getConnection() {
         return conn; // return the current connection
     }
