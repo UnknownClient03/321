@@ -21,4 +21,22 @@
         <item>3 year</item>
         <item>4 year</item>
     </string-array>
+
+    <!-- Vitamin K Given Options -->
+    <string-array name="vitamin_k_given_options">
+        <item>injection</item>
+        <item>oral</item>
+    </string-array>
+
+    <!-- Feeding at Discharge Options -->
+    <string-array name="feeding_at_discharge_options">
+        <item>Breastfeeding</item>
+        <item>Formula Feeding</item>
+        <item>Mixed Feeding</item>
+    </string-array>
+
+    <string-array name="yes_no_options">
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
 </resources>
