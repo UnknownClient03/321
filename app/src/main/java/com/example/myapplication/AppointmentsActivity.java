@@ -194,11 +194,11 @@ public class AppointmentsActivity extends AppCompatActivity {
         String[] timeParts = time.split(":");
 
         // Set the calendar time to the appointment time
-        calendar.set(Calendar.YEAR, Integer.parseInt(dateParts[0])); // Year
-        calendar.set(Calendar.MONTH, Integer.parseInt(dateParts[1]) - 1); // Month (0-based)
-        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(dateParts[2])); // Day
-        calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(timeParts[0])); // Hour
-        calendar.set(Calendar.MINUTE, Integer.parseInt(timeParts[1])); // Minute
+        calendar.set(Calendar.YEAR, Integer.parseInt(dateParts[0]));
+        calendar.set(Calendar.MONTH, Integer.parseInt(dateParts[1]) - 1);
+        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(dateParts[2]));
+        calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(timeParts[0]));
+        calendar.set(Calendar.MINUTE, Integer.parseInt(timeParts[1]));
         calendar.set(Calendar.SECOND, 0); // Reset seconds
 
         // If the set time is in the past, adjust to the next day
@@ -206,9 +206,15 @@ public class AppointmentsActivity extends AppCompatActivity {
             calendar.add(Calendar.DAY_OF_MONTH, 1);
         }
 
+        // Subtract 1 hour (3600000 milliseconds) for the notification
+        calendar.add(Calendar.HOUR, -1);
+
+        // Format the appointment time for display
+        String appointmentTime = String.format("%02d:%02d", Integer.parseInt(timeParts[0]), Integer.parseInt(timeParts[1]));
+
         Intent intent = new Intent(this, NotificationReceiver.class);
         intent.putExtra("title", "Appointment Reminder");
-        intent.putExtra("message", "You have an appointment: " + title);
+        intent.putExtra("message", "You have an appointment in an hour at: " + appointmentTime + " - " + title);
 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
@@ -217,6 +223,8 @@ public class AppointmentsActivity extends AppCompatActivity {
             alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
         }
     }
+
+
 
     @Override
     protected void onDestroy() {

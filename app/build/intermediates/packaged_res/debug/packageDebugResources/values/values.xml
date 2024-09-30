@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="blood_group_options">
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>O+</item>
+        <item>O-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+    </string-array>
     <string-array name="check_type_array">
         <item>1-4 weeks</item>
         <item>6-8 weeks</item>
@@ -16,10 +26,27 @@
         <item>review</item>
         <item>refer</item>
     </string-array>
+    <string-array name="feeding_at_discharge_options">
+        <item>Breastfeeding</item>
+        <item>Formula Feeding</item>
+        <item>Mixed Feeding</item>
+    </string-array>
     <string-array name="outcome_options">
         <item>normal</item>
         <item>review</item>
         <item>refer</item>
+    </string-array>
+    <string-array name="sex_options">
+        <item>M</item>
+        <item>F</item>
+    </string-array>
+    <string-array name="vitamin_k_given_options">
+        <item>injection</item>
+        <item>oral</item>
+    </string-array>
+    <string-array name="yes_no_options">
+        <item>Yes</item>
+        <item>No</item>
     </string-array>
     <color name="black">#FF000000</color>
     <color name="button_background">#2196F3</color>

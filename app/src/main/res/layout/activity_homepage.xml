@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_3d"
                 android:elevation="12dp"
-                android:text="My Records" />
+                android:text="Records" />
 
             <Button
                 android:id="@+id/button_cpr_chart"
