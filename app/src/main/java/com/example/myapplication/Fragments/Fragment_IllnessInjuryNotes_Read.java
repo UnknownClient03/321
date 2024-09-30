@@ -80,7 +80,6 @@ public class Fragment_IllnessInjuryNotes_Read extends Fragment {
                 requireActivity().getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.fragmentContainerView2, new Fragment_IllnessInjuryNotes_Write())
-                        .addToBackStack(null)
                         .commit();
             }
         });

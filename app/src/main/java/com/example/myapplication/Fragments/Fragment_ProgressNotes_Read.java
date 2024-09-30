@@ -82,7 +82,6 @@ public class Fragment_ProgressNotes_Read extends Fragment {
                 requireActivity().getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.fragmentContainerView, new Fragment_ProgressNotes_Write())
-                        .addToBackStack(null)
                         .commit();
             }
         });

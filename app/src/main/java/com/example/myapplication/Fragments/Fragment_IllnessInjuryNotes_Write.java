@@ -76,7 +76,6 @@ public class Fragment_IllnessInjuryNotes_Write extends Fragment {
                 requireActivity().getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.fragmentContainerView2, new Fragment_IllnessInjuryNotes_Read())
-                        .addToBackStack(null)
                         .commit();
             }
         });

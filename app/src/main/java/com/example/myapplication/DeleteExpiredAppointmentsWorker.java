@@ -15,10 +15,10 @@ public class DeleteExpiredAppointmentsWorker extends Worker {
     @Override
     public Result doWork() {
         // Create a SQLConnection instance
-        SQLConnection sqlConnection = new SQLConnection("user1", "strongPwd123");
+        SQLConnection sqlConnection = new SQLConnection("user1", "");
 
-        // Update the SQL DELETE statement to use GETDATE() for SQL Server
-        String deleteSQL = "DELETE FROM Appointments WHERE appointment_date < GETDATE()";
+        // Updated SQL query to delete appointments that have an appointment_date earlier than today
+        String deleteSQL = "DELETE FROM Appointments WHERE appointment_date < CAST(GETDATE() AS DATE)";
 
         try {
             // Call the update method to execute the delete query

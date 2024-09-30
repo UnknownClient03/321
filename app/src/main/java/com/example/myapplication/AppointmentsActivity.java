@@ -74,6 +74,7 @@ public class AppointmentsActivity extends AppCompatActivity {
         notificationHelper.createChannels();
         NavBarManager.setNavBarButtons(AppointmentsActivity.this);
 
+        // Delete appointments that have occurred in a previous day
         PeriodicWorkRequest deleteExpiredAppointmentsRequest =
                 new PeriodicWorkRequest.Builder(DeleteExpiredAppointmentsWorker.class, 1, TimeUnit.HOURS)
                         .build();
