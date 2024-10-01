@@ -1,4 +1,4 @@
-# CSIT321 App
+# CSIT321 App Installation Process
 
 Welcome to the CSIT321 App! This README will guide you through setting up and running the project.
 
