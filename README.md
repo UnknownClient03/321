@@ -1,4 +1,4 @@
-# CSIT321 App Installation Process
+# OzBlue Installation Process
 
 Welcome to OzBlue! This README will guide you through setting up and running our app.
 
