@@ -1,3 +1,5 @@
+CREATE DATABASE BlueBookDB;
+
 USE BlueBookDB;
 
 CREATE TABLE Guardian (
