@@ -96,7 +96,8 @@ public class ChildSelectActivity extends AppCompatActivity {
 
             childButton.setOnClickListener(v -> {
                 Intent intent = new Intent(ChildSelectActivity.this, Homepage.class);
-                intent.putExtra("child_id", child.getId());
+                intent.putExtra("guardianID", guardianID);
+                intent.putExtra("childID", child.getId());
                 startActivity(intent);
             });
 
