@@ -39,10 +39,10 @@
                 android:id="@+id/primarySecondaryTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Primary and secondary school"
+                android:text="Primary and Secondary Education"
                 android:textStyle="bold"
-                android:textSize="20sp"
-                android:layout_gravity="center"/>
+                android:textSize="36sp"
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/primarySecondaryText"
