@@ -42,11 +42,15 @@ public class AppointmentsActivity extends AppCompatActivity {
     private ListView listView;
     private AppointmentAdaptor adapter;
     private SQLConnection sqlConnection;
+    private int childID; // Store childID
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appointments);
+
+        // Retrieve childID from Intent (assuming you pass it from another Activity)
+        childID = getIntent().getIntExtra("childID", -1);
 
         // Check for notification permission
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -122,16 +126,17 @@ public class AppointmentsActivity extends AppCompatActivity {
 
     private void addAppointment(String title, String date, String time) {
         if (sqlConnection.isConn()) {
-            String query = "INSERT INTO Appointments (title, appointment_date, appointment_time) VALUES (?, ?, ?)";
+            String query = "INSERT INTO Appointments (childID, title, appointment_date, appointment_time) VALUES (?, ?, ?, ?)";
             try {
                 PreparedStatement statement = sqlConnection.getConnection().prepareStatement(query);
-                statement.setString(1, title);
+                statement.setInt(1, childID); // Set the childID
+                statement.setString(2, title);
 
                 // Convert date from "day/month/year" to "YYYY-MM-DD"
                 String[] dateParts = date.split("/");
                 String formattedDate = String.format("%s-%s-%s", dateParts[2], dateParts[1].length() == 1 ? "0" + dateParts[1] : dateParts[1], dateParts[0].length() == 1 ? "0" + dateParts[0] : dateParts[0]);
-                statement.setString(2, formattedDate);
-                statement.setString(3, time);
+                statement.setString(3, formattedDate);
+                statement.setString(4, time);
                 statement.executeUpdate();
 
                 appointmentsList.add(new Appointment(0, title, formattedDate, time));
@@ -151,10 +156,11 @@ public class AppointmentsActivity extends AppCompatActivity {
 
     private void fetchAppointments() {
         if (sqlConnection.isConn()) {
-            String query = "SELECT appointment_id, title, appointment_date, appointment_time FROM Appointments ORDER BY appointment_date ASC, appointment_time ASC";
+            String query = "SELECT appointment_id, title, appointment_date, appointment_time FROM Appointments WHERE childID = ? ORDER BY appointment_date ASC, appointment_time ASC";
             try {
-                Statement statement = sqlConnection.getConnection().createStatement();
-                ResultSet resultSet = statement.executeQuery(query);
+                PreparedStatement statement = sqlConnection.getConnection().prepareStatement(query);
+                statement.setInt(1, childID); // Set childID for fetching appointments
+                ResultSet resultSet = statement.executeQuery();
 
                 appointmentsList.clear();
                 while (resultSet.next()) {
@@ -186,7 +192,6 @@ public class AppointmentsActivity extends AppCompatActivity {
         String[] parts = time.split(":");
         return String.format("%s:%s", parts[0], parts[1]); // return "HH:mm"
     }
-
 
     private void scheduleNotification(String title, String date, String time) {
         Calendar calendar = Calendar.getInstance();
@@ -223,8 +228,6 @@ public class AppointmentsActivity extends AppCompatActivity {
             alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
         }
     }
-
-
 
     @Override
     protected void onDestroy() {
