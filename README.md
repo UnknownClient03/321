@@ -5,6 +5,7 @@ Welcome to the CSIT321 App! This README will guide you through setting up and ru
 ## Table of Contents
 - Prerequisites
 - Installation
+- Database Setup
 - Running the App
 
 ## Prerequisites
@@ -13,6 +14,7 @@ Before you begin, ensure you have met the following requirements:
 - You have installed Android Studio (version 4.0 or higher).
 - You have installed the Android SDK and set up the necessary environment variables.
 - You have a device or emulator running at least Android 5.0 (Lollipop).
+- You have access to a SQL Server instance and the necessary permissions to create databases and users.
 
 ## Installation
 
@@ -29,6 +31,20 @@ Before you begin, ensure you have met the following requirements:
    - Launch Android Studio.
    - Click on Open an existing Android Studio project.
    - Navigate to the directory where you extracted the ZIP file and select the project folder.
+
+## Database Setup
+
+To set up the database for the app, follow these steps:
+
+1. Create the Database and Tables
+
+   - Open your SQL Server management tool
+     - SQL Server Management Studio (if using PC)
+     - Azure Data Studio (if using macOS)
+   - Execute the create.sql file to create the necessary tables in the database named BlueBookDB.
+
+2. Set User Permissions
+   - Execute the users.sql file to grant permissions to the user that will access the database for the app.
 
 ## Running the App
 
