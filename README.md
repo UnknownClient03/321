@@ -70,9 +70,9 @@ Before you begin, ensure you have met the following requirements:
    
    - Connect to SQL Server:
      
-      - Launch Azure Data Studio.
-      - Click on New Connection.
-      - Enter your server name and authentication details, then click Connect.
+         - Launch Azure Data Studio.
+         - Click on New Connection.
+         - Enter your server name and authentication details, then click Connect.
 
 ## Database Setup
 
