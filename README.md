@@ -86,10 +86,10 @@ To set up the database for the app, follow these steps:
        
      - Azure Data Studio (if using macOS)
        
-   - Execute the create.sql file to create the necessary tables in the database named BlueBookDB.
+   - Execute the 'create.sql' file (located in 'sql queries' folder) to create the necessary tables in the database named BlueBookDB.
 
 2. Set User Permissions
-   - Execute the users.sql file to grant permissions to the user that will access the database for the app.
+   - Execute the 'users.sql' file (located in 'sql queries' folder) to grant permissions to the user to access the database for the app.
 
 ## Running the App
 
