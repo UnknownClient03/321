@@ -38,25 +38,38 @@ Before you begin, ensure you have met the following requirements:
 1. On Windows with SSMS
 
    - Download SQL Server:
+     
      - Go to the SQL Server downloads page.
      - Download the SQL Server Developer or SQL Server Express edition.
+       
    - Install SQL Server:
+     
       - Run the installer and follow the prompts.
       - Choose the installation type (typically "New SQL Server stand-alone installation").
       - Follow the configuration steps, including setting the authentication mode and adding SQL Server administrators.
+        
    - Install SQL Server Management Studio (SSMS):
+     
       - Download SSMS from the SSMS download page.
       - Run the installer and follow the prompts.
+        
    - Connect to SQL Server:
+     
       - Open SSMS.
       - In the "Connect to Server" window, enter your server name and authentication details, then click Connect.
 
 2. On Mac with Azure Data Studio
+   
    - Download Azure Data Studio:
+
       - Go to the Azure Data Studio download page.
+   
    - Install Azure Data Studio:
+     
       - Open the downloaded file and drag Azure Data Studio to your Applications folder.
+   
    - Connect to SQL Server:
+     
       - Launch Azure Data Studio.
       - Click on New Connection.
       - Enter your server name and authentication details, then click Connect.
