@@ -1,5 +1,9 @@
 [
     {
+        "merged": "com.example.myapplication.app-debug-45:/layout_activity_homepage.xml.flat",
+        "source": "com.example.myapplication.app-main-47:/layout/activity_homepage.xml"
+    },
+    {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-45:/mipmap-mdpi_ic_launcher.webp.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-47:/mipmap-mdpi/ic_launcher.webp"
     },
@@ -458,10 +462,6 @@
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-45:/drawable_sample_child_pic.png.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-47:/drawable/sample_child_pic.png"
-    },
-    {
-        "merged": "com.example.myapplication.app-debug-45:/layout_activity_primary_secondary_school.xml.flat",
-        "source": "com.example.myapplication.app-main-47:/layout/activity_primary_secondary_school.xml"
     },
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-45:/drawable_white_button.xml.flat",
