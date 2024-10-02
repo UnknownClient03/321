@@ -1,60 +1,70 @@
 package com.example.myapplication;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import java.util.List;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.text.InputType;
-import android.widget.Toast;
 
+import com.example.myapplication.R;
+
+import java.util.List;
 
 public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.QuestionViewHolder> {
 
+    private Context context;
     private List<Question> questions;
+    private String[] statusOptions;
 
-    public QuestionAdapter(List<Question> questions) {
+    public QuestionAdapter(Context context, List<Question> questions) {
+        this.context = context;
         this.questions = questions;
+        this.statusOptions = context.getResources().getStringArray(R.array.outcome_options);
+    }
+
+    public List<Question> getQuestions() {
+        return questions;
     }
 
     @NonNull
     @Override
     public QuestionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_question, parent, false);
-        return new QuestionViewHolder(view);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_question, parent, false);
+        return new QuestionViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull QuestionViewHolder holder, int position) {
-        Question currentQuestion = questions.get(position);
+        Question current = questions.get(position);
+        holder.questionText.setText(current.getQuestionText());
 
-        holder.questionText.setText(currentQuestion.getQuestionText());
+        // Set up Spinner
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, statusOptions);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        holder.statusSpinner.setAdapter(adapter);
 
-        // Set hint in text box
-        holder.answerInput.setHint("Enter answer here");
+        // Set the Spinner to the current status
+        int spinnerPosition = adapter.getPosition(capitalize(current.getStatus()));
+        holder.statusSpinner.setSelection(spinnerPosition >= 0 ? spinnerPosition : 0);
 
-        // Clear text box when clicked
-        holder.answerInput.setOnClickListener(v -> {
-            if (holder.answerInput.getText().toString().isEmpty()) {
-                holder.answerInput.setText("");
+        holder.statusSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int spinnerPosition, long id) {
+                String selectedStatus = parentView.getItemAtPosition(spinnerPosition).toString().toLowerCase();
+                current.setStatus(selectedStatus);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // Optional: Handle case where nothing is selected
             }
         });
-
-        // Retain hint text when not typing
-        holder.answerInput.setOnFocusChangeListener((v, hasFocus) -> {
-            if (!hasFocus && holder.answerInput.getText().toString().isEmpty()) {
-                holder.answerInput.setHint("Enter answer here");
-            }
-        });
-
-        // Allow only numeric input if the question requires it
-        if (currentQuestion.isNumeric()) {
-            holder.answerInput.setInputType(InputType.TYPE_CLASS_NUMBER); // Restrict input to numbers
-        }
     }
 
     @Override
@@ -64,12 +74,21 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
 
     static class QuestionViewHolder extends RecyclerView.ViewHolder {
         TextView questionText;
-        EditText answerInput;
+        Spinner statusSpinner;
 
         public QuestionViewHolder(@NonNull View itemView) {
             super(itemView);
-            questionText = itemView.findViewById(R.id.questionText);
-            answerInput = itemView.findViewById(R.id.answerInput);
+            questionText = itemView.findViewById(R.id.question_text);
+            statusSpinner = itemView.findViewById(R.id.status_spinner);
         }
+    }
+
+    /**
+     * Utility method to capitalize the first letter of the status.
+     * E.g., "normal" -> "Normal"
+     */
+    private String capitalize(String status) {
+        if (status == null || status.length() == 0) return status;
+        return status.substring(0, 1).toUpperCase() + status.substring(1);
     }
 }
