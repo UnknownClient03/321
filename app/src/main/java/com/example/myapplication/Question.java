@@ -2,33 +2,33 @@ package com.example.myapplication;
 
 public class Question {
     private String questionText;
-    private String userAnswer;
-    private boolean isNumeric;
+    private boolean isRequired;
+    private String status; // "normal", "review", "refer"
 
-    public Question(String questionText, boolean isNumeric) {
+    public Question(String questionText, boolean isRequired, String status) {
         this.questionText = questionText;
-        this.isNumeric = isNumeric;
+        this.isRequired = isRequired;
+        this.status = status;
     }
 
-    // Getters and Setters
     public String getQuestionText() {
         return questionText;
     }
 
-    public String getUserAnswer() {
-        return userAnswer;
+    public boolean isRequired() {
+        return isRequired;
     }
 
-    public void setUserAnswer(String userAnswer) {
-        this.userAnswer = userAnswer;
+    public String getStatus() {
+        return status;
     }
 
-    public boolean isNumeric() {
-        return isNumeric;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public int getId() {
-        // Dummy method, replace this with actual logic to get question ID
-        return 1;  // Replace with actual question ID logic
+    // Optionally, include validation for status values
+    public boolean isValidStatus() {
+        return status.equals("normal") || status.equals("review") || status.equals("refer");
     }
 }
