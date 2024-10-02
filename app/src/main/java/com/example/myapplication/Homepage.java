@@ -138,6 +138,19 @@ public class Homepage extends AppCompatActivity {
             }
         });
 
+        // Setting up the Checks button
+        Button buttonChecks = findViewById(R.id.button_checks);
+        buttonChecks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("BUTTON", "Navigating to EncapsulatingActivity for Checks");
+                Intent intent = new Intent(Homepage.this, EncapsulatingActivity.class);
+                intent.putExtra("guardianID", manager.guardianID);
+                intent.putExtra("childID", manager.childID);
+                startActivity(intent);
+            }
+        });
+        
         // Setting up the Info for Parents button
         Button buttonInfoForParents = findViewById(R.id.button_info_for_parents);
         buttonInfoForParents.setOnClickListener(new View.OnClickListener() {
