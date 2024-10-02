@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.Fragments.Fragment_BirthDetails;
 import com.example.myapplication.Fragments.Fragment_NewbornExamination;
+import com.example.myapplication.Fragments.Fragment_HearingPreScreening;
+import com.example.myapplication.Fragments.Fragment_Hearingscreen;
 
 public class BirthDetailsAndNewbornExamination extends AppCompatActivity {
 
@@ -40,6 +42,8 @@ public class BirthDetailsAndNewbornExamination extends AppCompatActivity {
 
         Button buttonBirthDetails = findViewById(R.id.button_birth_details);
         Button buttonNewbornExamination = findViewById(R.id.button_newborn_examination);
+        Button buttonHearingPreScreening = findViewById(R.id.button_hearing_prescreening);
+        Button buttonHearingscreen = findViewById(R.id.button_hearingscreen);
 
         buttonBirthDetails.setOnClickListener(v -> {
             Fragment_BirthDetails fragment = new Fragment_BirthDetails();
@@ -61,6 +65,26 @@ public class BirthDetailsAndNewbornExamination extends AppCompatActivity {
             loadFragment(fragment);
         });
 
+        buttonHearingPreScreening.setOnClickListener(v -> {
+            Fragment_HearingPreScreening fragment = new Fragment_HearingPreScreening();
+            Bundle bundle = new Bundle();
+            bundle.putInt("childID", manager.childID);
+            bundle.putInt("guardianID", manager.guardianID);
+            fragment.setArguments(bundle);
+
+            loadFragment(fragment);
+        });
+
+        buttonHearingscreen.setOnClickListener(v -> {
+            Fragment_Hearingscreen fragment = new Fragment_Hearingscreen();
+            Bundle bundle = new Bundle();
+            bundle.putInt("childID", manager.childID);
+            bundle.putInt("guardianID", manager.guardianID);
+            fragment.setArguments(bundle);
+
+            loadFragment(fragment);
+        });
+
         // Load default fragment (Birth Details) and pass arguments
         if (savedInstanceState == null) {
             Fragment_BirthDetails fragment = new Fragment_BirthDetails();
@@ -71,8 +95,6 @@ public class BirthDetailsAndNewbornExamination extends AppCompatActivity {
 
             loadFragment(fragment);
         }
-
-        NavBarManager.setNavBarButtons(BirthDetailsAndNewbornExamination.this);
     }
 
     private void loadFragment(Fragment fragment) {
