@@ -118,6 +118,7 @@
 
         <receiver android:name=".NotificationReceiver" />
 
+        <activity android:name=".EncapsulatingActivity" />
 
     </application>
 
