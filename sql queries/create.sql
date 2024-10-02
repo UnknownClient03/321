@@ -263,7 +263,7 @@ CREATE TABLE NewBornHearing(
 
 CREATE TABLE HearingPreScreening(
 	childID int not null,
-	question varchar(128) not null,
+	question varchar(511) not null,
 	condition BIT DEFAULT 0 not null,
 	FOREIGN KEY (childID) REFERENCES newBornHearing(childID),
 );
