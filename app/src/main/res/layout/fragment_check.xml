@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Health Assessment Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Health Assessment"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:paddingBottom="8dp" />
+
+        <!-- General Measurements Section -->
+        <EditText
+            android:id="@+id/weight_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Weight (g)"
+            android:inputType="numberDecimal"
+            android:paddingBottom="8dp" />
+
+        <EditText
+            android:id="@+id/length_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Length/Height (cm)"
+            android:inputType="numberDecimal"
+            android:paddingBottom="8dp" />
+
+        <EditText
+            android:id="@+id/head_circ_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Head Circumference (cm)"
+            android:inputType="numberDecimal"
+            android:paddingBottom="16dp" />
+
+        <!-- Outcome Spinner -->
+        <Spinner
+            android:id="@+id/outcome_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/outcome_options"
+            android:paddingBottom="16dp" />
+
+        <!-- Health Information Discussed Checkbox -->
+        <CheckBox
+            android:id="@+id/health_info_discussed_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Appropriate health information discussed?"
+            android:paddingBottom="16dp" />
+
+        <!-- Specific Checks Section (RecyclerView) -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Specific Checks"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:paddingBottom="8dp" />
+
+        <!-- Container for Specific Checks -->
+        <LinearLayout
+            android:id="@+id/checks_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+
+        <!-- Comments and Outcome Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Outcome"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:paddingBottom="8dp" />
+
+        <EditText
+            android:id="@+id/comments_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Comments"
+            android:inputType="textMultiLine"
+            android:lines="3"
+            android:paddingBottom="8dp" />
+
+        <EditText
+            android:id="@+id/action_taken_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Action Taken"
+            android:inputType="textMultiLine"
+            android:lines="3"
+            android:paddingBottom="8dp" />
+
+        <!-- Doctor/Nurse Details Section -->
+        <EditText
+            android:id="@+id/doctor_name_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name of Doctor or Nurse"
+            android:inputType="textPersonName"
+            android:paddingBottom="8dp" />
+
+        <EditText
+            android:id="@+id/signature_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Signature"
+            android:inputType="textPersonName"
+            android:paddingBottom="8dp" />
+
+        <EditText
+            android:id="@+id/venue_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Venue"
+            android:inputType="text"
+            android:paddingBottom="8dp" />
+
+        <EditText
+            android:id="@+id/date_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Date of Check (yyyy-MM-dd)"
+            android:inputType="date"
+            android:paddingBottom="16dp" />
+
+        <!-- Submit Button -->
+        <Button
+            android:id="@+id/submit_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit Check" />
+
+    </LinearLayout>
+</ScrollView>
