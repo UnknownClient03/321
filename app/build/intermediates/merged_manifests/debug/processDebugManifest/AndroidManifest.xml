@@ -147,6 +147,7 @@
 
         <receiver android:name="com.example.myapplication.NotificationReceiver" />
 
+        <activity android:name="com.example.myapplication.EncapsulatingActivity" />
         <activity
             android:name="com.google.firebase.auth.internal.GenericIdpActivity"
             android:excludeFromRecents="true"

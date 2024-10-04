@@ -11,10 +11,10 @@ INJECTED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:
 	android:name
 		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:95:13-62
 manifest
-ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:2:1-126:12
-INJECTED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:2:1-126:12
-INJECTED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:2:1-126:12
-INJECTED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:2:1-126:12
+ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:2:1-127:12
+INJECTED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:2:1-127:12
+INJECTED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:2:1-127:12
+INJECTED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:2:1-127:12
 MERGED from [com.google.android.material:material:1.10.0] /Users/thomas/.gradle/caches/transforms-4/1ca8bdbcebe52b742408307a16fd6a60/transformed/material-1.10.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/thomas/.gradle/caches/transforms-4/6a54820cc8f015aa4349e27384ab45f6/transformed/constraintlayout-2.1.4/AndroidManifest.xml:2:1-11:12
 MERGED from [com.github.chrisbanes:PhotoView:2.3.0] /Users/thomas/.gradle/caches/transforms-4/e5f8ab5d1c31f3b5b6f0c6f3a83d8e86/transformed/PhotoView-2.3.0/AndroidManifest.xml:2:1-11:12
@@ -144,8 +144,8 @@ ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:15:
 	android:name
 		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:15:19-57
 application
-ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:17:5-122:19
-INJECTED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:17:5-122:19
+ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:17:5-123:19
+INJECTED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:17:5-123:19
 MERGED from [com.google.android.material:material:1.10.0] /Users/thomas/.gradle/caches/transforms-4/1ca8bdbcebe52b742408307a16fd6a60/transformed/material-1.10.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.10.0] /Users/thomas/.gradle/caches/transforms-4/1ca8bdbcebe52b742408307a16fd6a60/transformed/material-1.10.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/thomas/.gradle/caches/transforms-4/6a54820cc8f015aa4349e27384ab45f6/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
@@ -380,6 +380,10 @@ receiver#com.example.myapplication.NotificationReceiver
 ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:119:9-58
 	android:name
 		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:119:19-55
+activity#com.example.myapplication.EncapsulatingActivity
+ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:121:9-59
+	android:name
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:121:19-56
 meta-data#android.support.FILE_PROVIDER_PATHS
 ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:99:13-101:54
 	android:resource

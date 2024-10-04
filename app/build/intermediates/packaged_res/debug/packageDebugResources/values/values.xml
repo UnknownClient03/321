@@ -32,9 +32,9 @@
         <item>Mixed Feeding</item>
     </string-array>
     <string-array name="outcome_options">
-        <item>normal</item>
-        <item>review</item>
-        <item>refer</item>
+        <item>Normal</item>
+        <item>Review</item>
+        <item>Refer</item>
     </string-array>
     <string-array name="sex_options">
         <item>M</item>
