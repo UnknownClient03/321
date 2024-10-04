@@ -5,4 +5,8 @@
     <color name="clear">#00000000</color>
     <color name="button_background">#2196F3</color>
     <color name="button_text">#FFFFFF</color>
+
+    <color name="disabled_text">#FF888888</color> <!-- Gray color for disabled text -->
+    <color name="enabled_text">#FF000000</color> <!-- Black color for enabled text -->
+
 </resources>

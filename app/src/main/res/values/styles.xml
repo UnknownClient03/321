@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Custom Spinner Style -->
+    <style name="CustomSpinnerStyle" parent="Widget.AppCompat.Spinner">
+        <!-- Set padding to match TextInputEditText -->
+        <item name="android:padding">12dp</item>
+        <!-- Set background to match TextInputEditText -->
+        <item name="android:background">@drawable/spinner_background</item>
+        <!-- Set dropdown background if needed -->
+        <item name="android:popupBackground">@color/white</item>
+    </style>
+
+</resources>
