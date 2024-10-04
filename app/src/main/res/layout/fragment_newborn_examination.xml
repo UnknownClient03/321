@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/scrollView_newbornExamination"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -23,107 +24,88 @@
             android:paddingBottom="8dp" />
 
         <!-- Date of Birth -->
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_dob"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:hint="Date of Birth"
             android:paddingBottom="8dp">
-            <TextView
-                android:id="@+id/label_dob"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Date of Birth"
-                android:gravity="center_vertical" />
-            <EditText
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editText_dob"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:hint="yyyy-MM-dd" />
-        </LinearLayout>
+                android:focusable="false"
+                android:clickable="true"
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Age -->
-        <LinearLayout
+        <!-- Age in Days -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_age"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:hint="Age in Days"
             android:paddingBottom="8dp">
-            <TextView
-                android:id="@+id/label_age"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Age in Days"
-                android:gravity="center_vertical" />
-            <EditText
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editText_age"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
                 android:inputType="number" />
-        </LinearLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Sex -->
-        <LinearLayout
+        <!-- Sex Label -->
+        <TextView
+            android:id="@+id/textView_sexLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sex"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:paddingBottom="4dp" />
+
+        <!-- Sex Spinner -->
+        <Spinner
+            android:id="@+id/spinner_sex"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingBottom="8dp">
-            <TextView
-                android:id="@+id/label_sex"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Sex"
-                android:gravity="center_vertical" />
-            <Spinner
-                android:id="@+id/spinner_sex"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:entries="@array/sex_options" />
-        </LinearLayout>
+            android:entries="@array/sex_options"
+            android:background="@drawable/spinner_background"
+            android:padding="12dp"
+            android:spinnerMode="dropdown"
+            android:dropDownWidth="match_parent" />
 
         <!-- First Name -->
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_fname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:hint="First Name"
+            android:paddingTop="16dp"
             android:paddingBottom="8dp">
-            <TextView
-                android:id="@+id/label_fname"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="First Name"
-                android:gravity="center_vertical" />
-            <EditText
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editText_fname"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2" />
-        </LinearLayout>
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Last Name -->
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_lname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:hint="Last Name"
             android:paddingBottom="8dp">
-            <TextView
-                android:id="@+id/label_lname"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Last Name"
-                android:gravity="center_vertical" />
-            <EditText
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editText_lname"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2" />
-        </LinearLayout>
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Any Concerns -->
         <LinearLayout
@@ -131,13 +113,17 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingBottom="8dp">
+
             <TextView
                 android:id="@+id/label_anyConcerns"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Any Concerns"
-                android:gravity="center_vertical" />
+                android:gravity="center_vertical"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
             <CheckBox
                 android:id="@+id/checkBox_anyConcerns"
                 android:layout_width="wrap_content"
@@ -145,115 +131,95 @@
         </LinearLayout>
 
         <!-- Any Concerns Comment -->
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_anyConcernsComment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:hint="Any Concerns Comment"
             android:paddingBottom="8dp">
-            <TextView
-                android:id="@+id/label_anyConcernsComment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Any Concerns Comment" />
-            <EditText
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editText_anyConcernsComment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
                 android:lines="3" />
-        </LinearLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Examiner -->
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_examiner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:hint="Examiner"
             android:paddingBottom="8dp">
-            <TextView
-                android:id="@+id/label_examiner"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Examiner"
-                android:gravity="center_vertical" />
-            <EditText
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editText_examiner"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2" />
-        </LinearLayout>
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Designation -->
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_designation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:hint="Designation"
             android:paddingBottom="8dp">
-            <TextView
-                android:id="@+id/label_designation"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Designation"
-                android:gravity="center_vertical" />
-            <EditText
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editText_designation"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2" />
-        </LinearLayout>
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Signature -->
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_signature"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:hint="Signature"
             android:paddingBottom="8dp">
-            <TextView
-                android:id="@+id/label_signature"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Signature"
-                android:gravity="center_vertical" />
-            <EditText
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editText_signature"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2" />
-        </LinearLayout>
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Date -->
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:hint="Date"
             android:paddingBottom="16dp">
-            <TextView
-                android:id="@+id/label_date"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Date"
-                android:gravity="center_vertical" />
-            <EditText
-                android:id="@+id/editText_date"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:hint="yyyy-MM-dd" />
-        </LinearLayout>
 
-        <!-- Checks -->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:clickable="true"
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Examination Checks Title -->
         <TextView
             android:id="@+id/textView_checks"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Checks"
+            android:text="Examination Checks"
             android:textStyle="bold"
             android:textSize="18sp"
+            android:paddingTop="16dp"
             android:paddingBottom="8dp" />
 
+        <!-- 15 Examination Checks -->
         <!-- Head and Fontanelles -->
         <LinearLayout
             android:id="@+id/layout_headandfontanelles"
@@ -266,7 +232,10 @@
                 android:id="@+id/label_headandfontanelles"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Head and Fontanelles" />
+                android:text="Head and Fontanelles"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:paddingBottom="4dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -287,13 +256,20 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/editText_comment_headandfontanelles"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_comment_headandfontanelles"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Comment"
-                android:inputType="textMultiLine"
-                android:lines="2" />
+                android:paddingTop="4dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editText_comment_headandfontanelles"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:lines="2" />
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
         <!-- Eyes -->
@@ -308,7 +284,10 @@
                 android:id="@+id/label_eyes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Eyes" />
+                android:text="Eyes"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:paddingBottom="4dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -329,13 +308,20 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/editText_comment_eyes"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_comment_eyes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Comment"
-                android:inputType="textMultiLine"
-                android:lines="2" />
+                android:paddingTop="4dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editText_comment_eyes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:lines="2" />
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
         <!-- Ears -->
@@ -350,7 +336,10 @@
                 android:id="@+id/label_ears"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ears" />
+                android:text="Ears"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:paddingBottom="4dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -371,16 +360,23 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/editText_comment_ears"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_comment_ears"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Comment"
-                android:inputType="textMultiLine"
-                android:lines="2" />
+                android:paddingTop="4dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editText_comment_ears"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:lines="2" />
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
-        <!-- Mouth and palate -->
+        <!-- Mouth and Palate -->
         <LinearLayout
             android:id="@+id/layout_mouthandpalate"
             android:layout_width="match_parent"
@@ -392,7 +388,10 @@
                 android:id="@+id/label_mouthandpalate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mouth and Palate" />
+                android:text="Mouth and Palate"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:paddingBottom="4dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -413,13 +412,20 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/editText_comment_mouthandpalate"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_comment_mouthandpalate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Comment"
-                android:inputType="textMultiLine"
-                android:lines="2" />
+                android:paddingTop="4dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editText_comment_mouthandpalate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:lines="2" />
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
         <!-- Cardiovascular -->
@@ -434,7 +440,10 @@
                 android:id="@+id/label_cardiovascular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cardiovascular" />
+                android:text="Cardiovascular"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:paddingBottom="4dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -455,13 +464,20 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/editText_comment_cardiovascular"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_comment_cardiovascular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Comment"
-                android:inputType="textMultiLine"
-                android:lines="2" />
+                android:paddingTop="4dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editText_comment_cardiovascular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:lines="2" />
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
         <!-- Femoral Pulses -->
@@ -476,7 +492,10 @@
                 android:id="@+id/label_femoralpulses"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Femoral Pulses" />
+                android:text="Femoral Pulses"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:paddingBottom="4dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -497,16 +516,23 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/editText_comment_femoralpulses"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_comment_femoralpulses"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Comment"
-                android:inputType="textMultiLine"
-                android:lines="2" />
+                android:paddingTop="4dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editText_comment_femoralpulses"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:lines="2" />
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
-        <!-- Respiratory rate -->
+        <!-- Respiratory Rate -->
         <LinearLayout
             android:id="@+id/layout_respiratoryrate"
             android:layout_width="match_parent"
@@ -518,7 +544,10 @@
                 android:id="@+id/label_respiratoryrate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Respiratory Rate" />
+                android:text="Respiratory Rate"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:paddingBottom="4dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -539,16 +568,23 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/editText_comment_respiratoryrate"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_comment_respiratoryrate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Comment"
-                android:inputType="textMultiLine"
-                android:lines="2" />
+                android:paddingTop="4dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editText_comment_respiratoryrate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:lines="2" />
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
-        <!-- Abdomen and umbilicus -->
+        <!-- Abdomen and Umbilicus -->
         <LinearLayout
             android:id="@+id/layout_abdomenandumbilicus"
             android:layout_width="match_parent"
@@ -560,7 +596,10 @@
                 android:id="@+id/label_abdomenandumbilicus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Abdomen and Umbilicus" />
+                android:text="Abdomen and Umbilicus"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:paddingBottom="4dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -581,13 +620,20 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/editText_comment_abdomenandumbilicus"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_comment_abdomenandumbilicus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Comment"
-                android:inputType="textMultiLine"
-                android:lines="2" />
+                android:paddingTop="4dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editText_comment_abdomenandumbilicus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:lines="2" />
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
         <!-- Anus -->
@@ -602,7 +648,10 @@
                 android:id="@+id/label_anus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Anus" />
+                android:text="Anus"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:paddingBottom="4dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -623,13 +672,20 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/editText_comment_anus"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_comment_anus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Comment"
-                android:inputType="textMultiLine"
-                android:lines="2" />
+                android:paddingTop="4dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editText_comment_anus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:lines="2" />
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
         <!-- Genitalia -->
@@ -644,7 +700,10 @@
                 android:id="@+id/label_genitalia"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Genitalia" />
+                android:text="Genitalia"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:paddingBottom="4dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -665,16 +724,23 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/editText_comment_genitalia"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_comment_genitalia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Comment"
-                android:inputType="textMultiLine"
-                android:lines="2" />
+                android:paddingTop="4dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editText_comment_genitalia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:lines="2" />
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
-        <!-- Testes fully descended R/L -->
+        <!-- Testes Fully Descended R/L -->
         <LinearLayout
             android:id="@+id/layout_testesfullydescendedrl"
             android:layout_width="match_parent"
@@ -686,7 +752,10 @@
                 android:id="@+id/label_testesfullydescendedrl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Testes fully descended R/L" />
+                android:text="Testes Fully Descended R/L"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:paddingBottom="4dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -707,13 +776,20 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/editText_comment_testesfullydescendedrl"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_comment_testesfullydescendedrl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Comment"
-                android:inputType="textMultiLine"
-                android:lines="2" />
+                android:paddingTop="4dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editText_comment_testesfullydescendedrl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:lines="2" />
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
         <!-- Musculo-skeletal -->
@@ -728,7 +804,10 @@
                 android:id="@+id/label_musculoskeletal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Musculo-skeletal" />
+                android:text="Musculo-skeletal"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:paddingBottom="4dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -749,13 +828,20 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/editText_comment_musculoskeletal"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_comment_musculoskeletal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Comment"
-                android:inputType="textMultiLine"
-                android:lines="2" />
+                android:paddingTop="4dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editText_comment_musculoskeletal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:lines="2" />
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
         <!-- Hips -->
@@ -770,7 +856,10 @@
                 android:id="@+id/label_hips"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hips" />
+                android:text="Hips"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:paddingBottom="4dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -791,13 +880,20 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/editText_comment_hips"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_comment_hips"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Comment"
-                android:inputType="textMultiLine"
-                android:lines="2" />
+                android:paddingTop="4dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editText_comment_hips"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:lines="2" />
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
         <!-- Skin -->
@@ -812,7 +908,10 @@
                 android:id="@+id/label_skin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Skin" />
+                android:text="Skin"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:paddingBottom="4dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -833,13 +932,20 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/editText_comment_skin"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_comment_skin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Comment"
-                android:inputType="textMultiLine"
-                android:lines="2" />
+                android:paddingTop="4dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editText_comment_skin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:lines="2" />
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
         <!-- Reflexes -->
@@ -854,7 +960,10 @@
                 android:id="@+id/label_reflexes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Reflexes" />
+                android:text="Reflexes"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:paddingBottom="4dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -875,13 +984,20 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/editText_comment_reflexes"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_comment_reflexes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Comment"
-                android:inputType="textMultiLine"
-                android:lines="2" />
+                android:paddingTop="4dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editText_comment_reflexes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:lines="2" />
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
         <!-- Save Button -->
