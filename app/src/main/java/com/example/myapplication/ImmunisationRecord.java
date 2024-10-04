@@ -32,8 +32,8 @@ public class ImmunisationRecord extends AppCompatActivity {
         fragmentTransaction.replace(R.id.fragmentContainerView, fragment);
         fragmentTransaction.commit();
 
-        NavBarManager.setNavBarButtons(ImmunisationRecord.this);
         Bundle extras = getIntent().getExtras();
         if (extras != null) manager = new LoginManager(extras.getInt("guardianID"), extras.getInt("childID"));
+        NavBarManager.setNavBarButtons(ImmunisationRecord.this, manager);
     }
 }
