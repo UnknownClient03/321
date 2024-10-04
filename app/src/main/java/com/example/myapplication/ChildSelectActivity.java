@@ -43,7 +43,8 @@ public class ChildSelectActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        NavBarManager.setNavBarButtons(ChildSelectActivity.this);
+        Bundle extras = getIntent().getExtras();
+        NavBarManager.setNavBarButtons(ChildSelectActivity.this, new LoginManager(extras.getInt("guardianID"), 0));
     }
 
     @Override
