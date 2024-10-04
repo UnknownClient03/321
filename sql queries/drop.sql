@@ -3,9 +3,6 @@ USE BlueBookDB;
 DROP USER user1;
 DROP LOGIN user1;
 
-DROP TABLE ChildCheckSignage;
-DROP TABLE ChildCheckProtectiveFactors;
-DROP TABLE ChildCheckAssessmentVariables;
 DROP TABLE ChildCheckAssessment;
 DROP TABLE ChildCheckQuestion;
 DROP TABLE ChildCheck;
@@ -30,3 +27,6 @@ DROP TABLE Address;
 DROP TABLE GuardianAccountDetails;
 DROP TABLE Guardian;
 DROP TABLE Appointments;
+DROP TABLE ChildCheckSignage;
+DROP TABLE ChildCheckProtectiveFactors;
+DROP TABLE ChildCheckAssessmentVariables;

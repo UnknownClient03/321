@@ -419,8 +419,11 @@ CREATE TABLE ChildCheckSignage(
 );
 
 CREATE TABLE Appointments (
-    appointment_id INT PRIMARY KEY IDENTITY(1,1),
+	childID int not null,
+    appointment_id int not null IDENTITY(1,1),
     title VARCHAR(255),
     appointment_date DATE,
-    appointment_time TIME
+    appointment_time TIME,
+	PRIMARY KEY(appointment_id),
+	FOREIGN KEY (childID) REFERENCES Child(ID)
 );

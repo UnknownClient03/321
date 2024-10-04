@@ -85,6 +85,8 @@ To set up the database for the app, follow these steps:
      - SQL Server Management Studio (if using PC)
        
      - Azure Data Studio (if using macOS)
+    
+   - Run the SQL query 'CREATE DATABASE BlueBookDB' to create the database you will be working with.
        
    - Execute the 'create.sql' file (located in 'sql queries' folder) to create the necessary tables in the database named BlueBookDB.
 
