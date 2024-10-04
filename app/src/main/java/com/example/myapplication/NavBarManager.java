@@ -9,10 +9,10 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class NavBarManager {
-    public static void setNavBarButtons(AppCompatActivity x) {
+    public static void setNavBarButtons(AppCompatActivity x, LoginManager manager) {
         if (x.findViewById(R.id.header) != null) {
             //sets the Home button to go home
-            Button buttonHome = x.findViewById(R.id.home_button, LoginManager manager); //changed to normal button
+            Button buttonHome = x.findViewById(R.id.home_button); //changed to normal button
             buttonHome.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     Intent intent = new Intent(x, Homepage.class);
