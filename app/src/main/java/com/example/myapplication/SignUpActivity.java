@@ -61,7 +61,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         backArrow.setOnClickListener(v -> finish());
 
-        NavBarManager.setNavBarButtons(SignUpActivity.this);
+        NavBarManager.setNavBarButtons(SignUpActivity.this, new LoginManager(0, 0));
 
     }
 
