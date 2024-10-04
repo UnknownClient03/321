@@ -40,9 +40,9 @@ public class Homepage extends AppCompatActivity {
 
         cameraDialog = new CameraActivity(this);
         
-        NavBarManager.setNavBarButtons(Homepage.this);
         Bundle extras = getIntent().getExtras();
         if (extras != null) manager = new LoginManager(extras.getInt("guardianID"), extras.getInt("childID"));
+        NavBarManager.setNavBarButtons(Homepage.this, manager);
 
         TextView textView = (TextView)findViewById(R.id.textView_homepage_name);
         SQLConnection conn = new SQLConnection("user1", "");
