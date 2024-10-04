@@ -73,7 +73,6 @@ public class NavBarManager {
             recordsButton.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     Intent intent = new Intent(x, Records.class);
-                    Log.d("BUTTON", "changing to records");
                     Bundle extras = x.getIntent().getExtras();
                     if (extras != null) {
 
