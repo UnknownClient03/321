@@ -12,7 +12,7 @@ public class NavBarManager {
     public static void setNavBarButtons(AppCompatActivity x) {
         if (x.findViewById(R.id.header) != null) {
             //sets the Home button to go home
-            Button buttonHome = x.findViewById(R.id.home_button); //changed to normal button
+            Button buttonHome = x.findViewById(R.id.home_button, LoginManager manager); //changed to normal button
             buttonHome.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     Intent intent = new Intent(x, Homepage.class);
@@ -73,6 +73,13 @@ public class NavBarManager {
             recordsButton.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     Intent intent = new Intent(x, Records.class);
+                    Log.d("BUTTON", "changing to records");
+                    Bundle extras = x.getIntent().getExtras();
+                    if (extras != null) {
+
+                        intent.putExtra("guardianID", manager.guardianID);
+                        intent.putExtra("childID", manager.childID);
+                    }
                     x.startActivity(intent);
                 }
             });
