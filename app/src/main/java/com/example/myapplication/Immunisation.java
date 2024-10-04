@@ -26,9 +26,9 @@ public class Immunisation extends AppCompatActivity {
             return insets;
         });
 
-        NavBarManager.setNavBarButtons(Immunisation.this);
         Bundle extras = getIntent().getExtras();
         if (extras != null) manager = new LoginManager(extras.getInt("guardianID"), extras.getInt("childID"));
+        NavBarManager.setNavBarButtons(Immunisation.this, manager);
 
         Button button = findViewById(R.id.button_immunisation_record);
         button.setOnClickListener(new View.OnClickListener() {
