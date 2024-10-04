@@ -78,7 +78,7 @@ public class Fragment_HealthHistory extends Fragment {
         Button submit = (Button)layout.findViewById(R.id.button_healthHistory);
 
         String query = "SELECT childID, riskFactor, condition, note FROM familyHealthHistory WHERE childID = ?;";
-        HashMap<String, String[]> result = c.select(query, new String[]{String.valueOf(manager.guardianID)}, new char[]{'i'});
+        HashMap<String, String[]> result = c.select(query, new String[]{String.valueOf(manager.childID)}, new char[]{'i'});
         HashMap<String, String[]> resultB = c.select("SELECT ID FROM Child WHERE ID = "+manager.childID+" AND guardianID = "+manager.guardianID+";");
         if(resultB.get("ID").length == 0)
         {

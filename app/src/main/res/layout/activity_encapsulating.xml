@@ -9,7 +9,6 @@
 
     <!-- Header Include (if applicable) -->
     <include
-        android:id="@+id/header_encapsulating"
         layout="@layout/header"
         android:layout_width="0dp"
         android:layout_height="100dp"
@@ -17,20 +16,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Fragment Container -->
-    <FrameLayout
-        android:id="@+id/fragment_container_encapsulating"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="120dp"
-        app:layout_constraintBottom_toTopOf="@+id/footer_encapsulating"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header_encapsulating" />
-
     <!-- Footer Include (if applicable) -->
     <include
-        android:id="@+id/footer_encapsulating"
         layout="@layout/footer"
         android:layout_width="0dp"
         android:layout_height="100dp"
@@ -38,50 +25,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <!-- Profile Picture and Welcome Text -->
-    <ImageView
-        android:id="@+id/profile_picture_background"
-        android:layout_width="59dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/textView_encapsulating_name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/header_encapsulating"
-        android:src="@drawable/sample_guardian_pic" />
-
-    <LinearLayout
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="271dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/profile_picture_background"
+        android:text="Checks"
+        android:padding="15dp"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:layout_marginStart="5dp"
+        app:layout_constraintTop_toBottomOf="@+id/header"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Fragment Container -->
+    <FrameLayout
+        android:id="@+id/fragment_container_encapsulating"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/footer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/header_encapsulating"
-        app:layout_constraintVertical_bias="1.48">
-
-        <TextView
-            android:id="@+id/textView_encapsulating_welcome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Welcome back "
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/textView_encapsulating_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="..."
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

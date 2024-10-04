@@ -95,6 +95,8 @@ public class BirthDetailsAndNewbornExamination extends AppCompatActivity {
 
             loadFragment(fragment);
         }
+
+        NavBarManager.setNavBarButtons(BirthDetailsAndNewbornExamination.this);
     }
 
     private void loadFragment(Fragment fragment) {

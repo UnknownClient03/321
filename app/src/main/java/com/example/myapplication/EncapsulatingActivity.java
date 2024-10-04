@@ -34,14 +34,14 @@ public class EncapsulatingActivity extends AppCompatActivity implements ChecksMe
             return insets;
         });
 
-        NavBarManager.setNavBarButtons(EncapsulatingActivity.this);
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             manager = new LoginManager(extras.getInt("guardianID"), extras.getInt("childID"));
         }
 
+        /* Don't think we need a welcome text in this section specifically
         // Set welcome text
-        TextView textView = findViewById(R.id.textView_encapsulating_name);
+        TextView textView = findViewById(R.id.textView3);
         SQLConnection conn = new SQLConnection("user1", ""); // Replace with actual password
         if (conn.isConn()) {
             String query = "SELECT fname, lname FROM Guardian WHERE ID = ?;";
@@ -56,11 +56,15 @@ public class EncapsulatingActivity extends AppCompatActivity implements ChecksMe
         } else {
             textView.setText("...");
         }
+         */
 
         // Load ChecksMenuFragment initially
         if (savedInstanceState == null) {
             loadFragment(new ChecksMenuFragment(), false);
         }
+
+        NavBarManager.setNavBarButtons(EncapsulatingActivity.this);
+
     }
 
     /**

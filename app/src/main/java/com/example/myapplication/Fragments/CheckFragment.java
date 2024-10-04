@@ -20,6 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.myapplication.NavBarManager;
 import com.example.myapplication.Question;
 import com.example.myapplication.R;
 import com.example.myapplication.SQLConnection;
@@ -316,7 +317,7 @@ public class CheckFragment extends Fragment {
                     getActivity().getSupportFragmentManager().popBackStack();
                 }
             } else {
-                Toast.makeText(getContext(), "Failed to submit check. Please try again.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Failed to submit check. Enter all fields and try again.", Toast.LENGTH_SHORT).show();
             }
         }
 

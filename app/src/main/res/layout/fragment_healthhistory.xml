@@ -24,7 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center|center_vertical"
-                android:text="My family Health History"
+                android:text="My Family Health History"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 

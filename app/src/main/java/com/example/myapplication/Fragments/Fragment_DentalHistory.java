@@ -80,7 +80,7 @@ public class Fragment_DentalHistory extends Fragment {
         Button submit = (Button)layout.findViewById(R.id.button_dentlHealth);
 
         String query = "SELECT childID, riskFactor, condition, note FROM FamilyDentalHistory WHERE childID = ?;";
-        HashMap<String, String[]> result = c.select(query, new String[]{String.valueOf(manager.guardianID)}, new char[]{'i'});
+        HashMap<String, String[]> result = c.select(query, new String[]{String.valueOf(manager.childID)}, new char[]{'i'});
         HashMap<String, String[]> resultB = c.select("SELECT ID FROM Child WHERE ID = "+manager.childID+" AND guardianID = "+manager.guardianID+";");
         if(resultB.get("ID").length == 0)
         {
@@ -94,8 +94,8 @@ public class Fragment_DentalHistory extends Fragment {
         {
             submit.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    Intent intent=new Intent(getActivity(), Homepage.class);
-                    getActivity().startActivity(intent);
+                    Button button = (Button)getActivity().findViewById(R.id.button_MIAFH_1);
+                    button.performClick();
 
                     LinearLayout topContainer = (LinearLayout)layout.findViewById(R.id.dentalHealthHis_container);
                     String [][] info = new String[3][3];
