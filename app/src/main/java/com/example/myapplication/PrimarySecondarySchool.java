@@ -28,6 +28,7 @@ public class PrimarySecondarySchool extends AppCompatActivity {
         healthyEatingText.setText(Html.fromHtml(getString(R.string.healthy_eating_text), Html.FROM_HTML_MODE_LEGACY));
         healthyEatingText.setMovementMethod(LinkMovementMethod.getInstance());
 
-        NavBarManager.setNavBarButtons(PrimarySecondarySchool.this);
+        Bundle extras = getIntent().getExtras();
+        NavBarManager.setNavBarButtons(PrimarySecondarySchool.this, new LoginManager(extras.getInt("guardianID"), extras.getInt("childID")));
     }
 }
