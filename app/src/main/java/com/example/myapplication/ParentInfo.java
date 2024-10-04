@@ -10,6 +10,7 @@ public class ParentInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.parent_info);
 
-        NavBarManager.setNavBarButtons(ParentInfo.this);
+        Bundle extras = getIntent().getExtras();
+        NavBarManager.setNavBarButtons(ParentInfo.this, new LoginManager(extras.getInt("guardianID"), extras.getInt("childID")));
     }
 }
