@@ -54,7 +54,8 @@ public class ManageChildrenActivity extends AppCompatActivity {
         // Set up listeners
         setupListeners();
 
-        NavBarManager.setNavBarButtons(ManageChildrenActivity.this);
+        Bundle extras = getIntent().getExtras();
+        NavBarManager.setNavBarButtons(ManageChildrenActivity.this, new LoginManager(extras.getInt("guardianID"), 0));
     }
 
     @Override
