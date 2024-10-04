@@ -14,9 +14,6 @@ public class AccountSettings extends AppCompatActivity {
     private EditText editTextEmail;
     private EditText editTextCurrentPassword;
     private EditText editTextNewPassword;
-    private CheckBox checkBoxPhotoSharing;
-    private CheckBox checkBoxCalendar;
-    private CheckBox checkBoxDarkMode;
     private Button saveButton;
     private Button changePasswordButton;
     private Button cancelButton;
@@ -30,9 +27,6 @@ public class AccountSettings extends AppCompatActivity {
         editTextEmail = findViewById(R.id.editTextTextEmailAddress);
         editTextCurrentPassword = findViewById(R.id.editTextCurrentPassword);
         editTextNewPassword = findViewById(R.id.editTextTextPassword);
-        checkBoxPhotoSharing = findViewById(R.id.checkBox_photo);
-        checkBoxCalendar = findViewById(R.id.checkBox_calender);
-        checkBoxDarkMode = findViewById(R.id.checkBox_dark);
         saveButton = findViewById(R.id.button_save);
         changePasswordButton = findViewById(R.id.button_change_password);
         cancelButton = findViewById(R.id.button_cancel);
