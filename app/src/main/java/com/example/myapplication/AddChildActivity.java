@@ -58,7 +58,8 @@ public class AddChildActivity extends AppCompatActivity {
             }
         });
 
-        NavBarManager.setNavBarButtons(AddChildActivity.this);
+        Bundle extras = getIntent().getExtras();
+        NavBarManager.setNavBarButtons(AddChildActivity.this, new LoginManager(guardianID, 0));
     }
 
     private void initializeViews() {
