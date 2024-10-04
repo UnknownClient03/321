@@ -63,7 +63,7 @@ public class EncapsulatingActivity extends AppCompatActivity implements ChecksMe
             loadFragment(new ChecksMenuFragment(), false);
         }
 
-        NavBarManager.setNavBarButtons(EncapsulatingActivity.this);
+        NavBarManager.setNavBarButtons(EncapsulatingActivity.this, manager);
 
     }
 
