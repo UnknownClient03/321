@@ -34,10 +34,10 @@ public class ProgressNotes extends AppCompatActivity {
         });
 
         cameraDialog = new CameraActivity(this);
-        
-        NavBarManager.setNavBarButtons(ProgressNotes.this);
+
         Bundle extras = getIntent().getExtras();
         if (extras != null) manager = new LoginManager(extras.getInt("guardianID"), extras.getInt("childID"));
+        NavBarManager.setNavBarButtons(ProgressNotes.this, manager);
     }
 
     @Override
