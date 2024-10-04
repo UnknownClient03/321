@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
+import android.support.customtabs.ICustomTabsService;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,6 +73,39 @@ public class UsefulContactsChange extends Fragment {
         // Inflate the layout for this fragment
         View layout = inflater.inflate(R.layout.useful_contacts_change, container, false);
 
+        RadioGroup group = (RadioGroup)layout.findViewById(R.id.radiogroup_usefulContacts);
+        group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                String name = getRadioID(group);
+                LoginManager manager = ((UsefulContacts)getActivity()).manager;
+                SQLConnection c = new SQLConnection("user1", "");
+                String query = "SELECT phoneNumber, email, Country, City, Street, StreetNumber, unit, postcode FROM UsefulContact WHERE guardianID = ? AND name = ?;";
+                HashMap<String, String[]> result = c.select(query, new String[]{String.valueOf(manager.guardianID), name}, new char[]{'i', 's'});
+
+                EditText phone = (EditText)layout.findViewById(R.id.input_usefulContact_phone);
+                EditText email = (EditText)layout.findViewById(R.id.input_usefulContact_email);
+                EditText country = (EditText)layout.findViewById(R.id.input_usefulContact_country);
+                EditText city = (EditText)layout.findViewById(R.id.input_usefulContact_city);
+                EditText street = (EditText)layout.findViewById(R.id.input_usefulContact_street);
+                EditText streetNumber = (EditText)layout.findViewById(R.id.input_usefulContact_streetNumber);
+                EditText unit = (EditText)layout.findViewById(R.id.input_usefulContact_unit);
+                EditText postcode = (EditText)layout.findViewById(R.id.input_usefulContact_postcode);
+
+                if(result.get("phoneNumber").length == 0) return;
+
+                phone.setText(result.get("phoneNumber")[0]);
+                email.setText(result.get("email")[0]);
+                country.setText(result.get("Country")[0]);
+                city.setText(result.get("City")[0]);
+                street.setText(result.get("Street")[0]);
+                streetNumber.setText(result.get("StreetNumber")[0]);
+                unit.setText(result.get("unit")[0]);
+                postcode.setText(result.get("postcode")[0]);
+
+            }
+        });
+
         Button submit = (Button) layout.findViewById(R.id.button_submit_contact);
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -93,28 +127,7 @@ public class UsefulContactsChange extends Fragment {
                 EditText postcode = (EditText)layout.findViewById(R.id.input_usefulContact_postcode);
 
                 RadioGroup group = (RadioGroup)layout.findViewById(R.id.radiogroup_usefulContacts);
-                int i;
-                for(i = 0; i < group.getChildCount(); i++)
-                    if(group.getChildAt(i) instanceof RadioButton)
-                    {
-                        RadioButton radio = (RadioButton)group.getChildAt(i);
-                        if(radio.isChecked()) break;
-                    }
-
-                String name = "";
-                switch(i)
-                {
-                    case 0: name = "Child and Family Health Centre"; break;
-                    case 1: name = "Community Health Centre"; break;
-                    case 2: name = "Dentist"; break;
-                    case 3: name = "Family daycare/Childcare centre"; break;
-                    case 4: name = "Family doctor"; break;
-                    case 5: name = "High school"; break;
-                    case 6: name = "Local government/Council"; break;
-                    case 7: name = "Pre-school/Kindergarten"; break;
-                    case 8: name = "Primary school"; break;
-                    case 9: name = "Specialist doctor";
-                }
+                String name = getRadioID(group);
 
                 if(streetNumber.getText().length() == 0 || postcode.getText().length() == 0)
                 {
@@ -142,4 +155,31 @@ public class UsefulContactsChange extends Fragment {
 
         return layout;
     }
+
+    private String getRadioID(RadioGroup group)
+    {
+        int i;
+        for(i = 0; i < group.getChildCount(); i++)
+            if(group.getChildAt(i) instanceof RadioButton)
+            {
+                RadioButton radio = (RadioButton)group.getChildAt(i);
+                if(radio.isChecked()) break;
+            }
+
+        switch(i)
+        {
+            case 0: return "Child and Family Health Centre";
+            case 1: return "Community Health Centre";
+            case 2: return "Dentist";
+            case 3: return "Family daycare/Childcare centre";
+            case 4: return "Family doctor";
+            case 5: return "High school";
+            case 6: return "Local government/Council";
+            case 7: return "Pre-school/Kindergarten";
+            case 8: return "Primary school";
+            case 9: return "Specialist doctor";
+            default: return "";
+        }
+    }
+
 }
