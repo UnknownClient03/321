@@ -36,9 +36,9 @@ public class FourMonthImmunisationCheck extends AppCompatActivity {
             return insets;
         });
 
-        NavBarManager.setNavBarButtons(FourMonthImmunisationCheck.this);
         Bundle extras = getIntent().getExtras();
         if (extras != null) manager = new LoginManager(extras.getInt("guardianID"), extras.getInt("childID"));
+        NavBarManager.setNavBarButtons(FourMonthImmunisationCheck.this, manager);
 
         // Initialize arrays
         radioGroups = new RadioGroup[18];
