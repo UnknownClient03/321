@@ -76,7 +76,8 @@ public class AppointmentsActivity extends AppCompatActivity {
         // Ensure the notification channel is created
         NotificationHelper notificationHelper = new NotificationHelper(this);
         notificationHelper.createChannels();
-        NavBarManager.setNavBarButtons(AppointmentsActivity.this);
+        Bundle extras = getIntent().getExtras();
+        NavBarManager.setNavBarButtons(AppointmentsActivity.this, new LoginManager(extras.getInt("guardianID"), extras.getInt("childID")));
 
         // Delete appointments that have occurred in a previous day
         PeriodicWorkRequest deleteExpiredAppointmentsRequest =
