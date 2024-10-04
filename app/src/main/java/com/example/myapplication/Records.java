@@ -27,9 +27,9 @@ public class Records extends AppCompatActivity {
             return insets;
         });
 
-        NavBarManager.setNavBarButtons(Records.this);
         Bundle extras = getIntent().getExtras();
         if (extras != null) manager = new LoginManager(extras.getInt("guardianID"), extras.getInt("childID"));
+        NavBarManager.setNavBarButtons(Records.this, manager);
 
         Button button = findViewById(R.id.button_myRecords_1);
         button.setOnClickListener(new View.OnClickListener() {
