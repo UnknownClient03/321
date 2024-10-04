@@ -72,7 +72,8 @@ public class AccountSettings extends AppCompatActivity {
             }
         });
 
-        NavBarManager.setNavBarButtons(AccountSettings.this);
+        Bundle extras = getIntent().getExtras();
+        NavBarManager.setNavBarButtons(AccountSettings.this, new LoginManager(extras.getInt("guardianID"), extras.getInt("childID")));
     }
 
     // Load guardian data from the database
