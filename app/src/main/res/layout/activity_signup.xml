@@ -101,21 +101,48 @@
             android:hint="Phone Number"
             android:inputType="phone" />
 
-        <EditText
-            android:id="@+id/password_input"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Password"
-            android:inputType="textPassword" />
+            android:orientation="horizontal"
+            android:layout_marginEnd="10dp">
 
-        <EditText
-            android:id="@+id/confirm_password_input"
+            <EditText
+                android:id="@+id/password_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Password"
+                android:inputType="textPassword" />
+
+            <CheckBox
+                android:id="@+id/show_password_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Confirm Password"
-            android:inputType="textPassword" />
+            android:orientation="horizontal"
+            android:layout_marginEnd="10dp">
+
+            <EditText
+                android:id="@+id/confirm_password_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Confirm Password"
+                android:inputType="textPassword" />
+
+            <CheckBox
+                android:id="@+id/show_confirm_password_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show" />
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/signup_button"

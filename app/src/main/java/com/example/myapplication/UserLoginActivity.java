@@ -83,7 +83,6 @@ public class UserLoginActivity extends AppCompatActivity {
         });
 
         CheckBox showPasswordCheckbox = findViewById(R.id.show_password_checkbox);
-
         showPasswordCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
                 // Show password

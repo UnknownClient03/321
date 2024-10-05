@@ -4103,6 +4103,7 @@ id shortcut
 id showCustom
 id showHome
 id showTitle
+id show_confirm_password_checkbox
 id show_current_password_checkbox
 id show_new_password_checkbox
 id show_password_checkbox

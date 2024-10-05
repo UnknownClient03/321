@@ -2,8 +2,10 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -17,6 +19,7 @@ public class SignUpActivity extends AppCompatActivity {
     private Button uploadButton, signUpButton;
     private ImageView backArrow;
     private EditText editTextPassword;
+    private CheckBox showPasswordCheckbox, showConfirmPasswordCheckbox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,8 @@ public class SignUpActivity extends AppCompatActivity {
         uploadButton = findViewById(R.id.upload_button);
         signUpButton = findViewById(R.id.signup_button);
         backArrow = findViewById(R.id.back_arrow);
+        showPasswordCheckbox = findViewById(R.id.show_password_checkbox);
+        showConfirmPasswordCheckbox = findViewById(R.id.show_confirm_password_checkbox);
 
         // Handle upload button click
         uploadButton.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +65,32 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
         backArrow.setOnClickListener(v -> finish());
+
+        CheckBox showPasswordCheckbox = findViewById(R.id.show_password_checkbox);
+        showPasswordCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                // Show password
+                passwordInput.setInputType(InputType.TYPE_CLASS_TEXT);
+            } else {
+                // Hide password
+                passwordInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            }
+            // Move cursor to the end of the text
+            passwordInput.setSelection(passwordInput.getText().length());
+        });
+
+        CheckBox showConfirmPasswordCheckbox = findViewById(R.id.show_confirm_password_checkbox);
+        showConfirmPasswordCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                // Show password
+                confirmPasswordInput.setInputType(InputType.TYPE_CLASS_TEXT);
+            } else {
+                // Hide password
+                confirmPasswordInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            }
+            // Move cursor to the end of the text
+            confirmPasswordInput.setSelection(confirmPasswordInput.getText().length());
+        });
 
         NavBarManager.setNavBarButtons(SignUpActivity.this, new LoginManager(0, 0));
 

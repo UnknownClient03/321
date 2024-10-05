@@ -10,7 +10,7 @@
     <include
         layout="@layout/header"
         android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_height="120dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,68 +29,67 @@
 
             <FrameLayout
                 android:id="@+id/profile_picture_container"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="24dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_gravity="center">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
                     android:id="@+id/profile_picture_border"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/round_button"
-                    android:scaleType="centerCrop" />
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/round_button" />
 
                 <ImageView
                     android:id="@+id/profile_picture"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/profile_picture"
-                    android:scaleType="centerCrop" />
-
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/profile_picture" />
             </FrameLayout>
 
             <TextView
                 android:id="@+id/textView_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Name"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/profile_picture_container"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:gravity="center" />
+                android:gravity="center"
+                android:text="Name"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/profile_picture_container" />
 
             <TextView
                 android:id="@+id/textView_change_profilePicture"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
                 android:text="Change Profile Picture"
                 android:textColor="#0047AB"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/textView_name"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="8dp"
-                android:gravity="center" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView_name" />
 
             <TextView
                 android:id="@+id/textView10"
                 android:layout_width="69dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="40dp"
                 android:layout_marginEnd="16dp"
                 android:text="Email"
-                android:textSize="22sp"
+                android:textSize="26sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -99,40 +98,50 @@
 
             <ImageView
                 android:id="@+id/imageView_email_background"
-                android:layout_width="0dp"
-                android:layout_height="33dp"
+                android:layout_width="285dp"
+                android:layout_height="45dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/curved_rectangle"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView10"
-                android:background="@drawable/curved_rectangle" />
+                app:layout_constraintTop_toBottomOf="@id/textView10" />
 
             <EditText
                 android:id="@+id/editTextTextEmailAddress"
-                android:layout_width="0dp"
-                android:layout_height="33dp"
-                android:layout_marginTop="3dp"
+                android:layout_width="275dp"
+                android:layout_height="43dp"
                 android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginTop="4dp"
                 android:background="@android:color/transparent"
                 android:ems="10"
                 android:gravity="start"
                 android:inputType="textEmailAddress"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/imageView_email_background" />
+
+            <Button
+                android:id="@+id/button_save_email"
+                android:layout_width="107dp"
+                android:layout_height="41dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/button_3d"
+                android:elevation="12dp"
+                android:text="Save"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@+id/textView11"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView_email_background" />
 
             <TextView
                 android:id="@+id/textView11"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="16dp"
                 android:text="Password"
-                android:textSize="22sp"
+                android:textSize="26sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -141,15 +150,16 @@
             <EditText
                 android:id="@+id/editTextCurrentPassword"
                 android:layout_width="0dp"
-                android:layout_height="33dp"
-                android:paddingStart="10dp"
+                android:layout_height="40dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
                 android:background="@drawable/curved_rectangle"
                 android:ems="10"
-                android:inputType="textPassword"
                 android:hint="Enter current password"
+                android:inputType="textPassword"
+                android:paddingStart="10dp"
+                android:textSize="18sp"
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -159,111 +169,99 @@
             <EditText
                 android:id="@+id/editTextTextPassword"
                 android:layout_width="0dp"
-                android:layout_height="33dp"
-                android:paddingStart="10dp"
+                android:layout_height="40dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
                 android:background="@drawable/curved_rectangle"
                 android:ems="10"
-                android:inputType="textPassword"
                 android:hint="Enter new password"
+                android:inputType="textPassword"
+                android:paddingStart="10dp"
+                android:textSize="18sp"
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/editTextCurrentPassword"
                 app:layout_goneMarginTop="8dp" />
 
+            <CheckBox
+                android:id="@+id/show_current_password_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:text="Show"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/editTextCurrentPassword"
+                app:layout_constraintEnd_toEndOf="@+id/editTextCurrentPassword"
+                app:layout_constraintTop_toTopOf="@+id/editTextCurrentPassword" />
+
+            <CheckBox
+                android:id="@+id/show_new_password_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:text="Show"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/editTextTextPassword"
+                app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword"
+                app:layout_constraintTop_toTopOf="@+id/editTextTextPassword" />
+
             <Button
                 android:id="@+id/button_change_password"
                 android:layout_width="0dp"
-                android:layout_height="52dp"
+                android:layout_height="60dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="55dp"
+                android:layout_marginTop="65dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginBottom="15dp"
                 android:background="@drawable/button_3d"
                 android:elevation="12dp"
                 android:text="Change Password"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/editTextTextEmailAddress" />
 
-            <CheckBox
-                android:id="@+id/checkBox_photo"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="16dp"
-                android:text="Enable photo sharing"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/editTextTextPassword"
-                app:layout_goneMarginTop="70dp" />
-
-            <CheckBox
-                android:id="@+id/checkBox_calender"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:text="Enable calendar"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/checkBox_photo"
-                app:layout_goneMarginTop="8dp" />
-
-            <CheckBox
-                android:id="@+id/checkBox_dark"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="8dp"
-                android:text="Enable dark mode"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/checkBox_calender"
-                 />
-
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:id="@+id/button_container"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@id/checkBox_dark"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintTop_toBottomOf="@id/editTextTextPassword"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="16dp"
-                android:gravity="center">
+                app:layout_constraintEnd_toEndOf="parent">
 
                 <Button
                     android:id="@+id/button_save"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Save"
-                    android:visibility="visible" />
+                    android:textSize="18sp"
+                    android:visibility="gone" />
 
                 <Button
                     android:id="@+id/button_cancel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Cancel"
-                    android:visibility="gone"
-                    android:layout_marginStart="16dp" />
+                    android:layout_marginStart="16dp"
+                    android:textSize="18sp"
+                    android:visibility="gone" />
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </ScrollView>
 
     <include
         layout="@layout/footer"
+        android:id="@+id/footer"
         android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_height="120dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

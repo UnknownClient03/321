@@ -60,10 +60,6 @@
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-47:/layout/activity_immunisation_record.xml"
     },
     {
-        "merged": "com.example.myapplication.app-debug-45:/layout_account_settings.xml.flat",
-        "source": "com.example.myapplication.app-main-47:/layout/account_settings.xml"
-    },
-    {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-45:/layout_activity_illness_injury_notes.xml.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-47:/layout/activity_illness_injury_notes.xml"
     },
@@ -298,6 +294,10 @@
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-45:/mipmap-hdpi_ic_launcher_foreground.webp.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-47:/mipmap-hdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-45:/layout_activity_signup.xml.flat",
+        "source": "com.example.myapplication.app-main-47:/layout/activity_signup.xml"
     },
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-45:/layout_item_question.xml.flat",
