@@ -157,7 +157,7 @@
                 android:background="@drawable/button_3d"
                 android:elevation="12dp"
                 android:layout_marginTop="40dp"
-                android:text="submit" />
+                android:text="Submit" />
 
         </LinearLayout>
 

@@ -52,6 +52,8 @@
     <color name="button_background">#2196F3</color>
     <color name="button_text">#FFFFFF</color>
     <color name="clear">#00000000</color>
+    <color name="disabled_text">#FF888888</color>
+    <color name="enabled_text">#FF000000</color>
     <color name="ozbluelogo_background">#FFFFFF</color>
     <color name="white">#FFFFFFFF</color>
     <string name="app_name">OzBlue</string>
@@ -77,6 +79,14 @@
     <style name="Base.Theme.MyApplication" parent="Theme.Material3.DayNight.NoActionBar">
         
         
+    </style>
+    <style name="CustomSpinnerStyle" parent="Widget.AppCompat.Spinner">
+        
+        <item name="android:padding">12dp</item>
+        
+        <item name="android:background">@drawable/spinner_background</item>
+        
+        <item name="android:popupBackground">@color/white</item>
     </style>
     <style name="Theme.MyApplication" parent="Base.Theme.MyApplication"/>
 </resources>

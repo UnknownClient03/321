@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -14,6 +15,9 @@ public class AccountSettings extends AppCompatActivity {
     private EditText editTextEmail;
     private EditText editTextCurrentPassword;
     private EditText editTextNewPassword;
+    private CheckBox showCurrentPasswordCheckbox;
+    private CheckBox showNewPasswordCheckbox;
+    private Button saveEmailButton;
     private Button saveButton;
     private Button changePasswordButton;
     private Button cancelButton;
@@ -27,6 +31,9 @@ public class AccountSettings extends AppCompatActivity {
         editTextEmail = findViewById(R.id.editTextTextEmailAddress);
         editTextCurrentPassword = findViewById(R.id.editTextCurrentPassword);
         editTextNewPassword = findViewById(R.id.editTextTextPassword);
+        showCurrentPasswordCheckbox = findViewById(R.id.show_current_password_checkbox);
+        showNewPasswordCheckbox = findViewById(R.id.show_new_password_checkbox);
+        saveEmailButton = findViewById(R.id.button_save_email);
         saveButton = findViewById(R.id.button_save);
         changePasswordButton = findViewById(R.id.button_change_password);
         cancelButton = findViewById(R.id.button_cancel);
@@ -41,18 +48,29 @@ public class AccountSettings extends AppCompatActivity {
         editTextNewPassword.setVisibility(View.GONE);
         cancelButton.setVisibility(View.GONE);
 
+        // Save the new email if user changes it
+        saveEmailButton.setOnClickListener(v -> {
+            saveSettings();
+        });
+
         // Show password fields only when 'Change Password' is clicked
         changePasswordButton.setOnClickListener(v -> {
             changePasswordButton.setVisibility(View.GONE);
             editTextCurrentPassword.setVisibility(View.VISIBLE);
             editTextNewPassword.setVisibility(View.VISIBLE);
+            showCurrentPasswordCheckbox.setVisibility(View.VISIBLE);
+            showNewPasswordCheckbox.setVisibility(View.VISIBLE);
+            saveButton.setVisibility(View.VISIBLE);
             cancelButton.setVisibility(View.VISIBLE);
         });
 
         cancelButton.setOnClickListener(v -> {
             changePasswordButton.setVisibility(View.VISIBLE);
+            saveButton.setVisibility(View.GONE);
             editTextCurrentPassword.setVisibility(View.GONE);
             editTextNewPassword.setVisibility(View.GONE);
+            showCurrentPasswordCheckbox.setVisibility(View.GONE);
+            showNewPasswordCheckbox.setVisibility(View.GONE);
             cancelButton.setVisibility(View.GONE);
         });
 
@@ -60,10 +78,37 @@ public class AccountSettings extends AppCompatActivity {
         saveButton.setOnClickListener(v -> {
             if (validateInputs()) {
                 saveSettings();
-                resetViews();
             } else {
                 Toast.makeText(AccountSettings.this, "Please fill all fields correctly", Toast.LENGTH_LONG).show();
             }
+        });
+
+        // Option to show the current password
+        CheckBox showCurrentPasswordCheckbox = findViewById(R.id.show_current_password_checkbox);
+        showCurrentPasswordCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                // Show password
+                editTextCurrentPassword.setInputType(InputType.TYPE_CLASS_TEXT);
+            } else {
+                // Hide password
+                editTextCurrentPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            }
+            // Move cursor to the end of the text
+            editTextCurrentPassword.setSelection(editTextCurrentPassword.getText().length());
+        });
+
+        // Option to show the new password
+        CheckBox showNewPasswordCheckbox = findViewById(R.id.show_new_password_checkbox);
+        showNewPasswordCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                // Show password
+                editTextNewPassword.setInputType(InputType.TYPE_CLASS_TEXT);
+            } else {
+                // Hide password
+                editTextNewPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            }
+            // Move cursor to the end of the text
+            editTextNewPassword.setSelection(editTextNewPassword.getText().length());
         });
 
         Bundle extras = getIntent().getExtras();
@@ -125,13 +170,17 @@ public class AccountSettings extends AppCompatActivity {
         sqlConnection.disconnect();
 
         Toast.makeText(this, "Settings Saved", Toast.LENGTH_LONG).show();
+        resetViews();
     }
 
     // Reset views to the initial state
     private void resetViews() {
         editTextCurrentPassword.setVisibility(View.GONE);
         editTextNewPassword.setVisibility(View.GONE);
+        showCurrentPasswordCheckbox.setVisibility(View.GONE);
+        showNewPasswordCheckbox.setVisibility(View.GONE);
         changePasswordButton.setVisibility(View.VISIBLE);
+        saveButton.setVisibility(View.GONE);
         cancelButton.setVisibility(View.GONE);
     }
 
