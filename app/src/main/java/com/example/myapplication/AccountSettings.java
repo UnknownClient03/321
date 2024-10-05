@@ -1,17 +1,21 @@
 package com.example.myapplication;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.HashMap;
 
 public class AccountSettings extends AppCompatActivity {
 
+    private ImageView profilePicture;
     private EditText editTextEmail;
     private EditText editTextCurrentPassword;
     private EditText editTextNewPassword;
@@ -28,6 +32,7 @@ public class AccountSettings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.account_settings);
 
+        profilePicture = (ImageView) findViewById(R.id.profile_picture);
         editTextEmail = findViewById(R.id.editTextTextEmailAddress);
         editTextCurrentPassword = findViewById(R.id.editTextCurrentPassword);
         editTextNewPassword = findViewById(R.id.editTextTextPassword);
@@ -42,6 +47,7 @@ public class AccountSettings extends AppCompatActivity {
         guardianID = getIntent().getIntExtra("guardianID", 0);
 
         loadGuardianData();
+        displayProfilePicture();
 
         // Initially hide password fields and cancel button
         editTextCurrentPassword.setVisibility(View.GONE);
@@ -130,6 +136,20 @@ public class AccountSettings extends AppCompatActivity {
         }
 
         sqlConnection.disconnect();
+    }
+
+    //load in and display the profile picture
+    private void displayProfilePicture()
+    {
+        SQLConnection conn = new SQLConnection("user1", "");
+        String query = "SELECT profile FROM Guardian WHERE ID = ?;";
+        String[] params = { String.valueOf(guardianID) };
+        char[] paramTypes = { 'i' };
+        HashMap<String, String[]> result = conn.select(query, params, paramTypes);
+        String str = result.get("profile")[0];
+        if(str == null) return;
+        Bitmap bitmap = CaptureImage.convertString(str);
+        profilePicture.setImageBitmap(bitmap);
     }
 
     // Save the settings to the database
