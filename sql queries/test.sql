@@ -1,6 +1,7 @@
 USE BlueBookDB;
 
-INSERT INTO Guardian VALUES (0, 1234567890, 0987654321, 'email@email.com');
+INSERT INTO Guardian VALUES (0, 'John', 'Doe', 1234567890, 0987654321, '');
+INSERT INTO GuardianAccountDetails VALUES (0, 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', '', '');
 INSERT INTO Child VALUES (0, 0, 'John', 'Doe', '2024-06-30', 'M');
 INSERT INTO GuardianLanguage VALUES (0, 3, 'yellow');
 INSERT INTO Address VALUES (0, '', '', '', 0, null, 1234);
