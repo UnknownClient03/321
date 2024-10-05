@@ -13,6 +13,12 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.HashMap;
+import java.util.*;
+import javax.mail.*;
+import javax.mail.internet.*;
+import javax.activation.*;
+import javax.mail.Session;
+import javax.mail.Transport;
 
 public class ResetPasswordActivity extends AppCompatActivity {
 
@@ -43,11 +49,28 @@ public class ResetPasswordActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String email = emailEditText.getText().toString().trim();
-                if (!validateEmail(email)) {
+                int ID = validateEmail(email);
+                if (ID == -1) {
                     Toast.makeText(ResetPasswordActivity.this, "Please enter your email address", Toast.LENGTH_SHORT).show();
                 } else {
                     // Here you would normally call a method to send the reset email
                     // For demonstration purposes, we just show a toast
+
+                    String pass = SHA256.randomUTF8(16);
+                    String salt = SHA256.randomUTF8(16);
+                    String pepper = SHA256.randomUTF8(16);
+                    String password = salt + pass + pepper;
+                    String hash = SHA256.convert(password);
+
+                    SQLConnection conn = new SQLConnection("user1", "");
+                    String query = "UPDATE GuardianAccountDetails SET Hashpassword = ?, salt = ?, pepper = ? WHERE guardianID = ?";
+                    String[] params2 = { hash, salt, pepper, String.valueOf(ID) };
+                    char[] paramTypes2 = {'s', 's', 's', 'i'};
+                    conn.update(query, params2, paramTypes2);
+                    conn.disconnect();
+                    sendEmail(pass, email);
+
+
                     Toast.makeText(ResetPasswordActivity.this, "Confirmation email sent to " + email, Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(ResetPasswordActivity.this, UserLoginActivity.class);
                     startActivity(intent);
@@ -78,12 +101,36 @@ public class ResetPasswordActivity extends AppCompatActivity {
         backArrow.setOnClickListener(v -> finish());
     }
 
-    private boolean validateEmail(String email)
-    {
+    private int validateEmail(String email) {
         SQLConnection conn = new SQLConnection("user1", "");
-        if(!conn.isConn()) return false;
-        String query = "SELECT email FROM Guardian where email = ?;";
+        if(!conn.isConn()) return -1;
+        String query = "SELECT ID FROM Guardian where email = ?;";
         HashMap<String, String[]> result = conn.select(query, new String[]{email}, new char[]{'s'});
-        return (result.get("email").length == 0) ? false : true;
+        return (result.get("ID").length == 0) ? -1 : Integer.valueOf(result.get("ID")[0]);
     }
+
+    private void sendEmail(String password, String recipient) {
+        Log.d("msg", recipient);
+        String sender = "sender@gmail.com";
+        String host = "127.0.0.1";
+        Properties properties = System.getProperties();
+        properties.setProperty("mail.smtp.host", host);
+        Session session = Session.getDefaultInstance(properties);
+
+        try
+        {
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(sender));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
+            message.setSubject("This is Subject");
+            message.setText("This is a test mail");
+            Transport.send(message);
+            System.out.println("Mail successfully sent");
+        }
+        catch (MessagingException mex)
+        {
+            mex.printStackTrace();
+        }
+    }
+
 }
