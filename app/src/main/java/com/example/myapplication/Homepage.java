@@ -2,11 +2,13 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ImageButton;
@@ -44,8 +46,26 @@ public class Homepage extends AppCompatActivity {
         if (extras != null) manager = new LoginManager(extras.getInt("guardianID"), extras.getInt("childID"));
         NavBarManager.setNavBarButtons(Homepage.this, manager);
 
-        TextView textView = (TextView)findViewById(R.id.textView_homepage_name);
+        ImageView profileImageView = (ImageView) findViewById(R.id.profile_image_view);
         SQLConnection conn = new SQLConnection("user1", "");
+        if(conn.isConn())
+        {
+            String query = "SELECT profilePicture from Guardian WHERE ID = ?;";
+            HashMap<String, String[]> result = conn.select(query, new String[]{String.valueOf(manager.guardianID)}, new char[]{'i'});
+            // Get the profile picture byte array
+            byte[] imageBytes = result.get("profilePicture") != null ? result.get("profilePicture")[0].getBytes() : null;
+            // Decode the byte array to a Bitmap
+            if (imageBytes != null) {
+                Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+                // Set the Bitmap to the ImageView
+                profileImageView.setImageBitmap(bitmap);
+            } else {
+                // Handle the case where there is no profile picture (optional)
+                profileImageView.setImageResource(R.drawable.sample_guardian_pic); // Set a default image
+            }
+        }
+
+        TextView textView = (TextView)findViewById(R.id.textView_homepage_name);
         if(conn.isConn())
         {
             String query = "SELECT fname, lname from Guardian WHERE ID = ?;";

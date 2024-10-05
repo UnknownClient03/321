@@ -248,6 +248,33 @@ public class SQLConnection extends Thread {
         return conn; // return the current connection
     }
 
+    public int queryCount(String query, String[] params, char[] paramTypes) {
+        int count = 0;
+        try {
+            PreparedStatement stmt = conn.prepareStatement(query);
+            for (int i = 0; i < params.length; i++) {
+                switch (paramTypes[i]) {
+                    case 'i':
+                        stmt.setInt(i + 1, Integer.parseInt(params[i]));
+                        break;
+                    case 's':
+                        stmt.setString(i + 1, params[i]);
+                        break;
+                    // Add other cases for different types as needed
+                }
+            }
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                count = rs.getInt(1);
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+
 }
 
 

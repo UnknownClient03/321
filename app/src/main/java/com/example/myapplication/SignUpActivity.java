@@ -1,16 +1,32 @@
 package com.example.myapplication;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.InputType;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.Manifest;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import java.io.ByteArrayOutputStream;
+
+import java.io.IOException;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -20,6 +36,14 @@ public class SignUpActivity extends AppCompatActivity {
     private ImageView backArrow;
     private EditText editTextPassword;
     private CheckBox showPasswordCheckbox, showConfirmPasswordCheckbox;
+    private Bitmap selectedImageBitmap; // Store the selected image bitmap
+
+    private static final int REQUEST_CAMERA = 1;
+    private static final int SELECT_FILE = 2;
+
+    // Declare ActivityResultLaunchers
+    private ActivityResultLauncher<Intent> selectImageLauncher;
+    private ActivityResultLauncher<Intent> captureImageLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,14 +64,35 @@ public class SignUpActivity extends AppCompatActivity {
         showPasswordCheckbox = findViewById(R.id.show_password_checkbox);
         showConfirmPasswordCheckbox = findViewById(R.id.show_confirm_password_checkbox);
 
+        // Initialize ActivityResultLaunchers
+        selectImageLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                        Uri selectedImageUri = result.getData().getData();
+                        try {
+                            selectedImageBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
+                            profilePicture.setImageBitmap(selectedImageBitmap);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
+        captureImageLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                        selectedImageBitmap = (Bitmap) result.getData().getExtras().get("data");
+                        profilePicture.setImageBitmap(selectedImageBitmap);
+                    }
+                });
+
         // Handle upload button click
         uploadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Here, you would typically invoke an intent to pick an image from the gallery
-                Toast.makeText(SignUpActivity.this, "Upload Button Clicked", Toast.LENGTH_SHORT).show();
-                // For demonstration, assume an image is selected and set a drawable as profile picture
-                profilePicture.setImageResource(R.drawable.profile_picture); // Use an actual image resource here
+                showImagePickerDialog();
             }
         });
 
@@ -96,6 +141,59 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
 
+    // Show options to either select image from gallery or take a new picture
+    private void showImagePickerDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
+        builder.setTitle("Choose Profile Picture");
+        builder.setItems(new CharSequence[]{"Select from Gallery", "Take a Picture"}, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case 0: // Select from Gallery
+                        selectImageFromGallery();
+                        break;
+                    case 1: // Take a Picture
+                        captureImageFromCamera();
+                        break;
+                }
+            }
+        });
+        builder.show();
+    }
+
+    // Select image from gallery
+    private void selectImageFromGallery() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, SELECT_FILE);
+        } else {
+            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            selectImageLauncher.launch(intent);
+        }
+    }
+
+    // Capture image from camera
+    private void captureImageFromCamera() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA);
+        } else {
+            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            captureImageLauncher.launch(intent);
+        }
+    }
+
+    // Handle permissions result
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_CAMERA && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            captureImageFromCamera();
+        } else if (requestCode == SELECT_FILE && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            selectImageFromGallery();
+        } else {
+            Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     private boolean validateInputs() {
         // Basic validation logic here. You can expand this with more specific checks.
         if (firstNameInput.getText().toString().trim().isEmpty() ||
@@ -133,20 +231,52 @@ public class SignUpActivity extends AppCompatActivity {
         }
 
         return true;
-//test
     }
 
-    private boolean registeruser()
-    {
+    private boolean registeruser() {
         SQLConnection conn = new SQLConnection("user1", "strongPwd123");
-        if(!conn.isConn()) return false;
+        if (!conn.isConn()) return false;
+
+        String email = emailInput.getText().toString();
+        // Check if the email already exists
+        String checkEmailQuery = "SELECT COUNT(*) FROM Guardian WHERE email = ?";
+        String[] checkParams = { email };
+        char[] checkParamTypes = { 's' };
+
+        // Assuming conn.query returns a result set where you can get the count
+        int count = conn.queryCount(checkEmailQuery, checkParams, checkParamTypes);
+        if (count > 0) {
+            Toast.makeText(this, "Email Address is already a user.", Toast.LENGTH_SHORT).show();
+            conn.disconnect();
+            return false;
+        }
+
         int ID = conn.getMaxID("Guardian");
-        String query = "INSERT INTO Guardian VALUES (?, ?, ?, ?, ?, ?)";
-        String[] params = { String.valueOf(ID), firstNameInput.getText().toString(), lastNameInput.getText().toString(), phoneNumberInput.getText().toString(), phoneNumberInput.getText().toString(), emailInput.getText().toString()};
-        char[] paramTypes = {'i', 's', 's', 'i', 'i', 's' };
-        if(!conn.update(query, params, paramTypes))
-        {
-            Toast.makeText(this, "email Address is already a user.", Toast.LENGTH_SHORT).show();
+
+        // Convert Bitmap to byte array
+        byte[] imageBytes = null;
+        if (selectedImageBitmap != null) {
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            selectedImageBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            imageBytes = stream.toByteArray();
+        }
+
+        // Add imageBytes to the parameters
+        String query = "INSERT INTO Guardian (ID, fname, lname, phoneNumber, altPhoneNumber, email, profilePicture) VALUES (?, ?, ?, ?, ?, ?, CONVERT(varbinary(max), ?))";
+        String[] params = {
+                String.valueOf(ID),
+                firstNameInput.getText().toString(),
+                lastNameInput.getText().toString(),
+                phoneNumberInput.getText().toString(),
+                phoneNumberInput.getText().toString(),
+                email,
+                imageBytes != null ? Base64.encodeToString(imageBytes, Base64.DEFAULT) : null
+        };
+        char[] paramTypes = {'i', 's', 's', 'i', 'i', 's', 's'};
+
+        if (!conn.update(query, params, paramTypes)) {
+            Toast.makeText(this, "Error during sign-up.", Toast.LENGTH_SHORT).show();
+            conn.disconnect();
             return false;
         }
 
@@ -161,5 +291,6 @@ public class SignUpActivity extends AppCompatActivity {
         conn.disconnect();
         return true;
     }
+
 
 }

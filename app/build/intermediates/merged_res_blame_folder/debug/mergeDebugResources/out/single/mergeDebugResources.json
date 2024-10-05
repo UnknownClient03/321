@@ -296,10 +296,6 @@
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-47:/mipmap-hdpi/ic_launcher_foreground.webp"
     },
     {
-        "merged": "com.example.myapplication.app-debug-45:/layout_activity_signup.xml.flat",
-        "source": "com.example.myapplication.app-main-47:/layout/activity_signup.xml"
-    },
-    {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-45:/layout_item_question.xml.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-47:/layout/item_question.xml"
     },
@@ -398,6 +394,10 @@
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-45:/layout_header.xml.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-47:/layout/header.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-45:/layout_activity_add_child.xml.flat",
+        "source": "com.example.myapplication.app-main-47:/layout/activity_add_child.xml"
     },
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-45:/mipmap-xhdpi_ozbluelogo_round.webp.flat",

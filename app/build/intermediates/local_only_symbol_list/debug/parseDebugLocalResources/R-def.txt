@@ -495,8 +495,8 @@ id phone_number_input
 id practitioner_login_button
 id primarySecondaryText
 id primarySecondaryTitle
+id profile_image_view
 id profile_picture
-id profile_picture_background
 id profile_picture_border
 id profile_picture_container
 id progress_button

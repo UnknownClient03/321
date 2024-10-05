@@ -51,7 +51,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
                 String email = emailEditText.getText().toString().trim();
                 int ID = validateEmail(email);
                 if (ID == -1) {
-                    Toast.makeText(ResetPasswordActivity.this, "Please enter your email address", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ResetPasswordActivity.this, "Please enter an email address associated with an account", Toast.LENGTH_SHORT).show();
                 } else {
                     // Here you would normally call a method to send the reset email
                     // For demonstration purposes, we just show a toast
