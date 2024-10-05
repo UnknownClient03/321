@@ -7,6 +7,7 @@ CREATE TABLE Guardian (
 	phoneNumber bigint not null,
 	altPhoneNumber bigint not null,
 	email varchar(127) not null,
+	profilePicture VARBINARY(MAX),
 	PRIMARY KEY (ID),
 	UNIQUE(email)
 );
@@ -72,6 +73,7 @@ CREATE TABLE Child(
 	lname varchar(31) not null,
 	DOB DATE not null,
 	sex CHAR(1) not null,
+	profilePicture VARBINARY(MAX),
 	PRIMARY KEY(ID),
 	CHECK (sex = 'M' OR sex = 'F'),
 	FOREIGN KEY (guardianID) REFERENCES Guardian(ID)
