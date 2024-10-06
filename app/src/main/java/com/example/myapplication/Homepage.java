@@ -232,6 +232,18 @@ public class Homepage extends AppCompatActivity {
 
     }
 
+        Button buttonGrowthCharts = findViewById(R.id.button_growth_charts);
+        buttonGrowthCharts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("BUTTON", "Navigating to GrowthCharts page");
+                Intent intent = new Intent(Homepage.this, GrowthChartsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+    }
+    
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
