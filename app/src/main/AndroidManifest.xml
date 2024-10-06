@@ -79,6 +79,9 @@
 
         <activity android:name=".ResetPasswordActivity" />
 
+        <!-- Added activity for GrowthCharts -->
+        <activity android:name=".GrowthChartsActivity" />
+        
         <!-- Added activities for ParentInfo and UsefulContacts -->
         <activity android:name=".ParentInfo"
             android:windowSoftInputMode="adjustPan" />
