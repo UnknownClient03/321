@@ -40,12 +40,11 @@
         app:layout_constraintTop_toBottomOf="@id/header"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/profile_picture"
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/round_button"
         android:contentDescription="Profile Picture"
         android:src="@drawable/profile_picture"
         app:layout_constraintEnd_toEndOf="parent"

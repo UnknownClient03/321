@@ -20,9 +20,21 @@ drawable add_message
 drawable add_person
 drawable back_arrow
 drawable backimg
+drawable boy_bmi_for_age_2_to_18_years
+drawable boy_head_circumference_for_age_birth_to_2_years
+drawable boy_length_for_age_birth_to_2_years
+drawable boy_stature_for_age_2_to_20_years
+drawable boy_weight_for_age_2_to_20_years
+drawable boy_weight_for_age_birth_to_2_years
 drawable button_3d
 drawable cpr_chart
 drawable curved_rectangle
+drawable girl_bmi_for_age_2_to_18_years
+drawable girl_head_circumference_for_age_birth_to_2_years
+drawable girl_length_for_age_birth_to_2_years
+drawable girl_stature_for_age_2_to_20_years
+drawable girl_weight_for_age_2_to_20_years
+drawable girl_weight_for_age_birth_to_2_years
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable logoutimg
@@ -63,6 +75,9 @@ id back_arrow
 id back_button
 id breastfeedingQuestions
 id buttonManageChildren
+id buttonOption1
+id buttonOption2
+id buttonOption3
 id button_12_month
 id button_18_month
 id button_1_4_weeks
@@ -128,6 +143,7 @@ id button_save_email
 id button_share_child_progress
 id button_submit_contact
 id button_useful_contacts_and_websites
+id chartContainer
 id check1Button
 id check2Button
 id check3Button
@@ -597,6 +613,7 @@ id radio_usefulContacts_9
 id radiogroup_usefulContacts
 id records_button
 id recycler_view
+id remember_me_checkbox
 id remove_child_button
 id save_button
 id save_child_button
@@ -852,6 +869,7 @@ id textView_sexLabel
 id textView_signature
 id textView_vitaminKGivenLabel
 id text_health_check_title
+id titleTextView
 id title_text
 id transitionSchoolText
 id transitionSchoolTitle
@@ -892,6 +910,7 @@ layout activity_appointments
 layout activity_cpr_chart
 layout activity_encapsulating
 layout activity_four_month_immunisation_check
+layout activity_growth_charts
 layout activity_health_check_form
 layout activity_health_checks
 layout activity_homepage

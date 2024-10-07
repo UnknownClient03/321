@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
@@ -24,6 +25,9 @@ public class UserLoginActivity extends AppCompatActivity {
     private Button signupButton;
     private Button practitionerLoginButton;
     private Button forgotPasswordButton;
+    private CheckBox rememberMeCheckBox;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +42,32 @@ public class UserLoginActivity extends AppCompatActivity {
 
         EditText passwordView = findViewById(R.id.editTextTextPassword2);
         EditText emailView = findViewById(R.id.editTextTextEmailAddress2);
+        rememberMeCheckBox = findViewById(R.id.remember_me_checkbox);
+
+        // Initialize SharedPreferences
+        sharedPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
+        // Load saved login data if "Remember Me" was checked
+        loadSavedCredentials(emailView, passwordView);
+
         loginButton = findViewById(R.id.login_button);
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                int guardianID = validateLogin(passwordView.getText().toString(), emailView.getText().toString());
+                String email = emailView.getText().toString();
+                String password = passwordView.getText().toString();
+                int guardianID = validateLogin(password, email);
                 if (guardianID != -1) {
+                    // Save credentials if "Remember Me" is checked
+                    if (rememberMeCheckBox.isChecked()) {
+                        editor.putString("email", email);
+                        editor.putString("password", password);
+                        editor.putBoolean("rememberMe", true);
+                        editor.apply();
+                    } else {
+                        editor.clear();  // Clear saved data if "Remember Me" is unchecked
+                        editor.apply();
+                    }
                     Log.d("BUTTON", "Changing to select child page");
                     Intent intent = new Intent(UserLoginActivity.this, ChildSelectActivity.class);
                     intent.putExtra("guardianID", guardianID);
@@ -85,15 +110,23 @@ public class UserLoginActivity extends AppCompatActivity {
         CheckBox showPasswordCheckbox = findViewById(R.id.show_password_checkbox);
         showPasswordCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
-                // Show password
                 passwordView.setInputType(InputType.TYPE_CLASS_TEXT);
             } else {
-                // Hide password
                 passwordView.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
             }
-            // Move cursor to the end of the text
             passwordView.setSelection(passwordView.getText().length());
         });
+    }
+
+    private void loadSavedCredentials(EditText emailView, EditText passwordView) {
+        boolean rememberMe = sharedPreferences.getBoolean("rememberMe", false);
+        if (rememberMe) {
+            String savedEmail = sharedPreferences.getString("email", "");
+            String savedPassword = sharedPreferences.getString("password", "");
+            emailView.setText(savedEmail);
+            passwordView.setText(savedPassword);
+            rememberMeCheckBox.setChecked(true);
+        }
     }
 
     private int validateLogin(String pass, String email) {

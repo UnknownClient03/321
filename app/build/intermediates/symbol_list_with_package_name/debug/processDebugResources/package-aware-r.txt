@@ -2984,6 +2984,12 @@ drawable avd_hide_password
 drawable avd_show_password
 drawable back_arrow
 drawable backimg
+drawable boy_bmi_for_age_2_to_18_years
+drawable boy_head_circumference_for_age_birth_to_2_years
+drawable boy_length_for_age_birth_to_2_years
+drawable boy_stature_for_age_2_to_20_years
+drawable boy_weight_for_age_2_to_20_years
+drawable boy_weight_for_age_birth_to_2_years
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -3019,6 +3025,12 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable girl_bmi_for_age_2_to_18_years
+drawable girl_head_circumference_for_age_birth_to_2_years
+drawable girl_length_for_age_birth_to_2_years
+drawable girl_stature_for_age_2_to_20_years
+drawable girl_weight_for_age_2_to_20_years
+drawable girl_weight_for_age_birth_to_2_years
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable ic_arrow_back_black_24
@@ -3256,6 +3268,9 @@ id browser_actions_menu_item_text
 id browser_actions_menu_items
 id browser_actions_menu_view
 id buttonManageChildren
+id buttonOption1
+id buttonOption2
+id buttonOption3
 id buttonPanel
 id button_12_month
 id button_18_month
@@ -3334,6 +3349,7 @@ id center_vertical
 id chain
 id chain2
 id chains
+id chartContainer
 id check1Button
 id check2Button
 id check3Button
@@ -4051,6 +4067,7 @@ id ratio
 id records_button
 id rectangles
 id recycler_view
+id remember_me_checkbox
 id remove_child_button
 id report_drawn
 id reverseSawtooth
@@ -4407,6 +4424,7 @@ id textinput_suffix_text
 id time
 id title
 id titleDividerNoCustom
+id titleTextView
 id title_template
 id title_text
 id toggle
@@ -4599,6 +4617,7 @@ layout activity_appointments
 layout activity_cpr_chart
 layout activity_encapsulating
 layout activity_four_month_immunisation_check
+layout activity_growth_charts
 layout activity_health_check_form
 layout activity_health_checks
 layout activity_homepage

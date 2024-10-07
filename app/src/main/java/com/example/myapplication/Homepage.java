@@ -230,8 +230,6 @@ public class Homepage extends AppCompatActivity {
             }
         });
 
-    }
-
         Button buttonGrowthCharts = findViewById(R.id.button_growth_charts);
         buttonGrowthCharts.setOnClickListener(new View.OnClickListener() {
             @Override

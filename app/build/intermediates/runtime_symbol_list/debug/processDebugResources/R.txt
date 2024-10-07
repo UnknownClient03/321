@@ -2983,6 +2983,12 @@ int drawable avd_hide_password 0x7f08007a
 int drawable avd_show_password 0x7f08007b
 int drawable back_arrow 0x7f08007c
 int drawable backimg 0x7f08007d
+int drawable boy_bmi_for_age_2_to_18_years 0x7f080112
+int drawable boy_head_circumference_for_age_birth_to_2_years 0x7f080113
+int drawable boy_length_for_age_birth_to_2_years 0x7f080114
+int drawable boy_stature_for_age_2_to_20_years 0x7f080115
+int drawable boy_weight_for_age_2_to_20_years 0x7f080116
+int drawable boy_weight_for_age_birth_to_2_years 0x7f080117
 int drawable btn_checkbox_checked_mtrl 0x7f08007e
 int drawable btn_checkbox_checked_to_unchecked_mtrl_animation 0x7f08007f
 int drawable btn_checkbox_unchecked_mtrl 0x7f080080
@@ -3018,6 +3024,12 @@ int drawable design_ic_visibility 0x7f08009d
 int drawable design_ic_visibility_off 0x7f08009e
 int drawable design_password_eye 0x7f08009f
 int drawable design_snackbar_background 0x7f0800a0
+int drawable girl_bmi_for_age_2_to_18_years 0x7f080118
+int drawable girl_head_circumference_for_age_birth_to_2_years 0x7f080119
+int drawable girl_length_for_age_birth_to_2_years 0x7f08011a
+int drawable girl_stature_for_age_2_to_20_years 0x7f08011b
+int drawable girl_weight_for_age_2_to_20_years 0x7f08011c
+int drawable girl_weight_for_age_birth_to_2_years 0x7f08011d
 int drawable googleg_disabled_color_18 0x7f0800a1
 int drawable googleg_standard_color_18 0x7f0800a2
 int drawable ic_arrow_back_black_24 0x7f0800a3
@@ -3255,6 +3267,9 @@ int id browser_actions_menu_item_text 0x7f090079
 int id browser_actions_menu_items 0x7f09007a
 int id browser_actions_menu_view 0x7f09007b
 int id buttonManageChildren 0x7f09007c
+int id buttonOption1 0x7f09058a
+int id buttonOption2 0x7f09058b
+int id buttonOption3 0x7f09058c
 int id buttonPanel 0x7f09007d
 int id button_12_month 0x7f0904ac
 int id button_18_month 0x7f0904ad
@@ -3333,6 +3348,7 @@ int id center_vertical 0x7f0900b9
 int id chain 0x7f0900ba
 int id chain2 0x7f0900bb
 int id chains 0x7f0900bc
+int id chartContainer 0x7f09058d
 int id check1Button 0x7f0900bd
 int id check2Button 0x7f0900be
 int id check3Button 0x7f0900bf
@@ -4050,6 +4066,7 @@ int id ratio 0x7f0902c5
 int id records_button 0x7f0902c6
 int id rectangles 0x7f0902c7
 int id recycler_view 0x7f0902c8
+int id remember_me_checkbox 0x7f09058f
 int id remove_child_button 0x7f0902c9
 int id report_drawn 0x7f0902ca
 int id reverseSawtooth 0x7f0902cb
@@ -4406,6 +4423,7 @@ int id textinput_suffix_text 0x7f0903b8
 int id time 0x7f0903b9
 int id title 0x7f0903ba
 int id titleDividerNoCustom 0x7f0903bb
+int id titleTextView 0x7f09058e
 int id title_template 0x7f0903bc
 int id title_text 0x7f0903bd
 int id toggle 0x7f0903be
@@ -4598,6 +4616,7 @@ int layout activity_appointments 0x7f0c001e
 int layout activity_cpr_chart 0x7f0c001f
 int layout activity_encapsulating 0x7f0c0020
 int layout activity_four_month_immunisation_check 0x7f0c0021
+int layout activity_growth_charts 0x7f0c00a5
 int layout activity_health_check_form 0x7f0c0022
 int layout activity_health_checks 0x7f0c0023
 int layout activity_homepage 0x7f0c0024

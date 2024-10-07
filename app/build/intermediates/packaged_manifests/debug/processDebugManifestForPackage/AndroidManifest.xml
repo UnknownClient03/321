@@ -105,6 +105,9 @@
             android:windowSoftInputMode="adjustPan" />
         <activity android:name="com.example.myapplication.ResetPasswordActivity" />
 
+        <!-- Added activity for GrowthCharts -->
+        <activity android:name="com.example.myapplication.GrowthChartsActivity" />
+
         <!-- Added activities for ParentInfo and UsefulContacts -->
         <activity
             android:name="com.example.myapplication.ParentInfo"

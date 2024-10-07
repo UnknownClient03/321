@@ -18,6 +18,7 @@ import androidx.activity.EdgeToEdge;
 
 public class GrowthChartsActivity extends AppCompatActivity {
 
+    public LoginManager manager;
     private ImageView chartImageView;
     private TextView generalInfoTextView;
 
@@ -100,8 +101,11 @@ public class GrowthChartsActivity extends AppCompatActivity {
         buttonOption2.setOnClickListener(v -> displayChartsForGroup(1));
         buttonOption3.setOnClickListener(v -> displayChartsForGroup(2));
 
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) manager = new LoginManager(extras.getInt("guardianID"), extras.getInt("childID"));
+
         // Set up the navigation bar with relevant buttons.
-        NavBarManager.setNavBarButtons(GrowthChartsActivity.this);
+        NavBarManager.setNavBarButtons(GrowthChartsActivity.this, manager);
     }
 
     // Function to display charts for the selected group (General Info, Girls, Boys).
