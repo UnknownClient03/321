@@ -73,7 +73,7 @@ CREATE TABLE Child(
 	lname varchar(31) not null,
 	DOB DATE not null,
 	sex CHAR(1) not null,
-	profilePicture VARBINARY(MAX),
+	profilePicture varchar(max),
 	PRIMARY KEY(ID),
 	CHECK (sex = 'M' OR sex = 'F'),
 	FOREIGN KEY (guardianID) REFERENCES Guardian(ID)
