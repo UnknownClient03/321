@@ -148,6 +148,8 @@ public class AccountSettings extends AppCompatActivity {
         HashMap<String, String[]> result = conn.select(query, params, paramTypes);
         String str = result.get("profilePicture")[0];
         if(str == null) return;
+        Bitmap bitmap = CaptureImage.convertString(str);
+        profilePicture.setImageBitmap(bitmap);
     }
 
     // Save the settings to the database

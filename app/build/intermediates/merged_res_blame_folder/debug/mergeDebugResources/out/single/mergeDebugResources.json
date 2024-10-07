@@ -24,12 +24,12 @@
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-47:/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-45:/drawable_ozbluelogo_foreground.webp.flat",
-        "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-47:/drawable/ozbluelogo_foreground.webp"
-    },
-    {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-45:/layout_activity_growth_charts.xml.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-47:/layout/activity_growth_charts.xml"
+    },
+    {
+        "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-45:/drawable_ozbluelogo_foreground.webp.flat",
+        "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-47:/drawable/ozbluelogo_foreground.webp"
     },
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-45:/layout_activity_signup.xml.flat",
@@ -62,6 +62,10 @@
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-45:/layout_activity_immunisation_record.xml.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-47:/layout/activity_immunisation_record.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-45:/layout_account_settings.xml.flat",
+        "source": "com.example.myapplication.app-main-47:/layout/account_settings.xml"
     },
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-45:/layout_activity_illness_injury_notes.xml.flat",
@@ -298,10 +302,6 @@
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-45:/mipmap-xhdpi_ic_launcher_foreground.webp.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-47:/mipmap-xhdpi/ic_launcher_foreground.webp"
-    },
-    {
-        "merged": "com.example.myapplication.app-debug-45:/layout_activity_user_login.xml.flat",
-        "source": "com.example.myapplication.app-main-47:/layout/activity_user_login.xml"
     },
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-45:/xml_backup_rules.xml.flat",

@@ -3961,7 +3961,6 @@ int id primarySecondaryText 0x7f090288
 int id primarySecondaryTitle 0x7f090289
 int id profile_image_view 0x7f090589
 int id profile_picture 0x7f09028a
-int id profile_picture_border 0x7f09028c
 int id profile_picture_container 0x7f09028d
 int id progress_button 0x7f09028e
 int id progress_circular 0x7f09028f
