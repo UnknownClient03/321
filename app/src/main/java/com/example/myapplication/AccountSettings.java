@@ -1,7 +1,9 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
@@ -10,13 +12,18 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.HashMap;
 
 public class AccountSettings extends AppCompatActivity {
 
+    public LoginManager manager;
+
     private ImageView profilePicture;
+    private Button changeProfilePictureButton;
+    private Button saveProfilePictureButton;
     private EditText editTextEmail;
     private EditText editTextCurrentPassword;
     private EditText editTextNewPassword;
@@ -28,12 +35,16 @@ public class AccountSettings extends AppCompatActivity {
     private Button cancelButton;
     private int guardianID;
 
+    private CaptureImage imageCapturer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.account_settings);
 
         profilePicture = (ImageView) findViewById(R.id.profile_picture);
+        changeProfilePictureButton = findViewById(R.id.button_change_profilePicture);
+        saveProfilePictureButton = findViewById(R.id.save_profile_picture_button);
         editTextEmail = findViewById(R.id.editTextTextEmailAddress);
         editTextCurrentPassword = findViewById(R.id.editTextCurrentPassword);
         editTextNewPassword = findViewById(R.id.editTextTextPassword);
@@ -49,6 +60,51 @@ public class AccountSettings extends AppCompatActivity {
 
         loadGuardianData();
         displayProfilePicture();
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) manager = new LoginManager(extras.getInt("guardianID"), extras.getInt("childID"));
+
+        SQLConnection conn = new SQLConnection("user1", "");
+        TextView textView = (TextView)findViewById(R.id.textView_name);
+        if(conn.isConn())
+        {
+            String query = "SELECT fname, lname from Guardian WHERE ID = ?;";
+            HashMap<String, String[]> result = conn.select(query, new String[]{String.valueOf(manager.guardianID)}, new char[]{'i'});
+            conn.disconnect();
+            String fname = result.get("fname")[0];
+            String lname = result.get("lname")[0];
+            textView.setText(fname + " " + lname);
+        }
+
+        // Requests permission for application to use camera
+        CaptureImage.checkPermissions(AccountSettings.this, AccountSettings.this);
+        imageCapturer = new CaptureImage(profilePicture, this);
+
+        changeProfilePictureButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Allows the user to take picture and saves the thumbnail as the profile picture
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                imageCapturer.activityResultLauncher.launch(intent);
+                saveProfilePictureButton.setVisibility(View.VISIBLE);
+            }
+        });
+
+        saveProfilePictureButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SQLConnection conn = new SQLConnection("user1", "");
+                if(conn.isConn())
+                {
+                    String query = "UPDATE Guardian SET profilePicture = ? WHERE ID = ?;";
+                    String[] params = {imageCapturer.convertBitmap(), String.valueOf(manager.guardianID)};
+                    char[] paramTypes = {'s', 'i'};
+                    conn.update(query, params, paramTypes);
+                    conn.disconnect();
+                }
+                saveProfilePictureButton.setVisibility(View.GONE);
+            }
+        });
 
         // Initially hide password fields and cancel button
         editTextCurrentPassword.setVisibility(View.GONE);
@@ -121,7 +177,6 @@ public class AccountSettings extends AppCompatActivity {
         ImageButton buttonSettings = findViewById(R.id.settings_button);
         buttonSettings.setEnabled(false);  // Disable the button
 
-        Bundle extras = getIntent().getExtras();
         NavBarManager.setNavBarButtons(AccountSettings.this, new LoginManager(extras.getInt("guardianID"), extras.getInt("childID")));
     }
 
