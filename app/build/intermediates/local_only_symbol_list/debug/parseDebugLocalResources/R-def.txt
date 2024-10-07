@@ -71,6 +71,7 @@ id addAppointmentButton
 id add_appointment_button_container
 id add_child_button
 id appointmentsListView
+id appointments_button
 id back_arrow
 id back_button
 id breastfeedingQuestions
@@ -514,7 +515,6 @@ id primarySecondaryTitle
 id profile_image_view
 id profile_picture
 id profile_picture_container
-id progress_button
 id question2text
 id questionTextView1
 id questionTextView10

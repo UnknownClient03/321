@@ -3240,6 +3240,7 @@ int id animateToStart 0x7f09005e
 int id antiClockwise 0x7f09005f
 int id anticipate 0x7f090060
 int id appointmentsListView 0x7f090061
+int id appointments_button 0x7f090548
 int id arc 0x7f090062
 int id asConfigured 0x7f090063
 int id async 0x7f090064
@@ -3962,7 +3963,6 @@ int id primarySecondaryTitle 0x7f090330
 int id profile_image_view 0x7f090331
 int id profile_picture 0x7f090332
 int id profile_picture_container 0x7f090333
-int id progress_button 0x7f090334
 int id progress_circular 0x7f090335
 int id progress_horizontal 0x7f090336
 int id question2text 0x7f090337

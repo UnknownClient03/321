@@ -60,7 +60,7 @@ public class ManageChildrenActivity extends AppCompatActivity {
         buttonHome.setEnabled(false);  // Disable the button
         ImageButton buttonRecords = findViewById(R.id.records_button);
         buttonRecords.setEnabled(false);
-        ImageButton buttonProgress = findViewById(R.id.progress_button);
+        ImageButton buttonProgress = findViewById(R.id.appointments_button);
         buttonProgress.setEnabled(false);
 
         Bundle extras = getIntent().getExtras();

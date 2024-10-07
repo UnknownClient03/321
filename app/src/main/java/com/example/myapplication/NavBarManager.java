@@ -83,6 +83,21 @@ public class NavBarManager {
                 }
             });
 
+            // Set the Appointments button
+            ImageButton progressButton = x.findViewById(R.id.appointments_button); // Keep this as ImageButton
+            progressButton.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent intent = new Intent(x, AppointmentsActivity.class);
+                    Bundle extras = x.getIntent().getExtras();
+                    if (extras != null) {
+
+                        intent.putExtra("guardianID", manager.guardianID);
+                        intent.putExtra("childID", manager.childID);
+                    }
+                    x.startActivity(intent);
+                }
+            });
+
             // Commented out the Progress button for now
             /*
             ImageButton progressButton = x.findViewById(R.id.progress_button); // Keep this as ImageButton
