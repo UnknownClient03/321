@@ -7,7 +7,7 @@ CREATE TABLE Guardian (
 	phoneNumber bigint not null,
 	altPhoneNumber bigint not null,
 	email varchar(127) not null,
-	profilePicture VARBINARY(MAX),
+	profilePicture varchar(max),
 	PRIMARY KEY (ID),
 	UNIQUE(email)
 );
