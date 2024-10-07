@@ -58,8 +58,6 @@ public class ManageChildrenActivity extends AppCompatActivity {
         // Make sure some buttons cannot be pressed yet
         Button buttonHome = findViewById(R.id.home_button);
         buttonHome.setEnabled(false);  // Disable the button
-        ImageButton buttonSettings = findViewById(R.id.settings_button);
-        buttonSettings.setEnabled(false);
         ImageButton buttonRecords = findViewById(R.id.records_button);
         buttonRecords.setEnabled(false);
         ImageButton buttonProgress = findViewById(R.id.progress_button);
@@ -136,7 +134,7 @@ public class ManageChildrenActivity extends AppCompatActivity {
         // Clear the existing children list
         childrenList.clear();
 
-        HashMap<String, String[]> result = sqlConnection.select("SELECT ID, fname, lname, DOB, sex, guardianID FROM Child WHERE guardianID = " + currentGuardianID);
+        HashMap<String, String[]> result = sqlConnection.select("SELECT ID, fname, lname, DOB, sex, profilePicture, guardianID FROM Child WHERE guardianID = " + currentGuardianID);
 
         if (result != null && result.get("ID") != null) {
             String[] ids = result.get("ID");
@@ -144,6 +142,7 @@ public class ManageChildrenActivity extends AppCompatActivity {
             String[] lnames = result.get("lname");
             String[] dobs = result.get("DOB");
             String[] sexes = result.get("sex");
+            String[] profilePictures = result.get("profilePicture");
             String[] guardianIDs = result.get("guardianID");
 
             for (int i = 0; i < ids.length; i++) {
@@ -152,10 +151,11 @@ public class ManageChildrenActivity extends AppCompatActivity {
                 String lname = lnames[i];
                 String dob = dobs[i];
                 String sex = sexes[i];
+                String profilePicture = profilePictures[i];
                 int guardianID = Integer.parseInt(guardianIDs[i]);
 
                 if (guardianID == currentGuardianID) {
-                    childrenList.add(new Child(id, fname, lname, dob, sex));
+                    childrenList.add(new Child(id, fname, lname, dob, sex, profilePicture));
                 }
             }
         }

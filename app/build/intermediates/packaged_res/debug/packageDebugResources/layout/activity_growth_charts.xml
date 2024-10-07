@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Include the header layout at the top -->
+    <include
+        android:id="@+id/header"
+        layout="@layout/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- Title TextView to display the activity title -->
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Growth Charts"
+        android:textSize="24sp"
+        android:padding="16dp"
+        android:gravity="center" />
+
+    <!-- LinearLayout for the group selection buttons (General Info, Girls, Boys) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="center"> <!-- Center the buttons horizontally -->
+
+        <!-- Button for selecting 'Girls' charts group -->
+        <Button
+            android:id="@+id/buttonOption2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Girls' Charts"
+            android:padding="8dp"
+            android:layout_margin="8dp" />
+
+        <!-- Button for selecting 'General Information' group -->
+        <Button
+            android:id="@+id/buttonOption1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="General Information"
+            android:padding="8dp"
+            android:layout_margin="8dp" />
+
+        <!-- Button for selecting 'Boys' charts group -->
+        <Button
+            android:id="@+id/buttonOption3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Boys' Charts"
+            android:padding="8dp"
+            android:layout_margin="8dp" />
+    </LinearLayout>
+
+    <!-- ScrollView to hold chart-related content and make it scrollable -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"> <!-- Weight is set to make it fill the remaining space -->
+
+        <!-- LinearLayout to dynamically populate with chart titles, images, and source info -->
+        <LinearLayout
+            android:id="@+id/chartContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp" />
+    </ScrollView>
+
+    <!-- Include the footer layout at the bottom -->
+    <include
+        android:id="@+id/footer"
+        layout="@layout/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

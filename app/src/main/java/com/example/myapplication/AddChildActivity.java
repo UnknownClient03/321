@@ -1,13 +1,16 @@
 package com.example.myapplication;
 
-import android.content.DialogInterface;
+import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.net.Uri;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.VectorDrawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
+import android.util.Base64;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,16 +18,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
-import android.Manifest;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import java.io.IOException;
+import java.io.ByteArrayOutputStream;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -40,14 +38,9 @@ public class AddChildActivity extends AppCompatActivity {
     private ImageView backArrow;
     private ImageView childProfilePicture; // ImageView for child's profile picture
     private Bitmap selectedImageBitmap; // Store the selected image bitmap
-    private Button selectImageButton;
+    private Button uploadButton;
 
-    private static final int REQUEST_CAMERA = 1;
-    private static final int SELECT_FILE = 2;
-
-    // Declare ActivityResultLaunchers
-    private ActivityResultLauncher<Intent> selectImageLauncher;
-    private ActivityResultLauncher<Intent> captureImageLauncher;
+    private CaptureImage imageCapturer;
 
     private boolean isButtonClicked = false; // Flag to prevent multiple executions
     private int guardianID; // Store the current guardian ID
@@ -66,29 +59,9 @@ public class AddChildActivity extends AppCompatActivity {
         // Configure the gender spinner
         configureGenderSpinner();
 
-        // Initialize ActivityResultLaunchers
-        selectImageLauncher = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                result -> {
-                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
-                        Uri selectedImageUri = result.getData().getData();
-                        try {
-                            selectedImageBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
-                            childProfilePicture.setImageBitmap(selectedImageBitmap);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-
-        captureImageLauncher = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                result -> {
-                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
-                        selectedImageBitmap = (Bitmap) result.getData().getExtras().get("data");
-                        childProfilePicture.setImageBitmap(selectedImageBitmap);
-                    }
-                });
+        // Requests permission for application to use camera
+        CaptureImage.checkPermissions(AddChildActivity.this, AddChildActivity.this);
+        imageCapturer = new CaptureImage(childProfilePicture, this);
 
         backArrow.setOnClickListener(v -> finish());
 
@@ -106,13 +79,18 @@ public class AddChildActivity extends AppCompatActivity {
         });
 
         // Set up click listener for child's profile picture
-        selectImageButton.setOnClickListener(v -> showImagePickerDialog());
+        uploadButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Allows the user to take picture and saves the thumbnail as the profile picture
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                imageCapturer.activityResultLauncher.launch(intent);
+            }
+        });
 
         // Make sure some buttons cannot be pressed yet
         Button buttonHome = findViewById(R.id.home_button);
         buttonHome.setEnabled(false);  // Disable the button
-        ImageButton buttonSettings = findViewById(R.id.settings_button);
-        buttonSettings.setEnabled(false);
         ImageButton buttonRecords = findViewById(R.id.records_button);
         buttonRecords.setEnabled(false);
         ImageButton buttonProgress = findViewById(R.id.progress_button);
@@ -120,58 +98,6 @@ public class AddChildActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         NavBarManager.setNavBarButtons(AddChildActivity.this, new LoginManager(guardianID, 0));
-    }
-
-    private void showImagePickerDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(AddChildActivity.this);
-        builder.setTitle("Choose Profile Picture");
-        builder.setItems(new CharSequence[]{"Select from Gallery", "Take a Picture"}, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                switch (which) {
-                    case 0: // Select from Gallery
-                        selectImageFromGallery();
-                        break;
-                    case 1: // Take a Picture
-                        captureImageFromCamera();
-                        break;
-                }
-            }
-        });
-        builder.show();
-    }
-
-    // Select image from gallery
-    private void selectImageFromGallery() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, SELECT_FILE);
-        } else {
-            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            selectImageLauncher.launch(intent);
-        }
-    }
-
-    // Capture image from camera
-    private void captureImageFromCamera() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA);
-        } else {
-            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            captureImageLauncher.launch(intent);
-        }
-    }
-
-    // Handle permissions result
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == REQUEST_CAMERA && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            captureImageFromCamera();
-        } else if (requestCode == SELECT_FILE && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            selectImageFromGallery();
-        } else {
-            Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
-        }
     }
 
     private void initializeViews() {
@@ -184,7 +110,7 @@ public class AddChildActivity extends AppCompatActivity {
         saveChildButton = findViewById(R.id.save_child_button);
         backArrow = findViewById(R.id.back_arrow);
         childProfilePicture = findViewById(R.id.profile_picture); // Initialize the ImageView for child's profile picture
-        selectImageButton = findViewById(R.id.select_image_button);
+        uploadButton = findViewById(R.id.select_image_button);
     }
 
     private void configureGenderSpinner() {
@@ -210,7 +136,7 @@ public class AddChildActivity extends AppCompatActivity {
         }
 
         // Insert the child into the database with the current guardian ID
-        insertChildToDatabase(givenNames, surname, dob, sex, guardianID);
+        insertChildToDatabase(givenNames, surname, dob, sex, childProfilePicture, guardianID);
 
         Toast.makeText(AddChildActivity.this, "You have added a new child", Toast.LENGTH_SHORT).show();
         finish();
@@ -237,19 +163,53 @@ public class AddChildActivity extends AppCompatActivity {
         }
     }
 
-    private void insertChildToDatabase(String givenNames, String surname, String dob, String sex, int guardianID) {
+    private void insertChildToDatabase(String givenNames, String surname, String dob, String sex, ImageView profilePicture, int guardianID) {
         SQLConnection sqlConnection = new SQLConnection("user1", "");
 
         // Get the next available ID
         int newChildId = sqlConnection.getMaxID("Child");
 
+        String profilePictureValue;
+
+        // Set default profile picture (if nothing was uploaded, set to default)
+        if (imageCapturer.convertBitmap().isEmpty()) {
+            // Get the drawable resource
+            Drawable drawable = ContextCompat.getDrawable(this, R.drawable.profile_picture);
+
+            Bitmap bitmap;
+
+            // Check if the drawable is a VectorDrawable
+            if (drawable instanceof VectorDrawable) {
+                // Convert VectorDrawable to Bitmap
+                bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+                Canvas canvas = new Canvas(bitmap);
+                drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+                drawable.draw(canvas);
+            } else if (drawable instanceof BitmapDrawable) {
+                // If it's already a BitmapDrawable
+                bitmap = ((BitmapDrawable) drawable).getBitmap();
+            } else {
+                // Handle other drawable types if necessary, or set a default bitmap
+                bitmap = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888); // Placeholder
+            }
+
+            // Convert Bitmap to Base64 string
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+            byte[] byteArray = byteArrayOutputStream.toByteArray();
+            profilePictureValue = Base64.encodeToString(byteArray, Base64.DEFAULT);
+        } else {
+            profilePictureValue = imageCapturer.convertBitmap();
+        }
+
         // Formulate the INSERT query with the new ID and guardian ID
-        String insertQuery = "INSERT INTO Child (ID, guardianID, fname, lname, DOB, sex) VALUES ("
+        String insertQuery = "INSERT INTO Child (ID, guardianID, fname, lname, DOB, sex, profilePicture) VALUES ("
                 + newChildId + ", " + guardianID + ", '"
                 + givenNames + "', '"
                 + surname + "', '"
                 + dob + "', '"
-                + sex + "');";
+                + sex + "', '"
+                + profilePictureValue + "');";
 
         // Execute the query
         sqlConnection.update(insertQuery);

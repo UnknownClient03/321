@@ -1,0 +1,289 @@
+<changelist name="Changes" date="1728279061127" recycled="false">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/shelved.patch" />
+  <option name="DESCRIPTION" value="Changes" />
+  <binary>
+    <option name="BEFORE_PATH" value=".gradle/8.7/executionHistory/executionHistory.bin" />
+    <option name="AFTER_PATH" value=".gradle/8.7/executionHistory/executionHistory.bin" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/executionHistory.bin" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value=".gradle/8.7/executionHistory/executionHistory.lock" />
+    <option name="AFTER_PATH" value=".gradle/8.7/executionHistory/executionHistory.lock" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/executionHistory.lock" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value=".gradle/8.7/fileHashes/fileHashes.bin" />
+    <option name="AFTER_PATH" value=".gradle/8.7/fileHashes/fileHashes.bin" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/fileHashes.bin" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value=".gradle/8.7/fileHashes/fileHashes.lock" />
+    <option name="AFTER_PATH" value=".gradle/8.7/fileHashes/fileHashes.lock" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/fileHashes.lock" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value=".gradle/8.7/fileHashes/resourceHashesCache.bin" />
+    <option name="AFTER_PATH" value=".gradle/8.7/fileHashes/resourceHashesCache.bin" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/resourceHashesCache.bin" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value=".gradle/buildOutputCleanup/buildOutputCleanup.lock" />
+    <option name="AFTER_PATH" value=".gradle/buildOutputCleanup/buildOutputCleanup.lock" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/buildOutputCleanup.lock" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/apk/debug/app-debug.apk" />
+    <option name="AFTER_PATH" value="app/build/intermediates/apk/debug/app-debug.apk" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/app-debug.apk" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/compile_and_runtime_not_namespaced_r_class_jar/debug/processDebugResources/R.jar" />
+    <option name="AFTER_PATH" value="app/build/intermediates/compile_and_runtime_not_namespaced_r_class_jar/debug/processDebugResources/R.jar" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/R.jar" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex" />
+    <option name="AFTER_PATH" value="app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/classes.dex" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/dex/debug/mergeProjectDexDebug/5/classes.dex" />
+    <option name="AFTER_PATH" value="app/build/intermediates/dex/debug/mergeProjectDexDebug/5/classes.dex" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/classes1.dex" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/dex_archive_input_jar_hashes/debug/dexBuilderDebug/out" />
+    <option name="AFTER_PATH" value="app/build/intermediates/dex_archive_input_jar_hashes/debug/dexBuilderDebug/out" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/out" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/androidResources" />
+    <option name="AFTER_PATH" value="app/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/androidResources" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/androidResources" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/AddChildActivity.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/AddChildActivity.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/AddChildActivity.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/Child.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/Child.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/Child.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/ChildSelectActivity.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/ChildSelectActivity.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/ChildSelectActivity.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/Homepage$1.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/Homepage$1.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/Homepage$1.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/Homepage$2.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/Homepage$2.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/Homepage$2.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/Homepage$3.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/Homepage$3.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/Homepage$3.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/Homepage$4.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/Homepage$4.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/Homepage$4.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/Homepage$5.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/Homepage$5.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/Homepage$5.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/Homepage$6.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/Homepage$6.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/Homepage$6.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/Homepage$7.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/Homepage$7.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/Homepage$7.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/Homepage$8.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/Homepage$8.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/Homepage$8.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/Homepage$9.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/Homepage$9.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/Homepage$9.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/Homepage.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/Homepage.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/Homepage.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/ManageChildrenActivity.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/ManageChildrenActivity.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/ManageChildrenActivity.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/Records$1.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/Records$1.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/Records$1.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/Records$2.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/Records$2.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/Records$2.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/Records.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/Records.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/Records.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/SignUpActivity$1.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/SignUpActivity$1.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/SignUpActivity$1.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/SignUpActivity$2.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/SignUpActivity$2.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/SignUpActivity$2.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/SignUpActivity.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/myapplication/SignUpActivity.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/SignUpActivity.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/merged_res/debug/mergeDebugResources/layout_activity_add_child.xml.flat" />
+    <option name="AFTER_PATH" value="app/build/intermediates/merged_res/debug/mergeDebugResources/layout_activity_add_child.xml.flat" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/layout_activity_add_child.xml.flat" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/merged_res/debug/mergeDebugResources/layout_activity_homepage.xml.flat" />
+    <option name="AFTER_PATH" value="app/build/intermediates/merged_res/debug/mergeDebugResources/layout_activity_homepage.xml.flat" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/layout_activity_homepage.xml.flat" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/merged_res/debug/mergeDebugResources/layout_child_item_layout.xml.flat" />
+    <option name="AFTER_PATH" value="app/build/intermediates/merged_res/debug/mergeDebugResources/layout_child_item_layout.xml.flat" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/layout_child_item_layout.xml.flat" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/processed_res/debug/processDebugResources/out/resources-debug.ap_" />
+    <option name="AFTER_PATH" value="app/build/intermediates/processed_res/debug/processDebugResources/out/resources-debug.ap_" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/resources-debug.ap_" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/AddChildActivity.dex" />
+    <option name="AFTER_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/AddChildActivity.dex" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/AddChildActivity.dex" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/Child.dex" />
+    <option name="AFTER_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/Child.dex" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/Child.dex" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/ChildListAdapter.dex" />
+    <option name="AFTER_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/ChildListAdapter.dex" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/ChildListAdapter.dex" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/ChildSelectActivity.dex" />
+    <option name="AFTER_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/ChildSelectActivity.dex" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/ChildSelectActivity.dex" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/Homepage$1.dex" />
+    <option name="AFTER_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/Homepage$1.dex" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/Homepage$1.dex" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/Homepage$2.dex" />
+    <option name="AFTER_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/Homepage$2.dex" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/Homepage$2.dex" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/Homepage$3.dex" />
+    <option name="AFTER_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/Homepage$3.dex" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/Homepage$3.dex" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/Homepage$4.dex" />
+    <option name="AFTER_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/Homepage$4.dex" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/Homepage$4.dex" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/Homepage$5.dex" />
+    <option name="AFTER_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/Homepage$5.dex" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/Homepage$5.dex" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/Homepage$6.dex" />
+    <option name="AFTER_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/Homepage$6.dex" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/Homepage$6.dex" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/Homepage$7.dex" />
+    <option name="AFTER_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/Homepage$7.dex" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/Homepage$7.dex" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/Homepage$8.dex" />
+    <option name="AFTER_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/Homepage$8.dex" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/Homepage$8.dex" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/Homepage$9.dex" />
+    <option name="AFTER_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/Homepage$9.dex" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/Homepage$9.dex" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/Homepage.dex" />
+    <option name="AFTER_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/Homepage.dex" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/Homepage.dex" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/ManageChildrenActivity.dex" />
+    <option name="AFTER_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/ManageChildrenActivity.dex" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/ManageChildrenActivity.dex" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/Records$1.dex" />
+    <option name="AFTER_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/Records$1.dex" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/Records$1.dex" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/Records$2.dex" />
+    <option name="AFTER_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/Records$2.dex" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/Records$2.dex" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/SignUpActivity$1.dex" />
+    <option name="AFTER_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/SignUpActivity$1.dex" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/SignUpActivity$1.dex" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/SignUpActivity$2.dex" />
+    <option name="AFTER_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/SignUpActivity$2.dex" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/SignUpActivity$2.dex" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/SignUpActivity.dex" />
+    <option name="AFTER_PATH" value="app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/myapplication/SignUpActivity.dex" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/SignUpActivity.dex" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin" />
+    <option name="AFTER_PATH" value="app/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/previous-compilation-data.bin" />
+  </binary>
+</changelist>

@@ -10,9 +10,10 @@
     <ImageButton
         android:id="@+id/child_image_button"
         android:layout_width="100dp"
-    android:layout_height="100dp"
-    android:src="@drawable/sample_child_pic"
-    android:scaleType="centerInside" />
+        android:layout_height="100dp"
+        android:src="@drawable/profile_picture"
+        android:scaleType="centerInside"
+        android:background="@android:color/transparent" />
 
     <TextView
         android:id="@+id/child_name"
@@ -20,9 +21,9 @@
         android:layout_height="wrap_content"
         android:text="Child Name"
         android:textSize="16sp"
-    android:textStyle="bold"
-    android:gravity="center"
-    android:layout_marginTop="6dp" />
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginTop="6dp" />
 
     <TextView
         android:id="@+id/child_age"
@@ -30,7 +31,7 @@
         android:layout_height="wrap_content"
         android:text="Age: 0"
         android:textSize="14sp"
-    android:gravity="center"
-    android:layout_marginTop="4dp" />
+        android:gravity="center"
+        android:layout_marginTop="4dp" />
 
 </LinearLayout>

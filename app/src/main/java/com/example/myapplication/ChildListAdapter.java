@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +41,8 @@ public class ChildListAdapter extends ArrayAdapter<Child> {
         CheckBox checkBox = convertView.findViewById(R.id.child_checkbox);
 
         // Update the UI with child's data
+        byte[] decodedString = Base64.decode(child.getProfilePicture(), Base64.DEFAULT);
+        profilePicture.setImageBitmap(BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length));
         childName.setText(child.getName());
         childAge.setText("Age: " + child.getAge());
 

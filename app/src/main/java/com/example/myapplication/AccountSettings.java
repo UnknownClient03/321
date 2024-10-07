@@ -142,7 +142,7 @@ public class AccountSettings extends AppCompatActivity {
         sqlConnection.disconnect();
     }
 
-    //load in and display the profile picture
+    // Load in and display the profile picture
     private void displayProfilePicture()
     {
         SQLConnection conn = new SQLConnection("user1", "");

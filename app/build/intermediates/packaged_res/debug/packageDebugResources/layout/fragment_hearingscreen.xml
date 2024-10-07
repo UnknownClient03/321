@@ -1,0 +1,731 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView_hearingscreen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:id="@+id/linearLayout_hearingscreen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/textView_hearingscreen_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Statewide Infant Screening – Hearing"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:paddingBottom="24dp" />
+
+        <!-- Name -->
+        <LinearLayout
+            android:id="@+id/layout_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:id="@+id/textView_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Name"
+                android:textSize="16sp"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="Enter name"
+                android:inputType="textPersonName"
+                android:enabled="false"
+                android:background="@android:color/transparent"/>
+        </LinearLayout>
+
+        <!-- Date of Birth -->
+        <LinearLayout
+            android:id="@+id/layout_dob"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:id="@+id/textView_dob"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Date of Birth"
+                android:textSize="16sp"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_dob"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="YYYY-MM-DD"
+                android:inputType="date"
+                android:enabled="false"
+                android:background="@android:color/transparent"/>
+        </LinearLayout>
+
+        <!-- Local Health District (Heading) -->
+        <TextView
+            android:id="@+id/textView_health_district_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Local Health District"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:paddingBottom="16dp" />
+
+        <!-- Screened at (Location) -->
+        <LinearLayout
+            android:id="@+id/layout_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:id="@+id/textView_location"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Location"
+                android:textSize="16sp"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_location"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="Enter screening location"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <!-- Screening Date -->
+        <LinearLayout
+            android:id="@+id/layout_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:id="@+id/textView_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Date"
+                android:textSize="16sp"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="YYYY-MM-DD"
+                android:inputType="date" />
+        </LinearLayout>
+
+        <!-- Screened by -->
+        <LinearLayout
+            android:id="@+id/layout_screenBy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:id="@+id/textView_screenBy"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Screened by"
+                android:textSize="16sp"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_screenBy"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="Enter name"
+                android:inputType="textPersonName" />
+        </LinearLayout>
+
+        <!-- Signature -->
+        <LinearLayout
+            android:id="@+id/layout_signature"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:id="@+id/textView_signature"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Signature"
+                android:textSize="16sp"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_signature"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="Enter signature"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <!-- Outcome (Heading) -->
+        <TextView
+            android:id="@+id/textView_outcome_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Outcome"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:paddingBottom="16dp" />
+
+        <!-- Outcome for RIGHT Ear -->
+        <LinearLayout
+            android:id="@+id/layout_right_outcome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:id="@+id/textView_right_outcome"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Outcome for RIGHT Ear"
+                android:textSize="16sp"
+                android:gravity="center_vertical" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup_right_outcome"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radio_right_pass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pass" />
+
+                <RadioButton
+                    android:id="@+id/radio_right_refer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Refer"
+                    android:layout_marginStart="16dp" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <!-- Outcome for LEFT Ear -->
+        <LinearLayout
+            android:id="@+id/layout_left_outcome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:id="@+id/textView_left_outcome"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Outcome for LEFT Ear"
+                android:textSize="16sp"
+                android:gravity="center_vertical" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup_left_outcome"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radio_left_pass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pass" />
+
+                <RadioButton
+                    android:id="@+id/radio_left_refer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Refer"
+                    android:layout_marginStart="16dp" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <!-- Direct Refer to Audiologist -->
+        <LinearLayout
+            android:id="@+id/layout_refer_audiologist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:id="@+id/textView_refer_audiologist"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Direct Refer to Audiologist"
+                android:textSize="16sp"
+                android:gravity="center_vertical" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup_refer_audiologist"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radio_refer_audiologist_yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Yes" />
+
+                <RadioButton
+                    android:id="@+id/radio_refer_audiologist_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No"
+                    android:layout_marginStart="16dp" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <!-- Reason for Referral (Visible only if 'Yes' is selected) -->
+        <LinearLayout
+            android:id="@+id/layout_referral_reason"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:id="@+id/textView_referral_reason_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Reason"
+                android:textSize="16sp"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:id="@+id/editText_referral_reason"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="Enter reason for referral"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <!-- Repeat Screen Required -->
+        <LinearLayout
+            android:id="@+id/layout_repeat_screen_required"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:id="@+id/textView_repeat_screen_required"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Repeat screen required"
+                android:textSize="16sp"
+                android:gravity="center_vertical" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup_repeat_screen_required"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radio_repeat_yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Yes" />
+
+                <RadioButton
+                    android:id="@+id/radio_repeat_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No"
+                    android:layout_marginStart="16dp" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <!-- Repeat Screen Section (Visible only if 'Yes' is selected) -->
+        <LinearLayout
+            android:id="@+id/layout_repeat_screen_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:paddingBottom="16dp">
+
+            <!-- Repeat Screen Heading -->
+            <TextView
+                android:id="@+id/textView_repeat_screen_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Repeat Screen"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:paddingBottom="16dp" />
+
+            <!-- Repeat Screened at (Location) -->
+            <LinearLayout
+                android:id="@+id/layout_repeat_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="16dp">
+
+                <TextView
+                    android:id="@+id/textView_repeat_location"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Repeat Location"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical" />
+
+                <EditText
+                    android:id="@+id/editText_repeat_location"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:hint="Enter repeat screening location"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <!-- Repeat Date -->
+            <LinearLayout
+                android:id="@+id/layout_repeat_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="16dp">
+
+                <TextView
+                    android:id="@+id/textView_repeat_date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Repeat Date"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical" />
+
+                <EditText
+                    android:id="@+id/editText_repeat_date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:hint="YYYY-MM-DD"
+                    android:inputType="date" />
+            </LinearLayout>
+
+            <!-- Repeat Screened by -->
+            <LinearLayout
+                android:id="@+id/layout_repeat_screenBy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="16dp">
+
+                <TextView
+                    android:id="@+id/textView_repeat_screenBy"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Repeat Screened by"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical" />
+
+                <EditText
+                    android:id="@+id/editText_repeat_screenBy"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:hint="Enter name"
+                    android:inputType="textPersonName" />
+            </LinearLayout>
+
+            <!-- Repeat Signature -->
+            <LinearLayout
+                android:id="@+id/layout_repeat_signature"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="16dp">
+
+                <TextView
+                    android:id="@+id/textView_repeat_signature"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Repeat Signature"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical" />
+
+                <EditText
+                    android:id="@+id/editText_repeat_signature"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:hint="Enter repeat signature"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <!-- Outcome for RIGHT Ear -->
+            <LinearLayout
+                android:id="@+id/layout_repeat_right_outcome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="16dp">
+
+                <TextView
+                    android:id="@+id/textView_repeat_right_outcome"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Outcome for RIGHT Ear"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroup_repeat_right_outcome"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radio_repeat_right_pass"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pass" />
+
+                    <RadioButton
+                        android:id="@+id/radio_repeat_right_refer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Refer"
+                        android:layout_marginStart="16dp" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <!-- Outcome for LEFT Ear -->
+            <LinearLayout
+                android:id="@+id/layout_repeat_left_outcome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="16dp">
+
+                <TextView
+                    android:id="@+id/textView_repeat_left_outcome"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Outcome for LEFT Ear"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroup_repeat_left_outcome"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radio_repeat_left_pass"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pass" />
+
+                    <RadioButton
+                        android:id="@+id/radio_repeat_left_refer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Refer"
+                        android:layout_marginStart="16dp" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <!-- Refer to Audiologist -->
+            <LinearLayout
+                android:id="@+id/layout_repeat_refer_audiologist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="16dp">
+
+                <TextView
+                    android:id="@+id/textView_repeat_refer_audiologist"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Refer to Audiologist"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroup_repeat_refer_audiologist"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radio_repeat_refer_audiologist_yes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Yes" />
+
+                    <RadioButton
+                        android:id="@+id/radio_repeat_refer_audiologist_no"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No"
+                        android:layout_marginStart="16dp" />
+                </RadioGroup>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Instruction Text -->
+        <TextView
+            android:id="@+id/textView_hearingscreen_instructions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SWISH aims to detect babies with significant hearing loss at an early age.\n\nHearing screening is outlined in the parent information brochure.\n\nWhy does my baby need a hearing screen?\n\nThere is a possibility that the hearing screening may not detect an existing hearing problem and/or that your child may develop a hearing problem later in life, even if the results of this screening test are normal. Please continue to check your baby’s milestones. Seek advice from your health professional if you have concerns about your child’s hearing at any age."
+            android:textSize="14sp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp" />
+
+        <!-- Hearing Risk Factor Identified -->
+        <LinearLayout
+            android:id="@+id/layout_hearing_risk_factor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:id="@+id/textView_hearing_risk_factor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Hearing risk factor identified"
+                android:textSize="16sp"
+                android:gravity="center_vertical" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup_hearing_risk_factor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radio_hearing_risk_yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Yes" />
+
+                <RadioButton
+                    android:id="@+id/radio_hearing_risk_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No"
+                    android:layout_marginStart="16dp" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <!-- Consultation Instruction (Visible only if 'Yes' is selected) -->
+        <LinearLayout
+            android:id="@+id/layout_consultation_instruction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:id="@+id/textView_consultation_instruction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="If Yes is ticked, please consult your health professional to arrange an age-appropriate hearing test at 10-12 months (corrected)."
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Coordinator Telephone -->
+        <LinearLayout
+            android:id="@+id/layout_coordinator_telephone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="24dp">
+
+            <TextView
+                android:id="@+id/textView_coordinator_telephone"
+                android:layout_width="0dp"
+                android:layout_height="54dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="Coordinator Telephone"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/editText_coordinator_telephone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="Enter telephone number"
+                android:inputType="phone" />
+        </LinearLayout>
+
+        <!-- Save Button -->
+        <Button
+            android:id="@+id/button_saveHearingscreen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:background="@drawable/button_3d"
+            android:elevation="12dp" />
+
+    </LinearLayout>
+</ScrollView>

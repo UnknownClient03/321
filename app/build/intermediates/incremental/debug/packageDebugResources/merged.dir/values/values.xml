@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="blood_group_options">
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>O+</item>
+        <item>O-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+    </string-array>
+    <string-array name="check_type_array">
+        <item>1-4 weeks</item>
+        <item>6-8 weeks</item>
+        <item>4 month</item>
+        <item>6 month</item>
+        <item>12 month</item>
+        <item>18 month</item>
+        <item>2 year</item>
+        <item>3 year</item>
+        <item>4 year</item>
+    </string-array>
+    <string-array name="child_status_options">
+        <item>normal</item>
+        <item>review</item>
+        <item>refer</item>
+    </string-array>
+    <string-array name="feeding_at_discharge_options">
+        <item>Breastfeeding</item>
+        <item>Formula Feeding</item>
+        <item>Mixed Feeding</item>
+    </string-array>
+    <string-array name="outcome_options">
+        <item>Normal</item>
+        <item>Review</item>
+        <item>Refer</item>
+    </string-array>
+    <string-array name="sex_options">
+        <item>M</item>
+        <item>F</item>
+    </string-array>
+    <string-array name="vitamin_k_given_options">
+        <item>injection</item>
+        <item>oral</item>
+    </string-array>
+    <string-array name="yes_no_options">
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+    <color name="black">#FF000000</color>
+    <color name="button_background">#2196F3</color>
+    <color name="button_text">#FFFFFF</color>
+    <color name="clear">#00000000</color>
+    <color name="disabled_text">#FF888888</color>
+    <color name="enabled_text">#FF000000</color>
+    <color name="ozbluelogo_background">#FFFFFF</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">OzBlue</string>
+    <string name="daisy_link">
+        Daisy’s First Day, a storybook about starting school featuring Australian animals:
+        <a href="https://education.nsw.gov.au/content/dam/maineducation/public-schools/going-to-a-public-school/media/documents/Daisys_First_Day_web.pdf">https://education.nsw.gov.au/Daisys_First_Day_web.pdf</a>
+    </string>
+    <string name="healthy_eating_text">
+        Healthy Eating and Active Living is a NSW Government website helping people in NSW to make simple changes that help them lead healthier lives. Find simple, practical tools and expert tips to help you and your family to start some healthy habits, including healthy recipes, lunchbox ideas and access to free programs.<br/><br/>Visit <a href="https://healthyliving.nsw.gov.au">healthyliving.nsw.gov.au</a> to find out more.
+    </string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login">Login</string>
+    <string name="practitioner_login">Practitioner Login</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="share_button">Share</string>
+    <string name="txt_Home">Practitioner\nLogin</string>
+    <string name="txt_LOGIN">LOGIN</string>
+    <string name="txt_Practitioner_login">Practitioner\nLogin</string>
+    <string name="txt_email">email</string>
+    <string name="txt_password">password</string>
+    <string name="txt_signUp">Sign Up</string>
+    <string name="user_login">User Login</string>
+    <style name="Base.Theme.MyApplication" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="CustomSpinnerStyle" parent="Widget.AppCompat.Spinner">
+        
+        <item name="android:padding">12dp</item>
+        
+        <item name="android:background">@drawable/spinner_background</item>
+        
+        <item name="android:popupBackground">@color/white</item>
+    </style>
+    <style name="Theme.MyApplication" parent="Base.Theme.MyApplication"/>
+</resources>

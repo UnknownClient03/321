@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+import android.util.Base64;
 
 import com.example.myapplication.Child;
 
@@ -46,8 +48,6 @@ public class ChildSelectActivity extends AppCompatActivity {
         // Make sure some buttons cannot be pressed yet
         Button buttonHome = findViewById(R.id.home_button);
         buttonHome.setEnabled(false);  // Disable the button
-        ImageButton buttonSettings = findViewById(R.id.settings_button);
-        buttonSettings.setEnabled(false);
         ImageButton buttonRecords = findViewById(R.id.records_button);
         buttonRecords.setEnabled(false);
         ImageButton buttonProgress = findViewById(R.id.progress_button);
@@ -69,7 +69,7 @@ public class ChildSelectActivity extends AppCompatActivity {
 
         SQLConnection sqlConnection = new SQLConnection("user1", "");
 
-        HashMap<String, String[]> result = sqlConnection.select("SELECT ID, fname, lname, DOB, sex FROM Child WHERE guardianID = " + guardianID);
+        HashMap<String, String[]> result = sqlConnection.select("SELECT ID, fname, lname, DOB, sex, profilePicture FROM Child WHERE guardianID = " + guardianID);
         sqlConnection.disconnect();
 
         if (result != null && result.get("ID") != null) {
@@ -78,6 +78,7 @@ public class ChildSelectActivity extends AppCompatActivity {
             String[] lnames = result.get("lname");
             String[] dobs = result.get("DOB");
             String[] sexes = result.get("sex");
+            String[] profilePictures = result.get("profilePicture");
 
             childrenList.clear();
             for (int i = 0; i < ids.length; i++) {
@@ -86,7 +87,8 @@ public class ChildSelectActivity extends AppCompatActivity {
                 String lname = lnames[i];
                 String dob = dobs[i];
                 String sex = sexes[i];
-                childrenList.add(new Child(id, fname, lname, dob, sex));
+                String profilePicture = profilePictures[i];
+                childrenList.add(new Child(id, fname, lname, dob, sex, profilePicture));
                 Log.d("ChildSelectActivity", "Added child: ID=" + id + ", Name=" + fname + " " + lname + ", DOB=" + dob + ", Sex=" + sex);
             }
         } else {
@@ -102,6 +104,8 @@ public class ChildSelectActivity extends AppCompatActivity {
             TextView childAge = childView.findViewById(R.id.child_age);
             ImageButton childButton = childView.findViewById(R.id.child_image_button);
 
+            byte[] decodedString = Base64.decode(child.getProfilePicture(), Base64.DEFAULT);
+            childButton.setImageBitmap(BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length));
             childName.setText(child.getName());
             childAge.setText("Age: " + child.getAge());
 

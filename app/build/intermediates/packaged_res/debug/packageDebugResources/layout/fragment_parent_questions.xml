@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <EditText
+            android:id="@+id/dob_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Child's Date of Birth (yyyy-MM-dd)"
+            android:inputType="date" />
+
+        <EditText
+            android:id="@+id/fname_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Child's First Name"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/lname_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Child's Last Name"
+            android:inputType="textPersonName" />
+
+        <Spinner
+            android:id="@+id/sex_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/sex_options" />
+
+        <EditText
+            android:id="@+id/parents_notes_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Notes from Parents"
+            android:inputType="textMultiLine" />
+
+        <!-- This LinearLayout will hold the dynamically added questions for parents -->
+        <LinearLayout
+            android:id="@+id/parent_question_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp" />
+
+        <Button
+            android:id="@+id/submit_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit" />
+
+    </LinearLayout>
+</ScrollView>

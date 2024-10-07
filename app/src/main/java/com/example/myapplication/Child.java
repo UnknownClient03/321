@@ -10,13 +10,15 @@ public class Child {
     private String lname;
     private String dob;
     private String sex;
+    private String profilePicture;
 
-    public Child(int id, String fname, String lname, String dob, String sex) {
+    public Child(int id, String fname, String lname, String dob, String sex, String profilePicture) {
         this.id = id;
         this.fname = fname;
         this.lname = lname;
         this.dob = dob;
         this.sex = sex;
+        this.profilePicture = profilePicture;
     }
 
     // Getter and Setter methods for ID
@@ -67,6 +69,8 @@ public class Child {
     public String getName() {
         return fname + " " + lname;
     }
+
+    public String getProfilePicture() { return profilePicture; }
 
     // Method to calculate age from DOB
     public int getAge() {

@@ -26,8 +26,12 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class Homepage extends AppCompatActivity {
+
     LoginManager manager;
     private CameraActivity cameraDialog;
+
+    private int guardianID;
+    private ImageView profilePicture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,31 +44,23 @@ public class Homepage extends AppCompatActivity {
             return insets;
         });
 
+        // Fetch guardian ID from the intent and display profile picture
+        guardianID = getIntent().getIntExtra("guardianID", 0);
+        profilePicture = (ImageView) findViewById(R.id.profile_image_view);
+        displayProfilePicture();
+
         cameraDialog = new CameraActivity(this);
-        
+
         Bundle extras = getIntent().getExtras();
         if (extras != null) manager = new LoginManager(extras.getInt("guardianID"), extras.getInt("childID"));
+
+        // Make sure some buttons cannot be pressed yet
+        Button buttonHome = findViewById(R.id.home_button);
+        buttonHome.setEnabled(false);  // Disable the button
+
         NavBarManager.setNavBarButtons(Homepage.this, manager);
 
-        ImageView profileImageView = (ImageView) findViewById(R.id.profile_image_view);
         SQLConnection conn = new SQLConnection("user1", "");
-        if(conn.isConn())
-        {
-            String query = "SELECT profilePicture from Guardian WHERE ID = ?;";
-            HashMap<String, String[]> result = conn.select(query, new String[]{String.valueOf(manager.guardianID)}, new char[]{'i'});
-            // Get the profile picture byte array
-            byte[] imageBytes = result.get("profilePicture") != null ? result.get("profilePicture")[0].getBytes() : null;
-            // Decode the byte array to a Bitmap
-            if (imageBytes != null) {
-                Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
-                // Set the Bitmap to the ImageView
-                profileImageView.setImageBitmap(bitmap);
-            } else {
-                // Handle the case where there is no profile picture (optional)
-                profileImageView.setImageResource(R.drawable.sample_guardian_pic); // Set a default image
-            }
-        }
-
         TextView textView = (TextView)findViewById(R.id.textView_homepage_name);
         if(conn.isConn())
         {
@@ -170,7 +166,7 @@ public class Homepage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        
+
         // Setting up the Info for Parents button
         Button buttonInfoForParents = findViewById(R.id.button_info_for_parents);
         buttonInfoForParents.setOnClickListener(new View.OnClickListener() {
@@ -241,7 +237,7 @@ public class Homepage extends AppCompatActivity {
         });
 
     }
-    
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -255,6 +251,20 @@ public class Homepage extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Failed to take photo", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    // Load in and display the profile picture
+    private void displayProfilePicture()
+    {
+        SQLConnection conn = new SQLConnection("user1", "");
+        String query = "SELECT profilePicture FROM Guardian WHERE ID = ?;";
+        String[] params = { String.valueOf(guardianID) };
+        char[] paramTypes = { 'i' };
+        HashMap<String, String[]> result = conn.select(query, params, paramTypes);
+        String str = result.get("profilePicture")[0];
+        if(str == null) return;
+        Bitmap bitmap = CaptureImage.convertString(str);
+        profilePicture.setImageBitmap(bitmap);
     }
 
     private void sharePhotoToSocialMedia(Bitmap photo) {

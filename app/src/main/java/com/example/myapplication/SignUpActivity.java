@@ -45,7 +45,7 @@ public class SignUpActivity extends AppCompatActivity {
         showPasswordCheckbox = findViewById(R.id.show_password_checkbox);
         showConfirmPasswordCheckbox = findViewById(R.id.show_confirm_password_checkbox);
 
-        //requests permission for application to use camera
+        // Requests permission for application to use camera
         CaptureImage.checkPermissions(SignUpActivity.this, SignUpActivity.this);
         imageCapturer = new CaptureImage(profilePicture, this);
 
@@ -53,8 +53,6 @@ public class SignUpActivity extends AppCompatActivity {
         uploadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Here, you would typically invoke an intent to pick an image from the gallery
-                Toast.makeText(SignUpActivity.this, "Upload Button Clicked", Toast.LENGTH_SHORT).show();
                 // Allows the user to take picture and saves the thumbnail as the profile picture
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 imageCapturer.activityResultLauncher.launch(intent);
@@ -65,7 +63,7 @@ public class SignUpActivity extends AppCompatActivity {
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validateInputs() && registeruser()) {
+                if (validateInputs() && registerUser()) {
                     Toast.makeText(SignUpActivity.this, "Sign Up Successful", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(SignUpActivity.this, UserLoginActivity.class);
                     startActivity(intent);
@@ -143,10 +141,10 @@ public class SignUpActivity extends AppCompatActivity {
         }
 
         return true;
-//test
+
     }
 
-    private boolean registeruser()
+    private boolean registerUser()
     {
         SQLConnection conn = new SQLConnection("user1", "");
         if(!conn.isConn()) return false;
