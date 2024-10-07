@@ -92,16 +92,28 @@ public class UsefulContactsChange extends Fragment {
                 EditText unit = (EditText)layout.findViewById(R.id.input_usefulContact_unit);
                 EditText postcode = (EditText)layout.findViewById(R.id.input_usefulContact_postcode);
 
-                if(result.get("phoneNumber").length == 0) return;
-
-                phone.setText(result.get("phoneNumber")[0]);
-                email.setText(result.get("email")[0]);
-                country.setText(result.get("Country")[0]);
-                city.setText(result.get("City")[0]);
-                street.setText(result.get("Street")[0]);
-                streetNumber.setText(result.get("StreetNumber")[0]);
-                unit.setText(result.get("unit")[0]);
-                postcode.setText(result.get("postcode")[0]);
+                if(result.get("phoneNumber").length == 0)
+                {
+                    phone.setText("");
+                    email.setText("");
+                    country.setText("");
+                    city.setText("");
+                    street.setText("");
+                    streetNumber.setText("");
+                    unit.setText("");
+                    postcode.setText("");
+                }
+                else
+                {
+                    phone.setText(result.get("phoneNumber")[0]);
+                    email.setText(result.get("email")[0]);
+                    country.setText(result.get("Country")[0]);
+                    city.setText(result.get("City")[0]);
+                    street.setText(result.get("Street")[0]);
+                    streetNumber.setText(result.get("StreetNumber")[0]);
+                    unit.setText(result.get("unit")[0]);
+                    postcode.setText(result.get("postcode")[0]);
+                }
 
             }
         });
