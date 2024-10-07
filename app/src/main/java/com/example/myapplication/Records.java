@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +30,11 @@ public class Records extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) manager = new LoginManager(extras.getInt("guardianID"), extras.getInt("childID"));
+
+        // Make sure some buttons cannot be pressed yet
+        ImageButton buttonRecords = findViewById(R.id.records_button);
+        buttonRecords.setEnabled(false);  // Disable the button
+
         NavBarManager.setNavBarButtons(Records.this, manager);
 
         Button button = findViewById(R.id.button_myRecords_1);
@@ -44,7 +50,6 @@ public class Records extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
         button = findViewById(R.id.button_myRecords_2);
         button.setOnClickListener(new View.OnClickListener() {

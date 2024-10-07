@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -116,6 +117,9 @@ public class AccountSettings extends AppCompatActivity {
             // Move cursor to the end of the text
             editTextNewPassword.setSelection(editTextNewPassword.getText().length());
         });
+
+        ImageButton buttonSettings = findViewById(R.id.settings_button);
+        buttonSettings.setEnabled(false);  // Disable the button
 
         Bundle extras = getIntent().getExtras();
         NavBarManager.setNavBarButtons(AccountSettings.this, new LoginManager(extras.getInt("guardianID"), extras.getInt("childID")));

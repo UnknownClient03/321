@@ -11,6 +11,7 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -106,6 +107,16 @@ public class AddChildActivity extends AppCompatActivity {
 
         // Set up click listener for child's profile picture
         selectImageButton.setOnClickListener(v -> showImagePickerDialog());
+
+        // Make sure some buttons cannot be pressed yet
+        Button buttonHome = findViewById(R.id.home_button);
+        buttonHome.setEnabled(false);  // Disable the button
+        ImageButton buttonSettings = findViewById(R.id.settings_button);
+        buttonSettings.setEnabled(false);
+        ImageButton buttonRecords = findViewById(R.id.records_button);
+        buttonRecords.setEnabled(false);
+        ImageButton buttonProgress = findViewById(R.id.progress_button);
+        buttonProgress.setEnabled(false);
 
         Bundle extras = getIntent().getExtras();
         NavBarManager.setNavBarButtons(AddChildActivity.this, new LoginManager(guardianID, 0));
