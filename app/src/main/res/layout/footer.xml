@@ -47,7 +47,7 @@
             android:padding="8dp"
             android:rotationX="180"
             android:scaleType="fitXY"
-            android:src="@drawable/progressimg" />
+            android:src="@drawable/appbevel" />
 
         <ImageButton
             android:id="@+id/logout_button"
