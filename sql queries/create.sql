@@ -429,3 +429,102 @@ CREATE TABLE Appointments (
 	PRIMARY KEY(appointment_id),
 	FOREIGN KEY (childID) REFERENCES Child(ID)
 );
+
+CREATE TABLE Practitioner(
+	ID int not null,
+	fname varchar(31),
+	lname varchar(31),
+	name varchar(31) not null,
+	phoneNumber bigint,
+	email varchar(63) not null,
+	Country varchar(31) not null,
+	City varchar(31) not null,
+	Street varchar(31) not null,
+	StreetNumber int not null,
+	unit CHAR,
+	postcode int not null,
+	PRIMARY KEY(ID),
+	UNIQUE(email)
+);
+
+CREATE TABLE PractitionerAccountDetails(
+	practitionerID int not null,
+	Hashpassword varchar(64) not null,
+	salt varchar(16) not null,
+	pepper varchar(16) not null,
+	PRIMARY KEY (practitionerID),
+	FOREIGN KEY (practitionerID) REFERENCES Practitioner(ID)
+);
+
+CREATE TABLE PractitionerGuardianID(
+	practitionerID int not null,
+	GuardianID int not null,
+	PRIMARY KEY (GuardianID, practitionerID),
+	FOREIGN KEY (practitionerID) REFERENCES Practitioner(ID),
+	FOREIGN KEY (GuardianID) REFERENCES Guardian(ID)
+);
+
+
+--Triggers
+GO
+CREATE TRIGGER createPractitioner ON UsefulContact AFTER INSERT, UPDATE AS
+BEGIN
+	DECLARE @email varchar(63)
+	DECLARE @ID int
+	SET @email = (SELECT DISTINCT UsefulContact.email FROM UsefulContact LEFT JOIN Practitioner ON Practitioner.email = UsefulContact.email WHERE Practitioner.ID IS NULL AND UsefulContact.email IS NOT NULL)
+	SET @ID = ISNULL((SELECT MIN(ID) + 1 as maxID FROM Practitioner WHERE ID + 1 NOT IN (SELECT ID FROM Practitioner)), 0)
+	IF @email IS NOT NULL
+	BEGIN
+		INSERT INTO Practitioner SELECT @ID, NULL, NULL, name, phoneNumber, email, Country, City, Street, StreetNumber, unit, postcode FROM UsefulContact WHERE email = @email
+		DECLARE @password varchar(31), @salt varchar(16), @pepper varchar(16), @hashpassword varchar(64)
+		SET @password = CONCAT((SELECT SUBSTRING(Country, 1, 1) FROM Practitioner WHERE ID = 0),
+								(SELECT SUBSTRING(City, 1, 1) FROM Practitioner WHERE ID = 0),
+								(SELECT SUBSTRING(Street, 1, 1) FROM Practitioner WHERE ID = 0),
+								(SELECT SUBSTRING(CAST(StreetNumber as varchar), 1, 1) FROM Practitioner WHERE ID = 0),
+								(SELECT SUBSTRING(CAST(postcode as varchar), 1, 1) FROM Practitioner WHERE ID = 0))
+		
+		DECLARE @Length int, @CharPool varchar(70), @PoolLength int, @LoopCount int
+		SET @Length = 16
+		SET @CharPool = 'abcdefghijkmnopqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ23456789.,-_!$@#%^&*'
+		SET @PoolLength = Len(@CharPool)
+
+		SET @LoopCount = 0
+		SET @salt = ''
+		WHILE (@LoopCount < @Length)
+		BEGIN
+			SELECT @salt = @salt + SUBSTRING(@Charpool, CONVERT(int, RAND() * @PoolLength) + 1, 1)
+			SELECT @LoopCount = @LoopCount + 1
+		END
+
+		SET @LoopCount = 0
+		SET @pepper = ''
+		WHILE (@LoopCount < @Length)
+		BEGIN
+			SELECT @pepper = @pepper + SUBSTRING(@Charpool, CONVERT(int, RAND() * @PoolLength) + 1, 1)
+			SELECT @LoopCount = @LoopCount + 1
+		END
+
+		SET @hashpassword = SUBSTRING(master.dbo.fn_varbintohexstr(HashBytes('SHA2_256',CONCAT(@salt, @password, @pepper))), 3, 64)
+		INSERT INTO PractitionerAccountDetails VALUES (0, @hashpassword, @salt, @pepper)
+	END
+	INSERT INTO PractitionerGuardianID
+		SELECT DISTINCT Practitioner.ID, UsefulContact.guardianID FROM UsefulContact
+		LEFT JOIN Practitioner ON Practitioner.email = UsefulContact.email
+		LEFT JOIN PractitionerGuardianID ON PractitionerGuardianID.practitionerID = Practitioner.ID AND PractitionerGuardianID.GuardianID = UsefulContact.guardianID
+		WHERE PractitionerGuardianID.practitionerID IS NULL AND Practitioner.ID IS NOT NULL
+END
+GO
+CREATE TRIGGER removePractitioner ON UsefulContact AFTER UPDATE AS
+BEGIN
+	DELETE FROM PractitionerGuardianID WHERE NOT EXISTS (
+		SELECT * FROM UsefulContact
+			LEFT JOIN Practitioner ON Practitioner.email = UsefulContact.email
+			WHERE PractitionerGuardianID.practitionerID = Practitioner.ID AND PractitionerGuardianID.GuardianID = UsefulContact.guardianID
+	)
+	DELETE FROM PractitionerAccountDetails WHERE NOT EXISTS(
+		SELECT * FROM PractitionerGuardianID WHERE PractitionerAccountDetails.practitionerID = PractitionerGuardianID.practitionerID
+	)
+	DELETE FROM Practitioner WHERE NOT EXISTS(
+		SELECT * FROM PractitionerGuardianID WHERE Practitioner.ID = PractitionerGuardianID.practitionerID
+	)
+END
