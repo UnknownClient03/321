@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView_check"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
 
     <LinearLayout
+        android:id="@+id/linearLayout_check"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -13,6 +15,7 @@
 
         <!-- Health Assessment Section -->
         <TextView
+            android:id="@+id/textView_healthAssessment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Health Assessment"
@@ -20,30 +23,60 @@
             android:textSize="18sp"
             android:paddingBottom="8dp" />
 
-        <!-- General Measurements Section -->
-        <EditText
-            android:id="@+id/weight_input"
+        <!-- Weight Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_weight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Weight (g)"
-            android:inputType="numberDecimal"
-            android:paddingBottom="8dp" />
+            android:paddingBottom="8dp">
 
-        <EditText
-            android:id="@+id/length_input"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/weight_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Length/Height Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_length"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Length/Height (cm)"
-            android:inputType="numberDecimal"
-            android:paddingBottom="8dp" />
+            android:paddingBottom="8dp">
 
-        <EditText
-            android:id="@+id/head_circ_input"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/length_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Head Circumference Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_headCircumference"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Head Circumference (cm)"
-            android:inputType="numberDecimal"
-            android:paddingBottom="16dp" />
+            android:paddingBottom="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/head_circ_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Outcome Label -->
+        <TextView
+            android:id="@+id/textView_outcomeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Outcome"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:paddingBottom="4dp" />
 
         <!-- Outcome Spinner -->
         <Spinner
@@ -51,6 +84,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:entries="@array/outcome_options"
+            android:padding="12dp"
+            android:spinnerMode="dropdown"
+            android:dropDownWidth="match_parent"
             android:paddingBottom="16dp" />
 
         <!-- Health Information Discussed Checkbox -->
@@ -61,8 +97,60 @@
             android:text="Appropriate health information discussed?"
             android:paddingBottom="16dp" />
 
-        <!-- Specific Checks Section (RecyclerView) -->
+        <!-- Protective Factors Section -->
         <TextView
+            android:id="@+id/textView_protectiveFactors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Protective Factors"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp" />
+
+        <!-- Immunisation Up To Date Checkbox -->
+        <CheckBox
+            android:id="@+id/immunisation_up_to_date_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Immunisation Up To Date?"
+            android:paddingBottom="8dp" />
+
+        <!-- Hearing Checkbox -->
+        <CheckBox
+            android:id="@+id/hearing_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hearing Normal?"
+            android:paddingBottom="8dp" />
+
+        <!-- Vision Checkbox -->
+        <CheckBox
+            android:id="@+id/vision_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vision Normal?"
+            android:paddingBottom="8dp" />
+
+        <!-- Hips Checkbox -->
+        <CheckBox
+            android:id="@+id/hips_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hips Function Normally?"
+            android:paddingBottom="8dp" />
+
+        <!-- Oral Health Checkbox -->
+        <CheckBox
+            android:id="@+id/oral_health_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Oral Health Normal?"
+            android:paddingBottom="16dp" />
+
+        <!-- Specific Checks Section -->
+        <TextView
+            android:id="@+id/textView_specificChecks"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Specific Checks"
@@ -75,74 +163,146 @@
             android:id="@+id/checks_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"/>
+            android:orientation="vertical" />
 
-        <!-- Comments and Outcome Section -->
+        <!-- Comments and Action Taken Section -->
         <TextView
+            android:id="@+id/textView_commentsAction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Outcome"
+            android:text="Comments and Action Taken"
             android:textStyle="bold"
             android:textSize="18sp"
+            android:paddingTop="16dp"
             android:paddingBottom="8dp" />
 
-        <EditText
-            android:id="@+id/comments_input"
+        <!-- Comments Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_comments"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Comments"
-            android:inputType="textMultiLine"
-            android:lines="3"
-            android:paddingBottom="8dp" />
+            android:paddingBottom="8dp">
 
-        <EditText
-            android:id="@+id/action_taken_input"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/comments_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:lines="3" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Action Taken Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_actionTaken"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Action Taken"
-            android:inputType="textMultiLine"
-            android:lines="3"
-            android:paddingBottom="8dp" />
+            android:paddingBottom="8dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/action_taken_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:lines="3" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Doctor/Nurse Details Section -->
-        <EditText
-            android:id="@+id/doctor_name_input"
+        <TextView
+            android:id="@+id/textView_doctorNurseDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Doctor/Nurse Details"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp" />
+
+        <!-- Name of Doctor or Nurse Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_doctorName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Name of Doctor or Nurse"
-            android:inputType="textPersonName"
-            android:paddingBottom="8dp" />
+            android:paddingBottom="8dp">
 
-        <EditText
-            android:id="@+id/signature_input"
-            android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/doctor_name_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Signature Label -->
+        <TextView
+            android:id="@+id/textView_signatureLabel"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Signature"
-            android:inputType="textPersonName"
+            android:text="Signature"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:paddingBottom="4dp" />
+
+        <!-- Signature Pad -->
+        <FrameLayout
+            android:id="@+id/signature_container"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:padding="1dp"
+            android:background="@android:color/darker_gray">
+
+        </FrameLayout>
+
+        <!-- Signature Error TextView -->
+        <TextView
+            android:id="@+id/signature_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_red_dark"
+            android:visibility="gone"
+            android:text="Signature is required."
             android:paddingBottom="8dp" />
 
-        <EditText
-            android:id="@+id/venue_input"
+        <!-- Venue Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_venue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Venue"
-            android:inputType="text"
-            android:paddingBottom="8dp" />
+            android:paddingBottom="8dp">
 
-        <EditText
-            android:id="@+id/date_input"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/venue_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Date of Check Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Date of Check (yyyy-MM-dd)"
-            android:inputType="date"
-            android:paddingBottom="16dp" />
+            android:paddingBottom="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/date_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="date" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Submit Button -->
         <Button
             android:id="@+id/submit_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Submit Check" />
+            android:text="Submit"
+            android:layout_marginTop="24dp" />
 
     </LinearLayout>
 </ScrollView>
