@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Updated fragment_hearingscreen.xml -->
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/scrollView_hearingscreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:padding="16dp">
+    android:fillViewport="true">
 
     <LinearLayout
         android:id="@+id/linearLayout_hearingscreen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <!-- Title -->
         <TextView
@@ -22,61 +25,51 @@
             android:textSize="20sp"
             android:paddingBottom="24dp" />
 
+        <!-- Child's Details Section -->
+        <TextView
+            android:id="@+id/textView_childDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Child's Details"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:paddingBottom="8dp" />
+
         <!-- Name -->
-        <LinearLayout
-            android:id="@+id/layout_name"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingBottom="16dp">
+            android:hint="Name"
+            android:paddingBottom="8dp">
 
-            <TextView
-                android:id="@+id/textView_name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Name"
-                android:textSize="16sp"
-                android:gravity="center_vertical" />
-
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editText_name"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:hint="Enter name"
-                android:inputType="textPersonName"
                 android:enabled="false"
-                android:background="@android:color/transparent"/>
-        </LinearLayout>
+                android:focusable="false"
+                android:inputType="textPersonName"
+                android:background="@android:color/transparent" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Date of Birth -->
-        <LinearLayout
-            android:id="@+id/layout_dob"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_dob"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingBottom="16dp">
+            android:hint="Date of Birth"
+            android:paddingBottom="8dp">
 
-            <TextView
-                android:id="@+id/textView_dob"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Date of Birth"
-                android:textSize="16sp"
-                android:gravity="center_vertical" />
-
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editText_dob"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:hint="YYYY-MM-DD"
-                android:inputType="date"
                 android:enabled="false"
-                android:background="@android:color/transparent"/>
-        </LinearLayout>
+                android:focusable="false"
+                android:inputType="date"
+                android:background="@android:color/transparent" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Local Health District (Heading) -->
         <TextView
@@ -86,111 +79,89 @@
             android:text="Local Health District"
             android:textStyle="bold"
             android:textSize="18sp"
-            android:paddingBottom="16dp" />
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp" />
 
         <!-- Screened at (Location) -->
-        <LinearLayout
-            android:id="@+id/layout_location"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingBottom="16dp">
+            android:hint="Location"
+            android:paddingBottom="8dp">
 
-            <TextView
-                android:id="@+id/textView_location"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Location"
-                android:textSize="16sp"
-                android:gravity="center_vertical" />
-
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editText_location"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:hint="Enter screening location"
                 android:inputType="text" />
-        </LinearLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Screening Date -->
-        <LinearLayout
-            android:id="@+id/layout_date"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingBottom="16dp">
+            android:hint="Date"
+            android:paddingBottom="8dp">
 
-            <TextView
-                android:id="@+id/textView_date"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Date"
-                android:textSize="16sp"
-                android:gravity="center_vertical" />
-
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editText_date"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:hint="YYYY-MM-DD"
-                android:inputType="date" />
-        </LinearLayout>
+                android:inputType="date"
+                android:focusable="false"
+                android:clickable="true" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Screened by -->
-        <LinearLayout
-            android:id="@+id/layout_screenBy"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_screenBy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingBottom="16dp">
+            android:hint="Screened by"
+            android:paddingBottom="8dp">
 
-            <TextView
-                android:id="@+id/textView_screenBy"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Screened by"
-                android:textSize="16sp"
-                android:gravity="center_vertical" />
-
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editText_screenBy"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:hint="Enter name"
                 android:inputType="textPersonName" />
-        </LinearLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Signature -->
-        <LinearLayout
-            android:id="@+id/layout_signature"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView_signatureLabel"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingBottom="16dp">
+            android:text="Signature"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:paddingBottom="4dp" />
 
-            <TextView
-                android:id="@+id/textView_signature"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Signature"
-                android:textSize="16sp"
-                android:gravity="center_vertical" />
+        <!-- Signature Pad -->
+        <FrameLayout
+            android:id="@+id/signatureContainer"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@android:color/white"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:padding="1dp"
+            android:backgroundTint="@android:color/darker_gray"
+            android:foregroundGravity="center">
 
-            <EditText
-                android:id="@+id/editText_signature"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:hint="Enter signature"
-                android:inputType="text" />
-        </LinearLayout>
+        </FrameLayout>
+
+        <!-- Signature Error TextView -->
+        <TextView
+            android:id="@+id/signatureError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_red_dark"
+            android:visibility="gone"
+            android:text="Signature is required."
+            android:paddingBottom="8dp" />
 
         <!-- Outcome (Heading) -->
         <TextView
@@ -200,190 +171,129 @@
             android:text="Outcome"
             android:textStyle="bold"
             android:textSize="18sp"
-            android:paddingBottom="16dp" />
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp" />
 
         <!-- Outcome for RIGHT Ear -->
-        <LinearLayout
-            android:id="@+id/layout_right_outcome"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView_right_outcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Outcome for RIGHT Ear"
+            android:textSize="16sp"
+            android:paddingBottom="4dp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup_right_outcome"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingBottom="16dp">
+            android:paddingBottom="8dp">
 
-            <TextView
-                android:id="@+id/textView_right_outcome"
-                android:layout_width="0dp"
+            <RadioButton
+                android:id="@+id/radio_right_pass"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Outcome for RIGHT Ear"
-                android:textSize="16sp"
-                android:gravity="center_vertical" />
+                android:text="Pass" />
 
-            <RadioGroup
-                android:id="@+id/radioGroup_right_outcome"
-                android:layout_width="0dp"
+            <RadioButton
+                android:id="@+id/radio_right_refer"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/radio_right_pass"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Pass" />
-
-                <RadioButton
-                    android:id="@+id/radio_right_refer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Refer"
-                    android:layout_marginStart="16dp" />
-            </RadioGroup>
-        </LinearLayout>
+                android:text="Refer"
+                android:layout_marginStart="16dp" />
+        </RadioGroup>
 
         <!-- Outcome for LEFT Ear -->
-        <LinearLayout
-            android:id="@+id/layout_left_outcome"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView_left_outcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Outcome for LEFT Ear"
+            android:textSize="16sp"
+            android:paddingBottom="4dp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup_left_outcome"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingBottom="16dp">
+            android:paddingBottom="8dp">
 
-            <TextView
-                android:id="@+id/textView_left_outcome"
-                android:layout_width="0dp"
+            <RadioButton
+                android:id="@+id/radio_left_pass"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Outcome for LEFT Ear"
-                android:textSize="16sp"
-                android:gravity="center_vertical" />
+                android:text="Pass" />
 
-            <RadioGroup
-                android:id="@+id/radioGroup_left_outcome"
-                android:layout_width="0dp"
+            <RadioButton
+                android:id="@+id/radio_left_refer"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/radio_left_pass"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Pass" />
-
-                <RadioButton
-                    android:id="@+id/radio_left_refer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Refer"
-                    android:layout_marginStart="16dp" />
-            </RadioGroup>
-        </LinearLayout>
+                android:text="Refer"
+                android:layout_marginStart="16dp" />
+        </RadioGroup>
 
         <!-- Direct Refer to Audiologist -->
-        <LinearLayout
-            android:id="@+id/layout_refer_audiologist"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView_refer_audiologist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Direct Refer to Audiologist"
+            android:textSize="16sp"
+            android:paddingBottom="4dp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup_refer_audiologist"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingBottom="16dp">
+            android:paddingBottom="8dp">
 
-            <TextView
-                android:id="@+id/textView_refer_audiologist"
-                android:layout_width="0dp"
+            <RadioButton
+                android:id="@+id/radio_refer_audiologist_yes"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Direct Refer to Audiologist"
-                android:textSize="16sp"
-                android:gravity="center_vertical" />
+                android:text="Yes" />
 
-            <RadioGroup
-                android:id="@+id/radioGroup_refer_audiologist"
-                android:layout_width="0dp"
+            <RadioButton
+                android:id="@+id/radio_refer_audiologist_no"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/radio_refer_audiologist_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Yes" />
-
-                <RadioButton
-                    android:id="@+id/radio_refer_audiologist_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="No"
-                    android:layout_marginStart="16dp" />
-            </RadioGroup>
-        </LinearLayout>
-
-        <!-- Reason for Referral (Visible only if 'Yes' is selected) -->
-        <LinearLayout
-            android:id="@+id/layout_referral_reason"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:visibility="gone"
-            android:paddingBottom="16dp">
-
-            <TextView
-                android:id="@+id/textView_referral_reason_label"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Reason"
-                android:textSize="16sp"
-                android:gravity="center_vertical" />
-
-            <EditText
-                android:id="@+id/editText_referral_reason"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:hint="Enter reason for referral"
-                android:inputType="text" />
-        </LinearLayout>
+                android:text="No"
+                android:layout_marginStart="16dp" />
+        </RadioGroup>
 
         <!-- Repeat Screen Required -->
-        <LinearLayout
-            android:id="@+id/layout_repeat_screen_required"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView_repeat_screen_required"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Repeat screen required"
+            android:textSize="16sp"
+            android:paddingTop="16dp"
+            android:paddingBottom="4dp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup_repeat_screen_required"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingBottom="16dp">
+            android:paddingBottom="8dp">
 
-            <TextView
-                android:id="@+id/textView_repeat_screen_required"
-                android:layout_width="0dp"
+            <RadioButton
+                android:id="@+id/radio_repeat_yes"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Repeat screen required"
-                android:textSize="16sp"
-                android:gravity="center_vertical" />
+                android:text="Yes" />
 
-            <RadioGroup
-                android:id="@+id/radioGroup_repeat_screen_required"
-                android:layout_width="0dp"
+            <RadioButton
+                android:id="@+id/radio_repeat_no"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/radio_repeat_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Yes" />
-
-                <RadioButton
-                    android:id="@+id/radio_repeat_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="No"
-                    android:layout_marginStart="16dp" />
-            </RadioGroup>
-        </LinearLayout>
+                android:text="No"
+                android:layout_marginStart="16dp" />
+        </RadioGroup>
 
         <!-- Repeat Screen Section (Visible only if 'Yes' is selected) -->
         <LinearLayout
@@ -391,8 +301,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:visibility="gone"
-            android:paddingBottom="16dp">
+            android:visibility="gone">
 
             <!-- Repeat Screen Heading -->
             <TextView
@@ -402,228 +311,179 @@
                 android:text="Repeat Screen"
                 android:textStyle="bold"
                 android:textSize="18sp"
-                android:paddingBottom="16dp" />
+                android:paddingTop="16dp"
+                android:paddingBottom="8dp" />
 
             <!-- Repeat Screened at (Location) -->
-            <LinearLayout
-                android:id="@+id/layout_repeat_location"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_repeat_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingBottom="16dp">
+                android:hint="Repeat Location"
+                android:paddingBottom="8dp">
 
-                <TextView
-                    android:id="@+id/textView_repeat_location"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Repeat Location"
-                    android:textSize="16sp"
-                    android:gravity="center_vertical" />
-
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editText_repeat_location"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:hint="Enter repeat screening location"
                     android:inputType="text" />
-            </LinearLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Repeat Date -->
-            <LinearLayout
-                android:id="@+id/layout_repeat_date"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_repeat_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingBottom="16dp">
+                android:hint="Repeat Date"
+                android:paddingBottom="8dp">
 
-                <TextView
-                    android:id="@+id/textView_repeat_date"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Repeat Date"
-                    android:textSize="16sp"
-                    android:gravity="center_vertical" />
-
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editText_repeat_date"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:hint="YYYY-MM-DD"
-                    android:inputType="date" />
-            </LinearLayout>
+                    android:inputType="date"
+                    android:focusable="false"
+                    android:clickable="true" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Repeat Screened by -->
-            <LinearLayout
-                android:id="@+id/layout_repeat_screenBy"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_repeat_screenBy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingBottom="16dp">
+                android:hint="Repeat Screened by"
+                android:paddingBottom="8dp">
 
-                <TextView
-                    android:id="@+id/textView_repeat_screenBy"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Repeat Screened by"
-                    android:textSize="16sp"
-                    android:gravity="center_vertical" />
-
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editText_repeat_screenBy"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:hint="Enter name"
                     android:inputType="textPersonName" />
-            </LinearLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Repeat Signature -->
-            <LinearLayout
-                android:id="@+id/layout_repeat_signature"
+            <!-- Repeat Signature Label -->
+            <TextView
+                android:id="@+id/textView_repeatSignatureLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Repeat Signature"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:paddingBottom="4dp"
+                android:layout_marginTop="16dp" />
+
+            <!-- Repeat Signature Pad -->
+            <FrameLayout
+                android:id="@+id/repeatSignatureContainer"
                 android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@android:color/white"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:padding="1dp"
+                android:backgroundTint="@android:color/darker_gray"
+                android:foregroundGravity="center">
+            </FrameLayout>
+
+            <!-- Repeat Signature Error TextView -->
+            <TextView
+                android:id="@+id/repeatSignatureError"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/holo_red_dark"
+                android:visibility="gone"
+                android:text="Signature is required."
+                android:paddingBottom="8dp" />
+
+            <!-- Repeat Outcome for RIGHT Ear -->
+            <TextView
+                android:id="@+id/textView_repeat_right_outcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Outcome for RIGHT Ear"
+                android:textSize="16sp"
+                android:paddingBottom="4dp" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup_repeat_right_outcome"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingBottom="16dp">
+                android:paddingBottom="8dp">
 
-                <TextView
-                    android:id="@+id/textView_repeat_signature"
-                    android:layout_width="0dp"
+                <RadioButton
+                    android:id="@+id/radio_repeat_right_pass"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Repeat Signature"
-                    android:textSize="16sp"
-                    android:gravity="center_vertical" />
+                    android:text="Pass" />
 
-                <EditText
-                    android:id="@+id/editText_repeat_signature"
-                    android:layout_width="0dp"
+                <RadioButton
+                    android:id="@+id/radio_repeat_right_refer"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:hint="Enter repeat signature"
-                    android:inputType="text" />
-            </LinearLayout>
+                    android:text="Refer"
+                    android:layout_marginStart="16dp" />
+            </RadioGroup>
 
-            <!-- Outcome for RIGHT Ear -->
-            <LinearLayout
-                android:id="@+id/layout_repeat_right_outcome"
-                android:layout_width="match_parent"
+            <!-- Repeat Outcome for LEFT Ear -->
+            <TextView
+                android:id="@+id/textView_repeat_left_outcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Outcome for LEFT Ear"
+                android:textSize="16sp"
+                android:paddingBottom="4dp" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup_repeat_left_outcome"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingBottom="16dp">
+                android:paddingBottom="8dp">
 
-                <TextView
-                    android:id="@+id/textView_repeat_right_outcome"
-                    android:layout_width="0dp"
+                <RadioButton
+                    android:id="@+id/radio_repeat_left_pass"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Outcome for RIGHT Ear"
-                    android:textSize="16sp"
-                    android:gravity="center_vertical" />
+                    android:text="Pass" />
 
-                <RadioGroup
-                    android:id="@+id/radioGroup_repeat_right_outcome"
-                    android:layout_width="0dp"
+                <RadioButton
+                    android:id="@+id/radio_repeat_left_refer"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:orientation="horizontal">
+                    android:text="Refer"
+                    android:layout_marginStart="16dp" />
+            </RadioGroup>
 
-                    <RadioButton
-                        android:id="@+id/radio_repeat_right_pass"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Pass" />
+            <!-- Repeat Refer to Audiologist -->
+            <TextView
+                android:id="@+id/textView_repeat_refer_audiologist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Refer to Audiologist"
+                android:textSize="16sp"
+                android:paddingBottom="4dp" />
 
-                    <RadioButton
-                        android:id="@+id/radio_repeat_right_refer"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Refer"
-                        android:layout_marginStart="16dp" />
-                </RadioGroup>
-            </LinearLayout>
-
-            <!-- Outcome for LEFT Ear -->
-            <LinearLayout
-                android:id="@+id/layout_repeat_left_outcome"
-                android:layout_width="match_parent"
+            <RadioGroup
+                android:id="@+id/radioGroup_repeat_refer_audiologist"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingBottom="16dp">
+                android:paddingBottom="8dp">
 
-                <TextView
-                    android:id="@+id/textView_repeat_left_outcome"
-                    android:layout_width="0dp"
+                <RadioButton
+                    android:id="@+id/radio_repeat_refer_audiologist_yes"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Outcome for LEFT Ear"
-                    android:textSize="16sp"
-                    android:gravity="center_vertical" />
+                    android:text="Yes" />
 
-                <RadioGroup
-                    android:id="@+id/radioGroup_repeat_left_outcome"
-                    android:layout_width="0dp"
+                <RadioButton
+                    android:id="@+id/radio_repeat_refer_audiologist_no"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/radio_repeat_left_pass"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Pass" />
-
-                    <RadioButton
-                        android:id="@+id/radio_repeat_left_refer"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Refer"
-                        android:layout_marginStart="16dp" />
-                </RadioGroup>
-            </LinearLayout>
-
-            <!-- Refer to Audiologist -->
-            <LinearLayout
-                android:id="@+id/layout_repeat_refer_audiologist"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingBottom="16dp">
-
-                <TextView
-                    android:id="@+id/textView_repeat_refer_audiologist"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Refer to Audiologist"
-                    android:textSize="16sp"
-                    android:gravity="center_vertical" />
-
-                <RadioGroup
-                    android:id="@+id/radioGroup_repeat_refer_audiologist"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/radio_repeat_refer_audiologist_yes"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Yes" />
-
-                    <RadioButton
-                        android:id="@+id/radio_repeat_refer_audiologist_no"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="No"
-                        android:layout_marginStart="16dp" />
-                </RadioGroup>
-            </LinearLayout>
+                    android:text="No"
+                    android:layout_marginStart="16dp" />
+            </RadioGroup>
         </LinearLayout>
 
         <!-- Instruction Text -->
@@ -637,43 +497,34 @@
             android:paddingBottom="16dp" />
 
         <!-- Hearing Risk Factor Identified -->
-        <LinearLayout
-            android:id="@+id/layout_hearing_risk_factor"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView_hearing_risk_factor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hearing risk factor identified"
+            android:textSize="16sp"
+            android:paddingBottom="4dp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup_hearing_risk_factor"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingBottom="16dp">
+            android:paddingBottom="8dp">
 
-            <TextView
-                android:id="@+id/textView_hearing_risk_factor"
-                android:layout_width="0dp"
+            <RadioButton
+                android:id="@+id/radio_hearing_risk_factor_yes"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Hearing risk factor identified"
-                android:textSize="16sp"
-                android:gravity="center_vertical" />
+                android:text="Yes" />
 
-            <RadioGroup
-                android:id="@+id/radioGroup_hearing_risk_factor"
-                android:layout_width="0dp"
+            <RadioButton
+                android:id="@+id/radio_hearing_risk_factor_no"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/radio_hearing_risk_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Yes" />
-
-                <RadioButton
-                    android:id="@+id/radio_hearing_risk_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="No"
-                    android:layout_marginStart="16dp" />
-            </RadioGroup>
-        </LinearLayout>
+                android:text="No"
+                android:layout_marginStart="16dp" />
+        </RadioGroup>
 
         <!-- Consultation Instruction (Visible only if 'Yes' is selected) -->
         <LinearLayout
@@ -688,35 +539,24 @@
                 android:id="@+id/textView_consultation_instruction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="If Yes is ticked, please consult your health professional to arrange an age-appropriate hearing test at 10-12 months (corrected)."
+                android:text="If 'Yes' is ticked, please consult your health professional to arrange an age-appropriate hearing test at 10-12 months (corrected)."
                 android:textSize="14sp" />
         </LinearLayout>
 
         <!-- Coordinator Telephone -->
-        <LinearLayout
-            android:id="@+id/layout_coordinator_telephone"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_coordinator_telephone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:hint="Coordinator Telephone"
             android:paddingBottom="24dp">
 
-            <TextView
-                android:id="@+id/textView_coordinator_telephone"
-                android:layout_width="0dp"
-                android:layout_height="54dp"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:text="Coordinator Telephone"
-                android:textSize="16sp" />
-
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editText_coordinator_telephone"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:hint="Enter telephone number"
                 android:inputType="phone" />
-        </LinearLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Save Button -->
         <Button
@@ -726,6 +566,5 @@
             android:text="Save"
             android:background="@drawable/button_3d"
             android:elevation="12dp" />
-
     </LinearLayout>
 </ScrollView>

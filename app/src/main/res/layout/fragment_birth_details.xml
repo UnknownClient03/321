@@ -599,19 +599,38 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Signature -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout_signature"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView_signatureLabel"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Signature"
-            android:paddingBottom="8dp">
+            android:text="Signature"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:paddingBottom="4dp" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editText_signature"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
+        <!-- Signature Pad -->
+        <FrameLayout
+            android:id="@+id/signatureContainer"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@android:color/white"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:padding="1dp"
+            android:backgroundTint="@android:color/darker_gray"
+            android:foregroundGravity="center">
+
+        </FrameLayout>
+
+        <!-- Signature Error TextView -->
+        <TextView
+            android:id="@+id/signatureError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_red_dark"
+            android:visibility="gone"
+            android:text="Signature is required."
+            android:paddingBottom="8dp" />
 
         <!-- Designation -->
         <com.google.android.material.textfield.TextInputLayout
