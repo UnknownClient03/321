@@ -48,6 +48,19 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="0dp" />
 
+    <Button
+        android:id="@+id/buttonManageChildren"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Manage Children"
+        android:background="@drawable/button_3d"
+        android:elevation="12dp"
+        android:backgroundTint="#6482AD"
+        app:layout_constraintTop_toBottomOf="@id/guideline_scrollview_end"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp" />
+
     <HorizontalScrollView
         android:id="@+id/scrollView"
         android:layout_width="0dp"
@@ -66,20 +79,8 @@
             android:orientation="horizontal"
             android:gravity="center_horizontal">
         </LinearLayout>
-    </HorizontalScrollView>
 
-    <Button
-        android:id="@+id/buttonManageChildren"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Manage Children"
-        android:background="@drawable/button_3d"
-        android:elevation="12dp"
-        android:backgroundTint="#6482AD"
-        app:layout_constraintTop_toBottomOf="@id/guideline_scrollview_end"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="8dp" />
+    </HorizontalScrollView>
 
     <include
         layout="@layout/footer"

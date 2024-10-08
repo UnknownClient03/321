@@ -26,6 +26,7 @@ import java.util.List;
 
 public class PractitionerChildSelect extends AppCompatActivity {
 
+    private LoginManager manager;
 
     private int practitionerID;
     LinearLayout childContainer;
@@ -43,9 +44,27 @@ public class PractitionerChildSelect extends AppCompatActivity {
         });
 
         Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            manager = new LoginManager(extras.getInt("guardianID", -1), extras.getInt("childID", -1));
+        } else {
+            Log.e("PractitionerChildSelect", "No extras provided in intent");
+            return;
+        }
+
         practitionerID = extras.getInt("practitionerID");
 
         childContainer = findViewById(R.id.child_container);
+
+        // Make sure some buttons cannot be pressed yet
+        Button buttonHome = findViewById(R.id.home_button);
+        buttonHome.setEnabled(false);  // Disable the button
+        ImageButton buttonRecords = findViewById(R.id.records_button);
+        buttonRecords.setEnabled(false);
+        ImageButton buttonProgress = findViewById(R.id.appointments_button);
+        buttonProgress.setEnabled(false);
+        ImageButton buttonSettings = findViewById(R.id.settings_button);
+        buttonSettings.setEnabled(false);
+        NavBarManager.setNavBarButtons(PractitionerChildSelect.this, manager);
     }
 
     @Override

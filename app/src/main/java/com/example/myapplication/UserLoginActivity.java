@@ -40,8 +40,8 @@ public class UserLoginActivity extends AppCompatActivity {
             return insets;
         });
 
-        EditText passwordView = findViewById(R.id.editTextTextPassword2);
-        EditText emailView = findViewById(R.id.editTextTextEmailAddress2);
+        EditText passwordView = findViewById(R.id.editTextTextPassword);
+        EditText emailView = findViewById(R.id.editTextTextEmailAddress);
         rememberMeCheckBox = findViewById(R.id.remember_me_checkbox);
 
         // Initialize SharedPreferences
@@ -60,12 +60,14 @@ public class UserLoginActivity extends AppCompatActivity {
                 if (guardianID != -1) {
                     // Save credentials if "Remember Me" is checked
                     if (rememberMeCheckBox.isChecked()) {
-                        editor.putString("email", email);
-                        editor.putString("password", password);
-                        editor.putBoolean("rememberMe", true);
+                        editor.putString("emailUser", email);
+                        editor.putString("passwordUser", password);
+                        editor.putBoolean("rememberMeUser", true);
                         editor.apply();
                     } else {
-                        editor.clear();  // Clear saved data if "Remember Me" is unchecked
+                        editor.remove("emailUser");
+                        editor.remove("passwordUser");
+                        editor.remove("rememberMeUser");
                         editor.apply();
                     }
                     Log.d("BUTTON", "Changing to select child page");
@@ -118,10 +120,10 @@ public class UserLoginActivity extends AppCompatActivity {
     }
 
     private void loadSavedCredentials(EditText emailView, EditText passwordView) {
-        boolean rememberMe = sharedPreferences.getBoolean("rememberMe", false);
+        boolean rememberMe = sharedPreferences.getBoolean("rememberMeUser", false);
         if (rememberMe) {
-            String savedEmail = sharedPreferences.getString("email", "");
-            String savedPassword = sharedPreferences.getString("password", "");
+            String savedEmail = sharedPreferences.getString("emailUser", "");
+            String savedPassword = sharedPreferences.getString("passwordUser", "");
             emailView.setText(savedEmail);
             passwordView.setText(savedPassword);
             rememberMeCheckBox.setChecked(true);

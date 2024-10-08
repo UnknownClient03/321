@@ -74,6 +74,9 @@
         <activity android:name=".PractitionerLoginActivity"
             android:windowSoftInputMode="adjustPan" />
 
+        <activity android:name=".PractitionerChildSelect"
+            android:windowSoftInputMode="adjustPan" />
+
         <activity android:name=".BirthDetailsAndNewbornExamination"
             android:windowSoftInputMode="adjustPan" />
 

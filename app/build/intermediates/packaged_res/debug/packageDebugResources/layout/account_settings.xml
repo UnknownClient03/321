@@ -60,11 +60,12 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/profile_picture_container" />
 
-            <TextView
-                android:id="@+id/textView_change_profilePicture"
+            <Button
+                android:id="@+id/button_change_profilePicture"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
+                android:background="?android:attr/selectableItemBackground"
                 android:gravity="center"
                 android:text="Change Profile Picture"
                 android:textColor="#0047AB"
@@ -79,7 +80,6 @@
                 android:layout_width="69dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="40dp"
                 android:layout_marginEnd="16dp"
                 android:text="Email"
                 android:textSize="26sp"
@@ -87,7 +87,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView_change_profilePicture" />
+                app:layout_constraintTop_toBottomOf="@+id/save_profile_picture_button" />
 
             <ImageView
                 android:id="@+id/imageView_email_background"
@@ -245,6 +245,16 @@
                     android:textSize="18sp"
                     android:visibility="gone" />
             </LinearLayout>
+
+            <Button
+                android:id="@+id/save_profile_picture_button"
+                android:layout_width="82dp"
+                android:layout_height="42dp"
+                android:text="Save"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button_change_profilePicture" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TableRow;
+import android.widget.Toast;
 
 import java.util.HashMap;
 
@@ -121,14 +122,6 @@ public class UsefulContactsChange extends Fragment {
         Button submit = (Button) layout.findViewById(R.id.button_submit_contact);
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                LoginManager manager = ((UsefulContacts)getActivity()).manager;
-                UsefulContacts activity = ((UsefulContacts)getActivity());
-                activity.getOnBackPressedDispatcher().onBackPressed();
-                Intent intent = activity.getIntent();
-                activity.finish();
-                activity.startActivity(intent);
-
-
                 EditText phone = (EditText)layout.findViewById(R.id.input_usefulContact_phone);
                 EditText email = (EditText)layout.findViewById(R.id.input_usefulContact_email);
                 EditText country = (EditText)layout.findViewById(R.id.input_usefulContact_country);
@@ -138,32 +131,43 @@ public class UsefulContactsChange extends Fragment {
                 EditText unit = (EditText)layout.findViewById(R.id.input_usefulContact_unit);
                 EditText postcode = (EditText)layout.findViewById(R.id.input_usefulContact_postcode);
 
-                RadioGroup group = (RadioGroup)layout.findViewById(R.id.radiogroup_usefulContacts);
-                String name = getRadioID(group);
+                // Check if any field is empty
+                if (phone.getText().toString().isEmpty() ||
+                        email.getText().toString().isEmpty() ||
+                        country.getText().toString().isEmpty() ||
+                        city.getText().toString().isEmpty() ||
+                        street.getText().toString().isEmpty() ||
+                        streetNumber.getText().toString().isEmpty() ||
+                        postcode.getText().toString().isEmpty()) {
+                            Toast.makeText(getActivity(), "Need to input all fields", Toast.LENGTH_SHORT).show();
+                } else {
+                    LoginManager manager = ((UsefulContacts)getActivity()).manager;
+                    UsefulContacts activity = ((UsefulContacts)getActivity());
+                    activity.getOnBackPressedDispatcher().onBackPressed();
+                    Intent intent = activity.getIntent();
+                    activity.finish();
+                    activity.startActivity(intent);
 
-                if(streetNumber.getText().length() == 0 || postcode.getText().length() == 0)
-                {
-                    Log.e("query syntax error", "integers need to be set");
-                    return;
-                }
+                    RadioGroup group = (RadioGroup)layout.findViewById(R.id.radiogroup_usefulContacts);
+                    String name = getRadioID(group);
 
-                SQLConnection c = new SQLConnection("user1", "");
-                if(c.isConn())
-                {
-                    String query = "SELECT name FROM UsefulContact WHERE guardianID = ? AND name = ?;";
-                    HashMap<String, String[]> result = c.select(query, new String[]{String.valueOf(manager.guardianID), name}, new char[]{'i', 's'});
-                    query = (result.get("name").length == 0) ? "INSERT INTO UsefulContact VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"
-                                                             : "UPDATE UsefulContact SET phoneNumber = ?, email = ?, Country = ?, City = ?, Street = ?, StreetNumber = ?, unit = ?, postcode = ? WHERE guardianID = ? AND name = ?;";
-                    String[] params = (result.get("name").length == 0) ? new String[]{ String.valueOf(manager.guardianID), name, phone.getText().toString(), email.getText().toString(), country.getText().toString(), city.getText().toString(), street.getText().toString(), streetNumber.getText().toString(), unit.getText().toString(), postcode.getText().toString() }
-                                                                       : new String[]{ phone.getText().toString(), email.getText().toString(), country.getText().toString(), city.getText().toString(), street.getText().toString(), streetNumber.getText().toString(), unit.getText().toString(), postcode.getText().toString(), String.valueOf(manager.guardianID), name };
-                    char[] paramTypes = (result.get("name").length == 0) ? new char[]{ 'i', 's', (phone.getText().length() == 0) ? 'n' : 'i', (email.getText().length() == 0) ? 'n' : 's', 's', 's', 's', 'i', (unit.getText().length() == 0) ? 'n' : 's', 'i' }
-                                                                         : new char[]{ (phone.getText().length() == 0) ? 'n' : 'i', (email.getText().length() == 0) ? 'n' : 's', 's', 's', 's', 'i', (unit.getText().length() == 0) ? 'n' : 's', 'i', 'i', 's' };
-                    c.update(query, params, paramTypes);
-                    c.disconnect();
+                    SQLConnection c = new SQLConnection("user1", "");
+                    if(c.isConn())
+                    {
+                        String query = "SELECT name FROM UsefulContact WHERE guardianID = ? AND name = ?;";
+                        HashMap<String, String[]> result = c.select(query, new String[]{String.valueOf(manager.guardianID), name}, new char[]{'i', 's'});
+                        query = (result.get("name").length == 0) ? "INSERT INTO UsefulContact VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"
+                                : "UPDATE UsefulContact SET phoneNumber = ?, email = ?, Country = ?, City = ?, Street = ?, StreetNumber = ?, unit = ?, postcode = ? WHERE guardianID = ? AND name = ?;";
+                        String[] params = (result.get("name").length == 0) ? new String[]{ String.valueOf(manager.guardianID), name, phone.getText().toString(), email.getText().toString(), country.getText().toString(), city.getText().toString(), street.getText().toString(), streetNumber.getText().toString(), unit.getText().toString(), postcode.getText().toString() }
+                                : new String[]{ phone.getText().toString(), email.getText().toString(), country.getText().toString(), city.getText().toString(), street.getText().toString(), streetNumber.getText().toString(), unit.getText().toString(), postcode.getText().toString(), String.valueOf(manager.guardianID), name };
+                        char[] paramTypes = (result.get("name").length == 0) ? new char[]{ 'i', 's', (phone.getText().length() == 0) ? 'n' : 'i', (email.getText().length() == 0) ? 'n' : 's', 's', 's', 's', 'i', (unit.getText().length() == 0) ? 'n' : 's', 'i' }
+                                : new char[]{ (phone.getText().length() == 0) ? 'n' : 'i', (email.getText().length() == 0) ? 'n' : 's', 's', 's', 's', 'i', (unit.getText().length() == 0) ? 'n' : 's', 'i', 'i', 's' };
+                        c.update(query, params, paramTypes);
+                        c.disconnect();
+                    }
                 }
             }
         });
-
 
         return layout;
     }

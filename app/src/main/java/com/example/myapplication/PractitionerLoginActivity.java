@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
@@ -22,9 +23,10 @@ public class PractitionerLoginActivity extends AppCompatActivity {
 
     private EditText editTextPassword;
     private Button loginButton;
-    private Button signupButton;
     private Button userLoginButton;
-    private Button forgotPasswordButton;
+    private CheckBox rememberMeCheckBox;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +41,34 @@ public class PractitionerLoginActivity extends AppCompatActivity {
 
         EditText passwordView = findViewById(R.id.editTextTextPassword2);
         EditText emailView = findViewById(R.id.editTextTextEmailAddress2);
+        rememberMeCheckBox = findViewById(R.id.practitioner_remember_me_checkbox);
+
+        // Initialize SharedPreferences
+        sharedPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
+        // Load saved login data if "Remember Me" was checked
+        loadSavedCredentials(emailView, passwordView);
+
         loginButton = findViewById(R.id.login_button);
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                String email = emailView.getText().toString();
+                String password = passwordView.getText().toString();
                 int pracID = validateLogin(passwordView.getText().toString(), emailView.getText().toString());
                 if (pracID != -1) {
+                    // Save credentials if "Remember Me" is checked
+                    if (rememberMeCheckBox.isChecked()) {
+                        editor.putString("emailPractitioner", email);
+                        editor.putString("passwordPractitioner", password);
+                        editor.putBoolean("rememberMePractitioner", true);
+                        editor.apply();
+                    } else {
+                        editor.remove("emailPractitioner");
+                        editor.remove("passwordPractitioner");
+                        editor.remove("rememberMePractitioner");
+                        editor.apply();
+                    }
                     Log.d("BUTTON", "Changing to select child page");
                     Intent intent = new Intent(PractitionerLoginActivity.this, PractitionerChildSelect.class);
                     intent.putExtra("practitionerID", pracID);
@@ -63,29 +88,26 @@ public class PractitionerLoginActivity extends AppCompatActivity {
             }
         });
 
-        forgotPasswordButton = findViewById(R.id.button_forgot_password);
-        forgotPasswordButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Log.d("BUTTON", "Changing to Reset Password page");
-                Intent intent = new Intent(PractitionerLoginActivity.this, ResetPasswordActivity.class);
-                intent.putExtra("practitioner", true);
-                startActivity(intent);
-            }
-        });
-
-        CheckBox showPasswordCheckbox = findViewById(R.id.show_password_checkbox);
-
+        CheckBox showPasswordCheckbox = findViewById(R.id.practitioner_show_password_checkbox);
         showPasswordCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
-                // Show password
-                editTextPassword.setInputType(InputType.TYPE_CLASS_TEXT);
+                passwordView.setInputType(InputType.TYPE_CLASS_TEXT);
             } else {
-                // Hide password
-                editTextPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                passwordView.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
             }
-            // Move cursor to the end of the text
-            editTextPassword.setSelection(editTextPassword.getText().length());
+            passwordView.setSelection(passwordView.getText().length());
         });
+    }
+
+    private void loadSavedCredentials(EditText emailView, EditText passwordView) {
+        boolean rememberMe = sharedPreferences.getBoolean("rememberMePractitioner", false);
+        if (rememberMe) {
+            String savedEmail = sharedPreferences.getString("emailPractitioner", "");
+            String savedPassword = sharedPreferences.getString("passwordPractitioner", "");
+            emailView.setText(savedEmail);
+            passwordView.setText(savedPassword);
+            rememberMeCheckBox.setChecked(true);
+        }
     }
 
     private int validateLogin(String pass, String email)

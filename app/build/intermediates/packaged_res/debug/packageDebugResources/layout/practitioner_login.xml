@@ -78,7 +78,7 @@
         app:layout_constraintVertical_bias="0.269" />
 
     <CheckBox
-        android:id="@+id/show_password_checkbox"
+        android:id="@+id/practitioner_show_password_checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Show"
@@ -89,18 +89,27 @@
         app:layout_constraintTop_toTopOf="@+id/editTextTextPassword2"
         app:layout_constraintVertical_bias="0.0" />
 
+    <CheckBox
+        android:id="@+id/practitioner_remember_me_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="4dp"
+        android:text="Remember Me"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2" />
+
     <Button
         android:id="@+id/signup_button"
         android:layout_width="140dp"
         android:layout_height="60dp"
+        android:layout_marginEnd="24dp"
         android:background="@drawable/button_3d"
         android:elevation="12dp"
         android:text="@string/txt_signUp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="40dp"
-        android:layout_marginEnd="24dp"
-        tools:layout_editor_absoluteY="791dp" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/user_login_button"
@@ -114,18 +123,5 @@
         android:text="@string/user_login"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="791dp" />
-
-    <Button
-        android:id="@+id/button_forgot_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:background="?android:attr/selectableItemBackground"
-        android:gravity="center"
-        android:text="Forgot Password?"
-        android:textColor="?attr/colorPrimary"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/login_button"
-        tools:layout_editor_absoluteX="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

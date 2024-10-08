@@ -41,7 +41,6 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/add_message"
-            android:background="@drawable/share_button_background"
             android:contentDescription="@string/share_button"
             android:padding="1dp"
             android:scaleType="centerCrop"
