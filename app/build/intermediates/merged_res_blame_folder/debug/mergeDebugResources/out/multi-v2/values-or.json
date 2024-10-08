@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.myapplication.app-mergeDebugResources-43:/values-or/values-or.xml",
+            "outputFile": "com.example.myapplication.app-mergeDebugResources-44:/values-or/values-or.xml",
             "map": [
                 {
                     "source": "/Users/thomas/.gradle/caches/transforms-4/00dd8843907c3a098a2fcecd606b36d5/transformed/credentials-1.2.0-rc01/res/values-or/values-or.xml",

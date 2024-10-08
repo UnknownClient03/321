@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#90EBF7">
 
-    <!-- Header Include (if applicable) -->
+    <!-- Header -->
     <include
         layout="@layout/header"
         android:layout_width="0dp"
@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Footer Include (if applicable) -->
+    <!-- Footer  -->
     <include
         layout="@layout/footer"
         android:layout_width="0dp"

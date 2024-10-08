@@ -264,38 +264,17 @@
                 android:layout_marginStart="16dp" />
         </RadioGroup>
 
-        <!-- Repeat Screen Required -->
-        <TextView
-            android:id="@+id/textView_repeat_screen_required"
+        <!-- Add Repeat Screening Button -->
+        <Button
+            android:id="@+id/button_add_repeat_screening"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Repeat screen required"
-            android:textSize="16sp"
+            android:text="Add Repeat Screening"
             android:paddingTop="16dp"
-            android:paddingBottom="4dp" />
+            android:paddingBottom="8dp"
+            android:layout_gravity="start" />
 
-        <RadioGroup
-            android:id="@+id/radioGroup_repeat_screen_required"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingBottom="8dp">
-
-            <RadioButton
-                android:id="@+id/radio_repeat_yes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Yes" />
-
-            <RadioButton
-                android:id="@+id/radio_repeat_no"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="No"
-                android:layout_marginStart="16dp" />
-        </RadioGroup>
-
-        <!-- Repeat Screen Section (Visible only if 'Yes' is selected) -->
+        <!-- Repeat Screen Section (Visible only if 'Add Repeat Screening' is clicked) -->
         <LinearLayout
             android:id="@+id/layout_repeat_screen_section"
             android:layout_width="match_parent"

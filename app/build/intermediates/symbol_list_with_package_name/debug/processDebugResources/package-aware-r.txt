@@ -303,6 +303,10 @@ attr circularflow_defaultAngle
 attr circularflow_defaultRadius
 attr circularflow_radiusInDP
 attr circularflow_viewCenter
+attr civ_border_color
+attr civ_border_overlay
+attr civ_border_width
+attr civ_circle_background_color
 attr clearsTag
 attr clickAction
 attr clockFaceBackgroundColor
@@ -3302,6 +3306,7 @@ id button_MIAFH_7
 id button_PN_addAnotherEntry
 id button_PN_toTable
 id button_add_langauge
+id button_add_repeat_screening
 id button_appointments
 id button_birth_details
 id button_birth_details_and_newborn_examination
@@ -3443,7 +3448,6 @@ id disablePostScroll
 id disableScroll
 id disjoint
 id dob_day_input
-id dob_input
 id dob_month_input
 id dob_year_input
 id doctorInput
@@ -3514,6 +3518,7 @@ id editText_mothersLName
 id editText_mothersMRN
 id editText_name
 id editText_newBornBloodspotScreenTest
+id editText_parentsNotes
 id editText_postPartumComplications
 id editText_pregnancyComplications
 id editText_printName
@@ -3598,8 +3603,10 @@ id health_factor_input
 id health_info_discussed_checkbox
 id healthyEatingText
 id healthyEatingTitle
+id hearing_checkbox
 id height_input
 id hideable
+id hips_checkbox
 id home
 id homeAsUp
 id home_button
@@ -3616,9 +3623,11 @@ id imageView2
 id imageViewCPRChart
 id imageView_email_background
 id immediateStop
+id immunisation_up_to_date_checkbox
 id included
 id indeterminate
 id info
+id info_text_view
 id input_address_city
 id input_address_country
 id input_address_postcode
@@ -3786,9 +3795,12 @@ id linear
 id linearLayout
 id linearLayout2
 id linearLayout_birthDetails
+id linearLayout_check
 id linearLayout_checks_menu
+id linearLayout_childDetails
 id linearLayout_hearingPreScreening
 id linearLayout_hearingscreen
+id linearLayout_initial_information
 id linearLayout_newbornExamination
 id listMode
 id list_item
@@ -3870,6 +3882,7 @@ id navigation_header_container
 id never
 id neverCompleteToEnd
 id neverCompleteToStart
+id next_button
 id noRadioButton1
 id noRadioButton10
 id noRadioButton11
@@ -3914,6 +3927,7 @@ id open_search_view_search_prefix
 id open_search_view_status_bar_spacer
 id open_search_view_toolbar
 id open_search_view_toolbar_container
+id oral_health_checkbox
 id outcomeInput
 id outcome_spinner
 id outline
@@ -3926,7 +3940,6 @@ id parentPanel
 id parentRelative
 id parent_matrix
 id parent_question_layout
-id parents_notes_input
 id password_input
 id password_toggle
 id path
@@ -4001,7 +4014,6 @@ id radioGroup_refer_audiologist
 id radioGroup_repeat_left_outcome
 id radioGroup_repeat_refer_audiologist
 id radioGroup_repeat_right_outcome
-id radioGroup_repeat_screen_required
 id radioGroup_right_outcome
 id radio_hearing_risk_factor_no
 id radio_hearing_risk_factor_yes
@@ -4025,12 +4037,10 @@ id radio_refer_audiologist_no
 id radio_refer_audiologist_yes
 id radio_repeat_left_pass
 id radio_repeat_left_refer
-id radio_repeat_no
 id radio_repeat_refer_audiologist_no
 id radio_repeat_refer_audiologist_yes
 id radio_repeat_right_pass
 id radio_repeat_right_refer
-id radio_repeat_yes
 id radio_right_pass
 id radio_right_refer
 id radio_usefulContacts_1
@@ -4074,9 +4084,12 @@ id scrollIndicatorUp
 id scrollView
 id scrollView2
 id scrollView_birthDetails
+id scrollView_check
 id scrollView_checks_menu
+id scrollView_childDetails
 id scrollView_hearingPreScreening
 id scrollView_hearingscreen
+id scrollView_initial_information
 id scrollView_newbornExamination
 id scrollable
 id search_badge
@@ -4095,7 +4108,6 @@ id selected
 id selection_type
 id settings_button
 id sex_input
-id sex_spinner
 id share_button
 id share_progress_button
 id sharedValueSet
@@ -4111,7 +4123,8 @@ id show_password_checkbox
 id signatureContainer
 id signatureError
 id signatureInput
-id signature_input
+id signature_container
+id signature_error
 id signature_view
 id signup_button
 id signup_title
@@ -4177,6 +4190,7 @@ id text
 id text2
 id textEnd
 id textInputLayout_abnormalitiesAtBirth
+id textInputLayout_actionTaken
 id textInputLayout_age
 id textInputLayout_anyConcernsComment
 id textInputLayout_apgarScore1Min
@@ -4201,6 +4215,7 @@ id textInputLayout_comment_reflexes
 id textInputLayout_comment_respiratoryrate
 id textInputLayout_comment_skin
 id textInputLayout_comment_testesfullydescendedrl
+id textInputLayout_comments
 id textInputLayout_coordinator_telephone
 id textInputLayout_date
 id textInputLayout_dateOfDischarge
@@ -4208,14 +4223,17 @@ id textInputLayout_designation
 id textInputLayout_difficultiesWithFeeding
 id textInputLayout_dischargeWeight
 id textInputLayout_dob
+id textInputLayout_doctorName
 id textInputLayout_estimatedGestation
 id textInputLayout_examiner
 id textInputLayout_fname
 id textInputLayout_headCirc
+id textInputLayout_headCircumference
 id textInputLayout_hepBImmunisationGiven
 id textInputLayout_hepBImmunoglobinGiven
 id textInputLayout_labour
 id textInputLayout_labourComplications
+id textInputLayout_length
 id textInputLayout_lname
 id textInputLayout_location
 id textInputLayout_mothersFName
@@ -4223,6 +4241,7 @@ id textInputLayout_mothersLName
 id textInputLayout_mothersMRN
 id textInputLayout_name
 id textInputLayout_newBornBloodspotScreenTest
+id textInputLayout_parentsNotes
 id textInputLayout_postPartumComplications
 id textInputLayout_pregnancyComplications
 id textInputLayout_printName
@@ -4232,9 +4251,11 @@ id textInputLayout_repeat_location
 id textInputLayout_repeat_screenBy
 id textInputLayout_screenBy
 id textInputLayout_typeofBirth
+id textInputLayout_venue
 id textInputLayout_vitaminKGiven1st
 id textInputLayout_vitaminKGiven2nd
 id textInputLayout_vitaminKGiven3rd
+id textInputLayout_weight
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
@@ -4359,8 +4380,11 @@ id textView_birthDetails
 id textView_bloodGroupLabel
 id textView_checks
 id textView_childDetails
+id textView_commentsAction
 id textView_consultation_instruction
+id textView_doctorNurseDetails
 id textView_feedingAtDischargeLabel
+id textView_healthAssessment
 id textView_health_district_heading
 id textView_hearingPreScreening
 id textView_hearing_risk_factor
@@ -4373,8 +4397,11 @@ id textView_left_outcome
 id textView_motherDetails
 id textView_name
 id textView_newbornExamination
+id textView_outcomeLabel
 id textView_outcome_heading
+id textView_parentQuestions
 id textView_postBirthDetails
+id textView_protectiveFactors
 id textView_question1
 id textView_question2
 id textView_question3
@@ -4388,10 +4415,10 @@ id textView_repeat_left_outcome
 id textView_repeat_refer_audiologist
 id textView_repeat_right_outcome
 id textView_repeat_screen_heading
-id textView_repeat_screen_required
 id textView_right_outcome
 id textView_sexLabel
 id textView_signatureLabel
+id textView_specificChecks
 id textView_vitaminKGivenLabel
 id text_health_check_title
 id text_input_end_icon
@@ -4448,6 +4475,7 @@ id view_tree_saved_state_registry_owner
 id view_tree_view_model_store_owner
 id visible
 id visible_removing_fragment_view_tag
+id vision_checkbox
 id weightInput
 id weight_input
 id west
@@ -4646,6 +4674,7 @@ layout fragment_allaboutme
 layout fragment_birth_details
 layout fragment_check
 layout fragment_checks_menu
+layout fragment_checksinfo
 layout fragment_dentalhistory
 layout fragment_father
 layout fragment_health_assessment
@@ -6088,6 +6117,7 @@ styleable Carousel carousel_backwardTransition carousel_emptyViewsBehavior carou
 styleable CheckedTextView android_checkMark checkMarkCompat checkMarkTint checkMarkTintMode
 styleable Chip android_textAppearance android_textSize android_textColor android_ellipsize android_maxWidth android_text android_checkable checkedIcon checkedIconEnabled checkedIconTint checkedIconVisible chipBackgroundColor chipCornerRadius chipEndPadding chipIcon chipIconEnabled chipIconSize chipIconTint chipIconVisible chipMinHeight chipMinTouchTargetSize chipStartPadding chipStrokeColor chipStrokeWidth chipSurfaceColor closeIcon closeIconEnabled closeIconEndPadding closeIconSize closeIconStartPadding closeIconTint closeIconVisible ensureMinTouchTargetSize hideMotionSpec iconEndPadding iconStartPadding rippleColor shapeAppearance shapeAppearanceOverlay showMotionSpec textEndPadding textStartPadding
 styleable ChipGroup checkedChip chipSpacing chipSpacingHorizontal chipSpacingVertical selectionRequired singleLine singleSelection
+styleable CircleImageView civ_border_color civ_border_overlay civ_border_width civ_circle_background_color
 styleable CircularProgressIndicator indicatorDirectionCircular indicatorInset indicatorSize
 styleable ClockFaceView clockFaceBackgroundColor clockNumberTextColor
 styleable ClockHandView clockHandColor materialCircleRadius selectorSize

@@ -45,4 +45,5 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
     implementation("com.github.chrisbanes:PhotoView:2.3.0")
     implementation("androidx.work:work-runtime-ktx:2.7.1")
+    implementation("de.hdodenhof:circleimageview:3.1.0")
 }

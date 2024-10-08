@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.myapplication.app-mergeDebugResources-43:/values-uz/values-uz.xml",
+            "outputFile": "com.example.myapplication.app-mergeDebugResources-44:/values-uz/values-uz.xml",
             "map": [
                 {
                     "source": "/Users/thomas/.gradle/caches/transforms-4/78c374cfebd7382182b5c1722a5b97eb/transformed/browser-1.4.0/res/values-uz/values-uz.xml",

@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ChildSelectActivity extends AppCompatActivity {
 
     private LinearLayout childContainer;
@@ -102,7 +104,7 @@ public class ChildSelectActivity extends AppCompatActivity {
             View childView = LayoutInflater.from(this).inflate(R.layout.child_item_layout, childContainer, false);
             TextView childName = childView.findViewById(R.id.child_name);
             TextView childAge = childView.findViewById(R.id.child_age);
-            ImageButton childButton = childView.findViewById(R.id.child_image_button);
+            CircleImageView childButton = childView.findViewById(R.id.child_image_button);
 
             byte[] decodedString = Base64.decode(child.getProfilePicture(), Base64.DEFAULT);
             childButton.setImageBitmap(BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length));
@@ -122,10 +124,10 @@ public class ChildSelectActivity extends AppCompatActivity {
 
         // Add "Add Child" button
         View addChildView = LayoutInflater.from(this).inflate(R.layout.child_item_layout, childContainer, false);
-        ImageButton addButton = addChildView.findViewById(R.id.child_image_button);
+        CircleImageView addButton = addChildView.findViewById(R.id.child_image_button);
         addButton.setImageResource(R.drawable.add_person);
         addButton.setBackgroundResource(R.drawable.white_button);
-        addButton.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+        addButton.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
         TextView addChildText = addChildView.findViewById(R.id.child_name);
         addChildText.setText("Add Child");
