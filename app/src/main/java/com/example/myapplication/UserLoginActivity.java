@@ -92,8 +92,6 @@ public class UserLoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("BUTTON", "Changing to practitioner login");
                 Intent intent = new Intent(UserLoginActivity.this, PractitionerLoginActivity.class);
-                intent.putExtra("guardianID", 0);
-                intent.putExtra("childID", 0);
                 startActivity(intent);
             }
         });
@@ -103,6 +101,7 @@ public class UserLoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("BUTTON", "Changing to Reset Password page");
                 Intent intent = new Intent(UserLoginActivity.this, ResetPasswordActivity.class);
+                intent.putExtra("practitioner", true);
                 startActivity(intent);
             }
         });
