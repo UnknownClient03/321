@@ -72,11 +72,14 @@ public class Homepage extends AppCompatActivity {
         }
 
         ImageButton shareButton = findViewById(R.id.share_button);
-        shareButton.setVisibility(View.VISIBLE); // Make it visible only on the homepage
+        shareButton.setVisibility(View.VISIBLE); //make it visible only on the homepage
+        shareButton.setImageResource(R.drawable.sharebevel); //sets the share button image
+
         shareButton.setOnClickListener(v -> {
             CameraActivity cameraDialog = new CameraActivity(this);
             cameraDialog.show();
         });
+
 
         // Setting up the Checks button
         Button buttonChecks = findViewById(R.id.button_checks);
