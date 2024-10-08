@@ -9,6 +9,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Button;
 import android.widget.Toast;
+import android.content.res.Resources;
+import android.graphics.Color;
 
 import androidx.fragment.app.Fragment;
 
@@ -30,6 +32,13 @@ public class Fragment_HearingPreScreening extends Fragment {
     // List of RadioGroups corresponding to each question
     private ArrayList<RadioGroup> radioGroupsList;
 
+    // Save Button
+    private Button saveButton;
+
+    // Colors for enabled and disabled text
+    private int enabledTextColor;
+    private int disabledTextColor;
+
     public Fragment_HearingPreScreening() {
         // Required empty public constructor
     }
@@ -46,6 +55,11 @@ public class Fragment_HearingPreScreening extends Fragment {
         // Initialize SQL connection
         dbHelper = new SQLConnection(); // Ensure secure initialization
         Log.d("Fragment_HearingPreScreening", "SQLConnection initialized");
+
+        // Initialize colors
+        Resources res = getResources();
+        enabledTextColor = res.getColor(R.color.enabled_text);
+        disabledTextColor = res.getColor(R.color.disabled_text);
 
         // Get childID and guardianID from bundle
         Bundle args = getArguments();
@@ -73,7 +87,7 @@ public class Fragment_HearingPreScreening extends Fragment {
         retrieveHearingPreScreening(childID);
 
         // Set up save button
-        Button saveButton = view.findViewById(R.id.button_saveHearingPreScreening);
+        saveButton = view.findViewById(R.id.button_saveHearingPreScreening);
         saveButton.setOnClickListener(v -> saveHearingPreScreening());
 
         return view;
@@ -172,6 +186,8 @@ public class Fragment_HearingPreScreening extends Fragment {
             String[] questions = result.get("question");
             String[] answers = result.get("condition");
 
+            boolean hasData = false;
+
             for (int i = 0; i < questions.length; i++) {
                 int questionIndex = questionsList.indexOf(questions[i]);
                 if (questionIndex != -1 && questionIndex < radioGroupsList.size()) {
@@ -183,7 +199,12 @@ public class Fragment_HearingPreScreening extends Fragment {
                         // Select 'No'
                         selectRadioButton(rg, false);
                     }
+                    hasData = true;
                 }
+            }
+
+            if (hasData) {
+                setFieldsEditable(false); // Make fields uneditable if data exists
             }
 
         } catch (Exception e) {
@@ -299,10 +320,46 @@ public class Fragment_HearingPreScreening extends Fragment {
             }
 
             Toast.makeText(getActivity(), "Hearing PreScreening saved successfully", Toast.LENGTH_SHORT).show();
+            setFieldsEditable(false); // Make fields uneditable after saving
 
         } catch (Exception e) {
             Log.e("Fragment_HearingPreScreening", "Error saving hearing pre-screening: " + e.getMessage());
             Toast.makeText(getActivity(), "Error saving Hearing PreScreening", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /**
+     * Sets the RadioGroups and Save button as editable or non-editable.
+     * Also updates the visual indicators (text color) based on the state.
+     * @param editable true to make fields editable, false to make them non-editable
+     */
+    private void setFieldsEditable(boolean editable) {
+        for (RadioGroup rg : radioGroupsList) {
+            rg.setEnabled(editable);
+            // Additionally, disable all child RadioButtons and set text color
+            for (int i = 0; i < rg.getChildCount(); i++) {
+                View child = rg.getChildAt(i);
+                if (child instanceof RadioButton) {
+                    RadioButton rb = (RadioButton) child;
+                    rb.setEnabled(editable);
+                    // Set text color based on editable state
+                    if (editable) {
+                        rb.setTextColor(enabledTextColor);
+                    } else {
+                        rb.setTextColor(disabledTextColor);
+                    }
+                }
+            }
+        }
+
+        if (saveButton != null) {
+            saveButton.setEnabled(editable);
+            // Optionally, hide the save button when not editable
+            // Uncomment the following line if you prefer hiding the button
+            // saveButton.setVisibility(editable ? View.VISIBLE : View.GONE);
+
+            // Alternatively, keep the button visible but disabled
+            saveButton.setAlpha(editable ? 1.0f : 0.5f); // Dim the button when disabled
         }
     }
 

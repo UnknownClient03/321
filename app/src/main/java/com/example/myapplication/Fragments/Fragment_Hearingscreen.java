@@ -1,6 +1,7 @@
 package com.example.myapplication.Fragments;
 
 import android.app.DatePickerDialog;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
@@ -16,11 +17,13 @@ import android.widget.Button;
 import android.widget.Toast;
 import android.widget.TextView;
 import android.widget.LinearLayout;
+import android.widget.FrameLayout;
 
 import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.R;
 import com.example.myapplication.SQLConnection;
+import com.example.myapplication.SignatureCanvas;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -34,21 +37,31 @@ public class Fragment_Hearingscreen extends Fragment {
 
     // UI Components
     private TextView textViewHearingscreenTitle;
-    private EditText editTextName, editTextDOB, editTextLocation, editTextDate;
-    private EditText editTextScreenBy, editTextSignature;
+    private EditText editTextName, editTextDOB, editTextLocation, editTextDate, editTextCoordinatorTelephone;
+    private EditText editTextScreenBy;
     private RadioGroup radioGroupRightOutcome, radioGroupLeftOutcome, radioGroupReferAudiologist;
-    private LinearLayout layoutReferralReason;
-    private EditText editTextReferralReason, editTextCoordinatorTelephone;
     private RadioGroup radioGroupRepeatScreenRequired;
     private LinearLayout layoutRepeatScreenSection;
-    private EditText editTextRepeatLocation, editTextRepeatDate, editTextRepeatScreenBy, editTextRepeatSignature;
+    private EditText editTextRepeatLocation, editTextRepeatDate, editTextRepeatScreenBy;
     private RadioGroup radioGroupRepeatRightOutcome, radioGroupRepeatLeftOutcome, radioGroupRepeatReferAudiologist;
     private RadioGroup radioGroupHearingRiskFactor;
     private LinearLayout layoutConsultationInstruction;
     private Button buttonSaveHearingscreen;
+    private int coordinatorTelephone;
 
-    // Calendar instance for DatePicker
-    private Calendar calendar = Calendar.getInstance();
+    // Signature-related variables
+    private SignatureCanvas signatureCanvas;
+    private FrameLayout signatureContainer;
+    private TextView signatureError;
+
+    // Repeat screen signature-related variables
+    private SignatureCanvas repeatSignatureCanvas;
+    private FrameLayout repeatSignatureContainer;
+    private TextView repeatSignatureError;
+
+    // Colors for enabled and disabled text
+    private int enabledTextColor;
+    private int disabledTextColor;
 
     public Fragment_Hearingscreen() {
         // Required empty public constructor
@@ -63,43 +76,40 @@ public class Fragment_Hearingscreen extends Fragment {
                              Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.fragment_hearingscreen, container, false);
 
-        // Initialize SQL connection
-        dbHelper = new SQLConnection(); // Ensure secure initialization
-        Log.d("Fragment_Hearingscreen", "SQLConnection initialized");
+        dbHelper = new SQLConnection();
 
-        // Get childID and guardianID from bundle
+        Resources res = getResources();
+        enabledTextColor = res.getColor(R.color.enabled_text);
+        disabledTextColor = res.getColor(R.color.disabled_text);
+
         Bundle args = getArguments();
         if (args != null) {
             childID = args.getInt("childID", -1);
             guardianID = args.getInt("guardianID", -1);
-            Log.d("Fragment_Hearingscreen", "Received childID: " + childID);
-            Log.d("Fragment_Hearingscreen", "Received guardianID: " + guardianID);
         } else {
-            Log.e("Fragment_Hearingscreen", "No arguments passed to the fragment.");
             Toast.makeText(getActivity(), "Error: No child information provided.", Toast.LENGTH_SHORT).show();
             return view;
         }
 
-        // Initialize UI Components
         initializeUIComponents(view);
-
-        // Load existing Hearingscreen data if exists
+        setupDatePickers();
         retrieveHearingscreenData(childID);
-
-        // Set up listeners
         setupListeners();
+
+        // Initialize the signature canvas and add it to the container
+        signatureCanvas = new SignatureCanvas(getContext());
+        signatureContainer.addView(signatureCanvas);
+
+        // Initialize the repeat signature canvas
+        repeatSignatureCanvas = new SignatureCanvas(getContext());
+        repeatSignatureContainer.addView(repeatSignatureCanvas);
 
         return view;
     }
 
-    /**
-     * Initializes all UI components by finding them via their IDs.
-     */
     private void initializeUIComponents(View view) {
-        // Title
         textViewHearingscreenTitle = view.findViewById(R.id.textView_hearingscreen_title);
 
-        // Name and Date of Birth (Non-editable)
         editTextName = view.findViewById(R.id.editText_name);
         editTextDOB = view.findViewById(R.id.editText_dob);
         editTextName.setInputType(InputType.TYPE_NULL);
@@ -107,74 +117,65 @@ public class Fragment_Hearingscreen extends Fragment {
         editTextName.setFocusable(false);
         editTextDOB.setFocusable(false);
 
-        // Location and Date
         editTextLocation = view.findViewById(R.id.editText_location);
         editTextDate = view.findViewById(R.id.editText_date);
-        setupDatePicker(editTextDate);
 
-        // Screen By and Signature
         editTextScreenBy = view.findViewById(R.id.editText_screenBy);
-        editTextSignature = view.findViewById(R.id.editText_signature);
 
-        // Outcomes for Right and Left Ear
         radioGroupRightOutcome = view.findViewById(R.id.radioGroup_right_outcome);
         radioGroupLeftOutcome = view.findViewById(R.id.radioGroup_left_outcome);
 
-        // Refer Audiologist
         radioGroupReferAudiologist = view.findViewById(R.id.radioGroup_refer_audiologist);
-        layoutReferralReason = view.findViewById(R.id.layout_referral_reason);
-        editTextReferralReason = view.findViewById(R.id.editText_referral_reason);
 
-        // Repeat Screen Required
         radioGroupRepeatScreenRequired = view.findViewById(R.id.radioGroup_repeat_screen_required);
         layoutRepeatScreenSection = view.findViewById(R.id.layout_repeat_screen_section);
-        // Setup DatePicker for Repeat Date
         editTextRepeatDate = view.findViewById(R.id.editText_repeat_date);
-        setupDatePicker(editTextRepeatDate);
 
-        // Repeat Screen Section Fields
         editTextRepeatLocation = view.findViewById(R.id.editText_repeat_location);
         editTextRepeatScreenBy = view.findViewById(R.id.editText_repeat_screenBy);
-        editTextRepeatSignature = view.findViewById(R.id.editText_repeat_signature);
+
         radioGroupRepeatRightOutcome = view.findViewById(R.id.radioGroup_repeat_right_outcome);
         radioGroupRepeatLeftOutcome = view.findViewById(R.id.radioGroup_repeat_left_outcome);
         radioGroupRepeatReferAudiologist = view.findViewById(R.id.radioGroup_repeat_refer_audiologist);
 
-        // Hearing Risk Factor
         radioGroupHearingRiskFactor = view.findViewById(R.id.radioGroup_hearing_risk_factor);
         layoutConsultationInstruction = view.findViewById(R.id.layout_consultation_instruction);
 
-        // Coordinator Telephone
         editTextCoordinatorTelephone = view.findViewById(R.id.editText_coordinator_telephone);
 
-        // Save Button
         buttonSaveHearingscreen = view.findViewById(R.id.button_saveHearingscreen);
+
+        // Initialize signature-related views
+        signatureContainer = view.findViewById(R.id.signatureContainer);
+        signatureError = view.findViewById(R.id.signatureError);
+
+        // Initialize repeat signature-related views
+        repeatSignatureContainer = view.findViewById(R.id.repeatSignatureContainer);
+        repeatSignatureError = view.findViewById(R.id.repeatSignatureError);
     }
 
-    /**
-     * Sets up DatePickerDialogs for specified EditText fields.
-     */
+    private void setupDatePickers() {
+        setupDatePicker(editTextDate);
+        setupDatePicker(editTextRepeatDate);
+    }
+
     private void setupDatePicker(EditText dateField) {
         dateField.setInputType(InputType.TYPE_NULL);
         dateField.setFocusable(false);
         dateField.setOnClickListener(v -> showDatePickerDialog(dateField));
     }
 
-    /**
-     * Displays a DatePickerDialog and sets the selected date to the EditText.
-     */
     private void showDatePickerDialog(final EditText dateField) {
         final Calendar calendar = Calendar.getInstance();
         int year, month, day;
 
-        // Pre-set the date picker to the current value if available
         String currentDateString = dateField.getText().toString();
         if (!currentDateString.isEmpty()) {
             String[] parts = currentDateString.split("-");
             if (parts.length == 3) {
                 try {
                     year = Integer.parseInt(parts[0]);
-                    month = Integer.parseInt(parts[1]) - 1; // Month is 0-based
+                    month = Integer.parseInt(parts[1]) - 1;
                     day = Integer.parseInt(parts[2]);
                 } catch (NumberFormatException e) {
                     year = calendar.get(Calendar.YEAR);
@@ -193,7 +194,6 @@ public class Fragment_Hearingscreen extends Fragment {
         }
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), (view, selectedYear, selectedMonth, selectedDay) -> {
-            // Format the date to 'yyyy-MM-dd'
             String formattedDate = String.format(Locale.getDefault(), "%04d-%02d-%02d", selectedYear, selectedMonth + 1, selectedDay);
             dateField.setText(formattedDate);
         }, year, month, day);
@@ -201,22 +201,7 @@ public class Fragment_Hearingscreen extends Fragment {
         datePickerDialog.show();
     }
 
-    /**
-     * Sets up all necessary listeners for dynamic UI elements.
-     */
     private void setupListeners() {
-        // Show/Hide Referral Reason based on Audiologist Referral
-        radioGroupReferAudiologist.setOnCheckedChangeListener((group, checkedId) -> {
-            RadioButton radioButton = group.findViewById(checkedId);
-            if (radioButton != null && radioButton.getText().toString().equalsIgnoreCase("Yes")) {
-                layoutReferralReason.setVisibility(View.VISIBLE);
-            } else {
-                layoutReferralReason.setVisibility(View.GONE);
-                editTextReferralReason.setText("");
-            }
-        });
-
-        // Show/Hide Repeat Screen Section based on Repeat Screen Required
         radioGroupRepeatScreenRequired.setOnCheckedChangeListener((group, checkedId) -> {
             RadioButton radioButton = group.findViewById(checkedId);
             if (radioButton != null && radioButton.getText().toString().equalsIgnoreCase("Yes")) {
@@ -227,7 +212,6 @@ public class Fragment_Hearingscreen extends Fragment {
             }
         });
 
-        // Show/Hide Consultation Instruction based on Hearing Risk Factor
         radioGroupHearingRiskFactor.setOnCheckedChangeListener((group, checkedId) -> {
             RadioButton radioButton = group.findViewById(checkedId);
             if (radioButton != null && radioButton.getText().toString().equalsIgnoreCase("Yes")) {
@@ -237,30 +221,21 @@ public class Fragment_Hearingscreen extends Fragment {
             }
         });
 
-        // Set up Save button listener
         buttonSaveHearingscreen.setOnClickListener(v -> saveHearingscreenData());
     }
 
-    /**
-     * Clears all fields within the Repeat Screen section.
-     */
     private void clearRepeatScreenFields() {
         editTextRepeatLocation.setText("");
         editTextRepeatDate.setText("");
         editTextRepeatScreenBy.setText("");
-        editTextRepeatSignature.setText("");
         radioGroupRepeatRightOutcome.clearCheck();
         radioGroupRepeatLeftOutcome.clearCheck();
         radioGroupRepeatReferAudiologist.clearCheck();
     }
 
-    /**
-     * Retrieves existing Hearingscreen data from the database and populates the UI fields.
-     */
     private void retrieveHearingscreenData(int childID) {
         try {
             if (!dbHelper.isConn()) {
-                Log.e("Fragment_Hearingscreen", "Error: Unable to connect to the database.");
                 Toast.makeText(getActivity(), "Database connection error", Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -271,11 +246,11 @@ public class Fragment_Hearingscreen extends Fragment {
             char[] initialParamTypes = {'i'};
 
             HashMap<String, String[]> initialResult = dbHelper.select(initialQuery, initialParams, initialParamTypes);
+            boolean hasData = false;
 
             if (initialResult != null && initialResult.get("childID") != null && initialResult.get("childID").length > 0) {
                 populateHearingscreenFields(initialResult, false);
-            } else {
-                Log.d("Fragment_Hearingscreen", "No initial Hearingscreen record found for childID: " + childID);
+                hasData = true;
             }
 
             // Retrieve repeat screening (screenNumber = 2)
@@ -289,36 +264,33 @@ public class Fragment_Hearingscreen extends Fragment {
                 populateHearingscreenFields(repeatResult, true);
                 radioGroupRepeatScreenRequired.check(R.id.radio_repeat_yes);
                 layoutRepeatScreenSection.setVisibility(View.VISIBLE);
-            } else {
-                Log.d("Fragment_Hearingscreen", "No repeat Hearingscreen record found for childID: " + childID);
+                hasData = true;
             }
 
             // Retrieve and prefill child details
             retrieveChildDetails(childID);
 
+            // Retrieve NewBornHearing data
+            retrieveNewBornHearingData(childID);
+
+            if (hasData) {
+                setFieldsEditable(false);
+            }
+
         } catch (Exception e) {
-            Log.e("Fragment_Hearingscreen", "Error retrieving Hearingscreen details: " + e.getMessage());
             Toast.makeText(getActivity(), "Error retrieving Hearingscreen details.", Toast.LENGTH_SHORT).show();
+            Log.e("Fragment_Hearingscreen", "Error in retrieveHearingscreenData: " + e.getMessage());
         }
     }
 
-    /**
-     * Populates Hearingscreen-specific fields from the database result.
-     * @param result The result map from the database query.
-     * @param isRepeat Indicates whether the data is for the repeat screening.
-     */
     private void populateHearingscreenFields(HashMap<String, String[]> result, boolean isRepeat) {
-        // Determine the correct UI components based on whether it's repeat screening
         EditText locationField = isRepeat ? editTextRepeatLocation : editTextLocation;
         EditText dateField = isRepeat ? editTextRepeatDate : editTextDate;
         EditText screenByField = isRepeat ? editTextRepeatScreenBy : editTextScreenBy;
-        EditText signatureField = isRepeat ? editTextRepeatSignature : editTextSignature;
         RadioGroup outcomeRightGroup = isRepeat ? radioGroupRepeatRightOutcome : radioGroupRightOutcome;
         RadioGroup outcomeLeftGroup = isRepeat ? radioGroupRepeatLeftOutcome : radioGroupLeftOutcome;
         RadioGroup referAudiologistGroup = isRepeat ? radioGroupRepeatReferAudiologist : radioGroupReferAudiologist;
-        EditText referralReasonField = isRepeat ? editTextReferralReason : null; // Assuming referral reason is same
 
-        // Populate fields
         if (result.get("location") != null && result.get("location").length > 0) {
             locationField.setText(result.get("location")[0]);
         }
@@ -328,11 +300,25 @@ public class Fragment_Hearingscreen extends Fragment {
         if (result.get("screenBy") != null && result.get("screenBy").length > 0) {
             screenByField.setText(result.get("screenBy")[0]);
         }
+
         if (result.get("signature") != null && result.get("signature").length > 0) {
-            signatureField.setText(result.get("signature")[0]);
+            String imageEncoded = result.get("signature")[0];
+            if (imageEncoded != null && !imageEncoded.isEmpty()) {
+                SignatureCanvas canvas = new SignatureCanvas(getContext(), imageEncoded);
+                if (isRepeat) {
+                    repeatSignatureCanvas = canvas;
+                    repeatSignatureContainer.removeAllViews();
+                    repeatSignatureContainer.addView(repeatSignatureCanvas);
+                    repeatSignatureCanvas.setEnabled(false);
+                } else {
+                    signatureCanvas = canvas;
+                    signatureContainer.removeAllViews();
+                    signatureContainer.addView(signatureCanvas);
+                    signatureCanvas.setEnabled(false);
+                }
+            }
         }
 
-        // Right Outcome
         if (result.get("rightOutcome") != null && result.get("rightOutcome").length > 0) {
             String rightOutcome = result.get("rightOutcome")[0];
             if (rightOutcome.equalsIgnoreCase("Pass")) {
@@ -342,7 +328,6 @@ public class Fragment_Hearingscreen extends Fragment {
             }
         }
 
-        // Left Outcome
         if (result.get("leftOutcome") != null && result.get("leftOutcome").length > 0) {
             String leftOutcome = result.get("leftOutcome")[0];
             if (leftOutcome.equalsIgnoreCase("Pass")) {
@@ -352,28 +337,16 @@ public class Fragment_Hearingscreen extends Fragment {
             }
         }
 
-        // Refer to Audiologist
         if (result.get("referToAudiologist") != null && result.get("referToAudiologist").length > 0) {
             boolean refer = result.get("referToAudiologist")[0].equals("1");
             if (refer) {
                 referAudiologistGroup.check(isRepeat ? R.id.radio_repeat_refer_audiologist_yes : R.id.radio_refer_audiologist_yes);
-                if (!isRepeat && referralReasonField != null) {
-                    referralReasonField.setText(result.get("Reason") != null && result.get("Reason").length > 0 ? result.get("Reason")[0] : "");
-                    layoutReferralReason.setVisibility(View.VISIBLE);
-                }
             } else {
                 referAudiologistGroup.check(isRepeat ? R.id.radio_repeat_refer_audiologist_no : R.id.radio_refer_audiologist_no);
-                if (!isRepeat && referralReasonField != null) {
-                    referralReasonField.setText("");
-                    layoutReferralReason.setVisibility(View.GONE);
-                }
             }
         }
     }
 
-    /**
-     * **New Method**: Retrieves child details from the Child table and prefills the Name and DOB fields.
-     */
     private void retrieveChildDetails(int childID) {
         String query = "SELECT fname, lname, DOB FROM Child WHERE ID = ?";
         String[] params = {String.valueOf(childID)};
@@ -383,7 +356,6 @@ public class Fragment_Hearingscreen extends Fragment {
             HashMap<String, String[]> result = dbHelper.select(query, params, paramTypes);
 
             if (result == null || result.isEmpty()) {
-                Log.e("Fragment_Hearingscreen", "Error: No valid result from the Child table query.");
                 Toast.makeText(getActivity(), "Error: Child details not found.", Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -391,52 +363,74 @@ public class Fragment_Hearingscreen extends Fragment {
             prefillChildDetails(result);
 
         } catch (Exception e) {
-            Log.e("Fragment_Hearingscreen", "Error retrieving child details: " + e.getMessage());
             Toast.makeText(getActivity(), "Error retrieving child details.", Toast.LENGTH_SHORT).show();
+            Log.e("Fragment_Hearingscreen", "Error in retrieveChildDetails: " + e.getMessage());
         }
     }
 
-    /**
-     * **New Method**: Prefills the Name and DOB fields using child details.
-     */
     private void prefillChildDetails(HashMap<String, String[]> result) {
-        // First Name
         String[] fnameArr = result.get("fname");
         String fname = (fnameArr != null && fnameArr.length > 0) ? fnameArr[0] : "";
 
-        // Last Name
         String[] lnameArr = result.get("lname");
         String lname = (lnameArr != null && lnameArr.length > 0) ? lnameArr[0] : "";
 
-        // Concatenate to form Full Name
         String fullName = fname + " " + lname;
         editTextName.setText(fullName.trim());
 
-        // Date of Birth
         String[] dobArr = result.get("DOB");
         if (dobArr != null && dobArr.length > 0) {
             editTextDOB.setText(dobArr[0]);
         }
     }
 
-    /**
-     * Saves the Hearingscreen data to the database, handling both insert and update operations.
-     */
+    private void retrieveNewBornHearingData(int childID) {
+        String query = "SELECT hearingRiskFactorIdentified, coordinatorTelephone FROM NewBornHearing WHERE childID = ?";
+        String[] params = {String.valueOf(childID)};
+        char[] paramTypes = {'i'};
+
+        try {
+            HashMap<String, String[]> result = dbHelper.select(query, params, paramTypes);
+
+            if (result != null && result.get("hearingRiskFactorIdentified") != null && result.get("hearingRiskFactorIdentified").length > 0) {
+                String hearingRiskFactorIdentifiedStr = result.get("hearingRiskFactorIdentified")[0];
+                boolean hearingRiskFactorIdentified = hearingRiskFactorIdentifiedStr.equals("1");
+                if (hearingRiskFactorIdentified) {
+                    radioGroupHearingRiskFactor.check(R.id.radio_hearing_risk_factor_yes);
+                } else {
+                    radioGroupHearingRiskFactor.check(R.id.radio_hearing_risk_factor_no);
+                }
+            }
+
+            if (result != null && result.get("coordinatorTelephone") != null && result.get("coordinatorTelephone").length > 0) {
+                String coordinatorTelephoneStr = result.get("coordinatorTelephone")[0];
+                if (!coordinatorTelephoneStr.isEmpty()) {
+                    editTextCoordinatorTelephone.setText(coordinatorTelephoneStr);
+                }
+            }
+
+        } catch (Exception e) {
+            Toast.makeText(getActivity(), "Error retrieving NewBornHearing data.", Toast.LENGTH_SHORT).show();
+            Log.e("Fragment_Hearingscreen", "Error in retrieveNewBornHearingData: " + e.getMessage());
+        }
+    }
+
     private void saveHearingscreenData() {
         try {
             if (!dbHelper.isConn()) {
-                Log.e("Fragment_Hearingscreen", "Error: Unable to connect to the database.");
                 Toast.makeText(getActivity(), "Database connection error", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            // Validate required fields for initial screening
+            boolean isValid = true;
+            View focusView = null;
+
+            // Validate required fields
             if (TextUtils.isEmpty(editTextName.getText()) ||
                     TextUtils.isEmpty(editTextDOB.getText()) ||
                     TextUtils.isEmpty(editTextLocation.getText()) ||
                     TextUtils.isEmpty(editTextDate.getText()) ||
                     TextUtils.isEmpty(editTextScreenBy.getText()) ||
-                    TextUtils.isEmpty(editTextSignature.getText()) ||
                     radioGroupRightOutcome.getCheckedRadioButtonId() == -1 ||
                     radioGroupLeftOutcome.getCheckedRadioButtonId() == -1 ||
                     radioGroupReferAudiologist.getCheckedRadioButtonId() == -1 ||
@@ -447,39 +441,52 @@ public class Fragment_Hearingscreen extends Fragment {
                 return;
             }
 
-            // Gather initial screening data
             String location = editTextLocation.getText().toString().trim();
             String date = editTextDate.getText().toString().trim();
             String screenBy = editTextScreenBy.getText().toString().trim();
-            String signature = editTextSignature.getText().toString().trim();
 
-            // Right Outcome
+            // Extract the signature from SignatureCanvas
+            String signature = signatureCanvas.convertCanvas();
+
+            // Validate Signature
+            if (signature == null || signature.isEmpty()) {
+                signatureError.setVisibility(View.VISIBLE);
+                isValid = false;
+                if (focusView == null) focusView = signatureContainer;
+            } else {
+                signatureError.setVisibility(View.GONE);
+            }
+
             RadioButton selectedRightOutcome = getView().findViewById(radioGroupRightOutcome.getCheckedRadioButtonId());
             String rightOutcome = selectedRightOutcome.getText().toString().trim();
 
-            // Left Outcome
             RadioButton selectedLeftOutcome = getView().findViewById(radioGroupLeftOutcome.getCheckedRadioButtonId());
             String leftOutcome = selectedLeftOutcome.getText().toString().trim();
 
-            // Refer to Audiologist
             RadioButton selectedReferAudiologist = getView().findViewById(radioGroupReferAudiologist.getCheckedRadioButtonId());
             boolean referToAudiologist = selectedReferAudiologist.getText().toString().equalsIgnoreCase("Yes");
-            String referralReason = referToAudiologist ? editTextReferralReason.getText().toString().trim() : null;
 
-            // Hearing Risk Factor
             RadioButton selectedHearingRiskFactor = getView().findViewById(radioGroupHearingRiskFactor.getCheckedRadioButtonId());
-            boolean hearingRiskFactor = selectedHearingRiskFactor.getText().toString().equalsIgnoreCase("Yes");
+            boolean hearingRiskFactorIdentified = selectedHearingRiskFactor.getText().toString().equalsIgnoreCase("Yes");
 
-            String coordinatorTelephone = editTextCoordinatorTelephone.getText().toString().trim();
+            String coordinatorTelephoneStr = editTextCoordinatorTelephone.getText().toString().trim();
 
-            // Handle Repeat Screen Required
+            try {
+                coordinatorTelephone = Integer.parseInt(coordinatorTelephoneStr);
+            } catch (NumberFormatException e) {
+                Toast.makeText(getActivity(), "Coordinator Telephone must be a valid number.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             boolean isRepeatRequired = false;
             if (radioGroupRepeatScreenRequired.getCheckedRadioButtonId() != -1) {
                 RadioButton selectedRepeatScreenRequired = getView().findViewById(radioGroupRepeatScreenRequired.getCheckedRadioButtonId());
                 isRepeatRequired = selectedRepeatScreenRequired.getText().toString().equalsIgnoreCase("Yes");
             }
 
-            // Prepare initial screening data for insert or update
+            boolean allSavedSuccess = true;
+
+            // Prepare and execute initial screening (screenNumber = 1)
             String initialCheckQuery = "SELECT * FROM Hearingscreen WHERE childID = ? AND screenNumber = 1";
             String[] initialCheckParams = {String.valueOf(childID)};
             char[] initialCheckParamTypes = {'i'};
@@ -487,7 +494,6 @@ public class Fragment_Hearingscreen extends Fragment {
             HashMap<String, String[]> initialCheckResult = dbHelper.select(initialCheckQuery, initialCheckParams, initialCheckParamTypes);
             boolean initialExists = initialCheckResult != null && initialCheckResult.get("childID") != null && initialCheckResult.get("childID").length > 0;
 
-            // Prepare SQL for initial screening
             String initialSql;
             if (initialExists) {
                 initialSql = "UPDATE Hearingscreen SET location = ?, date = ?, screenBy = ?, signature = ?, rightOutcome = ?, leftOutcome = ?, referToAudiologist = ? WHERE childID = ? AND screenNumber = 1";
@@ -495,7 +501,7 @@ public class Fragment_Hearingscreen extends Fragment {
                 initialSql = "INSERT INTO Hearingscreen (childID, screenNumber, location, date, screenBy, signature, rightOutcome, leftOutcome, referToAudiologist) VALUES (?, 1, ?, ?, ?, ?, ?, ?, ?)";
             }
 
-            String[] initialParams = initialExists
+            String[] initialParamsArr = initialExists
                     ? new String[]{
                     location,
                     date,
@@ -521,23 +527,19 @@ public class Fragment_Hearingscreen extends Fragment {
                     ? new char[]{'s', 's', 's', 's', 's', 's', 'i', 'i'}
                     : new char[]{'i', 's', 's', 's', 's', 's', 's', 'i'};
 
-            boolean initialSaved = dbHelper.update(initialSql, initialParams, initialParamTypesArr);
+            boolean initialSaved = dbHelper.update(initialSql, initialParamsArr, initialParamTypesArr);
             if (initialSaved) {
-                Log.d("Fragment_Hearingscreen", "Initial Hearingscreen data saved successfully for childID: " + childID);
                 Toast.makeText(getActivity(), "Initial Hearingscreen saved successfully", Toast.LENGTH_SHORT).show();
             } else {
-                Log.e("Fragment_Hearingscreen", "Failed to save initial Hearingscreen data for childID: " + childID);
                 Toast.makeText(getActivity(), "Failed to save initial Hearingscreen data", Toast.LENGTH_SHORT).show();
-                return;
+                allSavedSuccess = false;
             }
 
             // Handle Repeat Screening
             if (isRepeatRequired) {
-                // Validate repeat screening fields
                 if (TextUtils.isEmpty(editTextRepeatLocation.getText()) ||
                         TextUtils.isEmpty(editTextRepeatDate.getText()) ||
                         TextUtils.isEmpty(editTextRepeatScreenBy.getText()) ||
-                        TextUtils.isEmpty(editTextRepeatSignature.getText()) ||
                         radioGroupRepeatRightOutcome.getCheckedRadioButtonId() == -1 ||
                         radioGroupRepeatLeftOutcome.getCheckedRadioButtonId() == -1 ||
                         radioGroupRepeatReferAudiologist.getCheckedRadioButtonId() == -1) {
@@ -546,27 +548,31 @@ public class Fragment_Hearingscreen extends Fragment {
                     return;
                 }
 
-                // Gather repeat screening data
                 String repeatLocation = editTextRepeatLocation.getText().toString().trim();
                 String repeatDate = editTextRepeatDate.getText().toString().trim();
                 String repeatScreenBy = editTextRepeatScreenBy.getText().toString().trim();
-                String repeatSignature = editTextRepeatSignature.getText().toString().trim();
 
-                // Repeat Right Outcome
+                // Extract the repeat signature
+                String repeatSignature = repeatSignatureCanvas.convertCanvas();
+
+                // Validate Repeat Signature
+                if (repeatSignature == null || repeatSignature.isEmpty()) {
+                    repeatSignatureError.setVisibility(View.VISIBLE);
+                    isValid = false;
+                    if (focusView == null) focusView = repeatSignatureContainer;
+                } else {
+                    repeatSignatureError.setVisibility(View.GONE);
+                }
+
                 RadioButton selectedRepeatRightOutcome = getView().findViewById(radioGroupRepeatRightOutcome.getCheckedRadioButtonId());
                 String repeatRightOutcome = selectedRepeatRightOutcome.getText().toString().trim();
 
-                // Repeat Left Outcome
                 RadioButton selectedRepeatLeftOutcome = getView().findViewById(radioGroupRepeatLeftOutcome.getCheckedRadioButtonId());
                 String repeatLeftOutcome = selectedRepeatLeftOutcome.getText().toString().trim();
 
-                // Repeat Refer to Audiologist
                 RadioButton selectedRepeatReferAudiologist = getView().findViewById(radioGroupRepeatReferAudiologist.getCheckedRadioButtonId());
                 boolean repeatReferAudiologist = selectedRepeatReferAudiologist.getText().toString().equalsIgnoreCase("Yes");
-                // Assuming 'Reason' column exists for repeat screenings as well
-                String repeatReferralReason = repeatReferAudiologist ? editTextReferralReason.getText().toString().trim() : null;
 
-                // Prepare repeat screening data for insert or update
                 String repeatCheckQuery = "SELECT * FROM Hearingscreen WHERE childID = ? AND screenNumber = 2";
                 String[] repeatCheckParams = {String.valueOf(childID)};
                 char[] repeatCheckParamTypes = {'i'};
@@ -574,68 +580,227 @@ public class Fragment_Hearingscreen extends Fragment {
                 HashMap<String, String[]> repeatCheckResult = dbHelper.select(repeatCheckQuery, repeatCheckParams, repeatCheckParamTypes);
                 boolean repeatExists = repeatCheckResult != null && repeatCheckResult.get("childID") != null && repeatCheckResult.get("childID").length > 0;
 
-                // Prepare SQL for repeat screening
                 String repeatSql;
+                String[] repeatParamsArr;
+                char[] repeatParamTypesArr;
+
                 if (repeatExists) {
                     repeatSql = "UPDATE Hearingscreen SET location = ?, date = ?, screenBy = ?, signature = ?, rightOutcome = ?, leftOutcome = ?, referToAudiologist = ? WHERE childID = ? AND screenNumber = 2";
                 } else {
                     repeatSql = "INSERT INTO Hearingscreen (childID, screenNumber, location, date, screenBy, signature, rightOutcome, leftOutcome, referToAudiologist) VALUES (?, 2, ?, ?, ?, ?, ?, ?, ?)";
                 }
 
-                String[] repeatParams = repeatExists
-                        ? new String[]{
-                        repeatLocation,
-                        repeatDate,
-                        repeatScreenBy,
-                        repeatSignature,
-                        repeatRightOutcome,
-                        repeatLeftOutcome,
-                        repeatReferAudiologist ? "1" : "0",
-                        String.valueOf(childID)
+                if (repeatExists) {
+                    repeatParamsArr = new String[]{
+                            repeatLocation,
+                            repeatDate,
+                            repeatScreenBy,
+                            repeatSignature,
+                            repeatRightOutcome,
+                            repeatLeftOutcome,
+                            repeatReferAudiologist ? "1" : "0",
+                            String.valueOf(childID)
+                    };
+                    repeatParamTypesArr = new char[]{'s', 's', 's', 's', 's', 's', 'i', 'i'};
+                } else {
+                    repeatParamsArr = new String[]{
+                            String.valueOf(childID),
+                            repeatLocation,
+                            repeatDate,
+                            repeatScreenBy,
+                            repeatSignature,
+                            repeatRightOutcome,
+                            repeatLeftOutcome,
+                            repeatReferAudiologist ? "1" : "0"
+                    };
+                    repeatParamTypesArr = new char[]{'i', 's', 's', 's', 's', 's', 's', 'i'};
                 }
-                        : new String[]{
-                        String.valueOf(childID),
-                        repeatLocation,
-                        repeatDate,
-                        repeatScreenBy,
-                        repeatSignature,
-                        repeatRightOutcome,
-                        repeatLeftOutcome,
-                        repeatReferAudiologist ? "1" : "0"
-                };
 
-                char[] repeatParamTypesArr = repeatExists
-                        ? new char[]{'s', 's', 's', 's', 's', 's', 'i', 'i'}
-                        : new char[]{'i', 's', 's', 's', 's', 's', 's', 'i'};
-
-                boolean repeatSaved = dbHelper.update(repeatSql, repeatParams, repeatParamTypesArr);
+                boolean repeatSaved = dbHelper.update(repeatSql, repeatParamsArr, repeatParamTypesArr);
                 if (repeatSaved) {
-                    Log.d("Fragment_Hearingscreen", "Repeat Hearingscreen data saved successfully for childID: " + childID);
                     Toast.makeText(getActivity(), "Repeat Hearingscreen saved successfully", Toast.LENGTH_SHORT).show();
                 } else {
-                    Log.e("Fragment_Hearingscreen", "Failed to save repeat Hearingscreen data for childID: " + childID);
                     Toast.makeText(getActivity(), "Failed to save repeat Hearingscreen data", Toast.LENGTH_SHORT).show();
+                    allSavedSuccess = false;
                 }
 
             } else {
-                // If repeat screening not required, remove any existing repeat screening data
                 String deleteRepeatSql = "DELETE FROM Hearingscreen WHERE childID = ? AND screenNumber = 2";
                 String[] deleteParams = {String.valueOf(childID)};
                 char[] deleteParamTypes = {'i'};
 
-                boolean repeatDeleted = dbHelper.update(deleteRepeatSql, deleteParams, deleteParamTypes);
-                if (repeatDeleted) {
-                    Log.d("Fragment_Hearingscreen", "Existing repeat Hearingscreen data deleted for childID: " + childID);
-                    Toast.makeText(getActivity(), "Repeat Hearingscreen data removed", Toast.LENGTH_SHORT).show();
+                boolean deleteSuccess = dbHelper.update(deleteRepeatSql, deleteParams, deleteParamTypes);
+                if (deleteSuccess) {
+                    Toast.makeText(getActivity(), "Repeat Hearingscreen data deleted successfully", Toast.LENGTH_SHORT).show();
                 } else {
-                    Log.e("Fragment_Hearingscreen", "Failed to delete repeat Hearingscreen data for childID: " + childID);
-                    // Not critical, so no toast
+                    Toast.makeText(getActivity(), "Failed to delete repeat Hearingscreen data", Toast.LENGTH_SHORT).show();
+                    allSavedSuccess = false;
                 }
             }
 
+            // Insert or Update into NewBornHearing table
+            saveNewBornHearingData(hearingRiskFactorIdentified);
+
+            if (allSavedSuccess && isValid) {
+                setFieldsEditable(false);
+            }
+
         } catch (Exception e) {
-            Log.e("Fragment_Hearingscreen", "Error saving Hearingscreen: " + e.getMessage());
             Toast.makeText(getActivity(), "Error saving Hearingscreen", Toast.LENGTH_SHORT).show();
+            Log.e("Fragment_Hearingscreen", "Error in saveHearingscreenData: " + e.getMessage());
+        }
+    }
+
+    private void saveNewBornHearingData(boolean hearingRiskFactorIdentified) {
+        try {
+            // Define preScreeningVal based on outcomes
+            String preScreeningVal;
+            if (radioGroupRightOutcome.getCheckedRadioButtonId() != -1 &&
+                    radioGroupLeftOutcome.getCheckedRadioButtonId() != -1) {
+
+                RadioButton rightOutcomeBtn = getView().findViewById(radioGroupRightOutcome.getCheckedRadioButtonId());
+                RadioButton leftOutcomeBtn = getView().findViewById(radioGroupLeftOutcome.getCheckedRadioButtonId());
+
+                boolean rightPass = rightOutcomeBtn.getText().toString().equalsIgnoreCase("Pass");
+                boolean leftPass = leftOutcomeBtn.getText().toString().equalsIgnoreCase("Pass");
+
+                if (rightPass && leftPass) {
+                    preScreeningVal = "Normal";
+                } else if (!rightPass || !leftPass) {
+                    preScreeningVal = "Refer";
+                } else {
+                    preScreeningVal = "review";
+                }
+            } else {
+                preScreeningVal = "review";
+            }
+
+            // Set requiresrepeatScreen
+            boolean requiresrepeatScreen = radioGroupRepeatScreenRequired.getCheckedRadioButtonId() != -1 &&
+                    ((RadioButton) getView().findViewById(radioGroupRepeatScreenRequired.getCheckedRadioButtonId())).getText().toString().equalsIgnoreCase("Yes");
+
+            // Retrieve fname, lname, and dob from Child table
+            String childQuery = "SELECT fname, lname, DOB FROM Child WHERE ID = ?";
+            String[] childParams = {String.valueOf(childID)};
+            char[] childParamTypes = {'i'};
+
+            HashMap<String, String[]> childResult = dbHelper.select(childQuery, childParams, childParamTypes);
+            if (childResult == null || childResult.get("fname") == null || childResult.get("fname").length == 0 ||
+                    childResult.get("lname") == null || childResult.get("lname").length == 0 ||
+                    childResult.get("DOB") == null || childResult.get("DOB").length == 0) {
+                Toast.makeText(getActivity(), "Error: Child details not found for NewBornHearing.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            String fname = childResult.get("fname")[0];
+            String lname = childResult.get("lname")[0];
+            String dob = childResult.get("DOB")[0];
+
+            // Check if record exists in NewBornHearing
+            String checkQuery = "SELECT COUNT(*) AS count FROM NewBornHearing WHERE childID = ?";
+            String[] checkParams = {String.valueOf(childID)};
+            char[] checkParamTypes = {'i'};
+
+            HashMap<String, String[]> checkResult = dbHelper.select(checkQuery, checkParams, checkParamTypes);
+            int recordCount = 0;
+            if (checkResult != null && checkResult.get("count") != null && checkResult.get("count").length > 0) {
+                try {
+                    recordCount = Integer.parseInt(checkResult.get("count")[0]);
+                } catch (NumberFormatException e) {
+                    Log.e("Fragment_Hearingscreen", "Invalid count value: " + checkResult.get("count")[0]);
+                }
+            }
+
+            String hearingSql;
+            String[] hearingParams;
+            char[] hearingParamTypes;
+
+            if (recordCount > 0) {
+                // Update existing record and include fname and lname
+                hearingSql = "UPDATE NewBornHearing SET preScreeningVal = ?, fname = ?, lname = ?, DOB = ?, requiresrepeatScreen = ?, hearingRiskFactorIdentified = ?, coordinatorTelephone = ? WHERE childID = ?";
+                hearingParams = new String[]{
+                        preScreeningVal,
+                        fname,
+                        lname,
+                        dob,
+                        requiresrepeatScreen ? "1" : "0",
+                        hearingRiskFactorIdentified ? "1" : "0",
+                        String.valueOf(coordinatorTelephone),
+                        String.valueOf(childID)
+                };
+                hearingParamTypes = new char[]{'s', 's', 's', 'd', 'i', 'i', 'i', 'i'};
+            } else {
+                // Insert new record
+                hearingSql = "INSERT INTO NewBornHearing (childID, preScreeningVal, fname, lname, DOB, requiresrepeatScreen, hearingRiskFactorIdentified, coordinatorTelephone) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                hearingParams = new String[]{
+                        String.valueOf(childID),
+                        preScreeningVal,
+                        fname,
+                        lname,
+                        dob,
+                        requiresrepeatScreen ? "1" : "0",
+                        hearingRiskFactorIdentified ? "1" : "0",
+                        String.valueOf(coordinatorTelephone)
+                };
+                hearingParamTypes = new char[]{'i', 's', 's', 's', 'd', 'i', 'i', 'i'};
+            }
+
+            boolean hearingSaved = dbHelper.update(hearingSql, hearingParams, hearingParamTypes);
+            if (hearingSaved) {
+                Toast.makeText(getActivity(), "NewBornHearing data saved successfully", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getActivity(), "Failed to save NewBornHearing data", Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            Toast.makeText(getActivity(), "Error saving NewBornHearing data.", Toast.LENGTH_SHORT).show();
+            Log.e("Fragment_Hearingscreen", "Error in saveNewBornHearingData: " + e.getMessage());
+        }
+    }
+
+    private void setFieldsEditable(boolean editable) {
+        editTextLocation.setEnabled(editable);
+        editTextDate.setEnabled(editable);
+        editTextScreenBy.setEnabled(editable);
+        signatureCanvas.setEnabled(editable);
+
+        editTextRepeatLocation.setEnabled(editable);
+        editTextRepeatDate.setEnabled(editable);
+        editTextRepeatScreenBy.setEnabled(editable);
+        repeatSignatureCanvas.setEnabled(editable);
+
+        editTextCoordinatorTelephone.setEnabled(editable);
+
+        setRadioGroupEditable(radioGroupRightOutcome, editable);
+        setRadioGroupEditable(radioGroupLeftOutcome, editable);
+        setRadioGroupEditable(radioGroupReferAudiologist, editable);
+        setRadioGroupEditable(radioGroupRepeatScreenRequired, editable);
+        setRadioGroupEditable(radioGroupRepeatRightOutcome, editable);
+        setRadioGroupEditable(radioGroupRepeatLeftOutcome, editable);
+        setRadioGroupEditable(radioGroupRepeatReferAudiologist, editable);
+        setRadioGroupEditable(radioGroupHearingRiskFactor, editable);
+
+        buttonSaveHearingscreen.setEnabled(editable);
+        buttonSaveHearingscreen.setAlpha(editable ? 1.0f : 0.5f);
+
+        // Handle the SignatureCanvas
+        if (signatureCanvas != null) {
+            signatureCanvas.setEnabled(editable);
+        }
+
+        if (repeatSignatureCanvas != null) {
+            repeatSignatureCanvas.setEnabled(editable);
+        }
+    }
+
+    private void setRadioGroupEditable(RadioGroup radioGroup, boolean editable) {
+        radioGroup.setEnabled(editable);
+        for (int i = 0; i < radioGroup.getChildCount(); i++) {
+            View child = radioGroup.getChildAt(i);
+            if (child instanceof RadioButton) {
+                RadioButton rb = (RadioButton) child;
+                rb.setEnabled(editable);
+                rb.setTextColor(editable ? enabledTextColor : disabledTextColor);
+            }
         }
     }
 

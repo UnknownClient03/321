@@ -13,11 +13,14 @@ import android.widget.EditText;
 import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.R;
 import com.example.myapplication.SQLConnection;
+import com.example.myapplication.SignatureCanvas;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.text.ParseException;
@@ -37,13 +40,18 @@ public class Fragment_NewbornExamination extends Fragment {
     private EditText dobInput, ageInput, fnameInput, lnameInput;
     private CheckBox anyConcernsInput;
     private EditText anyConcernsCommentInput;
-    private EditText examinerInput, designationInput, signatureInput, dateInput;
+    private EditText examinerInput, designationInput, dateInput;
     private int childID;
+
+    // Signature-related variables
+    private SignatureCanvas signatureCanvas;
+    private FrameLayout signatureContainer;
+    private TextView signatureError;
 
     // TextInputLayouts for validation
     private TextInputLayout dobLayout, ageLayout, fnameLayout, lnameLayout;
     private TextInputLayout anyConcernsCommentLayout;
-    private TextInputLayout examinerLayout, designationLayout, signatureLayout, dateLayout;
+    private TextInputLayout examinerLayout, designationLayout, dateLayout;
 
     // Declarations for the 15 checks
     private CheckBox[] checkBoxes_isNormal = new CheckBox[15];
@@ -98,6 +106,10 @@ public class Fragment_NewbornExamination extends Fragment {
         dateFields = Arrays.asList(dobInput, dateInput);
         setupDatePickers();
 
+        // Initialize the signature canvas and add it to the container
+        signatureCanvas = new SignatureCanvas(getContext());
+        signatureContainer.addView(signatureCanvas);
+
         // Initialize checks
         initializeChecks(view);
 
@@ -135,7 +147,6 @@ public class Fragment_NewbornExamination extends Fragment {
         anyConcernsCommentLayout = view.findViewById(R.id.textInputLayout_anyConcernsComment);
         examinerLayout = view.findViewById(R.id.textInputLayout_examiner);
         designationLayout = view.findViewById(R.id.textInputLayout_designation);
-        signatureLayout = view.findViewById(R.id.textInputLayout_signature);
         dateLayout = view.findViewById(R.id.textInputLayout_date);
 
         // Initialize TextInputLayouts for comments in checks
@@ -160,8 +171,11 @@ public class Fragment_NewbornExamination extends Fragment {
 
         examinerInput = view.findViewById(R.id.editText_examiner);
         designationInput = view.findViewById(R.id.editText_designation);
-        signatureInput = view.findViewById(R.id.editText_signature);
         dateInput = view.findViewById(R.id.editText_date);
+
+        // Initialize signature-related views
+        signatureContainer = view.findViewById(R.id.signatureContainer);
+        signatureError = view.findViewById(R.id.signatureError);
     }
 
     private void setupSpinners() {
@@ -345,7 +359,15 @@ public class Fragment_NewbornExamination extends Fragment {
         }
 
         if (data.containsKey("signature")) {
-            signatureInput.setText(getValue(data, "signature"));
+            String imageEncoded = getValue(data, "signature");
+            if (imageEncoded != null && !imageEncoded.isEmpty()) {
+                // Create a new SignatureCanvas with the Base64 image
+                signatureCanvas = new SignatureCanvas(getContext(), imageEncoded);
+                signatureContainer.removeAllViews();
+                signatureContainer.addView(signatureCanvas);
+                // Disable the signature pad to prevent editing
+                signatureCanvas.setEnabled(false);
+            }
         }
 
         if (data.containsKey("date")) {
@@ -495,8 +517,10 @@ public class Fragment_NewbornExamination extends Fragment {
 
         String examiner = examinerInput.getText().toString().trim();
         String designation = designationInput.getText().toString().trim();
-        String signature = signatureInput.getText().toString().trim();
         String date = dateInput.getText().toString().trim();
+
+        // Extract the signature from SignatureCanvas
+        String signature = signatureCanvas.convertCanvas();
 
         boolean isValid = true;
         View focusView = null;
@@ -594,12 +618,12 @@ public class Fragment_NewbornExamination extends Fragment {
         }
 
         // Validate Signature
-        if (signature.isEmpty()) {
-            signatureLayout.setError("Signature is required.");
+        if (signature == null || signature.isEmpty()) {
+            signatureError.setVisibility(View.VISIBLE);
             isValid = false;
-            if (focusView == null) focusView = signatureInput;
+            if (focusView == null) focusView = signatureContainer;
         } else {
-            signatureLayout.setError(null);
+            signatureError.setVisibility(View.GONE);
         }
 
         // Validate Date
@@ -680,8 +704,8 @@ public class Fragment_NewbornExamination extends Fragment {
         anyConcernsCommentLayout.setError(null);
         examinerLayout.setError(null);
         designationLayout.setError(null);
-        signatureLayout.setError(null);
         dateLayout.setError(null);
+        signatureError.setVisibility(View.GONE);
 
         for (int i = 0; i < checkNames.length; i++) {
             editTexts_commentLayout[i].setError(null);
@@ -700,23 +724,6 @@ public class Fragment_NewbornExamination extends Fragment {
                 return false;
             }
             return true;
-        } catch (ParseException e) {
-            return false;
-        }
-    }
-
-    private boolean isValidSex(String sex) {
-        return sex.equalsIgnoreCase("M") || sex.equalsIgnoreCase("F");
-    }
-
-    private boolean isAgeConsistent(String dobStr, int ageInDays) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-        try {
-            Date dob = sdf.parse(dobStr);
-            Date today = new Date();
-            long diffInMillis = today.getTime() - dob.getTime();
-            long calculatedAgeInDays = TimeUnit.DAYS.convert(diffInMillis, TimeUnit.MILLISECONDS);
-            return Math.abs(calculatedAgeInDays - ageInDays) <= 1; // Allow a difference of 1 day
         } catch (ParseException e) {
             return false;
         }
@@ -792,6 +799,11 @@ public class Fragment_NewbornExamination extends Fragment {
             Toast.makeText(getActivity(), "Newborn examination saved successfully.", Toast.LENGTH_SHORT).show();
             setAutofilledFieldsEditable(false);
             setFieldsEditable(false);
+
+            // Disable the SignatureCanvas
+            if (signatureCanvas != null) {
+                signatureCanvas.setEnabled(false);
+            }
         } else {
             Toast.makeText(getActivity(), "Failed to save newborn examination.", Toast.LENGTH_SHORT).show();
         }
@@ -828,8 +840,6 @@ public class Fragment_NewbornExamination extends Fragment {
         // If there were check errors, inform the user
         if (hasCheckErrors) {
             Toast.makeText(getActivity(), "Please fix the errors in the examination checks.", Toast.LENGTH_LONG).show();
-        } else {
-
         }
     }
 
@@ -922,7 +932,7 @@ public class Fragment_NewbornExamination extends Fragment {
 
         // Handle regular EditText fields excluding ageInput
         EditText[] editableFields = new EditText[]{
-                anyConcernsCommentInput, examinerInput, designationInput, signatureInput, dateInput
+                anyConcernsCommentInput, examinerInput, designationInput, dateInput
         };
 
         for (EditText field : editableFields) {
@@ -973,6 +983,11 @@ public class Fragment_NewbornExamination extends Fragment {
                 setupDatePicker(dateField, getLayoutForDateField(dateField));
                 dateField.setTextColor(getResources().getColor(R.color.enabled_text, null)); // Optional: Reset text color
             }
+        }
+
+        // Handle the SignatureCanvas
+        if (signatureCanvas != null) {
+            signatureCanvas.setEnabled(editable);
         }
     }
 

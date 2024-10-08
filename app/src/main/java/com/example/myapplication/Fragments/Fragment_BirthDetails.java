@@ -7,17 +7,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Button;
 import android.widget.Toast;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.R;
 import com.example.myapplication.SQLConnection;
 import com.google.android.material.textfield.TextInputLayout;
+import com.example.myapplication.SignatureCanvas;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -39,7 +41,7 @@ public class Fragment_BirthDetails extends Fragment {
     private EditText problemsRequiringTreatmentInput, birthWeightInput, birthLengthInput, birthHeadCircInput;
     private EditText newBornBloodspotScreenTestInput, vitaminKGiven1stInput, vitaminKGiven2ndInput, vitaminKGiven3rdInput;
     private EditText postPartumComplicationsInput, difficultiesWithFeedingInput, dateOfDischargeInput, dischargeWeightInput;
-    private EditText headCircInput, printNameInput, signatureInput, designationInput;
+    private EditText headCircInput, printNameInput, designationInput;
     private EditText hepBImmunisationGivenInput, hepBImmunoglobinGivenInput;
     private int childID;
     private int guardianID;
@@ -51,8 +53,12 @@ public class Fragment_BirthDetails extends Fragment {
     private TextInputLayout problemsRequiringTreatmentLayout, birthWeightLayout, birthLengthLayout, birthHeadCircLayout;
     private TextInputLayout newBornBloodspotScreenTestLayout, vitaminKGiven1stLayout, vitaminKGiven2ndLayout, vitaminKGiven3rdLayout;
     private TextInputLayout postPartumComplicationsLayout, difficultiesWithFeedingLayout, dateOfDischargeLayout, dischargeWeightLayout;
-    private TextInputLayout headCircLayout, printNameLayout, signatureLayout, designationLayout;
+    private TextInputLayout headCircLayout, printNameLayout, designationLayout;
     private TextInputLayout hepBImmunisationGivenLayout, hepBImmunoglobinGivenLayout;
+
+    private SignatureCanvas signatureCanvas;
+    private FrameLayout signatureContainer;
+    private TextView signatureError;
 
     // List to manage all date fields
     private List<EditText> dateFields;
@@ -93,6 +99,9 @@ public class Fragment_BirthDetails extends Fragment {
         initializeTextInputLayouts(view);
         initializeInputs(view);
         setupAllDatePickers();
+
+        signatureCanvas = new SignatureCanvas(getContext());
+        signatureContainer.addView(signatureCanvas);
 
         // Initialize dateFields list
         dateFields = Arrays.asList(
@@ -144,7 +153,6 @@ public class Fragment_BirthDetails extends Fragment {
         dischargeWeightLayout = view.findViewById(R.id.textInputLayout_dischargeWeight);
         headCircLayout = view.findViewById(R.id.textInputLayout_headCirc);
         printNameLayout = view.findViewById(R.id.textInputLayout_printName);
-        signatureLayout = view.findViewById(R.id.textInputLayout_signature);
         designationLayout = view.findViewById(R.id.textInputLayout_designation);
         hepBImmunisationGivenLayout = view.findViewById(R.id.textInputLayout_hepBImmunisationGiven);
         hepBImmunoglobinGivenLayout = view.findViewById(R.id.textInputLayout_hepBImmunoglobinGiven);
@@ -191,11 +199,13 @@ public class Fragment_BirthDetails extends Fragment {
         headCircInput = view.findViewById(R.id.editText_headCirc);
 
         printNameInput = view.findViewById(R.id.editText_printName);
-        signatureInput = view.findViewById(R.id.editText_signature);
         designationInput = view.findViewById(R.id.editText_designation);
 
         hepBImmunisationGivenInput = view.findViewById(R.id.editText_hepBImmunisationGiven);
         hepBImmunoglobinGivenInput = view.findViewById(R.id.editText_hepBImmunoglobinGiven);
+
+        signatureContainer = view.findViewById(R.id.signatureContainer);
+        signatureError = view.findViewById(R.id.signatureError);
     }
 
     private void setupAllDatePickers() {
@@ -261,8 +271,7 @@ public class Fragment_BirthDetails extends Fragment {
             if (hasData(data)) {
                 Log.d("Fragment_BirthDetails", "Data found in BirthDetails. Populating fields.");
                 populateFields(data);
-                // Remove or comment out the following line
-                // setFieldsEditable(false);
+
             } else {
                 Log.d("Fragment_BirthDetails", "No data found in BirthDetails. Attempting to load from Child table.");
                 String childQuery = "SELECT fname, lname, DOB, sex FROM Child WHERE ID = ?";
@@ -276,9 +285,6 @@ public class Fragment_BirthDetails extends Fragment {
                     lnameInput.setText(getValue(childData, "lname"));
                     birthDateInput.setText(getValue(childData, "DOB"));
                     setSpinnerSelection(sexInput, getValue(childData, "sex"));
-                    // Remove or comment out the following line
-                    // setFieldsEditable(false);
-                    // Instead, set only these fields as non-editable
                     fnameInput.setEnabled(false);
                     lnameInput.setEnabled(false);
                     birthDateInput.setEnabled(false);
@@ -472,8 +478,14 @@ public class Fragment_BirthDetails extends Fragment {
         }
 
         if (data.containsKey("signature")) {
-            signatureInput.setText(getValue(data, "signature"));
-            signatureInput.setEnabled(false);
+            String imageEncoded = getValue(data, "signature");
+            if (imageEncoded != null && !imageEncoded.isEmpty()) {
+                signatureCanvas = new SignatureCanvas(getContext(), imageEncoded);
+                signatureContainer.removeAllViews();
+                signatureContainer.addView(signatureCanvas);
+                // Disable the signature pad to prevent editing
+                signatureCanvas.setEnabled(false);
+            }
         }
 
         if (data.containsKey("designation")) {
@@ -525,7 +537,7 @@ public class Fragment_BirthDetails extends Fragment {
                 birthWeightInput, birthLengthInput, birthHeadCircInput,
                 newBornBloodspotScreenTestInput, vitaminKGiven1stInput, vitaminKGiven2ndInput, vitaminKGiven3rdInput,
                 postPartumComplicationsInput, difficultiesWithFeedingInput, dateOfDischargeInput,
-                dischargeWeightInput, headCircInput, printNameInput, signatureInput, designationInput,
+                dischargeWeightInput, headCircInput, printNameInput, designationInput,
                 hepBImmunisationGivenInput, hepBImmunoglobinGivenInput
         };
 
@@ -540,6 +552,10 @@ public class Fragment_BirthDetails extends Fragment {
 
         for (Spinner spinner : spinnerFields) {
             spinner.setEnabled(editable);
+        }
+
+        if (signatureCanvas != null) {
+            signatureCanvas.setEnabled(editable);
         }
 
         // Handle Date Fields Separately
@@ -606,7 +622,7 @@ public class Fragment_BirthDetails extends Fragment {
         String headCirc = headCircInput.getText().toString().trim();
 
         String printName = printNameInput.getText().toString().trim();
-        String signature = signatureInput.getText().toString().trim();
+        String signature = signatureCanvas.convertCanvas();
         String designation = designationInput.getText().toString().trim();
 
         String hepBImmunisationGiven = hepBImmunisationGivenInput.getText().toString().trim();
@@ -1104,12 +1120,12 @@ public class Fragment_BirthDetails extends Fragment {
         }
 
 // Validate Signature
-        if (signature.isEmpty()) {
-            signatureLayout.setError("Signature is required.");
+        if (signature == null || signature.isEmpty()) {
+            signatureError.setVisibility(View.VISIBLE);
             isValid = false;
-            if (focusView == null) focusView = signatureInput;
+            if (focusView == null) focusView = signatureContainer;
         } else {
-            signatureLayout.setError(null);
+            signatureError.setVisibility(View.GONE);
         }
 
 // Validate Designation
@@ -1172,7 +1188,7 @@ public class Fragment_BirthDetails extends Fragment {
         dischargeWeightLayout.setError(null);
         headCircLayout.setError(null);
         printNameLayout.setError(null);
-        signatureLayout.setError(null);
+        signatureError.setVisibility(View.GONE);
         designationLayout.setError(null);
         hepBImmunisationGivenLayout.setError(null);
         hepBImmunoglobinGivenLayout.setError(null);
@@ -1263,29 +1279,14 @@ public class Fragment_BirthDetails extends Fragment {
             String typeofBirth = typeofBirthInput.getText().toString().trim();
 
             // Parse integers with validation
-            int estimatedGestation;
-            int apgarScore1Min;
-            int apgarScore5Min;
-            int birthWeight;
-            int birthLength;
-            int birthHeadCirc;
-            int dischargeWeight;
-            int headCirc;
-
-            try {
-                estimatedGestation = Integer.parseInt(estimatedGestationInput.getText().toString().trim());
-                apgarScore1Min = Integer.parseInt(apgarScore1MinInput.getText().toString().trim());
-                apgarScore5Min = Integer.parseInt(apgarScore5MinInput.getText().toString().trim());
-                birthWeight = Integer.parseInt(birthWeightInput.getText().toString().trim());
-                birthLength = Integer.parseInt(birthLengthInput.getText().toString().trim());
-                birthHeadCirc = Integer.parseInt(birthHeadCircInput.getText().toString().trim());
-                dischargeWeight = Integer.parseInt(dischargeWeightInput.getText().toString().trim());
-                headCirc = Integer.parseInt(headCircInput.getText().toString().trim());
-            } catch (NumberFormatException e) {
-                Log.e("Fragment_BirthDetails", "Number format exception", e);
-                Toast.makeText(getActivity(), "Please enter valid numeric values.", Toast.LENGTH_SHORT).show();
-                return;
-            }
+            int estimatedGestation = Integer.parseInt(estimatedGestationInput.getText().toString().trim());
+            int apgarScore1Min = Integer.parseInt(apgarScore1MinInput.getText().toString().trim());
+            int apgarScore5Min = Integer.parseInt(apgarScore5MinInput.getText().toString().trim());
+            int birthWeight = Integer.parseInt(birthWeightInput.getText().toString().trim());
+            int birthLength = Integer.parseInt(birthLengthInput.getText().toString().trim());
+            int birthHeadCirc = Integer.parseInt(birthHeadCircInput.getText().toString().trim());
+            int dischargeWeight = Integer.parseInt(dischargeWeightInput.getText().toString().trim());
+            int headCirc = Integer.parseInt(headCircInput.getText().toString().trim());
 
             String abnormalitiesAtBirth = abnormalitiesAtBirthInput.getText().toString().trim().isEmpty() ? null : abnormalitiesAtBirthInput.getText().toString().trim();
             String problemsRequiringTreatment = problemsRequiringTreatmentInput.getText().toString().trim().isEmpty() ? null : problemsRequiringTreatmentInput.getText().toString().trim();
@@ -1301,10 +1302,12 @@ public class Fragment_BirthDetails extends Fragment {
             String difficultiesWithFeeding = difficultiesWithFeedingInput.getText().toString().trim().isEmpty() ? null : difficultiesWithFeedingInput.getText().toString().trim();
             String dateOfDischarge = dateOfDischargeInput.getText().toString().trim().isEmpty() ? null : dateOfDischargeInput.getText().toString().trim();
             String printName = printNameInput.getText().toString().trim();
-            String signature = signatureInput.getText().toString().trim();
             String designation = designationInput.getText().toString().trim();
 
-            // Prepare parameters for INSERT
+            // Extract the signature from SignatureCanvas
+            String signature = signatureCanvas.convertCanvas();
+
+            // Prepare parameters for INSERT or UPDATE
             String[] paramsToUse = new String[]{
                     String.valueOf(childID),
                     fname,
@@ -1391,7 +1394,6 @@ public class Fragment_BirthDetails extends Fragment {
                     's'  // designation
             };
 
-            // Log the SQL query and parameters for debugging
             if (recordCount > 0) {
                 // Prepare parameters for UPDATE (excluding childID from values, as it's in WHERE clause)
                 String[] paramsForUpdate = Arrays.copyOfRange(paramsToUse, 1, paramsToUse.length);
@@ -1418,16 +1420,16 @@ public class Fragment_BirthDetails extends Fragment {
                 handleSaveResult(isSuccess);
             } else {
                 // Insert new record
-                String insertQuery = "INSERT INTO BirthDetails (\n" +
-                        "    childID, fname, lname, birthFacility, DOB, sex, mothersFName, mothersLName, mothersMRN,\n" +
-                        "    pregnancyComplications, bloodGroup, antiDGigen, newBornHearingScreenCompleted, labour,\n" +
-                        "    labourComplications, typeofBirth, estimatedGestation, apgarScore1Min, apgarScore5Min,\n" +
-                        "    abnormalitiesAtBirth, problemsRequiringTreatment, birthWeight, birthLength, birthHeadCirc,\n" +
-                        "    newBornBloodspotScreenTest, vitaminKGiven, vitaminKGiven1st, vitaminKGiven2nd, vitaminKGiven3rd,\n" +
-                        "    hepBImmunisationGiven, hepBImmunoglobinGiven, postPartumComplications, feedingAtDischarge,\n" +
-                        "    difficultiesWithFeeding, dateOfDischarge, dischargeWeight, headCirc, printName, signature,\n" +
-                        "    designation\n" +
-                        ") VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                String insertQuery = "INSERT INTO BirthDetails (" +
+                        "childID, fname, lname, birthFacility, DOB, sex, mothersFName, mothersLName, mothersMRN, " +
+                        "pregnancyComplications, bloodGroup, antiDGigen, newBornHearingScreenCompleted, labour, " +
+                        "labourComplications, typeofBirth, estimatedGestation, apgarScore1Min, apgarScore5Min, " +
+                        "abnormalitiesAtBirth, problemsRequiringTreatment, birthWeight, birthLength, birthHeadCirc, " +
+                        "newBornBloodspotScreenTest, vitaminKGiven, vitaminKGiven1st, vitaminKGiven2nd, vitaminKGiven3rd, " +
+                        "hepBImmunisationGiven, hepBImmunoglobinGiven, postPartumComplications, feedingAtDischarge, " +
+                        "difficultiesWithFeeding, dateOfDischarge, dischargeWeight, headCirc, printName, signature, " +
+                        "designation" +
+                        ") VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
 
                 boolean isSuccess = dbHelper.update(insertQuery, paramsToUse, paramTypes);
                 handleSaveResult(isSuccess);
@@ -1443,10 +1445,16 @@ public class Fragment_BirthDetails extends Fragment {
         if (isSuccess) {
             Toast.makeText(getActivity(), "Birth details saved successfully", Toast.LENGTH_SHORT).show();
             setFieldsEditable(false); // Make fields non-editable after saving
-        } else {
+        }
+        if (signatureCanvas != null) {
+            signatureCanvas.setEnabled(false);
+        }
+        else {
             Toast.makeText(getActivity(), "Failed to save birth details", Toast.LENGTH_SHORT).show();
         }
     }
+
+
 
     @Override
     public void onDestroy() {
