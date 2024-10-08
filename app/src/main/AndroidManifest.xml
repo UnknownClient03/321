@@ -126,6 +126,8 @@
 
         <activity android:name=".EncapsulatingActivity" />
 
+        <activity android:name=".PractitionerChildSelect" />
+
     </application>
 
 
