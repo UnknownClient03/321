@@ -495,7 +495,7 @@ public class CheckFragment extends Fragment {
                 submitButton.setEnabled(false);
                 submitButton.setVisibility(View.GONE);
 
-                // Navigate two fragments back to the Checks Menu Fragment
+                // Navigate three fragments back to the Checks Menu Fragment
                 if (getActivity() != null) {
                     getActivity().getSupportFragmentManager().popBackStack();
                     getActivity().getSupportFragmentManager().popBackStack();

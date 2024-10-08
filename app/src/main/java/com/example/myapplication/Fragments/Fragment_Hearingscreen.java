@@ -40,31 +40,32 @@ public class Fragment_Hearingscreen extends Fragment {
     private EditText editTextName, editTextDOB, editTextLocation, editTextDate, editTextCoordinatorTelephone;
     private EditText editTextScreenBy;
     private RadioGroup radioGroupRightOutcome, radioGroupLeftOutcome, radioGroupReferAudiologist;
-    private RadioGroup radioGroupRepeatScreenRequired;
     private LinearLayout layoutRepeatScreenSection;
     private EditText editTextRepeatLocation, editTextRepeatDate, editTextRepeatScreenBy;
     private RadioGroup radioGroupRepeatRightOutcome, radioGroupRepeatLeftOutcome, radioGroupRepeatReferAudiologist;
     private RadioGroup radioGroupHearingRiskFactor;
     private LinearLayout layoutConsultationInstruction;
     private Button buttonSaveHearingscreen;
-    private int coordinatorTelephone;
+    private Button buttonAddRepeatScreening;
 
-    // Signature-related variables
+    // Signature canvases and containers
     private SignatureCanvas signatureCanvas;
-    private FrameLayout signatureContainer;
-    private TextView signatureError;
-
-    // Repeat screen signature-related variables
     private SignatureCanvas repeatSignatureCanvas;
+    private FrameLayout signatureContainer;
     private FrameLayout repeatSignatureContainer;
+    private TextView signatureError;
     private TextView repeatSignatureError;
 
-    // Colors for enabled and disabled text
-    private int enabledTextColor;
+    private int coordinatorTelephone;
+
+    // For text color changes when fields are disabled
     private int disabledTextColor;
+    private int enabledTextColor;
+
+    // Flag to check if repeat screening data exists
+    private boolean repeatScreeningDataExists = false;
 
     public Fragment_Hearingscreen() {
-        // Required empty public constructor
     }
 
     public static Fragment_Hearingscreen newInstance() {
@@ -72,67 +73,60 @@ public class Fragment_Hearingscreen extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState){
-        View view = inflater.inflate(R.layout.fragment_hearingscreen, container, false);
-
-        dbHelper = new SQLConnection();
-
-        Resources res = getResources();
-        enabledTextColor = res.getColor(R.color.enabled_text);
-        disabledTextColor = res.getColor(R.color.disabled_text);
-
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         Bundle args = getArguments();
         if (args != null) {
             childID = args.getInt("childID", -1);
             guardianID = args.getInt("guardianID", -1);
+            if (childID == -1 || guardianID == -1) {
+                Log.e("Fragment_Hearingscreen", "Invalid childID or guardianID received");
+                Toast.makeText(getActivity(), "Invalid child or guardian ID", Toast.LENGTH_SHORT).show();
+            } else {
+                Log.d("Fragment_Hearingscreen", "Received childID: " + childID);
+                Log.d("Fragment_Hearingscreen", "Received guardianID: " + guardianID);
+            }
         } else {
-            Toast.makeText(getActivity(), "Error: No child information provided.", Toast.LENGTH_SHORT).show();
-            return view;
+            Log.e("Fragment_Hearingscreen", "No arguments provided to fragment");
+            Toast.makeText(getActivity(), "No child or guardian ID provided", Toast.LENGTH_SHORT).show();
         }
+        dbHelper = new SQLConnection();
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_hearingscreen, container, false);
 
         initializeUIComponents(view);
-        setupDatePickers();
-        retrieveHearingscreenData(childID);
         setupListeners();
-
-        // Initialize the signature canvas and add it to the container
-        signatureCanvas = new SignatureCanvas(getContext());
-        signatureContainer.addView(signatureCanvas);
-
-        // Initialize the repeat signature canvas
-        repeatSignatureCanvas = new SignatureCanvas(getContext());
-        repeatSignatureContainer.addView(repeatSignatureCanvas);
+        retrieveHearingscreenData(childID);
 
         return view;
     }
 
     private void initializeUIComponents(View view) {
-        textViewHearingscreenTitle = view.findViewById(R.id.textView_hearingscreen_title);
-
+        // Initialize all UI components
         editTextName = view.findViewById(R.id.editText_name);
         editTextDOB = view.findViewById(R.id.editText_dob);
-        editTextName.setInputType(InputType.TYPE_NULL);
-        editTextDOB.setInputType(InputType.TYPE_NULL);
-        editTextName.setFocusable(false);
-        editTextDOB.setFocusable(false);
-
         editTextLocation = view.findViewById(R.id.editText_location);
         editTextDate = view.findViewById(R.id.editText_date);
-
         editTextScreenBy = view.findViewById(R.id.editText_screenBy);
+        signatureContainer = view.findViewById(R.id.signatureContainer);
+        signatureError = view.findViewById(R.id.signatureError);
 
         radioGroupRightOutcome = view.findViewById(R.id.radioGroup_right_outcome);
         radioGroupLeftOutcome = view.findViewById(R.id.radioGroup_left_outcome);
-
         radioGroupReferAudiologist = view.findViewById(R.id.radioGroup_refer_audiologist);
 
-        radioGroupRepeatScreenRequired = view.findViewById(R.id.radioGroup_repeat_screen_required);
+        // Repeat Screen Section
+        buttonAddRepeatScreening = view.findViewById(R.id.button_add_repeat_screening);
         layoutRepeatScreenSection = view.findViewById(R.id.layout_repeat_screen_section);
-        editTextRepeatDate = view.findViewById(R.id.editText_repeat_date);
-
         editTextRepeatLocation = view.findViewById(R.id.editText_repeat_location);
+        editTextRepeatDate = view.findViewById(R.id.editText_repeat_date);
         editTextRepeatScreenBy = view.findViewById(R.id.editText_repeat_screenBy);
+        repeatSignatureContainer = view.findViewById(R.id.repeatSignatureContainer);
+        repeatSignatureError = view.findViewById(R.id.repeatSignatureError);
 
         radioGroupRepeatRightOutcome = view.findViewById(R.id.radioGroup_repeat_right_outcome);
         radioGroupRepeatLeftOutcome = view.findViewById(R.id.radioGroup_repeat_left_outcome);
@@ -142,74 +136,73 @@ public class Fragment_Hearingscreen extends Fragment {
         layoutConsultationInstruction = view.findViewById(R.id.layout_consultation_instruction);
 
         editTextCoordinatorTelephone = view.findViewById(R.id.editText_coordinator_telephone);
-
         buttonSaveHearingscreen = view.findViewById(R.id.button_saveHearingscreen);
 
-        // Initialize signature-related views
-        signatureContainer = view.findViewById(R.id.signatureContainer);
-        signatureError = view.findViewById(R.id.signatureError);
+        // Initialize SignatureCanvas
+        signatureCanvas = new SignatureCanvas(getContext());
+        signatureContainer.addView(signatureCanvas);
 
-        // Initialize repeat signature-related views
-        repeatSignatureContainer = view.findViewById(R.id.repeatSignatureContainer);
-        repeatSignatureError = view.findViewById(R.id.repeatSignatureError);
-    }
+        repeatSignatureCanvas = new SignatureCanvas(getContext());
+        repeatSignatureContainer.addView(repeatSignatureCanvas);
 
-    private void setupDatePickers() {
+        // Set up date pickers
         setupDatePicker(editTextDate);
         setupDatePicker(editTextRepeatDate);
+
+        // Get colors for enabling/disabling fields
+        Resources res = getResources();
+        disabledTextColor = res.getColor(R.color.disabled_text);
+        enabledTextColor = res.getColor(R.color.black);
     }
 
-    private void setupDatePicker(EditText dateField) {
-        dateField.setInputType(InputType.TYPE_NULL);
-        dateField.setFocusable(false);
-        dateField.setOnClickListener(v -> showDatePickerDialog(dateField));
+    private void setupDatePicker(EditText editText) {
+        editText.setInputType(InputType.TYPE_NULL);
+        editText.setFocusable(false);
+        editText.setOnClickListener(v -> showDatePickerDialog(editText));
     }
 
-    private void showDatePickerDialog(final EditText dateField) {
-        final Calendar calendar = Calendar.getInstance();
-        int year, month, day;
+    private void showDatePickerDialog(EditText editText) {
+        Calendar calendar = Calendar.getInstance();
 
-        String currentDateString = dateField.getText().toString();
-        if (!currentDateString.isEmpty()) {
-            String[] parts = currentDateString.split("-");
+        // Parse existing date if available
+        String currentDate = editText.getText().toString();
+        if (!currentDate.isEmpty()) {
+            String[] parts = currentDate.split("-");
             if (parts.length == 3) {
                 try {
-                    year = Integer.parseInt(parts[0]);
-                    month = Integer.parseInt(parts[1]) - 1;
-                    day = Integer.parseInt(parts[2]);
+                    int year = Integer.parseInt(parts[0]);
+                    int month = Integer.parseInt(parts[1]) - 1;
+                    int day = Integer.parseInt(parts[2]);
+                    calendar.set(year, month, day);
                 } catch (NumberFormatException e) {
-                    year = calendar.get(Calendar.YEAR);
-                    month = calendar.get(Calendar.MONTH);
-                    day = calendar.get(Calendar.DAY_OF_MONTH);
+                    Log.e("Fragment_Hearingscreen", "Invalid date format: " + currentDate);
                 }
-            } else {
-                year = calendar.get(Calendar.YEAR);
-                month = calendar.get(Calendar.MONTH);
-                day = calendar.get(Calendar.DAY_OF_MONTH);
             }
-        } else {
-            year = calendar.get(Calendar.YEAR);
-            month = calendar.get(Calendar.MONTH);
-            day = calendar.get(Calendar.DAY_OF_MONTH);
         }
 
-        DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), (view, selectedYear, selectedMonth, selectedDay) -> {
-            String formattedDate = String.format(Locale.getDefault(), "%04d-%02d-%02d", selectedYear, selectedMonth + 1, selectedDay);
-            dateField.setText(formattedDate);
-        }, year, month, day);
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                getActivity(),
+                (view, selectedYear, selectedMonth, selectedDay) -> {
+                    String formattedDate = String.format(Locale.getDefault(), "%04d-%02d-%02d", selectedYear, selectedMonth + 1, selectedDay);
+                    editText.setText(formattedDate);
+                },
+                year,
+                month,
+                day
+        );
 
         datePickerDialog.show();
     }
 
     private void setupListeners() {
-        radioGroupRepeatScreenRequired.setOnCheckedChangeListener((group, checkedId) -> {
-            RadioButton radioButton = group.findViewById(checkedId);
-            if (radioButton != null && radioButton.getText().toString().equalsIgnoreCase("Yes")) {
-                layoutRepeatScreenSection.setVisibility(View.VISIBLE);
-            } else {
-                layoutRepeatScreenSection.setVisibility(View.GONE);
-                clearRepeatScreenFields();
-            }
+        buttonAddRepeatScreening.setOnClickListener(v -> {
+            layoutRepeatScreenSection.setVisibility(View.VISIBLE);
+            setRepeatScreenFieldsEditable(true);
+            buttonAddRepeatScreening.setEnabled(false); // Disable the button after clicking
         });
 
         radioGroupHearingRiskFactor.setOnCheckedChangeListener((group, checkedId) -> {
@@ -222,15 +215,6 @@ public class Fragment_Hearingscreen extends Fragment {
         });
 
         buttonSaveHearingscreen.setOnClickListener(v -> saveHearingscreenData());
-    }
-
-    private void clearRepeatScreenFields() {
-        editTextRepeatLocation.setText("");
-        editTextRepeatDate.setText("");
-        editTextRepeatScreenBy.setText("");
-        radioGroupRepeatRightOutcome.clearCheck();
-        radioGroupRepeatLeftOutcome.clearCheck();
-        radioGroupRepeatReferAudiologist.clearCheck();
     }
 
     private void retrieveHearingscreenData(int childID) {
@@ -262,8 +246,10 @@ public class Fragment_Hearingscreen extends Fragment {
 
             if (repeatResult != null && repeatResult.get("childID") != null && repeatResult.get("childID").length > 0) {
                 populateHearingscreenFields(repeatResult, true);
-                radioGroupRepeatScreenRequired.check(R.id.radio_repeat_yes);
                 layoutRepeatScreenSection.setVisibility(View.VISIBLE);
+                setRepeatScreenFieldsEditable(false);
+                buttonAddRepeatScreening.setEnabled(false);
+                repeatScreeningDataExists = true;
                 hasData = true;
             }
 
@@ -478,11 +464,7 @@ public class Fragment_Hearingscreen extends Fragment {
                 return;
             }
 
-            boolean isRepeatRequired = false;
-            if (radioGroupRepeatScreenRequired.getCheckedRadioButtonId() != -1) {
-                RadioButton selectedRepeatScreenRequired = getView().findViewById(radioGroupRepeatScreenRequired.getCheckedRadioButtonId());
-                isRepeatRequired = selectedRepeatScreenRequired.getText().toString().equalsIgnoreCase("Yes");
-            }
+            boolean isRepeatRequired = (layoutRepeatScreenSection.getVisibility() == View.VISIBLE);
 
             boolean allSavedSuccess = true;
 
@@ -619,6 +601,9 @@ public class Fragment_Hearingscreen extends Fragment {
                 boolean repeatSaved = dbHelper.update(repeatSql, repeatParamsArr, repeatParamTypesArr);
                 if (repeatSaved) {
                     Toast.makeText(getActivity(), "Repeat Hearingscreen saved successfully", Toast.LENGTH_SHORT).show();
+                    repeatScreeningDataExists = true;
+                    setRepeatScreenFieldsEditable(false);
+                    buttonAddRepeatScreening.setEnabled(false);
                 } else {
                     Toast.makeText(getActivity(), "Failed to save repeat Hearingscreen data", Toast.LENGTH_SHORT).show();
                     allSavedSuccess = false;
@@ -676,8 +661,7 @@ public class Fragment_Hearingscreen extends Fragment {
             }
 
             // Set requiresrepeatScreen
-            boolean requiresrepeatScreen = radioGroupRepeatScreenRequired.getCheckedRadioButtonId() != -1 &&
-                    ((RadioButton) getView().findViewById(radioGroupRepeatScreenRequired.getCheckedRadioButtonId())).getText().toString().equalsIgnoreCase("Yes");
+            boolean requiresrepeatScreen = !repeatScreeningDataExists;
 
             // Retrieve fname, lname, and dob from Child table
             String childQuery = "SELECT fname, lname, DOB FROM Child WHERE ID = ?";
@@ -763,33 +747,28 @@ public class Fragment_Hearingscreen extends Fragment {
         editTextScreenBy.setEnabled(editable);
         signatureCanvas.setEnabled(editable);
 
-        editTextRepeatLocation.setEnabled(editable);
-        editTextRepeatDate.setEnabled(editable);
-        editTextRepeatScreenBy.setEnabled(editable);
-        repeatSignatureCanvas.setEnabled(editable);
-
         editTextCoordinatorTelephone.setEnabled(editable);
 
         setRadioGroupEditable(radioGroupRightOutcome, editable);
         setRadioGroupEditable(radioGroupLeftOutcome, editable);
         setRadioGroupEditable(radioGroupReferAudiologist, editable);
-        setRadioGroupEditable(radioGroupRepeatScreenRequired, editable);
-        setRadioGroupEditable(radioGroupRepeatRightOutcome, editable);
-        setRadioGroupEditable(radioGroupRepeatLeftOutcome, editable);
-        setRadioGroupEditable(radioGroupRepeatReferAudiologist, editable);
         setRadioGroupEditable(radioGroupHearingRiskFactor, editable);
-
-        buttonSaveHearingscreen.setEnabled(editable);
-        buttonSaveHearingscreen.setAlpha(editable ? 1.0f : 0.5f);
 
         // Handle the SignatureCanvas
         if (signatureCanvas != null) {
             signatureCanvas.setEnabled(editable);
         }
+    }
 
-        if (repeatSignatureCanvas != null) {
-            repeatSignatureCanvas.setEnabled(editable);
-        }
+    private void setRepeatScreenFieldsEditable(boolean editable) {
+        editTextRepeatLocation.setEnabled(editable);
+        editTextRepeatDate.setEnabled(editable);
+        editTextRepeatScreenBy.setEnabled(editable);
+        repeatSignatureCanvas.setEnabled(editable);
+
+        setRadioGroupEditable(radioGroupRepeatRightOutcome, editable);
+        setRadioGroupEditable(radioGroupRepeatLeftOutcome, editable);
+        setRadioGroupEditable(radioGroupRepeatReferAudiologist, editable);
     }
 
     private void setRadioGroupEditable(RadioGroup radioGroup, boolean editable) {

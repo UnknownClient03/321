@@ -1454,8 +1454,6 @@ public class Fragment_BirthDetails extends Fragment {
         }
     }
 
-
-
     @Override
     public void onDestroy() {
         super.onDestroy();
