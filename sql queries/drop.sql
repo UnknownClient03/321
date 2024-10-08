@@ -3,6 +3,9 @@ USE BlueBookDB;
 DROP USER user1;
 DROP LOGIN user1;
 
+DROP TABLE PractitionerGuardianID;
+DROP TABLE PractitionerAccountDetails;
+DROP TABLE Practitioner;
 DROP TABLE Appointments;
 DROP TABLE ChildCheckSignage;
 DROP TABLE ChildCheckProtectiveFactors;
