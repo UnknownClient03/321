@@ -1,12 +1,17 @@
 package com.example.myapplication.Fragments;
 
+import android.app.DatePickerDialog;
+import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.MimeTypeMap;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -15,6 +20,7 @@ import android.widget.Button;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,10 +30,16 @@ import com.example.myapplication.NavBarManager;
 import com.example.myapplication.Question;
 import com.example.myapplication.R;
 import com.example.myapplication.SQLConnection;
+import com.example.myapplication.SignatureCanvas;
 
+import java.io.ByteArrayOutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 public class CheckFragment extends Fragment {
 
@@ -43,12 +55,25 @@ public class CheckFragment extends Fragment {
     private EditText weightInput, lengthInput, headCircInput;
     private Spinner outcomeSpinner;
     private CheckBox healthInfoDiscussedCheckbox;
-    private EditText commentsInput, actionTakenInput, doctorNameInput, signatureInput, venueInput, dateInput;
+    private EditText commentsInput, actionTakenInput, doctorNameInput, venueInput, dateInput;
     private Button submitButton;
     private LinearLayout checksContainer;  // Container for dynamically added checks
 
     private List<Question> questionList;
     private HashMap<String, Spinner> spinnersMap;  // To hold the spinners for each check
+
+    private boolean isFirstTime = false;  // Variable to track if it's the first time filling the form
+
+    // Signature-related variables
+    private SignatureCanvas signatureCanvas;
+    private FrameLayout signatureContainer;
+    private TextView signatureError;
+
+    // Date fields
+    private List<EditText> dateFields;
+
+    // Protective Factors CheckBoxes
+    private CheckBox immunisationUpToDateCheckbox, hearingCheckbox, visionCheckbox, hipsCheckbox, oralHealthCheckbox;
 
     public CheckFragment() {
         // Required empty public constructor
@@ -97,11 +122,29 @@ public class CheckFragment extends Fragment {
         commentsInput = view.findViewById(R.id.comments_input);
         actionTakenInput = view.findViewById(R.id.action_taken_input);
         doctorNameInput = view.findViewById(R.id.doctor_name_input);
-        signatureInput = view.findViewById(R.id.signature_input);
         venueInput = view.findViewById(R.id.venue_input);
         dateInput = view.findViewById(R.id.date_input);
         submitButton = view.findViewById(R.id.submit_button);
         checksContainer = view.findViewById(R.id.checks_container);  // This is the LinearLayout to hold specific checks
+
+        // Protective Factors CheckBoxes
+        immunisationUpToDateCheckbox = view.findViewById(R.id.immunisation_up_to_date_checkbox);
+        hearingCheckbox = view.findViewById(R.id.hearing_checkbox);
+        visionCheckbox = view.findViewById(R.id.vision_checkbox);
+        hipsCheckbox = view.findViewById(R.id.hips_checkbox);
+        oralHealthCheckbox = view.findViewById(R.id.oral_health_checkbox);
+
+        // Signature-related views
+        signatureContainer = view.findViewById(R.id.signature_container);
+        signatureError = view.findViewById(R.id.signature_error);
+
+        // Initialize the signature canvas and add it to the container
+        signatureCanvas = new SignatureCanvas(getContext());
+        signatureContainer.addView(signatureCanvas);
+
+        // Initialize dateFields before setting up date pickers
+        dateFields = Arrays.asList(dateInput);
+        setupDatePickers();
 
         // Load specific checks and auto-fill data if it exists
         if (childID >= 0 && !checkType.isEmpty()) { // Allow childID=0 as valid
@@ -121,77 +164,160 @@ public class CheckFragment extends Fragment {
         });
     }
 
+    private void setupDatePickers() {
+        if (dateFields == null) {
+            Log.e("CheckFragment", "dateFields is null. Cannot set up date pickers.");
+            return;
+        }
+        for (EditText dateField : dateFields) {
+            setupDatePicker(dateField);
+        }
+    }
+
+    private void setupDatePicker(EditText dateInput) {
+        dateInput.setInputType(InputType.TYPE_NULL);
+        dateInput.setFocusable(false);
+        dateInput.setClickable(true);
+        dateInput.setCursorVisible(false);
+
+        dateInput.setOnClickListener(v -> {
+            // Prevent opening DatePickerDialog if the field is disabled
+            if (!dateInput.isEnabled()) {
+                return;
+            }
+
+            Calendar calendar = Calendar.getInstance();
+            String currentDate = dateInput.getText().toString();
+            if (!currentDate.isEmpty()) {
+                String[] parts = currentDate.split("-");
+                if (parts.length == 3) {
+                    try {
+                        int year = Integer.parseInt(parts[0]);
+                        int month = Integer.parseInt(parts[1]) - 1;
+                        int day = Integer.parseInt(parts[2]);
+                        calendar.set(year, month, day);
+                    } catch (NumberFormatException e) {
+                        Log.e("CheckFragment", "Invalid date format: " + currentDate);
+                    }
+                }
+            }
+
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+            DatePickerDialog datePickerDialog = new DatePickerDialog(
+                    getActivity(),
+                    (view, selectedYear, selectedMonth, selectedDay) -> {
+                        String formattedDate = String.format(Locale.getDefault(), "%04d-%02d-%02d",
+                                selectedYear, selectedMonth + 1, selectedDay);
+                        dateInput.setText(formattedDate);
+                    },
+                    year,
+                    month,
+                    day
+            );
+            datePickerDialog.show();
+        });
+    }
+
     private class LoadSpecificChecksTask extends AsyncTask<Void, Void, Boolean> {
 
         private HashMap<String, String> assessmentData;
+        private HashMap<String, String> protectiveFactorsData;
 
         @Override
         protected Boolean doInBackground(Void... voids) {
             assessmentData = new HashMap<>();
+            protectiveFactorsData = new HashMap<>();
             questionList = new ArrayList<>(); // Ensure questionList is initialized
 
-            // Query to fetch assessment data from ChildCheckAssessment
-            String query = "SELECT weight, length, headCirc, outcome, healthInfoDiscussed " +
-                    "FROM ChildCheckAssessment WHERE childID = ? AND checkType = ?";
-            String[] params = {String.valueOf(childID), checkType};
-            char[] paramTypes = {'i', 's'};
-            HashMap<String, String[]> result = dbHelper.select(query, params, paramTypes);
+            // Check if data exists in ChildCheckAssessment
+            String checkDataQuery = "SELECT COUNT(*) AS count FROM ChildCheckAssessment WHERE childID = ? AND checkType = ?";
+            String[] checkDataParams = {String.valueOf(childID), checkType};
+            char[] checkDataParamTypes = {'i', 's'};
+            HashMap<String, String[]> dataResult = dbHelper.select(checkDataQuery, checkDataParams, checkDataParamTypes);
 
-            if (result != null && result.get("weight") != null && result.get("weight").length > 0) {
-                assessmentData.put("weight", result.get("weight")[0]);
-                assessmentData.put("length", result.get("length")[0]);
-                assessmentData.put("headCirc", result.get("headCirc")[0]);
-                assessmentData.put("outcome", result.get("outcome")[0]);
-                assessmentData.put("healthInfoDiscussed", result.get("healthInfoDiscussed")[0]);
+            int dataCount = 0;
+            if (dataResult != null && dataResult.get("count") != null && dataResult.get("count").length > 0) {
+                dataCount = Integer.parseInt(dataResult.get("count")[0]);
             }
 
-            // Query to fetch signage data from ChildCheckSignage
-            String signageQuery = "SELECT comments, actionTaken, nameOfDoctor, signature, venue, date " +
-                    "FROM ChildCheckSignage WHERE childID = ? AND checkType = ?";
-            HashMap<String, String[]> signageResult = dbHelper.select(signageQuery, params, paramTypes);
+            isFirstTime = dataCount == 0; // If no data, it's the first time
 
-            if (signageResult != null && signageResult.get("comments") != null && signageResult.get("comments").length > 0) {
-                assessmentData.put("comments", signageResult.get("comments")[0]);
-                assessmentData.put("actionTaken", signageResult.get("actionTaken")[0]);
-                assessmentData.put("nameOfDoctor", signageResult.get("nameOfDoctor")[0]);
-                assessmentData.put("signature", signageResult.get("signature")[0]);
-                assessmentData.put("venue", signageResult.get("venue")[0]);
-                assessmentData.put("date", signageResult.get("date")[0]);
-            }
+            if (!isFirstTime) {
+                // Query to fetch assessment data from ChildCheckAssessment
+                String query = "SELECT weight, length, headCirc, outcome, healthInfoDiscussed " +
+                        "FROM ChildCheckAssessment WHERE childID = ? AND checkType = ?";
+                String[] params = {String.valueOf(childID), checkType};
+                char[] paramTypes = {'i', 's'};
+                HashMap<String, String[]> result = dbHelper.select(query, params, paramTypes);
 
-            // Query to fetch specific checks from ChildCheckAssessmentVariables
-            String checksQuery = "SELECT item, status FROM ChildCheckAssessmentVariables WHERE childID = ? AND checkType = ?";
-            HashMap<String, String[]> checksResult = dbHelper.select(checksQuery, params, paramTypes);
-
-            if (checksResult != null && checksResult.get("item") != null) {
-                String[] items = checksResult.get("item");
-                String[] statuses = checksResult.get("status");
-
-                for (int i = 0; i < items.length; i++) {
-                    String status = statuses[i].toLowerCase();
-                    questionList.add(new Question(items[i], false, status)); // Add checks to the list
+                if (result != null && result.get("weight") != null && result.get("weight").length > 0) {
+                    assessmentData.put("weight", result.get("weight")[0]);
+                    assessmentData.put("length", result.get("length")[0]);
+                    assessmentData.put("headCirc", result.get("headCirc")[0]);
+                    assessmentData.put("outcome", result.get("outcome")[0]);
+                    assessmentData.put("healthInfoDiscussed", result.get("healthInfoDiscussed")[0]);
                 }
+
+                // Query to fetch signage data from ChildCheckSignage
+                String signageQuery = "SELECT comments, actionTaken, nameOfDoctor, signature, venue, date " +
+                        "FROM ChildCheckSignage WHERE childID = ? AND checkType = ?";
+                HashMap<String, String[]> signageResult = dbHelper.select(signageQuery, params, paramTypes);
+
+                if (signageResult != null && signageResult.get("comments") != null && signageResult.get("comments").length > 0) {
+                    assessmentData.put("comments", signageResult.get("comments")[0]);
+                    assessmentData.put("actionTaken", signageResult.get("actionTaken")[0]);
+                    assessmentData.put("nameOfDoctor", signageResult.get("nameOfDoctor")[0]);
+                    assessmentData.put("signature", signageResult.get("signature")[0]);
+                    assessmentData.put("venue", signageResult.get("venue")[0]);
+                    assessmentData.put("date", signageResult.get("date")[0]);
+                }
+
+                // Query to fetch specific checks from ChildCheckAssessmentVariables
+                String checksQuery = "SELECT item, status FROM ChildCheckAssessmentVariables WHERE childID = ? AND checkType = ?";
+                HashMap<String, String[]> checksResult = dbHelper.select(checksQuery, params, paramTypes);
+
+                if (checksResult != null && checksResult.get("item") != null) {
+                    String[] items = checksResult.get("item");
+                    String[] statuses = checksResult.get("status");
+
+                    for (int i = 0; i < items.length; i++) {
+                        String status = statuses[i].toLowerCase();
+                        questionList.add(new Question(items[i], false, status)); // Add checks to the list
+                    }
+                }
+
+                // Load data from ChildCheckProtectiveFactors
+                String protectiveFactorsQuery = "SELECT immunisationUpToDate, hearing, vision, hips, oralHealth FROM ChildCheckProtectiveFactors WHERE childID = ? AND checkType = ?";
+                HashMap<String, String[]> protectiveFactorsResult = dbHelper.select(protectiveFactorsQuery, params, paramTypes);
+
+                if (protectiveFactorsResult != null && protectiveFactorsResult.get("immunisationUpToDate") != null && protectiveFactorsResult.get("immunisationUpToDate").length > 0) {
+                    protectiveFactorsData.put("immunisationUpToDate", protectiveFactorsResult.get("immunisationUpToDate")[0]);
+                    protectiveFactorsData.put("hearing", protectiveFactorsResult.get("hearing")[0]);
+                    protectiveFactorsData.put("vision", protectiveFactorsResult.get("vision")[0]);
+                    protectiveFactorsData.put("hips", protectiveFactorsResult.get("hips")[0]);
+                    protectiveFactorsData.put("oralHealth", protectiveFactorsResult.get("oralHealth")[0]);
+                }
+            } else {
+                // First time, load predefined checks
+                questionList = getPredefinedChecksForCheckType(checkType);
             }
 
-            // If no specific questions were found in the database, load the predefined checks
-            if (questionList.size() == 0) {
-                questionList = getPredefinedChecksForCheckType(checkType);  // Load predefined checks
-            }
-
-            return !assessmentData.isEmpty() || !questionList.isEmpty(); // Return true if either data or checks exist
+            return true; // Return true to proceed to onPostExecute
         }
 
         @Override
         protected void onPostExecute(Boolean dataExists) {
-            if (dataExists) {
-                // Autofill the form with data
+            // Autofill the form with data if available
+            if (assessmentData != null && !assessmentData.isEmpty()) {
                 weightInput.setText(assessmentData.get("weight"));
                 lengthInput.setText(assessmentData.get("length"));
                 headCircInput.setText(assessmentData.get("headCirc"));
                 commentsInput.setText(assessmentData.get("comments"));
                 actionTakenInput.setText(assessmentData.get("actionTaken"));
                 doctorNameInput.setText(assessmentData.get("nameOfDoctor"));
-                signatureInput.setText(assessmentData.get("signature"));
                 venueInput.setText(assessmentData.get("venue"));
                 dateInput.setText(assessmentData.get("date"));
 
@@ -204,17 +330,44 @@ public class CheckFragment extends Fragment {
                 // Set checkbox state, handle potential null values
                 healthInfoDiscussedCheckbox.setChecked("1".equals(assessmentData.get("healthInfoDiscussed")));
 
-                // Dynamically add the specific checks to the LinearLayout
-                checksContainer.removeAllViews();  // Clear any existing views
-                if (questionList != null && !questionList.isEmpty()) {
-                    for (Question question : questionList) {
-                        addCheckWithSpinnerToLayout(question.getQuestionText(), question.getStatus());
+                // Handle signature
+                if (assessmentData.get("signature") != null) {
+                    String imageEncoded = assessmentData.get("signature");
+                    if (imageEncoded != null && !imageEncoded.isEmpty()) {
+                        // Create a new SignatureCanvas with the Base64 image
+                        signatureCanvas = new SignatureCanvas(getContext(), imageEncoded);
+                        signatureContainer.removeAllViews();
+                        signatureContainer.addView(signatureCanvas);
+                        // Disable the signature pad to prevent editing
+                        signatureCanvas.setEnabled(false);
                     }
                 }
-
-            } else {
-                Toast.makeText(getContext(), "No previous data found.", Toast.LENGTH_SHORT).show();
             }
+
+            if (protectiveFactorsData != null && !protectiveFactorsData.isEmpty()) {
+                // Set CheckBoxes
+                immunisationUpToDateCheckbox.setChecked("1".equals(protectiveFactorsData.get("immunisationUpToDate")));
+                hearingCheckbox.setChecked("1".equals(protectiveFactorsData.get("hearing")));
+                visionCheckbox.setChecked("1".equals(protectiveFactorsData.get("vision")));
+                String hipsValue = protectiveFactorsData.get("hips");
+                if (hipsValue != null) {
+                    hipsCheckbox.setChecked("1".equals(hipsValue));
+                } else {
+                    hipsCheckbox.setChecked(false);
+                }
+                oralHealthCheckbox.setChecked("1".equals(protectiveFactorsData.get("oralHealth")));
+            }
+
+            // Dynamically add the specific checks to the LinearLayout
+            checksContainer.removeAllViews();  // Clear any existing views
+            if (questionList != null && !questionList.isEmpty()) {
+                for (Question question : questionList) {
+                    addCheckWithSpinnerToLayout(question.getQuestionText(), question.getStatus());
+                }
+            }
+
+            // Set fields editable/non-editable based on isFirstTime
+            setFieldsEditable(isFirstTimeFillingForm());
         }
 
         private void addCheckWithSpinnerToLayout(String questionText, String currentStatus) {
@@ -258,10 +411,16 @@ public class CheckFragment extends Fragment {
                     TextUtils.isEmpty(lengthInput.getText()) ||
                     TextUtils.isEmpty(headCircInput.getText()) ||
                     TextUtils.isEmpty(doctorNameInput.getText()) ||
-                    TextUtils.isEmpty(signatureInput.getText()) ||
                     TextUtils.isEmpty(venueInput.getText()) ||
                     TextUtils.isEmpty(dateInput.getText())) {
                 Log.e("CheckFragment", "Validation failed: Required fields are empty.");
+                return false;
+            }
+
+            // Extract the signature from SignatureCanvas
+            String signature = signatureCanvas.convertCanvas();
+            if (signature == null || signature.isEmpty()) {
+                Log.e("CheckFragment", "Validation failed: Signature is empty.");
                 return false;
             }
 
@@ -274,9 +433,15 @@ public class CheckFragment extends Fragment {
             String comments = commentsInput.getText().toString().trim();
             String actionTaken = actionTakenInput.getText().toString().trim();
             String doctorName = doctorNameInput.getText().toString().trim();
-            String signature = signatureInput.getText().toString().trim();
             String venue = venueInput.getText().toString().trim();
             String date = dateInput.getText().toString().trim();
+
+            // Protective Factors
+            boolean immunisationUpToDate = immunisationUpToDateCheckbox.isChecked();
+            boolean hearing = hearingCheckbox.isChecked();
+            boolean vision = visionCheckbox.isChecked();
+            Boolean hips = hipsCheckbox.isChecked();
+            boolean oralHealth = oralHealthCheckbox.isChecked();
 
             Log.d("CheckFragment", "Submitting check with childID: " + childID + ", checkType: " + checkType);
 
@@ -304,15 +469,35 @@ public class CheckFragment extends Fragment {
 
             // Insert or update ChildCheckSignage
             boolean signageSuccess = insertOrUpdateChildCheckSignage(comments, actionTaken, doctorName, signature, venue, date);
-            return signageSuccess;
+            if (!signageSuccess) {
+                return false;
+            }
+
+            // Insert or update ChildCheckProtectiveFactors
+            boolean protectiveFactorsSuccess = insertOrUpdateChildCheckProtectiveFactors(immunisationUpToDate, hearing, vision, hips, oralHealth);
+            if (!protectiveFactorsSuccess) {
+                return false;
+            }
+
+            return true;
         }
 
         @Override
         protected void onPostExecute(Boolean success) {
             if (success) {
                 Toast.makeText(getContext(), "Check submitted successfully!", Toast.LENGTH_SHORT).show();
+
+                // Set isFirstTime to false after successful submission
+                isFirstTime = false;
+
+                // Disable fields and submit button
+                setFieldsEditable(isFirstTimeFillingForm());
+                submitButton.setEnabled(false);
+                submitButton.setVisibility(View.GONE);
+
                 // Navigate two fragments back to the Checks Menu Fragment
                 if (getActivity() != null) {
+                    getActivity().getSupportFragmentManager().popBackStack();
                     getActivity().getSupportFragmentManager().popBackStack();
                     getActivity().getSupportFragmentManager().popBackStack();
                 }
@@ -458,6 +643,88 @@ public class CheckFragment extends Fragment {
                 char[] insertParamTypes = {'i', 's', 's', 's', 's', 's', 's', 's'};
 
                 return dbHelper.update(insertQuery, insertParams, insertParamTypes);
+            }
+        }
+    }
+
+    private boolean insertOrUpdateChildCheckProtectiveFactors(boolean immunisationUpToDate, boolean hearing, boolean vision, Boolean hips, boolean oralHealth) {
+        // Check if record exists
+        String checkQuery = "SELECT COUNT(*) AS count FROM ChildCheckProtectiveFactors WHERE childID = ? AND checkType = ?";
+        String[] checkParams = {String.valueOf(childID), checkType};
+        char[] checkParamTypes = {'i', 's'};
+
+        HashMap<String, String[]> result = dbHelper.select(checkQuery, checkParams, checkParamTypes);
+        int recordCount = 0;
+
+        if (result != null && result.get("count") != null && result.get("count").length > 0) {
+            try {
+                recordCount = Integer.parseInt(result.get("count")[0]);
+            } catch (NumberFormatException e) {
+                Log.e("CheckFragment", "Error parsing count from ChildCheckProtectiveFactors query.", e);
+                return false;
+            }
+        }
+
+        if (recordCount > 0) {
+            // Update existing record
+            String updateQuery = "UPDATE ChildCheckProtectiveFactors SET immunisationUpToDate = ?, hearing = ?, vision = ?, hips = ?, oralHealth = ? WHERE childID = ? AND checkType = ?";
+            String[] updateParams = {
+                    immunisationUpToDate ? "1" : "0",
+                    hearing ? "1" : "0",
+                    vision ? "1" : "0",
+                    hips != null ? (hips ? "1" : "0") : null,
+                    oralHealth ? "1" : "0",
+                    String.valueOf(childID),
+                    checkType
+            };
+            char[] updateParamTypes = {'s', 's', 's', 's', 's', 'i', 's'};
+
+            if (hips != null) {
+                return dbHelper.update(updateQuery, updateParams, updateParamTypes);
+            } else {
+                // Set hips to NULL
+                String updateQueryNullHips = "UPDATE ChildCheckProtectiveFactors SET immunisationUpToDate = ?, hearing = ?, vision = ?, hips = NULL, oralHealth = ? WHERE childID = ? AND checkType = ?";
+                String[] updateParamsNullHips = {
+                        immunisationUpToDate ? "1" : "0",
+                        hearing ? "1" : "0",
+                        vision ? "1" : "0",
+                        oralHealth ? "1" : "0",
+                        String.valueOf(childID),
+                        checkType
+                };
+                char[] updateParamTypesNullHips = {'s', 's', 's', 's', 'i', 's'};
+                return dbHelper.update(updateQueryNullHips, updateParamsNullHips, updateParamTypesNullHips);
+            }
+
+        } else {
+            // Insert new record
+            String insertQuery = "INSERT INTO ChildCheckProtectiveFactors (childID, checkType, immunisationUpToDate, hearing, vision, hips, oralHealth) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String[] insertParams = {
+                    String.valueOf(childID),
+                    checkType,
+                    immunisationUpToDate ? "1" : "0",
+                    hearing ? "1" : "0",
+                    vision ? "1" : "0",
+                    hips != null ? (hips ? "1" : "0") : null,
+                    oralHealth ? "1" : "0"
+            };
+            char[] insertParamTypes = {'i', 's', 's', 's', 's', 's', 's'};
+
+            if (hips != null) {
+                return dbHelper.update(insertQuery, insertParams, insertParamTypes);
+            } else {
+                // Insert with hips as NULL
+                String insertQueryNullHips = "INSERT INTO ChildCheckProtectiveFactors (childID, checkType, immunisationUpToDate, hearing, vision, hips, oralHealth) VALUES (?, ?, ?, ?, ?, NULL, ?)";
+                String[] insertParamsNullHips = {
+                        String.valueOf(childID),
+                        checkType,
+                        immunisationUpToDate ? "1" : "0",
+                        hearing ? "1" : "0",
+                        vision ? "1" : "0",
+                        oralHealth ? "1" : "0"
+                };
+                char[] insertParamTypesNullHips = {'i', 's', 's', 's', 's', 's'};
+                return dbHelper.update(insertQueryNullHips, insertParamsNullHips, insertParamTypesNullHips);
             }
         }
     }
@@ -658,6 +925,69 @@ public class CheckFragment extends Fragment {
 
         Log.d("CheckFragment", "Loaded predefined checks for checkType: " + checkType + ", count: " + predefinedChecks.size());
         return predefinedChecks;
+    }
+
+    private void setFieldsEditable(boolean isFirstTime) {
+        // Fields that are editable only on first submission
+        EditText[] editableFields = new EditText[]{
+                weightInput, lengthInput, headCircInput, commentsInput, actionTakenInput, doctorNameInput, venueInput, dateInput
+        };
+
+        for (EditText field : editableFields) {
+            field.setEnabled(isFirstTime);
+            field.setFocusable(isFirstTime);
+            field.setClickable(isFirstTime);
+            field.setTextColor(getResources().getColor(isFirstTime ? R.color.black : R.color.disabled_text, null));
+        }
+
+        // Outcome spinner
+        outcomeSpinner.setEnabled(isFirstTime);
+        outcomeSpinner.setClickable(isFirstTime);
+
+        // Checkboxes
+        healthInfoDiscussedCheckbox.setEnabled(isFirstTime);
+        immunisationUpToDateCheckbox.setEnabled(isFirstTime);
+        hearingCheckbox.setEnabled(isFirstTime);
+        visionCheckbox.setEnabled(isFirstTime);
+        hipsCheckbox.setEnabled(isFirstTime);
+        oralHealthCheckbox.setEnabled(isFirstTime);
+
+        // Spinners for specific checks
+        for (Spinner spinner : spinnersMap.values()) {
+            spinner.setEnabled(isFirstTime);
+            spinner.setClickable(isFirstTime);
+        }
+
+        // Handle Date Fields
+        for (EditText dateField : dateFields) {
+            if (!isFirstTime) {
+                dateField.setOnClickListener(null); // Remove OnClickListener
+                dateField.setTextColor(getResources().getColor(R.color.disabled_text, null)); // Optional: Change text color
+            } else {
+                setupDatePicker(dateField);
+                dateField.setTextColor(getResources().getColor(R.color.black, null)); // Optional: Reset text color
+            }
+        }
+
+        // Handle the SignatureCanvas
+        if (signatureCanvas != null) {
+            signatureCanvas.setEnabled(isFirstTime);
+        }
+    }
+
+    private boolean isFirstTimeFillingForm() {
+        return isFirstTime;
+    }
+
+    private void setSpinnerSelection(Spinner spinner, String value) {
+        if (value == null) return;  // Avoid null values causing issues
+        ArrayAdapter<CharSequence> adapter = (ArrayAdapter<CharSequence>) spinner.getAdapter();
+        for (int i = 0; i < adapter.getCount(); i++) {
+            if (adapter.getItem(i).toString().equalsIgnoreCase(value.trim())) {
+                spinner.setSelection(i);
+                break;
+            }
+        }
     }
 
     @Override

@@ -1,63 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView_childDetails"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
 
     <LinearLayout
+        android:id="@+id/linearLayout_childDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp">
 
-        <EditText
-            android:id="@+id/dob_input"
+        <!-- Child's Details -->
+        <TextView
+            android:id="@+id/textView_childDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Child's Details"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:paddingBottom="8dp" />
+
+        <!-- Child's Date of Birth -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_birthDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Child's Date of Birth (yyyy-MM-dd)"
-            android:inputType="date" />
+            android:paddingBottom="8dp">
 
-        <EditText
-            android:id="@+id/fname_input"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_birthDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:clickable="true"
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Child's First Name -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_fname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Child's First Name"
-            android:inputType="textPersonName" />
+            android:paddingBottom="8dp">
 
-        <EditText
-            android:id="@+id/lname_input"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_fname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Child's Last Name -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_lname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Child's Last Name"
-            android:inputType="textPersonName" />
+            android:paddingBottom="8dp">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_lname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Sex Label -->
+        <TextView
+            android:id="@+id/textView_sexLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sex"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:paddingBottom="4dp" />
+
+        <!-- Sex Spinner -->
         <Spinner
-            android:id="@+id/sex_spinner"
+            android:id="@+id/spinner_sex"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:entries="@array/sex_options" />
+            android:entries="@array/sex_options"
+            android:background="@drawable/spinner_background"
+            android:padding="12dp"
+            android:spinnerMode="dropdown"
+            android:dropDownWidth="match_parent" />
 
-        <EditText
-            android:id="@+id/parents_notes_input"
+        <!-- Notes from Parents -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_parentsNotes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Notes from Parents"
-            android:inputType="textMultiLine" />
+            android:paddingBottom="8dp">
 
-        <!-- This LinearLayout will hold the dynamically added questions for parents -->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_parentsNotes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Parent Questions -->
+        <TextView
+            android:id="@+id/textView_parentQuestions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Parent's Questions"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:paddingTop="16dp"
+            android:paddingBottom="4dp" />
+
+        <!-- Dynamic Parent Questions Layout -->
         <LinearLayout
             android:id="@+id/parent_question_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="16dp" />
+            android:layout_marginTop="8dp" />
 
+        <!-- Submit Button -->
         <Button
             android:id="@+id/submit_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Submit" />
+            android:text="Submit"
+            android:layout_marginTop="24dp" />
 
     </LinearLayout>
 </ScrollView>

@@ -992,8 +992,6 @@ public class Fragment_NewbornExamination extends Fragment {
     }
 
     private boolean fieldsAreEditable() {
-        // Implement logic if needed to determine if fields should be editable
-        // For now, assume all fields are editable unless explicitly disabled
         return true;
     }
 

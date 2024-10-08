@@ -3,7 +3,6 @@ package com.example.myapplication;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -14,8 +13,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.example.myapplication.Fragments.ParentQuestionsFragment;
 import com.example.myapplication.Fragments.ChecksMenuFragment;
-
-import java.util.HashMap;
+import com.example.myapplication.Fragments.Fragment_ChecksInfo;
 
 public class EncapsulatingActivity extends AppCompatActivity implements ChecksMenuFragment.OnCheckSelectedListener {
 
@@ -39,37 +37,15 @@ public class EncapsulatingActivity extends AppCompatActivity implements ChecksMe
             manager = new LoginManager(extras.getInt("guardianID"), extras.getInt("childID"));
         }
 
-        /* Don't think we need a welcome text in this section specifically
-        // Set welcome text
-        TextView textView = findViewById(R.id.textView3);
-        SQLConnection conn = new SQLConnection("user1", ""); // Replace with actual password
-        if (conn.isConn()) {
-            String query = "SELECT fname, lname FROM Guardian WHERE ID = ?;";
-            HashMap<String, String[]> result = conn.select(query, new String[]{String.valueOf(manager.guardianID)}, new char[]{'i'});
-            conn.disconnect();
-            if (result.get("fname") != null && result.get("fname").length > 0) {
-                String fname = result.get("fname")[0];
-                textView.setText(fname + "!");
-            } else {
-                textView.setText("...");
-            }
-        } else {
-            textView.setText("...");
-        }
-         */
-
         // Load ChecksMenuFragment initially
         if (savedInstanceState == null) {
             loadFragment(new ChecksMenuFragment(), false);
         }
 
         NavBarManager.setNavBarButtons(EncapsulatingActivity.this, manager);
-
     }
 
-    /**
-     * Method to load fragments into the fragment container
-     */
+    // Method to load fragments
     private void loadFragment(Fragment fragment, boolean addToBackStack) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         androidx.fragment.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -80,13 +56,11 @@ public class EncapsulatingActivity extends AppCompatActivity implements ChecksMe
         fragmentTransaction.commit();
     }
 
-    /**
-     * Callback from ChecksMenuFragment when a check is selected
-     */
+    // Method to handle check selection
     @Override
     public void onCheckSelected(String checkType) {
-        // Display the ParentQuestionsFragment first
-        ParentQuestionsFragment parentQuestionsFragment = ParentQuestionsFragment.newInstance(manager.childID, checkType);
-        loadFragment(parentQuestionsFragment, true); // Assuming loadFragment is a method in your activity to load fragments
+        // Display the InitialInformationFragment first
+        Fragment_ChecksInfo initialInfoFragment = Fragment_ChecksInfo.newInstance(manager.childID, checkType);
+        loadFragment(initialInfoFragment, true);
     }
 }
