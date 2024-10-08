@@ -30,10 +30,13 @@ public class ResetPasswordActivity extends AppCompatActivity {
     private Button practitionerLoginButton;
     private ImageView backArrow;
 
+    private Bundle extras;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset_password);
+        extras = getIntent().getExtras();
 
         // Initialize views
         logoImageView = findViewById(R.id.imageView2);
@@ -63,7 +66,8 @@ public class ResetPasswordActivity extends AppCompatActivity {
                     String hash = SHA256.convert(password);
 
                     SQLConnection conn = new SQLConnection("user1", "");
-                    String query = "UPDATE GuardianAccountDetails SET Hashpassword = ?, salt = ?, pepper = ? WHERE guardianID = ?";
+                    String query = (extras.getBoolean("user")) ? "UPDATE GuardianAccountDetails SET Hashpassword = ?, salt = ?, pepper = ? WHERE guardianID = ?" :
+                                                                      "UPDATE PractitionerAccountDetails SET Hashpassword = ?, salt = ?, pepper = ? WHERE practitionerID = ?";
                     String[] params2 = { hash, salt, pepper, String.valueOf(ID) };
                     char[] paramTypes2 = {'s', 's', 's', 'i'};
                     conn.update(query, params2, paramTypes2);
@@ -104,7 +108,12 @@ public class ResetPasswordActivity extends AppCompatActivity {
     private int validateEmail(String email) {
         SQLConnection conn = new SQLConnection("user1", "");
         if(!conn.isConn()) return -1;
-        String query = "SELECT ID FROM Guardian where email = ?;";
+        String query;
+        if(extras.getBoolean("user"))
+            query = "SELECT ID FROM Guardian where email = ?;";
+        else if (extras.getBoolean("practitioner"))
+            query = "SELECT ID FROM Practitioner where email = ?;";
+        else return -1;
         HashMap<String, String[]> result = conn.select(query, new String[]{email}, new char[]{'s'});
         return (result.get("ID").length == 0) ? -1 : Integer.valueOf(result.get("ID")[0]);
     }
