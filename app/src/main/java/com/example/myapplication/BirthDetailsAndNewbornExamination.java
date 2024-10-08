@@ -40,7 +40,7 @@ public class BirthDetailsAndNewbornExamination extends AppCompatActivity {
         }
 
         // Set up the navbar
-        NavBarManager.setNavBarButtons(BirthDetailsAndNewbornExamination.this);
+        NavBarManager.setNavBarButtons(BirthDetailsAndNewbornExamination.this, manager);
 
         Button buttonBirthDetails = findViewById(R.id.button_birth_details);
         Button buttonNewbornExamination = findViewById(R.id.button_newborn_examination);
