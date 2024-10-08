@@ -98,12 +98,10 @@ public class ManageChildrenActivity extends AppCompatActivity {
                 childrenToRemove.add(child.getId());
             }
 
-            // Remove selected children from the database
-            SQLConnection sqlConnection = new SQLConnection("user1", "");
+            // Remove selected children from the database using the removeChildFromDatabase method
             for (Integer childId : childrenToRemove) {
-                sqlConnection.update("DELETE FROM Child WHERE ID = " + childId + " AND guardianID = " + currentGuardianID);
+                removeChildFromDatabase(childId, currentGuardianID);
             }
-            sqlConnection.disconnect();
 
             // Reload and refresh children list from the database
             loadChildrenFromDatabase();
@@ -192,7 +190,30 @@ public class ManageChildrenActivity extends AppCompatActivity {
     // Remove child from the database
     private void removeChildFromDatabase(int childId, int guardianID) {
         SQLConnection sqlConnection = new SQLConnection("user1", "");
+
+        // Delete from dependent tables
+        sqlConnection.update("DELETE FROM ProgressNotes WHERE childID = " + childId);
+        sqlConnection.update("DELETE FROM HealthChecks WHERE childID = " + childId);
+        sqlConnection.update("DELETE FROM ImmunisationRecord WHERE childID = " + childId);
+        sqlConnection.update("DELETE FROM Appointments WHERE childID = " + childId);
+        sqlConnection.update("DELETE FROM IllnessInjuries WHERE childID = " + childId);
+        sqlConnection.update("DELETE FROM BirthDetails WHERE childID = " + childId);
+        sqlConnection.update("DELETE FROM NewbornExamination WHERE childID = " + childId);
+        sqlConnection.update("DELETE FROM NBTable WHERE childID = " + childId);
+        sqlConnection.update("DELETE FROM NewBornHearing WHERE childID = " + childId);
+        sqlConnection.update("DELETE FROM HearingPreScreening WHERE childID = " + childId);
+        sqlConnection.update("DELETE FROM Hearingscreen WHERE childID = " + childId);
+        sqlConnection.update("DELETE FROM FourMonthImmunisation WHERE childID = " + childId);
+        sqlConnection.update("DELETE FROM ChildCheck WHERE childID = " + childId);
+        sqlConnection.update("DELETE FROM ChildCheckQuestion WHERE childID = " + childId);
+        sqlConnection.update("DELETE FROM ChildCheckAssessment WHERE childID = " + childId);
+        sqlConnection.update("DELETE FROM ChildCheckAssessmentVariables WHERE childID = " + childId);
+        sqlConnection.update("DELETE FROM ChildCheckProtectiveFactors WHERE childID = " + childId);
+        sqlConnection.update("DELETE FROM ChildCheckSignage WHERE childID = " + childId);
+
+        // Delete from Child table
         sqlConnection.update("DELETE FROM Child WHERE ID = " + childId + " AND guardianID = " + guardianID);
+
         sqlConnection.disconnect();
     }
 }
