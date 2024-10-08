@@ -101,6 +101,9 @@
             android:name="com.example.myapplication.PractitionerLoginActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity
+            android:name="com.example.myapplication.PractitionerChildSelect"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
             android:name="com.example.myapplication.BirthDetailsAndNewbornExamination"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name="com.example.myapplication.ResetPasswordActivity" />
