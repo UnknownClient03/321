@@ -45,8 +45,8 @@ public class PractitionerLoginActivity extends AppCompatActivity {
                 int pracID = validateLogin(passwordView.getText().toString(), emailView.getText().toString());
                 if (pracID != -1) {
                     Log.d("BUTTON", "Changing to select child page");
-                    Intent intent = new Intent(PractitionerLoginActivity.this, ChildSelectActivity.class);
-                    intent.putExtra("pracID", pracID);
+                    Intent intent = new Intent(PractitionerLoginActivity.this, PractitionerChildSelect.class);
+                    intent.putExtra("practitionerID", pracID);
                     startActivity(intent);
                 } else {
                     Toast.makeText(PractitionerLoginActivity.this, "Please enter a valid password", Toast.LENGTH_LONG).show();
