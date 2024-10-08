@@ -101,7 +101,7 @@ public class UserLoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("BUTTON", "Changing to Reset Password page");
                 Intent intent = new Intent(UserLoginActivity.this, ResetPasswordActivity.class);
-                intent.putExtra("practitioner", true);
+                intent.putExtra("user", true);
                 startActivity(intent);
             }
         });
