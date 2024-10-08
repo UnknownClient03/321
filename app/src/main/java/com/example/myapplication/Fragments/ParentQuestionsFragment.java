@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -18,6 +19,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.R;
 import com.example.myapplication.SQLConnection;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.HashMap;
 import java.util.Arrays;
@@ -31,11 +33,13 @@ public class ParentQuestionsFragment extends Fragment {
 
     private int childID;
     private String checkType;
+    private boolean isFirstTime;
 
-    private EditText dobInput, fnameInput, lnameInput;
+    private EditText dobInput, fnameInput, lnameInput, parentsNotesInput;
     private Spinner sexSpinner;
-    private EditText parentsNotesInput;
     private Button submitButton;
+
+    private TextInputLayout dobLayout, fnameLayout, lnameLayout, parentsNotesLayout;
 
     private SQLConnection dbHelper;
 
@@ -52,11 +56,15 @@ public class ParentQuestionsFragment extends Fragment {
         return fragment;
     }
 
+    public ParentQuestionsFragment() {
+        // Required empty public constructor
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Initialize the SQLConnection here to prevent NullPointerException
-        dbHelper = new SQLConnection("user1", ""); // Use your credentials or method to establish connection
+        dbHelper = new SQLConnection();
 
         // Get the arguments from the bundle if passed
         if (getArguments() != null) {
@@ -67,20 +75,27 @@ public class ParentQuestionsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_parent_questions, container, false);
 
+        // Initialize TextInputLayouts
+        dobLayout = view.findViewById(R.id.textInputLayout_birthDate);
+        fnameLayout = view.findViewById(R.id.textInputLayout_fname);
+        lnameLayout = view.findViewById(R.id.textInputLayout_lname);
+        parentsNotesLayout = view.findViewById(R.id.textInputLayout_parentsNotes);
+
         // Initialize UI components
-        dobInput = view.findViewById(R.id.dob_input);
-        fnameInput = view.findViewById(R.id.fname_input);
-        lnameInput = view.findViewById(R.id.lname_input);
-        sexSpinner = view.findViewById(R.id.sex_spinner);
-        parentsNotesInput = view.findViewById(R.id.parents_notes_input);
+        dobInput = view.findViewById(R.id.editText_birthDate);
+        fnameInput = view.findViewById(R.id.editText_fname);
+        lnameInput = view.findViewById(R.id.editText_lname);
+        sexSpinner = view.findViewById(R.id.spinner_sex);
+        parentsNotesInput = view.findViewById(R.id.editText_parentsNotes);
         submitButton = view.findViewById(R.id.submit_button);
 
         submitButton.setOnClickListener(v -> submitParentAnswers());  // Set the submit button's click listener
 
         // Ensure dbHelper is connected before loading data
-        if (dbHelper != null && dbHelper.isConn()) {
+        if (dbHelper != null) {
             // Step 1: Load the child's data from the Child table
             new LoadChildDataTask().execute(childID);
 
@@ -93,9 +108,6 @@ public class ParentQuestionsFragment extends Fragment {
         return view;
     }
 
-    /**
-     * Submits the parent's answers to the database.
-     */
     private void submitParentAnswers() {
         // Validate required fields
         if (TextUtils.isEmpty(dobInput.getText()) ||
@@ -118,9 +130,6 @@ public class ParentQuestionsFragment extends Fragment {
         new UpdateChildCheckQuestionsTask().execute();
     }
 
-    /**
-     * Helper method to set the spinner selection based on the sex value.
-     */
     private void setSexSpinnerValue(String sex) {
         if (sex != null) {
             if (sex.equalsIgnoreCase("M")) {
@@ -133,9 +142,6 @@ public class ParentQuestionsFragment extends Fragment {
         }
     }
 
-    /**
-     * AsyncTask to load the child's data from the Child table and autofill the fields.
-     */
     private class LoadChildDataTask extends AsyncTask<Integer, Void, HashMap<String, String[]>> {
         @Override
         protected HashMap<String, String[]> doInBackground(Integer... params) {
@@ -149,11 +155,14 @@ public class ParentQuestionsFragment extends Fragment {
 
         @Override
         protected void onPostExecute(HashMap<String, String[]> result) {
-            if (result != null && result.get("DOB") != null) {
+            if (result != null && result.get("DOB") != null && result.get("DOB").length > 0) {
                 fnameInput.setText(result.get("fname")[0]);
                 lnameInput.setText(result.get("lname")[0]);
                 dobInput.setText(result.get("DOB")[0]);
                 setSexSpinnerValue(result.get("sex")[0]);
+
+                // Disable fields and grey them out
+                setFieldsEditable(isFirstTimeFillingForm());
                 Log.d("ParentQuestionsFragment", "Child data autofilled.");
             } else {
                 Toast.makeText(getContext(), "Failed to load child data.", Toast.LENGTH_LONG).show();
@@ -161,12 +170,11 @@ public class ParentQuestionsFragment extends Fragment {
         }
     }
 
-    /**
-     * AsyncTask to load ChildCheck data, including parents' notes, and autofill the form.
-     */
-    private class LoadChildCheckDataTask extends AsyncTask<Object, Void, HashMap<String, String[]>> {
+    private class LoadChildCheckDataTask extends AsyncTask<Object, Void, Boolean> {
+        private HashMap<String, String[]> childCheckData;
+
         @Override
-        protected HashMap<String, String[]> doInBackground(Object... params) {
+        protected Boolean doInBackground(Object... params) {
             int childIdParam = (int) params[0];
             String checkTypeParam = (String) params[1];
 
@@ -174,18 +182,32 @@ public class ParentQuestionsFragment extends Fragment {
             String[] queryParams = {String.valueOf(childIdParam), checkTypeParam};
             char[] queryParamTypes = {'i', 's'};
 
-            return dbHelper.select(query, queryParams, queryParamTypes);
+            childCheckData = dbHelper.select(query, queryParams, queryParamTypes);
+
+            // Determine if parent questions have been submitted
+            String parentQuestionsQuery = "SELECT COUNT(*) AS count FROM ChildCheckQuestion WHERE childID = ? AND checkType = ?";
+            HashMap<String, String[]> parentQuestionsResult = dbHelper.select(parentQuestionsQuery, queryParams, queryParamTypes);
+
+            int questionsCount = 0;
+            if (parentQuestionsResult != null && parentQuestionsResult.get("count") != null && parentQuestionsResult.get("count").length > 0) {
+                questionsCount = Integer.parseInt(parentQuestionsResult.get("count")[0]);
+            }
+
+            // If questions exist, it's not the first time
+            isFirstTime = questionsCount == 0;
+
+            return childCheckData != null && childCheckData.get("DOB") != null && childCheckData.get("DOB").length > 0;
         }
 
         @Override
-        protected void onPostExecute(HashMap<String, String[]> result) {
-            if (result != null && result.get("DOB") != null && result.get("DOB").length > 0) {
+        protected void onPostExecute(Boolean dataExists) {
+            if (dataExists) {
                 // Data found in ChildCheck, load it into the UI
-                String dob = result.get("DOB")[0];
-                String sex = result.get("sex")[0];
-                String fname = result.get("fname")[0];
-                String lname = result.get("lname")[0];
-                String parentsNotes = result.get("parentsNotes")[0];
+                String dob = childCheckData.get("DOB")[0];
+                String sex = childCheckData.get("sex")[0];
+                String fname = childCheckData.get("fname")[0];
+                String lname = childCheckData.get("lname")[0];
+                String parentsNotes = childCheckData.get("parentsNotes")[0];
 
                 dobInput.setText(dob);
                 setSexSpinnerValue(sex);
@@ -195,6 +217,9 @@ public class ParentQuestionsFragment extends Fragment {
                 if (parentsNotes != null && parentsNotes.length() > 0) {
                     parentsNotesInput.setText(parentsNotes);
                 }
+
+                // Set fields editable/non-editable based on isFirstTime
+                setFieldsEditable(isFirstTimeFillingForm());
 
                 Log.d("ParentQuestionsFragment", "Loaded ChildCheck data into UI.");
             } else {
@@ -208,9 +233,7 @@ public class ParentQuestionsFragment extends Fragment {
         }
     }
 
-    /**
-     * AsyncTask to load and display ChildCheckQuestion entries (questions and their saved answers).
-     */
+
     private class LoadChildCheckQuestionsTask extends AsyncTask<Object, Void, HashMap<String, String[]>> {
         @Override
         protected HashMap<String, String[]> doInBackground(Object... params) {
@@ -245,7 +268,13 @@ public class ParentQuestionsFragment extends Fragment {
                     questionCheckBoxes.add(checkBox);
                     questionTexts.add(questions[i]); // Store question texts for later use during submission
                 }
+
+                // Set fields editable/non-editable based on isFirstTime
+                setFieldsEditable(isFirstTimeFillingForm());
+
+
             } else {
+                // No data, first time
                 // Initialize questions if none are found in the database
                 Log.d("ParentQuestionsFragment", "No ChildCheckQuestion data found, initializing predefined questions.");
                 new InitializeQuestionsTask().execute(childID, checkType);
@@ -253,9 +282,6 @@ public class ParentQuestionsFragment extends Fragment {
         }
     }
 
-    /**
-     * AsyncTask to load Child table data if no ChildCheck data is found.
-     */
     private class LoadChildTableDataTask extends AsyncTask<Integer, Void, HashMap<String, String[]>> {
         @Override
         protected HashMap<String, String[]> doInBackground(Integer... params) {
@@ -284,6 +310,10 @@ public class ParentQuestionsFragment extends Fragment {
                 lnameInput.setText(lname);
 
                 Log.d("ParentQuestionsFragment", "Loaded Child data from Child table into UI.");
+
+                // Enable fields since no data is saved yet
+                setFieldsEditable(isFirstTimeFillingForm());
+
             } else {
                 // Handle case where no data is found in Child table (unlikely if child exists)
                 Log.e("ParentQuestionsFragment", "No data found in Child table for childID: " + childID);
@@ -292,9 +322,6 @@ public class ParentQuestionsFragment extends Fragment {
         }
     }
 
-    /**
-     * AsyncTask to insert or update the ChildCheck record.
-     */
     private class InsertOrUpdateChildCheckTask extends AsyncTask<Void, Void, Boolean> {
         private String dob, fname, lname, sex, parentsNotes;
 
@@ -339,15 +366,14 @@ public class ParentQuestionsFragment extends Fragment {
         protected void onPostExecute(Boolean success) {
             if (success) {
                 Log.d("ParentQuestionsFragment", "ChildCheck record saved successfully.");
+                // Disable fields and grey them out
+                setFieldsEditable(false);
             } else {
                 Log.e("ParentQuestionsFragment", "Failed to save ChildCheck record.");
             }
         }
     }
 
-    /**
-     * AsyncTask to update ChildCheckQuestion entries based on user input.
-     */
     private class UpdateChildCheckQuestionsTask extends AsyncTask<Void, Void, Boolean> {
         @Override
         protected Boolean doInBackground(Void... voids) {
@@ -376,6 +402,13 @@ public class ParentQuestionsFragment extends Fragment {
         protected void onPostExecute(Boolean success) {
             if (success) {
                 Toast.makeText(getContext(), "Parent questions updated successfully.", Toast.LENGTH_SHORT).show();
+
+                // Set isFirstTime to false after successful submission
+                isFirstTime = false;
+
+                // Disable fields and grey them out
+                setFieldsEditable(isFirstTimeFillingForm());
+
                 moveToCheckFragment();
             } else {
                 Toast.makeText(getContext(), "Failed to update some parent questions.", Toast.LENGTH_LONG).show();
@@ -383,9 +416,6 @@ public class ParentQuestionsFragment extends Fragment {
         }
     }
 
-    /**
-     * Moves to the next fragment after successful submission.
-     */
     private void moveToCheckFragment() {
         CheckFragment checkFragment = CheckFragment.newInstance(childID, checkType);
         getActivity().getSupportFragmentManager().beginTransaction()
@@ -394,9 +424,6 @@ public class ParentQuestionsFragment extends Fragment {
                 .commit();
     }
 
-    /**
-     * AsyncTask to initialize ChildCheckQuestion entries if none are found.
-     */
     private class InitializeQuestionsTask extends AsyncTask<Object, Void, Boolean> {
         @Override
         protected Boolean doInBackground(Object... params) {
@@ -409,7 +436,7 @@ public class ParentQuestionsFragment extends Fragment {
                 return false;
             }
 
-            // Access the predefined questions for this check type
+            // Access the predefined questions for this checkType
             List<String> predefinedQuestions = getPredefinedQuestions(checkTypeParam);
 
             for (String question : predefinedQuestions) {
@@ -435,15 +462,13 @@ public class ParentQuestionsFragment extends Fragment {
         @Override
         protected void onPostExecute(Boolean success) {
             if (success) {
+                isFirstTime = true;
                 new LoadChildCheckQuestionsTask().execute(childID, checkType);
             } else {
                 Toast.makeText(getContext(), "Failed to initialize questions.", Toast.LENGTH_LONG).show();
             }
         }
 
-        /**
-         * Helper method to ensure that a ChildCheck entry exists for the given childID and checkType.
-         */
         private boolean ensureChildCheckExists(int childId, String checkType) {
             // Check if an entry exists in the ChildCheck table for the current childID and checkType
             String checkQuery = "SELECT COUNT(*) AS count FROM ChildCheck WHERE childID = ? AND checkType = ?";
@@ -475,9 +500,36 @@ public class ParentQuestionsFragment extends Fragment {
         }
     }
 
-        /**
-         * Method to return predefined questions based on checkType.
-         */
+        private boolean ensureChildCheckExists(int childId, String checkType) {
+            // Check if an entry exists in the ChildCheck table for the current childID and checkType
+            String checkQuery = "SELECT COUNT(*) AS count FROM ChildCheck WHERE childID = ? AND checkType = ?";
+            String[] checkParams = {String.valueOf(childId), checkType};
+            char[] checkParamTypes = {'i', 's'};
+
+            HashMap<String, String[]> result = dbHelper.select(checkQuery, checkParams, checkParamTypes);
+            int recordCount = 0;
+
+            if (result != null && result.get("count") != null && result.get("count").length > 0) {
+                try {
+                    recordCount = Integer.parseInt(result.get("count")[0]);
+                } catch (NumberFormatException e) {
+                    Log.e("ParentQuestionsFragment", "Error parsing count value.", e);
+                }
+            }
+
+            // If no record exists, create one
+            if (recordCount == 0) {
+                String insertQuery = "INSERT INTO ChildCheck (childID, checkType, DOB, fname, lname, sex, parentsNotes) " +
+                        "SELECT ID, ?, DOB, fname, lname, sex, '' FROM Child WHERE ID = ?";
+                String[] insertParams = {checkType, String.valueOf(childId)};
+                char[] insertParamTypes = {'s', 'i'};
+
+                return dbHelper.update(insertQuery, insertParams, insertParamTypes);
+            }
+
+            return true; // Record already exists
+        }
+
         private List<String> getPredefinedQuestions(String checkType) {
             switch (checkType) {
                 case "1-4 weeks":
@@ -589,4 +641,52 @@ public class ParentQuestionsFragment extends Fragment {
                     return new ArrayList<>(); // Return an empty list or a default set of questions
             }
         }
+
+    private boolean isFirstTimeFillingForm() {
+        return isFirstTime;
     }
+
+    private void setFieldsEditable(boolean isFirstTime) {
+        // Fields that are always non-editable
+        EditText[] nonEditableFields = new EditText[]{
+                dobInput, fnameInput, lnameInput
+        };
+
+        for (EditText field : nonEditableFields) {
+            field.setEnabled(false);
+            field.setFocusable(false);
+            field.setClickable(false);
+            field.setTextColor(getResources().getColor(R.color.disabled_text));
+        }
+
+        sexSpinner.setEnabled(false);
+        sexSpinner.setClickable(false);
+
+        if (isFirstTime) {
+            // parentsNotesInput is editable
+            parentsNotesInput.setEnabled(true);
+            parentsNotesInput.setFocusable(true);
+            parentsNotesInput.setClickable(true);
+            parentsNotesInput.setTextColor(getResources().getColor(R.color.black));
+
+            // CheckBoxes are editable
+            for (CheckBox checkBox : questionCheckBoxes) {
+                checkBox.setEnabled(true);
+                checkBox.setTextColor(getResources().getColor(R.color.black));
+            }
+        } else {
+            // All fields are not editable
+            parentsNotesInput.setEnabled(false);
+            parentsNotesInput.setFocusable(false);
+            parentsNotesInput.setClickable(false);
+            parentsNotesInput.setTextColor(getResources().getColor(R.color.disabled_text));
+
+            // CheckBoxes are not editable
+            for (CheckBox checkBox : questionCheckBoxes) {
+                checkBox.setEnabled(false);
+                checkBox.setTextColor(getResources().getColor(R.color.disabled_text));
+            }
+        }
+    }
+
+}
