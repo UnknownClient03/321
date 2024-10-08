@@ -99,9 +99,11 @@ public class ManageChildrenActivity extends AppCompatActivity {
             }
 
             // Remove selected children from the database
+            SQLConnection sqlConnection = new SQLConnection("user1", "");
             for (Integer childId : childrenToRemove) {
-                removeChildFromDatabase(childId, currentGuardianID);
+                sqlConnection.update("DELETE FROM Child WHERE ID = " + childId + " AND guardianID = " + currentGuardianID);
             }
+            sqlConnection.disconnect();
 
             // Reload and refresh children list from the database
             loadChildrenFromDatabase();
