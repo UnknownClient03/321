@@ -54,14 +54,18 @@ public class SignatureCanvas extends View{
         this.setBackground(d);
     }
 
-
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         float pointX = event.getX();
         float pointY = event.getY();
 
+        if (!isEnabled()) {
+            return false;
+        }
+
         switch(event.getAction()) {
             case MotionEvent.ACTION_DOWN:
+                getParent().requestDisallowInterceptTouchEvent(true);
                 path.moveTo(pointX, pointY);
                 return true;
             case MotionEvent.ACTION_MOVE:

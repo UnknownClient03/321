@@ -2,16 +2,15 @@ package com.example.myapplication;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.Fragments.Fragment_BirthDetails;
-import com.example.myapplication.Fragments.Fragment_NewbornExamination;
 import com.example.myapplication.Fragments.Fragment_HearingPreScreening;
 import com.example.myapplication.Fragments.Fragment_Hearingscreen;
+import com.example.myapplication.Fragments.Fragment_NewbornExamination;
 
 public class BirthDetailsAndNewbornExamination extends AppCompatActivity {
 
@@ -39,6 +38,9 @@ public class BirthDetailsAndNewbornExamination extends AppCompatActivity {
             Log.e("BirthDetailsActivity", "Invalid childID or guardianID received");
             return;
         }
+
+        // Set up the navbar
+        NavBarManager.setNavBarButtons(BirthDetailsAndNewbornExamination.this);
 
         Button buttonBirthDetails = findViewById(R.id.button_birth_details);
         Button buttonNewbornExamination = findViewById(R.id.button_newborn_examination);
@@ -95,8 +97,6 @@ public class BirthDetailsAndNewbornExamination extends AppCompatActivity {
 
             loadFragment(fragment);
         }
-
-        NavBarManager.setNavBarButtons(BirthDetailsAndNewbornExamination.this, manager);
     }
 
     private void loadFragment(Fragment fragment) {
