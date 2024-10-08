@@ -91,21 +91,30 @@ public class ManageChildrenActivity extends AppCompatActivity {
         });
 
         submitRemoveButton.setOnClickListener(v -> {
-            // Get selected children
-            List<Child> selectedChildren = adapter.getSelectedChildren();
-            for (Child child : selectedChildren) {
-                // Remove child from the list and the database
-                childrenList.remove(child);
-                removeChildFromDatabase(child.getId(), currentGuardianID);
+            List<Integer> childrenToRemove = new ArrayList<>();
+
+            // Collect selected children IDs
+            for (Child child : adapter.getSelectedChildren()) {
+                childrenToRemove.add(child.getId());
             }
+
+            // Remove selected children from the database
+            for (Integer childId : childrenToRemove) {
+                removeChildFromDatabase(childId, currentGuardianID);
+            }
+
+            // Reload and refresh children list
+            loadChildrenFromDatabase();
+
             Toast.makeText(ManageChildrenActivity.this, "Selected children removed.", Toast.LENGTH_SHORT).show();
 
+            // Reset UI elements
             adapter.showCheckboxes(false);
             submitRemoveButton.setVisibility(View.GONE);
             removeChildButton.setText("Remove Child");
             isRemoveMode = false;
-            loadChildrenFromDatabase(); // Refresh data
         });
+
 
         addChildButton.setOnClickListener(v -> {
             // Start AddChildActivity to add a new child
@@ -131,8 +140,8 @@ public class ManageChildrenActivity extends AppCompatActivity {
     private void loadChildrenFromDatabase() {
         SQLConnection sqlConnection = new SQLConnection("user1", "");
 
-        // Clear the existing children list
-        childrenList.clear();
+        // Temporary list to hold new children data
+        List<Child> newChildrenList = new ArrayList<>();
 
         HashMap<String, String[]> result = sqlConnection.select("SELECT ID, fname, lname, DOB, sex, profilePicture, guardianID FROM Child WHERE guardianID = " + currentGuardianID);
 
@@ -155,12 +164,17 @@ public class ManageChildrenActivity extends AppCompatActivity {
                 int guardianID = Integer.parseInt(guardianIDs[i]);
 
                 if (guardianID == currentGuardianID) {
-                    childrenList.add(new Child(id, fname, lname, dob, sex, profilePicture));
+                    newChildrenList.add(new Child(id, fname, lname, dob, sex, profilePicture));
                 }
             }
         }
 
-        adapter.notifyDataSetChanged(); // Notify adapter of data change
+        sqlConnection.disconnect();
+
+        childrenList.clear();
+        childrenList.addAll(newChildrenList);
+
+        adapter.notifyDataSetChanged();
 
         // Show or hide the "No children added" message based on the list size
         if (childrenList.isEmpty()) {
@@ -170,9 +184,8 @@ public class ManageChildrenActivity extends AppCompatActivity {
             noChildrenMessage.setVisibility(View.GONE);
             childListView.setVisibility(View.VISIBLE); // Show the ListView if there are children
         }
-
-        sqlConnection.disconnect();
     }
+
 
     // Remove child from the database
     private void removeChildFromDatabase(int childId, int guardianID) {
