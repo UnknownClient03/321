@@ -103,7 +103,7 @@ public class ManageChildrenActivity extends AppCompatActivity {
                 removeChildFromDatabase(childId, currentGuardianID);
             }
 
-            // Reload and refresh children list
+            // Reload and refresh children list from the database
             loadChildrenFromDatabase();
 
             Toast.makeText(ManageChildrenActivity.this, "Selected children removed.", Toast.LENGTH_SHORT).show();
