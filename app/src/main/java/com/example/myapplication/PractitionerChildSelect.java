@@ -24,6 +24,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class PractitionerChildSelect extends AppCompatActivity {
 
     private LoginManager manager;
@@ -120,7 +122,7 @@ public class PractitionerChildSelect extends AppCompatActivity {
             View childView = LayoutInflater.from(this).inflate(R.layout.child_item_layout, childContainer, false);
             TextView childName = childView.findViewById(R.id.child_name);
             TextView childAge = childView.findViewById(R.id.child_age);
-            ImageButton childButton = childView.findViewById(R.id.child_image_button);
+            CircleImageView childButton = childView.findViewById(R.id.child_image_button);
 
             byte[] decodedString = Base64.decode(child.getProfilePicture(), Base64.DEFAULT);
             childButton.setImageBitmap(BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length));
