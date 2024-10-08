@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 
 public class Child {
     private int id;
+    private int guardianId;
     private String fname;
     private String lname;
     private String dob;
@@ -14,6 +15,15 @@ public class Child {
 
     public Child(int id, String fname, String lname, String dob, String sex, String profilePicture) {
         this.id = id;
+        this.fname = fname;
+        this.lname = lname;
+        this.dob = dob;
+        this.sex = sex;
+        this.profilePicture = profilePicture;
+    }
+    public Child(int id, int guardianId, String fname, String lname, String dob, String sex, String profilePicture) {
+        this.id = id;
+        this.guardianId = guardianId;
         this.fname = fname;
         this.lname = lname;
         this.dob = dob;
@@ -29,6 +39,9 @@ public class Child {
     public void setId(int id) {
         this.id = id;
     }
+
+    public void setGuardianId(int guardianId) { this.guardianId = guardianId; }
+    public int getGuardianId() { return guardianId; }
 
     // Getter and Setter methods for First Name
     public String getFname() {
