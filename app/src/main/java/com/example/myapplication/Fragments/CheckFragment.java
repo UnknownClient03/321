@@ -499,6 +499,7 @@ public class CheckFragment extends Fragment {
                 if (getActivity() != null) {
                     getActivity().getSupportFragmentManager().popBackStack();
                     getActivity().getSupportFragmentManager().popBackStack();
+                    getActivity().getSupportFragmentManager().popBackStack();
                 }
             } else {
                 Toast.makeText(getContext(), "Failed to submit check. Enter all fields and try again.", Toast.LENGTH_SHORT).show();
