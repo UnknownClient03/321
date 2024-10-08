@@ -860,38 +860,38 @@ public class Fragment_BirthDetails extends Fragment {
             if (focusView == null) focusView = birthWeightInput;
         } else {
             try {
-                int weight = Integer.parseInt(birthWeight);
+                double weight = Double.parseDouble(birthWeight);
                 if (weight <= 0) {
-                    birthWeightLayout.setError("Birth Weight must be a positive integer.");
+                    birthWeightLayout.setError("Birth Weight must be a positive number.");
                     isValid = false;
                     if (focusView == null) focusView = birthWeightInput;
                 } else {
                     birthWeightLayout.setError(null);
                 }
             } catch (NumberFormatException e) {
-                birthWeightLayout.setError("Birth Weight must be a valid integer.");
+                birthWeightLayout.setError("Birth Weight must be a valid number.");
                 isValid = false;
                 if (focusView == null) focusView = birthWeightInput;
             }
         }
 
-// Validate Birth Length
+        // Validate Birth Length
         if (birthLength.isEmpty()) {
             birthLengthLayout.setError("Birth Length is required.");
             isValid = false;
             if (focusView == null) focusView = birthLengthInput;
         } else {
             try {
-                int length = Integer.parseInt(birthLength);
+                double length = Double.parseDouble(birthLength);
                 if (length <= 0) {
-                    birthLengthLayout.setError("Birth Length must be a positive integer.");
+                    birthLengthLayout.setError("Birth Length must be a positive number.");
                     isValid = false;
                     if (focusView == null) focusView = birthLengthInput;
                 } else {
                     birthLengthLayout.setError(null);
                 }
             } catch (NumberFormatException e) {
-                birthLengthLayout.setError("Birth Length must be a valid integer.");
+                birthLengthLayout.setError("Birth Length must be a valid number.");
                 isValid = false;
                 if (focusView == null) focusView = birthLengthInput;
             }
@@ -904,16 +904,16 @@ public class Fragment_BirthDetails extends Fragment {
             if (focusView == null) focusView = birthHeadCircInput;
         } else {
             try {
-                int headCircValue = Integer.parseInt(birthHeadCirc);
+                double headCircValue = Double.parseDouble(birthHeadCirc);
                 if (headCircValue <= 0) {
-                    birthHeadCircLayout.setError("Birth Head Circumference must be a positive integer.");
+                    birthHeadCircLayout.setError("Birth Head Circumference must be a positive number.");
                     isValid = false;
                     if (focusView == null) focusView = birthHeadCircInput;
                 } else {
                     birthHeadCircLayout.setError(null);
                 }
             } catch (NumberFormatException e) {
-                birthHeadCircLayout.setError("Birth Head Circumference must be a valid integer.");
+                birthHeadCircLayout.setError("Birth Head Circumference must be a valid number.");
                 isValid = false;
                 if (focusView == null) focusView = birthHeadCircInput;
             }
@@ -1069,16 +1069,16 @@ public class Fragment_BirthDetails extends Fragment {
             if (focusView == null) focusView = dischargeWeightInput;
         } else {
             try {
-                int weight = Integer.parseInt(dischargeWeight);
+                double weight = Double.parseDouble(dischargeWeight);
                 if (weight <= 0) {
-                    dischargeWeightLayout.setError("Discharge Weight must be a positive integer.");
+                    dischargeWeightLayout.setError("Discharge Weight must be a positive number.");
                     isValid = false;
                     if (focusView == null) focusView = dischargeWeightInput;
                 } else {
                     dischargeWeightLayout.setError(null);
                 }
             } catch (NumberFormatException e) {
-                dischargeWeightLayout.setError("Discharge Weight must be a valid integer.");
+                dischargeWeightLayout.setError("Discharge Weight must be a valid number.");
                 isValid = false;
                 if (focusView == null) focusView = dischargeWeightInput;
             }
@@ -1091,16 +1091,16 @@ public class Fragment_BirthDetails extends Fragment {
             if (focusView == null) focusView = headCircInput;
         } else {
             try {
-                int headCircValue = Integer.parseInt(headCirc);
+                double headCircValue = Double.parseDouble(headCirc);
                 if (headCircValue <= 0) {
-                    headCircLayout.setError("Head Circumference must be a positive integer.");
+                    headCircLayout.setError("Head Circumference must be a positive number.");
                     isValid = false;
                     if (focusView == null) focusView = headCircInput;
                 } else {
                     headCircLayout.setError(null);
                 }
             } catch (NumberFormatException e) {
-                headCircLayout.setError("Head Circumference must be a valid integer.");
+                headCircLayout.setError("Head Circumference must be a valid number.");
                 isValid = false;
                 if (focusView == null) focusView = headCircInput;
             }
@@ -1282,11 +1282,23 @@ public class Fragment_BirthDetails extends Fragment {
             int estimatedGestation = Integer.parseInt(estimatedGestationInput.getText().toString().trim());
             int apgarScore1Min = Integer.parseInt(apgarScore1MinInput.getText().toString().trim());
             int apgarScore5Min = Integer.parseInt(apgarScore5MinInput.getText().toString().trim());
-            int birthWeight = Integer.parseInt(birthWeightInput.getText().toString().trim());
-            int birthLength = Integer.parseInt(birthLengthInput.getText().toString().trim());
-            int birthHeadCirc = Integer.parseInt(birthHeadCircInput.getText().toString().trim());
-            int dischargeWeight = Integer.parseInt(dischargeWeightInput.getText().toString().trim());
-            int headCirc = Integer.parseInt(headCircInput.getText().toString().trim());
+
+            // Parse as double and round to nearest integer
+            double birthWeightDouble = Double.parseDouble(birthWeightInput.getText().toString().trim());
+            int birthWeight = (int) Math.round(birthWeightDouble);
+
+            double birthLengthDouble = Double.parseDouble(birthLengthInput.getText().toString().trim());
+            int birthLength = (int) Math.round(birthLengthDouble);
+
+            double birthHeadCircDouble = Double.parseDouble(birthHeadCircInput.getText().toString().trim());
+            int birthHeadCirc = (int) Math.round(birthHeadCircDouble);
+
+            double dischargeWeightDouble = Double.parseDouble(dischargeWeightInput.getText().toString().trim());
+            int dischargeWeight = (int) Math.round(dischargeWeightDouble);
+
+            double headCircDouble = Double.parseDouble(headCircInput.getText().toString().trim());
+            int headCirc = (int) Math.round(headCircDouble);
+
 
             String abnormalitiesAtBirth = abnormalitiesAtBirthInput.getText().toString().trim().isEmpty() ? null : abnormalitiesAtBirthInput.getText().toString().trim();
             String problemsRequiringTreatment = problemsRequiringTreatmentInput.getText().toString().trim().isEmpty() ? null : problemsRequiringTreatmentInput.getText().toString().trim();
