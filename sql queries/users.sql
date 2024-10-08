@@ -27,3 +27,6 @@ GRANT INSERT, SELECT, UPDATE ON ChildCheckAssessmentVariables TO user1;
 GRANT INSERT, SELECT, UPDATE ON ChildCheck TO user1;
 GRANT INSERT, SELECT, UPDATE ON ChildCheckSignage TO user1;
 GRANT INSERT, SELECT, UPDATE ON ChildCheckQuestion TO user1;
+GRANT SELECT ON Practitioner TO user1;
+GRANT SELECT ON PractitionerAccountDetails TO user1;
+GRANT SELECT ON PractitionerGuardianID TO user1;
