@@ -2,25 +2,25 @@ package com.example.myapplication.Fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.myapplication.R;
 
 public class ChecksMenuFragment extends Fragment {
 
     private OnCheckSelectedListener mListener;
+    private int childID = -1; // Initialize with invalid ID
 
-    /**
-     * Interface to communicate with the hosting activity
-     */
+    // Interface to communicate with the activity
     public interface OnCheckSelectedListener {
         void onCheckSelected(String checkType);
     }
@@ -46,6 +46,18 @@ public class ChecksMenuFragment extends Fragment {
     }
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // Retrieve childID from the hosting activity's intent extras
+        Bundle extras = getActivity().getIntent().getExtras();
+        if (extras != null) {
+            childID = extras.getInt("childID", -1); // Default to -1 if not found
+        } else {
+            childID = -1; // Handle the case where no extras are present
+        }
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -55,6 +67,7 @@ public class ChecksMenuFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         // Initialize buttons and set click listeners
+        Button buttonsummary = view.findViewById(R.id.buttonsummary);
         Button button1_4Weeks = view.findViewById(R.id.button_1_4_weeks);
         Button button6_8Weeks = view.findViewById(R.id.button_6_8_weeks);
         Button button4Month = view.findViewById(R.id.button_4_month);
@@ -66,6 +79,22 @@ public class ChecksMenuFragment extends Fragment {
         Button button4Year = view.findViewById(R.id.button_4_year);
 
         // Set onClickListeners for each button
+        buttonsummary.setOnClickListener(v -> {
+            if (childID == -1) {
+                Toast.makeText(getContext(), "Invalid Child ID", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // Instantiate Fragment_ChecksSummary with childID
+            Fragment_ChecksSummary summaryFragment = Fragment_ChecksSummary.newInstance(childID);
+
+            // Perform the fragment transaction
+            FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_container_encapsulating, summaryFragment);
+            transaction.addToBackStack(null); // Optional: Add to back stack
+            transaction.commit();
+        });
+
         button1_4Weeks.setOnClickListener(v -> {
             if (mListener != null) {
                 mListener.onCheckSelected("1-4 weeks");

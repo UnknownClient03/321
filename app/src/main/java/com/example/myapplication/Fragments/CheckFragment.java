@@ -479,6 +479,12 @@ public class CheckFragment extends Fragment {
                 return false;
             }
 
+            // insert or update the HealthChecks table
+            boolean healthChecksSuccess = insertOrUpdateHealthChecks();
+            if (!healthChecksSuccess) {
+                return false;
+            }
+
             return true;
         }
 
@@ -989,6 +995,105 @@ public class CheckFragment extends Fragment {
             }
         }
     }
+
+    private boolean insertOrUpdateHealthChecks() {
+        // 1. Collect Abnormalities from spinnersMap
+        StringBuilder abnormalities = new StringBuilder();
+        for (String question : spinnersMap.keySet()) {
+            Spinner spinner = spinnersMap.get(question);
+            String selectedStatus = spinner.getSelectedItem().toString().toLowerCase();
+            if (!selectedStatus.equals("normal")) {
+                abnormalities.append("- ").append(capitalize(selectedStatus)).append(" ").append(question).append("\n");
+            }
+        }
+
+        // 2. Collect Unselected Protective Factors
+        StringBuilder unselectedProtectiveFactors = new StringBuilder();
+        if (!immunisationUpToDateCheckbox.isChecked()) {
+            unselectedProtectiveFactors.append("- Immunization is not up to date.\n");
+        }
+        if (!hearingCheckbox.isChecked()) {
+            unselectedProtectiveFactors.append("- Hearing needs further evaluation.\n");
+        }
+        if (!visionCheckbox.isChecked()) {
+            unselectedProtectiveFactors.append("- Vision requires additional assessment.\n");
+        }
+        if (!hipsCheckbox.isChecked()) {
+            unselectedProtectiveFactors.append("- Hips screening indicates potential dislocation.\n");
+        }
+        if (!oralHealthCheckbox.isChecked()) {
+            unselectedProtectiveFactors.append("- Oral health requires attention.\n");
+        }
+
+        // 3. Collect Doctor's Notes from commentsInput
+        String doctorNotes = commentsInput.getText().toString().trim();
+        String formattedDoctorNotes = doctorNotes.isEmpty() ? "No additional comments." : doctorNotes;
+
+        // 4. Format the comments field with clear sections
+        StringBuilder formattedComments = new StringBuilder();
+        formattedComments.append("**Abnormalities:**\n");
+        if (abnormalities.length() > 0) {
+            formattedComments.append(abnormalities.toString());
+        } else {
+            formattedComments.append("None.\n");
+        }
+
+        formattedComments.append("\n**Risk Factors:**\n");
+        if (unselectedProtectiveFactors.length() > 0) {
+            formattedComments.append(unselectedProtectiveFactors.toString());
+        } else {
+            formattedComments.append("All risk factors are adequately addressed.\n");
+        }
+
+        formattedComments.append("\n**Doctor's Notes:**\n");
+        formattedComments.append(formattedDoctorNotes);
+
+        // 5. Retrieve the date from dateInput and format dateTime
+        String selectedDate = dateInput.getText().toString().trim();
+        if (TextUtils.isEmpty(selectedDate)) {
+            Log.e("CheckFragment", "Date of check is empty.");
+            return false;
+        }
+        // Assuming dateInput is in "yyyy-MM-dd" format
+        String dateTime = selectedDate + " 00:00:00";
+
+        // 6. Check if entry exists using composite key (childID, age)
+        String checkQuery = "SELECT childID FROM HealthChecks WHERE childID = ? AND age = ?";
+        String[] checkParams = {String.valueOf(childID), checkType};
+        char[] checkParamTypes = {'i', 's'};
+
+        HashMap<String, String[]> result = dbHelper.select(checkQuery, checkParams, checkParamTypes);
+
+        if (result != null && result.get("childID") != null && result.get("childID").length > 0) {
+            // Entry exists, perform update based on composite key
+            String updateQuery = "UPDATE HealthChecks SET dateTime = ?, comments = ? WHERE childID = ? AND age = ?";
+            String[] updateParams = {dateTime, formattedComments.toString(), String.valueOf(childID), checkType};
+            char[] updateParamTypes = {'s', 's', 'i', 's'};
+            boolean updateSuccess = dbHelper.update(updateQuery, updateParams, updateParamTypes);
+            if (!updateSuccess) {
+                Log.e("CheckFragment", "Failed to update HealthChecks for childID: " + childID + ", age: " + checkType);
+            }
+            return updateSuccess;
+        } else {
+            // Entry does not exist, insert new record
+            String insertQuery = "INSERT INTO HealthChecks (childID, age, dateTime, comments) VALUES (?, ?, ?, ?)";
+            String[] insertParams = {String.valueOf(childID), checkType, dateTime, formattedComments.toString()};
+            char[] insertParamTypes = {'i', 's', 's', 's'};
+            boolean insertSuccess = dbHelper.update(insertQuery, insertParams, insertParamTypes);
+            if (!insertSuccess) {
+                Log.e("CheckFragment", "Failed to insert HealthChecks for childID: " + childID + ", age: " + checkType);
+            }
+            return insertSuccess;
+        }
+    }
+
+    private String capitalize(String str) {
+        if (str == null || str.isEmpty()) {
+            return str;
+        }
+        return str.substring(0, 1).toUpperCase() + str.substring(1);
+    }
+
 
     @Override
     public void onDestroy() {
