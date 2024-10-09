@@ -3246,6 +3246,9 @@ id animateToEnd
 id animateToStart
 id antiClockwise
 id anticipate
+id appointment_date
+id appointment_time
+id appointment_title
 id appointmentsListView
 id appointments_button
 id arc
@@ -4643,6 +4646,7 @@ layout activity_records
 layout activity_reset_password
 layout activity_signup
 layout activity_user_login
+layout appointment_item
 layout birth_details_and_newborn_examination
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row

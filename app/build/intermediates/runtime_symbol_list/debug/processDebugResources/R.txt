@@ -3245,6 +3245,9 @@ int id animateToEnd 0x7f09005d
 int id animateToStart 0x7f09005e
 int id antiClockwise 0x7f09005f
 int id anticipate 0x7f090060
+int id appointment_date 0x7f09054d
+int id appointment_time 0x7f09054f
+int id appointment_title 0x7f09054e
 int id appointmentsListView 0x7f090061
 int id appointments_button 0x7f090062
 int id arc 0x7f090063
@@ -4642,6 +4645,7 @@ int layout activity_records 0x7f0c002e
 int layout activity_reset_password 0x7f0c002f
 int layout activity_signup 0x7f0c0030
 int layout activity_user_login 0x7f0c0031
+int layout appointment_item 0x7f0c00a8
 int layout birth_details_and_newborn_examination 0x7f0c0032
 int layout browser_actions_context_menu_page 0x7f0c0033
 int layout browser_actions_context_menu_row 0x7f0c0034

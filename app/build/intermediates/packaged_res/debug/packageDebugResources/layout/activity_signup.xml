@@ -53,13 +53,12 @@
 
         </RelativeLayout>
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_picture"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_gravity="center"
             android:contentDescription="Profile Picture"
-            android:scaleType="centerCrop"
             android:src="@drawable/profile_picture" />
 
         <Button
@@ -148,7 +147,6 @@
             android:id="@+id/signup_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:backgroundTint="#6482AD"
             android:text="Sign Up"
             android:textSize="20sp" />

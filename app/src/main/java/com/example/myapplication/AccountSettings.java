@@ -1,7 +1,10 @@
 package com.example.myapplication;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.InputType;
@@ -14,6 +17,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.HashMap;
 
@@ -36,6 +41,9 @@ public class AccountSettings extends AppCompatActivity {
     private int guardianID;
 
     private CaptureImage imageCapturer;
+
+    private static final int CAMERA_REQUEST_CODE = 100;
+    private static final int GALLERY_REQUEST_CODE = 200;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,9 +91,8 @@ public class AccountSettings extends AppCompatActivity {
         changeProfilePictureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Allows the user to take picture and saves the thumbnail as the profile picture
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                imageCapturer.activityResultLauncher.launch(intent);
+                // Allows the user to take a picture or select an image and saves the thumbnail as the profile picture
+                showImageSourceOptions();
                 saveProfilePictureButton.setVisibility(View.VISIBLE);
             }
         });
@@ -178,6 +185,51 @@ public class AccountSettings extends AppCompatActivity {
         buttonSettings.setEnabled(false);  // Disable the button
 
         NavBarManager.setNavBarButtons(AccountSettings.this, new LoginManager(extras.getInt("guardianID"), extras.getInt("childID")));
+    }
+
+    private void showImageSourceOptions() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(AccountSettings.this);
+        builder.setTitle("Select Image Source");
+        builder.setItems(new CharSequence[]{"Camera", "Gallery"}, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case 0: // Camera option
+                        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        startActivityForResult(cameraIntent, CAMERA_REQUEST_CODE);
+                        break;
+                    case 1: // Gallery option
+                        Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                        startActivityForResult(galleryIntent, GALLERY_REQUEST_CODE);
+                        break;
+                }
+            }
+        });
+        builder.show();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+            if (requestCode == CAMERA_REQUEST_CODE && data != null && data.getExtras() != null) {
+                // Handle the camera result
+                Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+                if (bitmap != null) {
+                    // Set the captured image to the ImageView
+                    profilePicture.setImageBitmap(bitmap);
+                    imageCapturer.currentBitmap = bitmap;  // Store the bitmap in CaptureImage
+                }
+            } else if (requestCode == GALLERY_REQUEST_CODE && data != null) {
+                // Handle the gallery result
+                Uri selectedImage = data.getData();
+                if (selectedImage != null) {
+                    profilePicture.setImageURI(selectedImage);  // Show the selected image in the ImageView
+                    imageCapturer.setImageUri(selectedImage, this);  // Store the image in CaptureImage
+                }
+            }
+        }
     }
 
     // Load guardian data from the database

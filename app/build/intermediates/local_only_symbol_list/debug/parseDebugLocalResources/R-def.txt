@@ -72,6 +72,9 @@ id action_taken_input
 id addAppointmentButton
 id add_appointment_button_container
 id add_child_button
+id appointment_date
+id appointment_time
+id appointment_title
 id appointmentsListView
 id appointments_button
 id back_arrow
@@ -932,6 +935,7 @@ layout activity_records
 layout activity_reset_password
 layout activity_signup
 layout activity_user_login
+layout appointment_item
 layout birth_details_and_newborn_examination
 layout child_item_layout
 layout child_list_item

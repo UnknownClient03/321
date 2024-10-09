@@ -204,10 +204,6 @@
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-48:/drawable/add_message.xml"
     },
     {
-        "merged": "com.example.myapplication.app-debug-46:/layout_appointment_item.xml.flat",
-        "source": "com.example.myapplication.app-main-48:/layout/appointment_item.xml"
-    },
-    {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-46:/drawable_sharebevel.png.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-48:/drawable/sharebevel.png"
     },
@@ -346,6 +342,10 @@
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-46:/mipmap-xxhdpi_ozbluelogo_round.webp.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-48:/mipmap-xxhdpi/ozbluelogo_round.webp"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-46:/layout_activity_add_child.xml.flat",
+        "source": "com.example.myapplication.app-main-48:/layout/activity_add_child.xml"
     },
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-46:/layout_fragment_birth_details.xml.flat",
