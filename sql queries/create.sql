@@ -115,19 +115,19 @@ CREATE TABLE FamilyDentalHistory(
 
 CREATE TABLE HealthChecks(
 	childID int not null,
-	ID int not null,
-	age int not null,
+	age varchar(10) not null,
 	dateTime DATETIME not null,
-	comments varchar(255),
-	PRIMARY KEY(ID),
+	comments varchar(MAX),
+	PRIMARY KEY(childID, age),
 	CHECK(age = '1-4 weeks' OR 
-		  age = '6-8 weeks' OR 
-		  age = '6 months' OR 
-		  age = '12 months' OR 
-		  age = '18 months' OR 
-		  age = '2 years' OR 
-		  age = '3 years' OR 
-		  age = '4 years'),
+		  age = '6-8 weeks' OR
+		  age = '4 month' OR
+		  age = '6 month' OR 
+		  age = '12 month' OR 
+		  age = '18 month' OR 
+		  age = '2 year' OR 
+		  age = '3 year' OR 
+		  age = '4 year'),
 	FOREIGN KEY (childID) REFERENCES Child(ID)
 );
 
