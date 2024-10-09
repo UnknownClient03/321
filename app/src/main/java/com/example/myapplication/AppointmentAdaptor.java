@@ -12,6 +12,7 @@ import com.example.myapplication.Appointment;
 import java.util.List;
 
 public class AppointmentAdaptor extends BaseAdapter {
+
     private Context context;
     private List<Appointment> appointmentList;
 
@@ -38,16 +39,18 @@ public class AppointmentAdaptor extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(android.R.layout.simple_list_item_2, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.appointment_item, parent, false);
         }
 
         Appointment appointment = appointmentList.get(position);
 
-        TextView title = convertView.findViewById(android.R.id.text1);
-        TextView dateTime = convertView.findViewById(android.R.id.text2);
+        TextView title = convertView.findViewById(R.id.appointment_title);
+        TextView date = convertView.findViewById(R.id.appointment_date);
+        TextView time = convertView.findViewById(R.id.appointment_time);
 
         title.setText(appointment.getTitle());
-        dateTime.setText(appointment.getDate() + " " + appointment.getTime());
+        date.setText(appointment.getDate());
+        time.setText(appointment.getTime());
 
         return convertView;
     }

@@ -16,10 +16,6 @@
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-48:/drawable/progressimg.png"
     },
     {
-        "merged": "com.example.myapplication.app-debug-46:/layout_child_item_layout.xml.flat",
-        "source": "com.example.myapplication.app-main-48:/layout/child_item_layout.xml"
-    },
-    {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-46:/layout_activity_signup.xml.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-48:/layout/activity_signup.xml"
     },
@@ -36,12 +32,12 @@
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-48:/drawable/spinner_error_background.xml"
     },
     {
-        "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-46:/layout_useful_contacts.xml.flat",
-        "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-48:/layout/useful_contacts.xml"
-    },
-    {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-46:/layout_activity_practitioner_child_select.xml.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-48:/layout/activity_practitioner_child_select.xml"
+    },
+    {
+        "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-46:/layout_useful_contacts.xml.flat",
+        "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-48:/layout/useful_contacts.xml"
     },
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-46:/layout_fragment_immunisation_write.xml.flat",
@@ -208,6 +204,10 @@
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-48:/drawable/add_message.xml"
     },
     {
+        "merged": "com.example.myapplication.app-debug-46:/layout_appointment_item.xml.flat",
+        "source": "com.example.myapplication.app-main-48:/layout/appointment_item.xml"
+    },
+    {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-46:/drawable_sharebevel.png.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-48:/drawable/sharebevel.png"
     },
@@ -358,6 +358,10 @@
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-46:/layout_useful_contacts_display.xml.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-48:/layout/useful_contacts_display.xml"
+    },
+    {
+        "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-46:/layout_appointment_item.xml.flat",
+        "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-48:/layout/appointment_item.xml"
     },
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-46:/drawable_back_arrow.xml.flat",

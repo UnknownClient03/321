@@ -382,7 +382,7 @@
                 android:id="@+id/editText_birthHeadCirc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal" />
+                android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Post-Birth Details -->
@@ -580,7 +580,7 @@
                 android:id="@+id/editText_headCirc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal" />
+                android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Print Name -->
