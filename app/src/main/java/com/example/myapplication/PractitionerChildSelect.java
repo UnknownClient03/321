@@ -28,7 +28,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PractitionerChildSelect extends AppCompatActivity {
 
-    private LoginManager manager;
+    private PractitionerLoginManager manager;
 
     private int practitionerID;
     LinearLayout childContainer;
@@ -47,7 +47,7 @@ public class PractitionerChildSelect extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            manager = new LoginManager(extras.getInt("guardianID", -1), extras.getInt("childID", -1));
+            manager = new PractitionerLoginManager(extras.getInt("practitionerID", -1), extras.getInt("childID", -1));
         } else {
             Log.e("PractitionerChildSelect", "No extras provided in intent");
             return;
@@ -66,7 +66,8 @@ public class PractitionerChildSelect extends AppCompatActivity {
         buttonProgress.setEnabled(false);
         ImageButton buttonSettings = findViewById(R.id.settings_button);
         buttonSettings.setEnabled(false);
-        NavBarManager.setNavBarButtons(PractitionerChildSelect.this, manager);
+
+        NavBarManager.setNavBarButtons(PractitionerChildSelect.this, new LoginManager(extras.getInt("guardianID"), extras.getInt("childID")));
     }
 
     @Override
@@ -129,9 +130,11 @@ public class PractitionerChildSelect extends AppCompatActivity {
             childName.setText(child.getName());
             childAge.setText("Age: " + child.getAge());
 
+            practitionerID = getIntent().getIntExtra("practitionerID", 0);
+
             childButton.setOnClickListener(v -> {
                 Intent intent = new Intent(PractitionerChildSelect.this, PractitionerHomepage.class);
-                intent.putExtra("guardianID", child.getGuardianId()); //this can't be helped
+                intent.putExtra("practitionerID", practitionerID); //this can't be helped
                 intent.putExtra("childID", child.getId());
                 startActivity(intent);
             });

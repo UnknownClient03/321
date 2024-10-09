@@ -27,10 +27,10 @@ import java.util.HashMap;
 
 public class PractitionerHomepage extends AppCompatActivity {
 
-    LoginManager manager;
+    public PractitionerLoginManager manager;
     private CameraActivity cameraDialog;
 
-    private int guardianID;
+    private int practitionerID;
     private ImageView profilePicture;
 
     @Override
@@ -44,30 +44,27 @@ public class PractitionerHomepage extends AppCompatActivity {
             return insets;
         });
 
-        // Fetch guardian ID from the intent and display profile picture
-        guardianID = getIntent().getIntExtra("guardianID", 0);
-        /*
-        profilePicture = (ImageView) findViewById(R.id.profile_image_view);
-        displayProfilePicture();
-*/
+        // Fetch practitioner ID from the intent and display profile picture
+        practitionerID = getIntent().getIntExtra("practitionerID", 0);
         cameraDialog = new CameraActivity(this);
 
         Bundle extras = getIntent().getExtras();
-        if (extras != null) manager = new LoginManager(extras.getInt("guardianID"), extras.getInt("childID"));
+        if (extras != null) {
+            manager = new PractitionerLoginManager(extras.getInt("practitionerID"), extras.getInt("childID"));
+        }
 
         // Make sure some buttons cannot be pressed yet
         Button buttonHome = findViewById(R.id.home_button);
         buttonHome.setEnabled(false);  // Disable the button
 
-        NavBarManager.setNavBarButtons(PractitionerHomepage.this, manager);
+        NavBarManager.setNavBarButtons(PractitionerHomepage.this, new LoginManager(extras.getInt("guardianID"), extras.getInt("childID")));
 
         SQLConnection conn = new SQLConnection("user1", "");
 
-        TextView textView = (TextView)findViewById(R.id.textView_practitioner_homepage_name);
-        if(conn.isConn())
-        {
-            String query = "SELECT name from UsefulContact WHERE guardianID = ?;";
-            HashMap<String, String[]> result = conn.select(query, new String[]{String.valueOf(manager.guardianID)}, new char[]{'i'});
+        TextView textView = findViewById(R.id.textView_practitioner_homepage_name);
+        if (conn.isConn()) {
+            String query = "SELECT name from Practitioner WHERE ID = ?;";
+            HashMap<String, String[]> result = conn.select(query, new String[]{String.valueOf(manager.practitionerID)}, new char[]{'i'});
             conn.disconnect();
             String name = result.get("name")[0];
             textView.setText(name + "!");
@@ -94,7 +91,7 @@ public class PractitionerHomepage extends AppCompatActivity {
                 Intent intent = new Intent(PractitionerHomepage.this, EncapsulatingActivity.class);
                 Bundle extras = getIntent().getExtras();
                 if (extras != null) {
-                    intent.putExtra("guardianID", manager.guardianID);
+                    intent.putExtra("practitionerID", manager.practitionerID);
                     intent.putExtra("childID", manager.childID);
                     intent.putExtra("fromPractitionerHomepage", true);
                 }
@@ -110,7 +107,7 @@ public class PractitionerHomepage extends AppCompatActivity {
                 Intent intent = new Intent(PractitionerHomepage.this, Immunisation.class);
                 Bundle extras = getIntent().getExtras();
                 if (extras != null) {
-                    intent.putExtra("guardianID", manager.guardianID);
+                    intent.putExtra("practitionerID", manager.practitionerID);
                     intent.putExtra("childID", manager.childID);
                     intent.putExtra("fromPractitionerHomepage", true);
                 }
@@ -126,7 +123,7 @@ public class PractitionerHomepage extends AppCompatActivity {
                 Intent intent = new Intent(PractitionerHomepage.this, AppointmentsActivity.class);
                 Bundle extras = getIntent().getExtras();
                 if (extras != null) {
-                    intent.putExtra("guardianID", manager.guardianID);
+                    intent.putExtra("practitionerID", manager.practitionerID);
                     intent.putExtra("childID", manager.childID);
                     intent.putExtra("fromPractitionerHomepage", true);
                 }
@@ -143,7 +140,7 @@ public class PractitionerHomepage extends AppCompatActivity {
                 Intent intent = new Intent(PractitionerHomepage.this, CPRChart.class);
                 Bundle extras = getIntent().getExtras();
                 if (extras != null) {
-                    intent.putExtra("guardianID", manager.guardianID);
+                    intent.putExtra("practitionerID", manager.practitionerID);
                     intent.putExtra("childID", manager.childID);
                     intent.putExtra("fromPractitionerHomepage", true);
                 }
@@ -159,7 +156,7 @@ public class PractitionerHomepage extends AppCompatActivity {
                 Intent intent = new Intent(PractitionerHomepage.this, MyInfoAndFamHis.class);
                 Bundle extras = getIntent().getExtras();
                 if (extras != null) {
-                    intent.putExtra("guardianID", manager.guardianID);
+                    intent.putExtra("practitionerID", manager.practitionerID);
                     intent.putExtra("childID", manager.childID);
                     intent.putExtra("fromPractitionerHomepage", true);
                 }
@@ -175,7 +172,7 @@ public class PractitionerHomepage extends AppCompatActivity {
                 Intent intent = new Intent(PractitionerHomepage.this, BirthDetailsAndNewbornExamination.class);
                 Bundle extras = getIntent().getExtras();
                 if (extras != null) {
-                    intent.putExtra("guardianID", manager.guardianID);
+                    intent.putExtra("practitionerID", manager.practitionerID);
                     intent.putExtra("childID", manager.childID);
                     intent.putExtra("fromPractitionerHomepage", true);
                 }
@@ -191,7 +188,7 @@ public class PractitionerHomepage extends AppCompatActivity {
                 Intent intent = new Intent(PractitionerHomepage.this, ParentInfo.class);
                 Bundle extras = getIntent().getExtras();
                 if (extras != null) {
-                    intent.putExtra("guardianID", manager.guardianID);
+                    intent.putExtra("practitionerID", manager.practitionerID);
                     intent.putExtra("childID", manager.childID);
                     intent.putExtra("fromPractitionerHomepage", true);
                 }
@@ -207,7 +204,7 @@ public class PractitionerHomepage extends AppCompatActivity {
                 Intent intent = new Intent(PractitionerHomepage.this, UsefulContacts.class);
                 Bundle extras = getIntent().getExtras();
                 if (extras != null) {
-                    intent.putExtra("guardianID", manager.guardianID);
+                    intent.putExtra("practitionerID", manager.practitionerID);
                     intent.putExtra("childID", manager.childID);
                     intent.putExtra("fromPractitionerHomepage", true);
                 }
@@ -222,7 +219,7 @@ public class PractitionerHomepage extends AppCompatActivity {
                 Intent intent=new Intent(PractitionerHomepage.this, Records.class);
                 Bundle extras = getIntent().getExtras();
                 if (extras != null) {
-                    intent.putExtra("guardianID", manager.guardianID);
+                    intent.putExtra("practitionerID", manager.practitionerID);
                     intent.putExtra("childID", manager.childID);
                     intent.putExtra("fromPractitionerHomepage", true);
                 }
@@ -238,7 +235,7 @@ public class PractitionerHomepage extends AppCompatActivity {
                 Intent intent = new Intent(PractitionerHomepage.this, PrimarySecondarySchool.class);
                 Bundle extras = getIntent().getExtras();
                 if (extras != null) {
-                    intent.putExtra("guardianID", manager.guardianID);
+                    intent.putExtra("practitionerID", manager.practitionerID);
                     intent.putExtra("childID", manager.childID);
                     intent.putExtra("fromPractitionerHomepage", true);
                 }
@@ -254,7 +251,7 @@ public class PractitionerHomepage extends AppCompatActivity {
                 Intent intent = new Intent(PractitionerHomepage.this, GrowthChartsActivity.class);
                 Bundle extras = getIntent().getExtras();
                 if (extras != null) {
-                    intent.putExtra("guardianID", manager.guardianID);
+                    intent.putExtra("practitionerID", manager.practitionerID);
                     intent.putExtra("childID", manager.childID);
                     intent.putExtra("fromPractitionerHomepage", true);
                 }
@@ -314,7 +311,7 @@ public class PractitionerHomepage extends AppCompatActivity {
         startActivity(Intent.createChooser(shareIntent, "Share photo via"));
     }
 
-    public LoginManager getManager() {
+    public PractitionerLoginManager getManager() {
         return manager;
     }
 

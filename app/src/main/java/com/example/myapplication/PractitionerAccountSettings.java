@@ -23,7 +23,7 @@ import java.util.HashMap;
 
 public class PractitionerAccountSettings extends AppCompatActivity {
 
-    public LoginManager manager;
+    public PractitionerLoginManager manager;
 
     private ImageView profilePicture;
     private Button changeProfilePictureButton;
@@ -37,7 +37,7 @@ public class PractitionerAccountSettings extends AppCompatActivity {
     private Button saveButton;
     private Button changePasswordButton;
     private Button cancelButton;
-    private int guardianID;
+    private int practitionerID;
 
     private CaptureImage imageCapturer;
 
@@ -62,27 +62,32 @@ public class PractitionerAccountSettings extends AppCompatActivity {
         //changePasswordButton = findViewById(R.id.button_change_password);
         //cancelButton = findViewById(R.id.button_cancel);
 
-        // Fetch guardian ID from the intent
-        guardianID = getIntent().getIntExtra("guardianID", 0);
+        // Fetch practitioner ID from the intent
+        practitionerID = getIntent().getIntExtra("practitionerID", 0);
 
-        loadGuardianData();
+        loadPractitionerData();
         /*
         displayProfilePicture();
 */
         Bundle extras = getIntent().getExtras();
-        if (extras != null) manager = new LoginManager(extras.getInt("guardianID"), extras.getInt("childID"));
+        if (extras != null) manager = new PractitionerLoginManager(extras.getInt("practitionerID"), extras.getInt("childID"));
 
         SQLConnection conn = new SQLConnection("user1", "");
 
         TextView textView = (TextView)findViewById(R.id.textView_name);
         if(conn.isConn())
         {
-            String query = "SELECT name from UsefulContact WHERE guardianID = ?;";
-            HashMap<String, String[]> result = conn.select(query, new String[]{String.valueOf(manager.guardianID)}, new char[]{'i'});
+            String query = "SELECT name from Practitioner WHERE ID = ?;";
+            HashMap<String, String[]> result = conn.select(query, new String[]{String.valueOf(manager.practitionerID)}, new char[]{'i'});
             conn.disconnect();
             String name = result.get("name")[0];
             textView.setText(name);
         }
+
+        ImageButton buttonSettings = findViewById(R.id.settings_button);
+        buttonSettings.setEnabled(false);  // Disable the button
+
+        NavBarManager.setNavBarButtons(PractitionerAccountSettings.this, new LoginManager(extras.getInt("guardianID"), extras.getInt("childID")));
 
         /*
         // Requests permission for application to use camera
@@ -182,10 +187,6 @@ public class PractitionerAccountSettings extends AppCompatActivity {
             editTextNewPassword.setSelection(editTextNewPassword.getText().length());
         });
 */
-        ImageButton buttonSettings = findViewById(R.id.settings_button);
-        buttonSettings.setEnabled(false);  // Disable the button
-
-        NavBarManager.setNavBarButtons(PractitionerAccountSettings.this, new LoginManager(extras.getInt("guardianID"), extras.getInt("childID")));
     }
 
     private void showImageSourceOptions() {
@@ -233,15 +234,15 @@ public class PractitionerAccountSettings extends AppCompatActivity {
         }
     }
 
-    // Load guardian data from the database
-    private void loadGuardianData() {
+    // Load practitioner data from the database
+    private void loadPractitionerData() {
         SQLConnection sqlConnection = new SQLConnection("user1", "");
 
-        // Fetch email from the Guardian table
-        HashMap<String, String[]> guardianResult = sqlConnection.select("SELECT email FROM UsefulContact WHERE guardianID = " + guardianID);
+        // Fetch email from the Practitioner table
+        HashMap<String, String[]> practitionerResult = sqlConnection.select("SELECT email FROM Practitioner WHERE ID = " + practitionerID);
 
-        if (guardianResult != null && guardianResult.get("email") != null) {
-            String email = guardianResult.get("email")[0];
+        if (practitionerResult != null && practitionerResult.get("email") != null) {
+            String email = practitionerResult.get("email")[0];
             textEmail.setText(email);
         } else {
             Toast.makeText(this, "Failed to load email.", Toast.LENGTH_SHORT).show();
@@ -249,7 +250,7 @@ public class PractitionerAccountSettings extends AppCompatActivity {
 
         sqlConnection.disconnect();
     }
-
+/*
     // Load in and display the profile picture
     private void displayProfilePicture()
     {
@@ -373,4 +374,5 @@ public class PractitionerAccountSettings extends AppCompatActivity {
             return false;
         }
     }
+    */
 }

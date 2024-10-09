@@ -27,16 +27,19 @@ public class NavBarManager {
                     // Decide the target activity based on the origin
                     if (comingFromPractitioner) {
                         intent = new Intent(x, PractitionerHomepage.class); // Go back to PractitionerHomepage
+                        // Pass extras as needed
+                        if (extras != null) {
+                            intent.putExtra("practitionerID", extras.getInt("practitionerID"));
+                            intent.putExtra("childID", extras.getInt("childID"));
+                        }
                     } else {
                         intent = new Intent(x, Homepage.class); // Go to Homepage
+                        // Pass extras as needed
+                        if (extras != null) {
+                            intent.putExtra("guardianID", extras.getInt("guardianID"));
+                            intent.putExtra("childID", extras.getInt("childID"));
+                        }
                     }
-
-                    // Pass extras as needed
-                    if (extras != null) {
-                        intent.putExtra("guardianID", extras.getInt("guardianID"));
-                        intent.putExtra("childID", extras.getInt("childID"));
-                    }
-
                     // Start the appropriate home activity
                     x.startActivity(intent);
                 }
@@ -59,17 +62,26 @@ public class NavBarManager {
                     // Decide the target activity based on the origin
                     if (comingFromPractitioner || x instanceof PractitionerHomepage) {
                         intent = new Intent(x, PractitionerAccountSettings.class);
+                        // Pass extras as needed
+                        if (extras != null) {
+                            intent.putExtra("practitionerID", extras.getInt("practitionerID"));
+                            intent.putExtra("childID", extras.getInt("childID"));
+                        }
                     } else if (x instanceof Homepage) {
                         intent = new Intent(x, AccountSettings.class);
+                        // Pass extras as needed
+                        if (extras != null) {
+                            intent.putExtra("guardianID", extras.getInt("guardianID"));
+                            intent.putExtra("childID", extras.getInt("childID"));
+                        }
                     } else {
                         // Default to a common settings page or log an error
                         intent = new Intent(x, AccountSettings.class);
-                    }
-
-                    // Pass extras as needed
-                    if (extras != null) {
-                        intent.putExtra("guardianID", extras.getInt("guardianID"));
-                        intent.putExtra("childID", extras.getInt("childID"));
+                        // Pass extras as needed
+                        if (extras != null) {
+                            intent.putExtra("guardianID", extras.getInt("guardianID"));
+                            intent.putExtra("childID", extras.getInt("childID"));
+                        }
                     }
 
                     // Start the appropriate settings activity
