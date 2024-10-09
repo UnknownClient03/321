@@ -32,6 +32,7 @@ GRANT SELECT ON Practitioner TO user1;
 GRANT SELECT ON PractitionerAccountDetails TO user1;
 GRANT SELECT ON PractitionerGuardianID TO user1;
 GRANT INSERT, SELECT, UPDATE ON ChildCheckProtectiveFactors TO user1;
+GRANT INSERT, SELECT, UPDATE ON HealthChecks TO user1;
 
 GRANT SELECT ON HealthChecks TO user1;
 GRANT DELETE ON IllnessInjuries TO user1;
