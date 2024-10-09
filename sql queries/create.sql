@@ -477,11 +477,11 @@ BEGIN
 	BEGIN
 		INSERT INTO Practitioner SELECT @ID, NULL, NULL, name, phoneNumber, email, Country, City, Street, StreetNumber, unit, postcode FROM UsefulContact WHERE email = @email
 		DECLARE @password varchar(31), @salt varchar(16), @pepper varchar(16), @hashpassword varchar(64)
-		SET @password = CONCAT((SELECT SUBSTRING(Country, 1, 1) FROM Practitioner WHERE ID = 0),
-								(SELECT SUBSTRING(City, 1, 1) FROM Practitioner WHERE ID = 0),
-								(SELECT SUBSTRING(Street, 1, 1) FROM Practitioner WHERE ID = 0),
-								(SELECT SUBSTRING(CAST(StreetNumber as varchar), 1, 1) FROM Practitioner WHERE ID = 0),
-								(SELECT SUBSTRING(CAST(postcode as varchar), 1, 1) FROM Practitioner WHERE ID = 0))
+		SET @password = CONCAT((SELECT SUBSTRING(Country, 1, 1) FROM Practitioner WHERE ID = @ID),
+								(SELECT SUBSTRING(City, 1, 1) FROM Practitioner WHERE ID = @ID),
+								(SELECT SUBSTRING(Street, 1, 1) FROM Practitioner WHERE ID = @ID),
+								(SELECT SUBSTRING(CAST(StreetNumber as varchar), 1, 1) FROM Practitioner WHERE ID = @ID),
+								(SELECT SUBSTRING(CAST(postcode as varchar), 1, 1) FROM Practitioner WHERE ID = @ID))
 		
 		DECLARE @Length int, @CharPool varchar(70), @PoolLength int, @LoopCount int
 		SET @Length = 16
@@ -505,7 +505,7 @@ BEGIN
 		END
 
 		SET @hashpassword = SUBSTRING(master.dbo.fn_varbintohexstr(HashBytes('SHA2_256',CONCAT(@salt, @password, @pepper))), 3, 64)
-		INSERT INTO PractitionerAccountDetails VALUES (0, @hashpassword, @salt, @pepper)
+		INSERT INTO PractitionerAccountDetails VALUES (@ID, @hashpassword, @salt, @pepper)
 	END
 	INSERT INTO PractitionerGuardianID
 		SELECT DISTINCT Practitioner.ID, UsefulContact.guardianID FROM UsefulContact
