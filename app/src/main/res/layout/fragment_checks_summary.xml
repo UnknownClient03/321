@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/textView_checksSummaryTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Summary of routine health checks"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:paddingBottom="8dp" />
+
+        <!-- Instructions -->
+        <TextView
+            android:id="@+id/textView_checksSummaryInstructions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You should take your child to the child and family health nurse or to your doctor for health checks at each of the following ages. You can record your appointments in the table below."
+            android:paddingBottom="16dp" />
+
+        <!-- Table Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@android:color/darker_gray"
+            android:padding="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Age"
+                android:textStyle="bold"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Appointment Date"
+                android:textStyle="bold"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Other comments"
+                android:textStyle="bold"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+
+        <!-- 1-4 weeks table -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/textView_age_1_4_weeks"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="1-4 Weeks" />
+
+            <TextView
+                android:id="@+id/textView_date_1_4_weeks"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="To be set"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/textView_comment_1_4_weeks"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="No comments"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@android:color/darker_gray" />
+
+        <!-- 4-8 weeks table -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/textView_age_6_8_weeks"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="6-8 Weeks" />
+
+            <TextView
+                android:id="@+id/textView_date_6_8_weeks"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="To be set"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/textView_comment_6_8_weeks"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="No comments"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@android:color/darker_gray" />
+
+        <!-- 4 Months table -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/textView_age_4_months"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="4 Months" />
+
+            <TextView
+                android:id="@+id/textView_date_4_months"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="To be set"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/textView_comment_4_months"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="No comments"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@android:color/darker_gray" />
+
+        <!-- 6 Months table -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/textView_age_6_months"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="6 Months" />
+
+            <TextView
+                android:id="@+id/textView_date_6_months"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="To be set"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/textView_comment_6_months"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="No comments"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@android:color/darker_gray" />
+
+        <!-- 12 Months table -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/textView_age_12_months"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="12 Months" />
+
+            <TextView
+                android:id="@+id/textView_date_12_months"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="To be set"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/textView_comment_12_months"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="No comments"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@android:color/darker_gray" />
+
+        <!-- 18 Months table -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/textView_age_18_months"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="18 Months" />
+
+            <TextView
+                android:id="@+id/textView_date_18_months"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="To be set"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/textView_comment_18_months"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="No comments"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@android:color/darker_gray" />
+
+        <!-- 2 years table -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/textView_age_2_years"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="2 Years" />
+
+            <TextView
+                android:id="@+id/textView_date_2_years"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="To be set"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/textView_comment_2_years"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="No comments"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@android:color/darker_gray" />
+
+        <!-- 3 years table -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/textView_age_3_years"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="3 Years" />
+
+            <TextView
+                android:id="@+id/textView_date_3_years"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="To be set"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/textView_comment_3_years"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="No comments"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@android:color/darker_gray" />
+
+        <!-- 4 years table -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/textView_age_4_years"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="4 Years" />
+
+            <TextView
+                android:id="@+id/textView_date_4_years"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="To be set"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/textView_comment_4_years"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="No comments"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@android:color/darker_gray" />
+
+    </LinearLayout>
+</ScrollView>
