@@ -34,3 +34,5 @@ DROP TABLE Address;
 DROP TABLE GuardianAccountDetails;
 DROP TABLE Guardian;
 
+DROP TRIGGER createPractitioner;
+DROP TRIGGER removePractitioner;
