@@ -98,15 +98,47 @@ public class ManageChildrenActivity extends AppCompatActivity {
                 childrenToRemove.add(child.getId());
             }
 
-            // Remove selected children from the database using the removeChildFromDatabase method
-            for (Integer childId : childrenToRemove) {
-                removeChildFromDatabase(childId, currentGuardianID);
+            SQLConnection sqlConnection = new SQLConnection("user1", "");
+
+            // Delete selected children from dependent tables first, in reverse order
+            try {
+                for (int i = childrenToRemove.size() - 1; i >= 0; i--) {
+                    int childId = childrenToRemove.get(i);
+
+                    // Remove from all related tables
+                    sqlConnection.update("DELETE FROM ProgressNotes WHERE childID = " + childId);
+                    sqlConnection.update("DELETE FROM HealthChecks WHERE childID = " + childId);
+                    sqlConnection.update("DELETE FROM ImmunisationRecord WHERE childID = " + childId);
+                    sqlConnection.update("DELETE FROM Appointments WHERE childID = " + childId);
+                    sqlConnection.update("DELETE FROM IllnessInjuries WHERE childID = " + childId);
+                    sqlConnection.update("DELETE FROM BirthDetails WHERE childID = " + childId);
+                    sqlConnection.update("DELETE FROM NewbornExamination WHERE childID = " + childId);
+                    sqlConnection.update("DELETE FROM NBTable WHERE childID = " + childId);
+                    sqlConnection.update("DELETE FROM NewBornHearing WHERE childID = " + childId);
+                    sqlConnection.update("DELETE FROM HearingPreScreening WHERE childID = " + childId);
+                    sqlConnection.update("DELETE FROM Hearingscreen WHERE childID = " + childId);
+                    sqlConnection.update("DELETE FROM FourMonthImmunisation WHERE childID = " + childId);
+                    sqlConnection.update("DELETE FROM ChildCheck WHERE childID = " + childId);
+                    sqlConnection.update("DELETE FROM ChildCheckQuestion WHERE childID = " + childId);
+                    sqlConnection.update("DELETE FROM ChildCheckAssessment WHERE childID = " + childId);
+                    sqlConnection.update("DELETE FROM ChildCheckAssessmentVariables WHERE childID = " + childId);
+                    sqlConnection.update("DELETE FROM ChildCheckProtectiveFactors WHERE childID = " + childId);
+                    sqlConnection.update("DELETE FROM ChildCheckSignage WHERE childID = " + childId);
+
+                    // Delete from Child table last
+                    sqlConnection.update("DELETE FROM Child WHERE ID = " + childId + " AND guardianID = " + currentGuardianID);
+                }
+
+                Toast.makeText(ManageChildrenActivity.this, "Selected children removed.", Toast.LENGTH_SHORT).show();
+            } catch (Exception e) {
+                Log.e("ManageChildrenActivity", "Error during deletion.", e);
+                Toast.makeText(ManageChildrenActivity.this, "Error occurred during deletion.", Toast.LENGTH_SHORT).show();
+            } finally {
+                sqlConnection.disconnect();
             }
 
             // Reload and refresh children list from the database
             loadChildrenFromDatabase();
-
-            Toast.makeText(ManageChildrenActivity.this, "Selected children removed.", Toast.LENGTH_SHORT).show();
 
             // Reset UI elements
             adapter.showCheckboxes(false);
