@@ -3129,6 +3129,7 @@ int drawable notification_tile_bg 0x7f080108
 int drawable notify_panel_notification_icon_bg 0x7f080109
 int drawable ozbluelogo_background 0x7f08010a
 int drawable ozbluelogo_foreground 0x7f08010b
+int drawable practitioner_profile_picture 0x7f08011f
 int drawable profile_picture 0x7f08010c
 int drawable progressimg 0x7f08010d
 int drawable recordsimg 0x7f08010e
@@ -4190,6 +4191,7 @@ int id tag_window_insets_animation_callback 0x7f09040b
 int id take_photo_button 0x7f09040c
 int id text 0x7f09040d
 int id text2 0x7f09040e
+int id textEmailAddress 0x7f090551
 int id textEnd 0x7f09040f
 int id textInputLayout_abnormalitiesAtBirth 0x7f090410
 int id textInputLayout_actionTaken 0x7f090411
@@ -4403,6 +4405,7 @@ int id textView_outcomeLabel 0x7f0904e0
 int id textView_outcome_heading 0x7f0904e1
 int id textView_parentQuestions 0x7f0904e2
 int id textView_postBirthDetails 0x7f0904e3
+int id textView_practitioner_homepage_name 0x7f090550
 int id textView_protectiveFactors 0x7f0904e4
 int id textView_question1 0x7f0904e5
 int id textView_question2 0x7f0904e6
@@ -4624,6 +4627,7 @@ int layout abc_search_view 0x7f0c0019
 int layout abc_select_dialog_material 0x7f0c001a
 int layout abc_tooltip 0x7f0c001b
 int layout account_settings 0x7f0c001c
+int layout account_settings_practitioner 0x7f0c00aa
 int layout activity_add_child 0x7f0c001d
 int layout activity_appointments 0x7f0c001e
 int layout activity_cpr_chart 0x7f0c001f
@@ -4639,6 +4643,7 @@ int layout activity_immunisation_record 0x7f0c0028
 int layout activity_manage_children 0x7f0c0029
 int layout activity_my_info_and_fam_his 0x7f0c002a
 int layout activity_practitioner_child_select 0x7f0c002b
+int layout activity_practitioner_homepage 0x7f0c00a9
 int layout activity_primary_secondary_school 0x7f0c002c
 int layout activity_progress_notes 0x7f0c002d
 int layout activity_records 0x7f0c002e

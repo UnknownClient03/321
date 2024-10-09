@@ -71,12 +71,6 @@
         <activity android:name=".NavBarManager"
             android:windowSoftInputMode="adjustPan" />
 
-        <activity android:name=".PractitionerLoginActivity"
-            android:windowSoftInputMode="adjustPan" />
-
-        <activity android:name=".PractitionerChildSelect"
-            android:windowSoftInputMode="adjustPan" />
-
         <activity android:name=".BirthDetailsAndNewbornExamination"
             android:windowSoftInputMode="adjustPan" />
 
@@ -128,6 +122,18 @@
         <receiver android:name=".NotificationReceiver" />
 
         <activity android:name=".EncapsulatingActivity" />
+
+        <activity android:name=".PractitionerLoginActivity"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity android:name=".PractitionerChildSelect"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity android:name=".PractitionerHomepage"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity android:name=".PractitionerAccountSettings"
+            android:windowSoftInputMode="adjustPan" />
 
     </application>
 

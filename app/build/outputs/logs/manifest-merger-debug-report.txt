@@ -1,20 +1,20 @@
 -- Merging decision tree log ---
 provider#androidx.core.content.FileProvider
-INJECTED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:103:9-111:20
+INJECTED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:97:9-105:20
 	android:grantUriPermissions
-		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:107:13-47
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:101:13-47
 	android:authorities
 		INJECTED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml
-		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:105:13-60
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:99:13-60
 	android:exported
-		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:106:13-37
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:100:13-37
 	android:name
-		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:104:13-62
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:98:13-62
 manifest
-ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:2:1-136:12
-INJECTED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:2:1-136:12
-INJECTED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:2:1-136:12
-INJECTED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:2:1-136:12
+ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:2:1-142:12
+INJECTED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:2:1-142:12
+INJECTED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:2:1-142:12
+INJECTED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:2:1-142:12
 MERGED from [com.google.android.material:material:1.10.0] /Users/thomas/.gradle/caches/transforms-4/1ca8bdbcebe52b742408307a16fd6a60/transformed/material-1.10.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/thomas/.gradle/caches/transforms-4/6a54820cc8f015aa4349e27384ab45f6/transformed/constraintlayout-2.1.4/AndroidManifest.xml:2:1-11:12
 MERGED from [com.github.chrisbanes:PhotoView:2.3.0] /Users/thomas/.gradle/caches/transforms-4/e5f8ab5d1c31f3b5b6f0c6f3a83d8e86/transformed/PhotoView-2.3.0/AndroidManifest.xml:2:1-11:12
@@ -153,8 +153,8 @@ ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:18:
 	android:name
 		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:18:19-57
 application
-ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:20:5-132:19
-INJECTED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:20:5-132:19
+ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:20:5-138:19
+INJECTED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:20:5-138:19
 MERGED from [com.google.android.material:material:1.10.0] /Users/thomas/.gradle/caches/transforms-4/1ca8bdbcebe52b742408307a16fd6a60/transformed/material-1.10.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.10.0] /Users/thomas/.gradle/caches/transforms-4/1ca8bdbcebe52b742408307a16fd6a60/transformed/material-1.10.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/thomas/.gradle/caches/transforms-4/6a54820cc8f015aa4349e27384ab45f6/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
@@ -317,100 +317,112 @@ ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:71:
 		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:72:13-52
 	android:name
 		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:71:19-48
-activity#com.example.myapplication.PractitionerLoginActivity
+activity#com.example.myapplication.BirthDetailsAndNewbornExamination
 ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:74:9-75:55
 	android:windowSoftInputMode
 		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:75:13-52
 	android:name
-		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:74:19-60
-activity#com.example.myapplication.PractitionerChildSelect
-ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:77:9-78:55
-	android:windowSoftInputMode
-		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:78:13-52
-	android:name
-		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:77:19-58
-activity#com.example.myapplication.BirthDetailsAndNewbornExamination
-ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:80:9-81:55
-	android:windowSoftInputMode
-		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:81:13-52
-	android:name
-		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:80:19-68
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:74:19-68
 activity#com.example.myapplication.ResetPasswordActivity
-ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:83:9-59
+ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:77:9-59
 	android:name
-		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:83:19-56
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:77:19-56
 activity#com.example.myapplication.GrowthChartsActivity
-ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:86:9-58
+ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:80:9-58
 	android:name
-		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:86:19-55
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:80:19-55
 activity#com.example.myapplication.ParentInfo
-ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:89:9-90:55
+ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:83:9-84:55
 	android:windowSoftInputMode
-		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:90:13-52
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:84:13-52
 	android:name
-		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:89:19-45
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:83:19-45
 activity#com.example.myapplication.UsefulContacts
-ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:91:9-92:55
+ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:85:9-86:55
 	android:windowSoftInputMode
-		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:92:13-52
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:86:13-52
 	android:name
-		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:91:19-49
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:85:19-49
 activity#com.example.myapplication.Records
-ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:95:7-96:47
+ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:89:7-90:47
 	android:windowSoftInputMode
-		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:96:5-44
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:90:5-44
 	android:name
-		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:95:17-40
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:89:17-40
 activity#com.example.myapplication.IllnessInjuryNotes
-ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:97:7-98:53
+ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:91:7-92:53
 	android:windowSoftInputMode
-		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:98:11-50
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:92:11-50
 	android:name
-		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:97:17-51
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:91:17-51
 activity#com.example.myapplication.ProgressNotes
-ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:99:7-100:47
+ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:93:7-94:47
 	android:windowSoftInputMode
-		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:100:5-44
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:94:5-44
 	android:name
-		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:99:17-46
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:93:17-46
 activity#com.example.myapplication.CameraActivity
-ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:101:9-52
+ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:95:9-52
 	android:name
-		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:101:19-49
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:95:19-49
 activity#com.example.myapplication.PrimarySecondarySchool
-ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:114:9-60
+ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:108:9-60
 	android:name
-		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:114:19-57
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:108:19-57
 activity#com.example.myapplication.AppointmentAdaptor
+ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:111:9-56
+	android:name
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:111:19-53
+activity#com.example.myapplication.AppointmentsActivity
+ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:114:9-58
+	android:name
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:114:19-55
+activity#com.example.myapplication.NotificationHelper
 ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:117:9-56
 	android:name
 		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:117:19-53
-activity#com.example.myapplication.AppointmentsActivity
+activity#com.example.myapplication.NotificationReceiver
 ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:120:9-58
 	android:name
 		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:120:19-55
-activity#com.example.myapplication.NotificationHelper
-ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:123:9-56
-	android:name
-		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:123:19-53
-activity#com.example.myapplication.NotificationReceiver
-ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:126:9-58
-	android:name
-		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:126:19-55
 receiver#com.example.myapplication.NotificationReceiver
-ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:128:9-58
+ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:122:9-58
 	android:name
-		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:128:19-55
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:122:19-55
 activity#com.example.myapplication.EncapsulatingActivity
-ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:130:9-59
+ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:124:9-59
 	android:name
-		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:130:19-56
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:124:19-56
+activity#com.example.myapplication.PractitionerLoginActivity
+ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:126:9-127:55
+	android:windowSoftInputMode
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:127:13-52
+	android:name
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:126:19-60
+activity#com.example.myapplication.PractitionerChildSelect
+ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:129:9-130:55
+	android:windowSoftInputMode
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:130:13-52
+	android:name
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:129:19-58
+activity#com.example.myapplication.PractitionerHomepage
+ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:132:9-133:55
+	android:windowSoftInputMode
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:133:13-52
+	android:name
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:132:19-55
+activity#com.example.myapplication.PractitionerAccountSettings
+ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:135:9-136:55
+	android:windowSoftInputMode
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:136:13-52
+	android:name
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:135:19-62
 meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:108:13-110:54
+ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:102:13-104:54
 	android:resource
-		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:110:17-51
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:104:17-51
 	android:name
-		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:109:17-67
+		ADDED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml:103:17-67
 uses-sdk
 INJECTED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/thomas/StudioProjects/321/app/src/main/AndroidManifest.xml

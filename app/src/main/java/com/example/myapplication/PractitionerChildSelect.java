@@ -130,7 +130,7 @@ public class PractitionerChildSelect extends AppCompatActivity {
             childAge.setText("Age: " + child.getAge());
 
             childButton.setOnClickListener(v -> {
-                Intent intent = new Intent(PractitionerChildSelect.this, Homepage.class);
+                Intent intent = new Intent(PractitionerChildSelect.this, PractitionerHomepage.class);
                 intent.putExtra("guardianID", child.getGuardianId()); //this can't be helped
                 intent.putExtra("childID", child.getId());
                 startActivity(intent);

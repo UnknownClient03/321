@@ -11,30 +11,68 @@ import androidx.appcompat.app.AppCompatActivity;
 public class NavBarManager {
     public static void setNavBarButtons(AppCompatActivity x, LoginManager manager) {
         if (x.findViewById(R.id.header) != null) {
-            //sets the Home button to go home
-            Button buttonHome = x.findViewById(R.id.home_button); //changed to normal button
+            // Sets the Home button to go home
+            Button buttonHome = x.findViewById(R.id.home_button); // Changed to normal button
             buttonHome.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    Intent intent = new Intent(x, Homepage.class);
+                    Intent intent;
+
+                    // Check if coming from a practitioner-related activity
+                    boolean comingFromPractitioner = false;
                     Bundle extras = x.getIntent().getExtras();
+                    if (extras != null && extras.getBoolean("fromPractitionerHomepage", false)) {
+                        comingFromPractitioner = true;
+                    }
+
+                    // Decide the target activity based on the origin
+                    if (comingFromPractitioner) {
+                        intent = new Intent(x, PractitionerHomepage.class); // Go back to PractitionerHomepage
+                    } else {
+                        intent = new Intent(x, Homepage.class); // Go to Homepage
+                    }
+
+                    // Pass extras as needed
                     if (extras != null) {
                         intent.putExtra("guardianID", extras.getInt("guardianID"));
                         intent.putExtra("childID", extras.getInt("childID"));
                     }
+
+                    // Start the appropriate home activity
                     x.startActivity(intent);
                 }
             });
+
 
             // Sets the Settings button
             ImageButton buttonSettings = x.findViewById(R.id.settings_button); // Keep this as ImageButton
             buttonSettings.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    Intent intent = new Intent(x, AccountSettings.class);
+                    Intent intent;
+
+                    // Check if coming from PractitionerHomepage
+                    boolean comingFromPractitioner = false;
                     Bundle extras = x.getIntent().getExtras();
+                    if (extras != null && extras.getBoolean("fromPractitionerHomepage", false)) {
+                        comingFromPractitioner = true;
+                    }
+
+                    // Decide the target activity based on the origin
+                    if (comingFromPractitioner || x instanceof PractitionerHomepage) {
+                        intent = new Intent(x, PractitionerAccountSettings.class);
+                    } else if (x instanceof Homepage) {
+                        intent = new Intent(x, AccountSettings.class);
+                    } else {
+                        // Default to a common settings page or log an error
+                        intent = new Intent(x, AccountSettings.class);
+                    }
+
+                    // Pass extras as needed
                     if (extras != null) {
                         intent.putExtra("guardianID", extras.getInt("guardianID"));
                         intent.putExtra("childID", extras.getInt("childID"));
                     }
+
+                    // Start the appropriate settings activity
                     x.startActivity(intent);
                 }
             });
@@ -72,31 +110,48 @@ public class NavBarManager {
             ImageButton recordsButton = x.findViewById(R.id.records_button); // Keep this as ImageButton
             recordsButton.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    Intent intent = new Intent(x, Records.class);
-                    Bundle extras = x.getIntent().getExtras();
-                    if (extras != null) {
+                    Intent intent = new Intent(x, Records.class); // Navigate to normal Records page
 
+                    // Check if coming from a practitioner-related activity
+                    Bundle extras = x.getIntent().getExtras();
+                    if (extras != null && extras.getBoolean("fromPractitionerHomepage", false)) {
+                        intent.putExtra("fromPractitionerHomepage", true); // Set a flag for coming from practitioner
+                    }
+
+                    // Pass extras as needed
+                    if (extras != null) {
                         intent.putExtra("guardianID", manager.guardianID);
                         intent.putExtra("childID", manager.childID);
                     }
+
+                    // Start the Records activity
                     x.startActivity(intent);
                 }
             });
 
             // Set the Appointments button
-            ImageButton progressButton = x.findViewById(R.id.appointments_button); // Keep this as ImageButton
-            progressButton.setOnClickListener(new View.OnClickListener() {
+            ImageButton appointmentsButton = x.findViewById(R.id.appointments_button); // Keep this as ImageButton
+            appointmentsButton.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    Intent intent = new Intent(x, AppointmentsActivity.class);
-                    Bundle extras = x.getIntent().getExtras();
-                    if (extras != null) {
+                    Intent intent = new Intent(x, AppointmentsActivity.class); // Navigate to normal Appointments page
 
+                    // Check if coming from a practitioner-related activity
+                    Bundle extras = x.getIntent().getExtras();
+                    if (extras != null && extras.getBoolean("fromPractitionerHomepage", false)) {
+                        intent.putExtra("fromPractitionerHomepage", true); // Set a flag for coming from practitioner
+                    }
+
+                    // Pass extras as needed
+                    if (extras != null) {
                         intent.putExtra("guardianID", manager.guardianID);
                         intent.putExtra("childID", manager.childID);
                     }
+
+                    // Start the Appointments activity
                     x.startActivity(intent);
                 }
             });
+
 
             // Commented out the Progress button for now
             /*

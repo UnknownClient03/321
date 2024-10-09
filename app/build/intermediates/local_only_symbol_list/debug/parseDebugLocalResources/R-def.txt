@@ -41,6 +41,7 @@ drawable ic_launcher_foreground
 drawable logoutimg
 drawable ozbluelogo_background
 drawable ozbluelogo_foreground
+drawable practitioner_profile_picture
 drawable profile_picture
 drawable progressimg
 drawable recordsimg
@@ -649,6 +650,7 @@ id submitButton
 id submit_button
 id submit_remove_button
 id take_photo_button
+id textEmailAddress
 id textInputLayout_abnormalitiesAtBirth
 id textInputLayout_actionTaken
 id textInputLayout_age
@@ -857,6 +859,7 @@ id textView_outcomeLabel
 id textView_outcome_heading
 id textView_parentQuestions
 id textView_postBirthDetails
+id textView_practitioner_homepage_name
 id textView_protectiveFactors
 id textView_question1
 id textView_question2
@@ -914,6 +917,7 @@ id yesRadioButton7
 id yesRadioButton8
 id yesRadioButton9
 layout account_settings
+layout account_settings_practitioner
 layout activity_add_child
 layout activity_appointments
 layout activity_cpr_chart
@@ -929,6 +933,7 @@ layout activity_immunisation_record
 layout activity_manage_children
 layout activity_my_info_and_fam_his
 layout activity_practitioner_child_select
+layout activity_practitioner_homepage
 layout activity_primary_secondary_school
 layout activity_progress_notes
 layout activity_records

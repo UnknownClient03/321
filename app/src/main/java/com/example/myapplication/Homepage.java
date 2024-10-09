@@ -90,8 +90,11 @@ public class Homepage extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("BUTTON", "Navigating to EncapsulatingActivity for Checks");
                 Intent intent = new Intent(Homepage.this, EncapsulatingActivity.class);
-                intent.putExtra("guardianID", manager.guardianID);
-                intent.putExtra("childID", manager.childID);
+                Bundle extras = getIntent().getExtras();
+                if (extras != null) {
+                    intent.putExtra("guardianID", manager.guardianID);
+                    intent.putExtra("childID", manager.childID);
+                }
                 startActivity(intent);
             }
         });
@@ -235,8 +238,13 @@ public class Homepage extends AppCompatActivity {
         buttonGrowthCharts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("BUTTON", "Navigating to GrowthCharts page");
+                Log.d("BUTTON", "Navigating to Growth Charts page");
                 Intent intent = new Intent(Homepage.this, GrowthChartsActivity.class);
+                Bundle extras = getIntent().getExtras();
+                if (extras != null) {
+                    intent.putExtra("guardianID", manager.guardianID);
+                    intent.putExtra("childID", manager.childID);
+                }
                 startActivity(intent);
             }
         });

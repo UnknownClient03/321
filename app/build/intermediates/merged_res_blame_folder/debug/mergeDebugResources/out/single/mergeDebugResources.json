@@ -284,6 +284,10 @@
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-48:/layout/parent_info.xml"
     },
     {
+        "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-46:/layout_activity_practitioner_homepage.xml.flat",
+        "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-48:/layout/activity_practitioner_homepage.xml"
+    },
+    {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-46:/mipmap-xxxhdpi_ozbluelogo_foreground.webp.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-48:/mipmap-xxxhdpi/ozbluelogo_foreground.webp"
     },
@@ -316,6 +320,10 @@
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-48:/layout/activity_illness_injury_notes.xml"
     },
     {
+        "merged": "com.example.myapplication.app-debug-46:/layout_account_settings_practitioner.xml.flat",
+        "source": "com.example.myapplication.app-main-48:/layout/account_settings_practitioner.xml"
+    },
+    {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-46:/layout_health_check_item.xml.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-48:/layout/health_check_item.xml"
     },
@@ -342,10 +350,6 @@
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-46:/mipmap-xxhdpi_ozbluelogo_round.webp.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-48:/mipmap-xxhdpi/ozbluelogo_round.webp"
-    },
-    {
-        "merged": "com.example.myapplication.app-debug-46:/layout_activity_add_child.xml.flat",
-        "source": "com.example.myapplication.app-main-48:/layout/activity_add_child.xml"
     },
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-46:/layout_fragment_birth_details.xml.flat",
@@ -446,6 +450,14 @@
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-46:/layout_fragment_checksinfo.xml.flat",
         "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-48:/layout/fragment_checksinfo.xml"
+    },
+    {
+        "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-46:/layout_account_settings_practitioner.xml.flat",
+        "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-48:/layout/account_settings_practitioner.xml"
+    },
+    {
+        "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-46:/drawable_practitioner_profile_picture.png.flat",
+        "source": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-main-48:/drawable/practitioner_profile_picture.png"
     },
     {
         "merged": "/Users/thomas/.gradle/daemon/8.7/com.example.myapplication.app-debug-46:/layout_activity_immunisation_record.xml.flat",

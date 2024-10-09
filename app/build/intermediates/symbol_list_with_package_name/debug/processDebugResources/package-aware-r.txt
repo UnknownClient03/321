@@ -3130,6 +3130,7 @@ drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable ozbluelogo_background
 drawable ozbluelogo_foreground
+drawable practitioner_profile_picture
 drawable profile_picture
 drawable progressimg
 drawable recordsimg
@@ -4191,6 +4192,7 @@ id tag_window_insets_animation_callback
 id take_photo_button
 id text
 id text2
+id textEmailAddress
 id textEnd
 id textInputLayout_abnormalitiesAtBirth
 id textInputLayout_actionTaken
@@ -4404,6 +4406,7 @@ id textView_outcomeLabel
 id textView_outcome_heading
 id textView_parentQuestions
 id textView_postBirthDetails
+id textView_practitioner_homepage_name
 id textView_protectiveFactors
 id textView_question1
 id textView_question2
@@ -4625,6 +4628,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout account_settings
+layout account_settings_practitioner
 layout activity_add_child
 layout activity_appointments
 layout activity_cpr_chart
@@ -4640,6 +4644,7 @@ layout activity_immunisation_record
 layout activity_manage_children
 layout activity_my_info_and_fam_his
 layout activity_practitioner_child_select
+layout activity_practitioner_homepage
 layout activity_primary_secondary_school
 layout activity_progress_notes
 layout activity_records
