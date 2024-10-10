@@ -30,7 +30,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.267" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,6 +38,7 @@
         android:layout_marginEnd="160dp"
         android:layout_marginBottom="248dp"
         android:background="@drawable/button_3d"
+        app:backgroundTint="@null"
         android:elevation="12dp"
         android:text="@string/txt_LOGIN"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -99,24 +100,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/signup_button"
         android:layout_width="140dp"
         android:layout_height="60dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/button_3d"
+        app:backgroundTint="@null"
         android:elevation="12dp"
         android:text="@string/txt_signUp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="40dp"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/user_login_button"
         android:layout_width="140dp"
         android:layout_height="60dp"
         android:layout_marginStart="24dp"
         android:background="@drawable/button_3d"
+        app:backgroundTint="@null"
         android:elevation="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="40dp"

@@ -146,13 +146,16 @@
 
         </LinearLayout>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/signup_button"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="#6482AD"
+            android:background="@drawable/button_3d"
+            android:layout_gravity="center"
             android:text="Sign Up"
-            android:textSize="20sp" />
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:backgroundTint="@null" />
 
     </LinearLayout>
 

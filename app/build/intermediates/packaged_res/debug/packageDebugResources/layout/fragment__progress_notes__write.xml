@@ -25,12 +25,13 @@
             app:layout_constraintTop_toTopOf="@+id/fragmentContainerView"
             app:layout_constraintVertical_bias="0.15">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_PN_toTable"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/button_3d"
+                app:backgroundTint="@null"
                 android:elevation="12dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="40dp"
@@ -124,11 +125,12 @@
 
             </LinearLayout>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_progressNotes_submit"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_3d"
+                app:backgroundTint="@null"
                 android:elevation="12dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="40dp"

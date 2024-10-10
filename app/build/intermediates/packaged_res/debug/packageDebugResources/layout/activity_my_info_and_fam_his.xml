@@ -38,84 +38,92 @@
             android:layout_marginBottom="120dp"
             android:orientation="vertical">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_MIAFH_1"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/button_3d"
+                app:backgroundTint="@null"
                 android:elevation="12dp"
                 android:text="All about Me"
                 android:textSize="10sp" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_MIAFH_2"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/button_3d"
+                app:backgroundTint="@null"
                 android:elevation="12dp"
                 android:text="My Address"
                 android:textSize="10sp" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_MIAFH_3"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/button_3d"
+                app:backgroundTint="@null"
                 android:elevation="12dp"
                 android:text="Language"
                 android:textSize="10sp" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_MIAFH_4"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/button_3d"
+                app:backgroundTint="@null"
                 android:elevation="12dp"
                 android:text="Mother"
                 android:textSize="10sp" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_MIAFH_5"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/button_3d"
+                app:backgroundTint="@null"
                 android:elevation="12dp"
                 android:text="Father"
                 android:textSize="10sp" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_MIAFH_6"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/button_3d"
+                app:backgroundTint="@null"
                 android:elevation="12dp"
                 android:text="Health History"
                 android:textSize="10sp" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_MIAFH_7"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="0dp"
                 android:background="@drawable/button_3d"
+                app:backgroundTint="@null"
                 android:elevation="12dp"
                 android:text="Dental History"
                 android:textSize="10sp" />
 
         </LinearLayout>
+
     </com.google.android.material.navigation.NavigationView>
 
     <FrameLayout

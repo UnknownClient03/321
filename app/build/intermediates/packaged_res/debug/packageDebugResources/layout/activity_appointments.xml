@@ -79,10 +79,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/addAppointmentButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/button_3d"
+            android:textColor="#FFFFFF"
+            app:backgroundTint="@null"
             android:text="Add Appointment" />
 
     </LinearLayout>

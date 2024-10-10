@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/scrollView_check"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -297,11 +297,14 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Submit Button -->
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/submit_button"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="Submit"
+            android:background="@drawable/button_3d"
+            app:backgroundTint="@null"
+            android:layout_gravity="center"
             android:layout_marginTop="24dp" />
 
     </LinearLayout>

@@ -35,7 +35,7 @@
                 android:textSize="26sp"
                 android:textStyle="bold" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_IIN_addAnotherEntry"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
@@ -43,6 +43,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="40dp"
                 android:background="@drawable/button_3d"
+                app:backgroundTint="@null"
                 android:elevation="12dp"
                 android:layout_weight="2"
                 android:text="Add Another Entry"

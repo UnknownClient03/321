@@ -33,77 +33,101 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/check1Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_3d"
+                android:textColor="#FFFFFF"
+                app:backgroundTint="@null"
                 android:elevation="12dp"
                 android:layout_gravity="center_horizontal"
-                android:text="1-4 Week Check: Assess weight, length, head circumference, and general health" />
+                android:text="1-4 Week Check: Assess weight, length, head circumference, and general health"
+                android:layout_margin="8dp"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/check2Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_3d"
+                android:textColor="#FFFFFF"
+                app:backgroundTint="@null"
                 android:elevation="12dp"
                 android:layout_gravity="center_horizontal"
-                android:text="6-8 Week Check: Assess growth, development, and feeding" />
+                android:text="6-8 Week Check: Assess growth, development, and feeding"
+                android:layout_margin="8dp"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/check3Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_3d"
+                android:textColor="#FFFFFF"
+                app:backgroundTint="@null"
                 android:elevation="12dp"
                 android:layout_gravity="center_horizontal"
-                android:text="6 Month Check: Assess growth, oral health, and immunization status" />
+                android:text="6 Month Check: Assess growth, oral health, and immunization status"
+                android:layout_margin="8dp"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/check4Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_3d"
+                android:textColor="#FFFFFF"
+                app:backgroundTint="@null"
                 android:elevation="12dp"
                 android:layout_gravity="center_horizontal"
-                android:text="12 Month Check: Monitor development and screen for anemia" />
+                android:text="12 Month Check: Monitor development and screen for anemia"
+                android:layout_margin="8dp"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/check5Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_3d"
+                android:textColor="#FFFFFF"
+                app:backgroundTint="@null"
                 android:elevation="12dp"
                 android:layout_gravity="center_horizontal"
-                android:text="18 Month Check: Developmental assessment and immunization update" />
+                android:text="18 Month Check: Developmental assessment and immunization update"
+                android:layout_margin="8dp"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/check6Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_3d"
+                android:textColor="#FFFFFF"
+                app:backgroundTint="@null"
                 android:elevation="12dp"
                 android:layout_gravity="center_horizontal"
-                android:text="2 Year Check: Assess language and social skills" />
+                android:text="2 Year Check: Assess language and social skills"
+                android:layout_margin="8dp"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/check7Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_3d"
                 android:elevation="12dp"
+                android:textColor="#FFFFFF"
+                app:backgroundTint="@null"
                 android:layout_gravity="center_horizontal"
-                android:text="3.5 Year Check: Pre-school development assessment" />
+                android:text="3.5 Year Check: Pre-school development assessment"
+                android:layout_margin="8dp"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/check8Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_3d"
                 android:elevation="12dp"
+                android:textColor="#FFFFFF"
+                app:backgroundTint="@null"
                 android:layout_gravity="center_horizontal"
-                android:text="5 Year Check: School readiness and hearing/vision screening" />
+                android:text="5 Year Check: School readiness and hearing/vision screening"
+                android:layout_margin="8dp"/>
 
             <View
                 android:id="@+id/view3"

@@ -52,12 +52,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title_text" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/select_image_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="Upload Photo"
+        android:background="@drawable/button_3d"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile_picture" />
@@ -153,16 +156,17 @@
                 android:spinnerMode="dropdown"
                 android:textAlignment="viewStart" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/save_child_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:background="@drawable/button_3d"
-                android:backgroundTint="#6482AD"
                 android:elevation="12dp"
                 android:padding="20dp"
                 android:text="Add Child"
+                android:background="@drawable/button_3d"
+                android:textColor="#FFFFFF"
+                app:backgroundTint="@null"
                 android:textSize="22sp" />
 
         </LinearLayout>

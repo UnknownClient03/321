@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/scrollView_initial_information"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -22,11 +23,14 @@
             android:paddingBottom="16dp" />
 
         <!-- Next Button -->
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/next_button"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Next" />
+            android:text="Next"
+            android:background="@drawable/button_3d"
+            android:layout_gravity="center"
+            app:backgroundTint="@null" />
 
     </LinearLayout>
 </ScrollView>

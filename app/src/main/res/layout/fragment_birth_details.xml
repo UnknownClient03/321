@@ -682,11 +682,14 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Save Button -->
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/button_saveBirthDetails"
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:text="Save"
+            android:background="@drawable/button_3d"
+            app:backgroundTint="@null"
+            android:layout_gravity="center"
             android:layout_marginTop="24dp" />
 
     </LinearLayout>

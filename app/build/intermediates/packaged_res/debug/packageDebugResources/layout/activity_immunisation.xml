@@ -23,11 +23,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/button_immunisation_record"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:background="@drawable/round_1"
+        android:background="@drawable/button_3d"
+        app:backgroundTint="@null"
         android:text="Immunisation Record"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,11 +37,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.299" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/button_4_month_immunisation_check"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:background="@drawable/round_1"
+        android:background="@drawable/button_3d"
+        app:backgroundTint="@null"
         android:text="4 Month Immunisation Check"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

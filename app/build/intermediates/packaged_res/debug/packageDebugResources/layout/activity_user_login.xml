@@ -73,13 +73,14 @@
         app:layout_constraintTop_toTopOf="@+id/editTextTextPassword"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="161dp"
         android:layout_marginEnd="160dp"
         android:background="@drawable/button_3d"
+        app:backgroundTint="@null"
         android:elevation="12dp"
         android:text="@string/txt_LOGIN"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -99,24 +100,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/signup_button"
         android:layout_width="140dp"
         android:layout_height="60dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/button_3d"
+        app:backgroundTint="@null"
         android:elevation="12dp"
         android:text="@string/txt_signUp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="40dp"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/practitioner_login_button"
         android:layout_width="140dp"
         android:layout_height="60dp"
         android:layout_marginStart="24dp"
         android:background="@drawable/button_3d"
+        app:backgroundTint="@null"
         android:elevation="12dp"
         android:text="@string/txt_Practitioner_login"
         app:layout_constraintStart_toStartOf="parent"
@@ -132,7 +135,7 @@
         android:background="?android:attr/selectableItemBackground"
         android:gravity="center"
         android:text="Forgot Password?"
-        android:textColor="?attr/colorPrimary"
+        android:textColor="#0013a0"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.804"

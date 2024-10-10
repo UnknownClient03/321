@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/scrollView_checks_menu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,74 +14,94 @@
         android:padding="16dp">
 
         <!-- Buttons for each check -->
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonsummary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Summary Of Checks"
+            android:background="@drawable/button_3d"
+            app:backgroundTint="@null"
             android:layout_marginBottom="8dp"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/button_1_4_weeks"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="1-4 Weeks"
+            android:background="@drawable/button_3d"
+            app:backgroundTint="@null"
             android:layout_marginBottom="8dp"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/button_6_8_weeks"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="6-8 Weeks"
+            android:background="@drawable/button_3d"
+            app:backgroundTint="@null"
             android:layout_marginBottom="8dp"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/button_4_month"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="4 Month"
+            android:background="@drawable/button_3d"
+            app:backgroundTint="@null"
             android:layout_marginBottom="8dp"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/button_6_month"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="6 Month"
+            android:background="@drawable/button_3d"
+            app:backgroundTint="@null"
             android:layout_marginBottom="8dp"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/button_12_month"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="12 Month"
+            android:background="@drawable/button_3d"
+            app:backgroundTint="@null"
             android:layout_marginBottom="8dp"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/button_18_month"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="18 Month"
+            android:background="@drawable/button_3d"
+            app:backgroundTint="@null"
             android:layout_marginBottom="8dp"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/button_2_year"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="2 Year"
+            android:background="@drawable/button_3d"
+            app:backgroundTint="@null"
             android:layout_marginBottom="8dp"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/button_3_year"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="3 Year"
+            android:background="@drawable/button_3d"
+            app:backgroundTint="@null"
             android:layout_marginBottom="8dp"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/button_4_year"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="4 Year"
+            android:background="@drawable/button_3d"
+            app:backgroundTint="@null"
             android:layout_marginBottom="8dp"/>
 
     </LinearLayout>

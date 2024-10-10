@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".UsefulContactsChange">
 
     <LinearLayout
@@ -34,7 +35,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_weight="1"
                 android:text="Child and Family Health Centre"
-                android:textSize="10sp" />
+                android:textSize="14sp" />
 
             <RadioButton
                 android:id="@+id/radio_usefulContacts_2"
@@ -43,7 +44,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_weight="1"
                 android:text="Community Health Centre"
-                android:textSize="10sp" />
+                android:textSize="14sp" />
 
             <RadioButton
                 android:id="@+id/radio_usefulContacts_3"
@@ -51,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:text="Dentist"
-                android:textSize="10sp" />
+                android:textSize="14sp" />
 
             <RadioButton
                 android:id="@+id/radio_usefulContacts_4"
@@ -59,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:text="Family daycare/Childcare centre"
-                android:textSize="10sp" />
+                android:textSize="14sp" />
 
             <RadioButton
                 android:id="@+id/radio_usefulContacts_5"
@@ -67,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:text="Family doctor"
-                android:textSize="10sp" />
+                android:textSize="14sp" />
 
             <RadioButton
                 android:id="@+id/radio_usefulContacts_6"
@@ -75,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:text="High school"
-                android:textSize="10sp" />
+                android:textSize="14sp" />
 
             <RadioButton
                 android:id="@+id/radio_usefulContacts_7"
@@ -83,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:text="Local government/Council"
-                android:textSize="10sp" />
+                android:textSize="14sp" />
 
             <RadioButton
                 android:id="@+id/radio_usefulContacts_8"
@@ -91,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:text="Pre-school/Kindergarten"
-                android:textSize="10sp" />
+                android:textSize="14sp" />
 
             <RadioButton
                 android:id="@+id/radio_usefulContacts_9"
@@ -99,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:text="Primary school"
-                android:textSize="10sp" />
+                android:textSize="14sp" />
 
             <RadioButton
                 android:id="@+id/radio_usefulContacts_10"
@@ -107,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:text="Specialist doctor"
-                android:textSize="10sp" />
+                android:textSize="14sp" />
 
         </RadioGroup>
 
@@ -311,13 +312,17 @@
 
         </LinearLayout>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/button_submit_contact"
-            android:layout_width="100dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="40dp"
-            android:text="Submit" />
+            android:layout_marginBottom="40dp"
+            android:text="Submit"
+            android:background="@drawable/button_3d"
+            app:backgroundTint="@null"
+            android:layout_gravity="center" />
 
     </LinearLayout>
 
