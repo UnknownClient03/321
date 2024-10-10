@@ -147,7 +147,7 @@
         android:entries="@array/check_type_array" />
 
     <!-- Submit Button -->
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/submitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -155,6 +155,9 @@
         app:layout_constraintTop_toBottomOf="@id/recycler_view"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/button_3d"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
