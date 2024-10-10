@@ -61,12 +61,15 @@
             android:contentDescription="Profile Picture"
             android:src="@drawable/profile_picture" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/upload_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Upload Photo" />
+            android:text="Upload Photo"
+            android:background="@drawable/button_3d"
+            android:textColor="#FFFFFF"
+            app:backgroundTint="@null"/>
 
         <EditText
             android:id="@+id/first_name_input"

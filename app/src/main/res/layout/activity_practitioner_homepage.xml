@@ -33,92 +33,125 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_growth_charts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_3d"
                 android:elevation="12dp"
+                android:textColor="#FFFFFF"
+                app:backgroundTint="@null"
+                android:layout_margin="10dp"
                 android:text="Growth Charts" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_info_for_parents"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_3d"
                 android:elevation="12dp"
+                android:textColor="#FFFFFF"
+                app:backgroundTint="@null"
+                android:layout_margin="10dp"
                 android:text="Info For parents" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_immunisation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_3d"
                 android:elevation="12dp"
+                android:textColor="#FFFFFF"
+                app:backgroundTint="@null"
+                android:layout_margin="10dp"
                 android:text="Immunisation" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_appointments"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_3d"
                 android:elevation="12dp"
+                android:textColor="#FFFFFF"
+                app:backgroundTint="@null"
+                android:layout_margin="10dp"
                 android:text="Appointments" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_checks"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_3d"
                 android:elevation="12dp"
+                android:textColor="#FFFFFF"
+                app:backgroundTint="@null"
+                android:layout_margin="10dp"
                 android:text="Checks" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_my_records"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_3d"
                 android:elevation="12dp"
+                android:textColor="#FFFFFF"
+                app:backgroundTint="@null"
+                android:layout_margin="10dp"
                 android:text="Records" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_cpr_chart"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_3d"
                 android:elevation="12dp"
+                android:textColor="#FFFFFF"
+                app:backgroundTint="@null"
+                android:layout_margin="10dp"
                 android:text="CPR Chart" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_primary_secondary_school"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_3d"
                 android:elevation="12dp"
+                android:textColor="#FFFFFF"
+                app:backgroundTint="@null"
+                android:layout_margin="10dp"
                 android:text="Primary &amp; Secondary Education" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_my_information_and_family_history"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_3d"
                 android:elevation="12dp"
+                android:textColor="#FFFFFF"
+                app:backgroundTint="@null"
+                android:layout_margin="10dp"
                 android:text="My Infomation &amp; Family History" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_useful_contacts_and_websites"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_3d"
                 android:elevation="12dp"
+                android:textColor="#FFFFFF"
+                app:backgroundTint="@null"
+                android:layout_margin="10dp"
                 android:text="Useful Contacts &amp; Websites" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_birth_details_and_newborn_examination"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_3d"
                 android:elevation="12dp"
+                android:textColor="#FFFFFF"
+                app:backgroundTint="@null"
+                android:layout_margin="10dp"
                 android:text="Birth Details &amp; Newborn Examination" />
 
             <View
