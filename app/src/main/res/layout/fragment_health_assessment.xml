@@ -66,11 +66,14 @@
                     android:inputType="numberDecimal"
                     android:layout_marginTop="16dp"/>
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/save_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Save"
+                    android:background="@drawable/button_3d"
+                    app:backgroundTint="@null"
+                    android:elevation="12dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="24dp"/>
             </LinearLayout>
